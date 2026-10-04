@@ -1,0 +1,24 @@
+A 6MB PNG is almost always a lossless format doing a photo's job — for a photographic hero image, converting to a lossy web format (WebP or JPEG) is where the real size drop comes from, not just compression tweaks.
+
+**Run this:**
+```
+ffmpeg -i input.png -vf "scale=1920:-1" -c:v libwebp -quality 85 "export/001 - hero-webp/hero.webp"
+```
+This scales the hero to 1920px wide (adjust if your layout needs a different max width) and encodes it as WebP at 85% quality — typically an 80–90% size cut from a photographic PNG with no visible quality loss.
+
+**Fallback for older browsers / email or share previews:**
+```
+ffmpeg -i input.png -vf "scale=1920:-1" -q:v 5 "export/001 - hero-webp/hero.jpg"
+```
+JPEG at quality 5 (ffmpeg's `-q:v` scale, lower = better) is the universal-support version if you need a `<picture>` fallback alongside the WebP.
+
+**Before running either:** confirm your ffmpeg build actually has the WebP encoder —
+```
+ffmpeg -encoders | grep webp
+```
+If `libwebp` isn't listed, skip straight to the JPEG version or install a build that includes it.
+
+**Result lands in:** `export/001 - hero-webp/`
+**Check this:** run `ffprobe hero.webp` to confirm the new dimensions and check the file size dropped well below the 6MB original (expect somewhere in the 150–400KB range depending on image content); then load it in a browser to eyeball quality at actual display size.
+
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

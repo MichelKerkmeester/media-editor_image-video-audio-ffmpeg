@@ -1,0 +1,12 @@
+I can help you get this ready for the site, but I don't have a file attached to this conversation, and as an advisory Project I can't open or inspect local files myself — I can only tell you the exact command to run.
+
+To point you to the right fix, I need a few details:
+
+- **What is the file?** Image, video, or audio — and its current format (e.g. JPEG, MP4, WAV)
+- **Where does it live and roughly how big is it?** (path/filename and approximate file size)
+- **What's the goal for the site?** e.g. faster page load, smaller file size, responsive sizing, autoplay-friendly video, browser compatibility
+- **What output do you want?** Target format, dimensions, or quality level if you already have one in mind
+
+Once I have those, I'll give you the exact ffmpeg command to run, where the result should land (`export/NNN - [description]/`), and what to check on the output.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

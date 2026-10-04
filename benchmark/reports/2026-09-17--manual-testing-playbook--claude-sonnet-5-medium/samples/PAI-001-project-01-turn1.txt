@@ -1,0 +1,13 @@
+I don't see a file attached to this message — could you share (or re-attach) the specific media file, or tell me its path/filename? Also let me know:
+
+1. **Media type** — image, video, or audio?
+2. **Current format & rough size** (e.g., "PNG, 4.2 MB" or "MOV, 180 MB")
+3. **Goal for the website** — e.g., faster page load, smaller file size, correct display format, responsive sizing, HLS streaming for video, etc.
+4. **Where it'll be used** — hero image, background video, product thumbnail, embedded audio, etc.
+
+Once I have that, I'll give you the exact `ffmpeg` command to run, where the output should land, and what to check afterward.
+
+A quick note on scope: I'm the Media Editor advisor here — I can give you the precise command and settings to optimize this file for web, but I can't run ffmpeg or touch the file myself. You (or the CLI runtime) would execute the command in your terminal.
+
+---
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

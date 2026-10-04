@@ -1,0 +1,1 @@
+ffmpeg is available, and this routes to Audio Mode (`$audio`). Before I run the extraction, I need one thing from you: which video file should I pull audio from? Please give me the file path (or drop it in the working directory) — and let me know if 192 kbps MP3 works for the podcast feed, or if you need a different bitrate.

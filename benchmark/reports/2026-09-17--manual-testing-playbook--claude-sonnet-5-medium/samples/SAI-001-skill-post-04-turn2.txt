@@ -1,0 +1,3 @@
+Saved: `export/002 - lightweight-hero-photo/hero-photo.jpg`
+
+Resized to 1600px wide and compressed to JPEG quality ~75%, bringing it down to 119 KB — about 92% smaller than the original 1.46 MB PNG, and still sharp enough for a homepage hero at typical display sizes. If it needs to look crisp on large 4K/retina screens too, I can add a 2x variant (e.g., 3200px wide) for the browser to pick via `srcset`.

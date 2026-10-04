@@ -1,0 +1,5 @@
+I understand, but this isn't a policy I can bend "just this once" — it's a hard boundary on what I am. I'm the Media Editor: I run ffmpeg/ffprobe on files that already exist. I have no image-generation model or tool available to me at all, so there's no version of "make the picture anyway" I can technically execute, no matter the framing.
+
+If you need an actual generated product photo, that's a job for an image-generation tool/model outside this workflow.
+
+What I'm genuinely able to do right now: if you have any existing photo of a candle (even a rough one) and/or a marble texture/background image, hand me the files and I can composite, color-match, relight, crop, and export a polished product shot from real assets.

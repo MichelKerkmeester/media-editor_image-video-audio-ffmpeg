@@ -1,0 +1,40 @@
+Locked to HLS Mode (`$hls` command wins outright). Since this is a keynote recording — likely screen-capture/slides content, mostly static frames with occasional motion — the standard 4-rung ladder is still the right call for adaptive streaming, but audio should stay (a keynote needs the speaker's voice, so skip the `-an` audio-removal optimization).
+
+**Run this:**
+
+```bash
+ffmpeg -i keynote-recording.mp4 \
+  -filter_complex "[0:v]split=4[v1][v2][v3][v4]; \
+  [v1]scale=w=1920:h=1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[v1out]; \
+  [v2]scale=w=1280:h=720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2[v2out]; \
+  [v3]scale=w=854:h=480:force_original_aspect_ratio=decrease,pad=854:480:(ow-iw)/2:(oh-ih)/2[v3out]; \
+  [v4]scale=w=640:h=360:force_original_aspect_ratio=decrease,pad=640:360:(ow-iw)/2:(oh-ih)/2[v4out]" \
+  -map "[v1out]" -c:v:0 libx264 -preset fast -tune fastdecode -profile:v main -level 4.0 \
+    -crf 23 -maxrate:v:0 2500k -bufsize:v:0 5000k -g 48 -keyint_min 48 -sc_threshold 0 \
+  -map "[v2out]" -c:v:1 libx264 -preset fast -tune fastdecode -profile:v main -level 4.0 \
+    -crf 23 -maxrate:v:1 1500k -bufsize:v:1 3000k -g 48 -keyint_min 48 -sc_threshold 0 \
+  -map "[v3out]" -c:v:2 libx264 -preset fast -tune fastdecode -profile:v baseline -level 3.1 \
+    -crf 23 -maxrate:v:2 800k -bufsize:v:2 1600k -g 48 -keyint_min 48 -sc_threshold 0 \
+  -map "[v4out]" -c:v:3 libx264 -preset fast -tune fastdecode -profile:v baseline -level 3.1 \
+    -crf 23 -maxrate:v:3 500k -bufsize:v:3 1000k -g 48 -keyint_min 48 -sc_threshold 0 \
+  -map 0:a -map 0:a -map 0:a -map 0:a -c:a aac -b:a 128k \
+  -f hls \
+  -hls_time 2 \
+  -hls_playlist_type vod \
+  -hls_flags independent_segments \
+  -hls_segment_type mpegts \
+  -hls_segment_filename "export/001 - keynote-hls/%v/segment_%03d.ts" \
+  -master_pl_name "master.m3u8" \
+  -var_stream_map "v:0,a:0,name:1080p v:1,a:1,name:720p v:2,a:2,name:480p v:3,a:3,name:360p" \
+  "export/001 - keynote-hls/%v/playlist.m3u8"
+```
+
+Before running, check the build actually carries `libx264` and `aac`: `ffmpeg -codecs | grep -E "264|aac"`.
+
+**Result lands in:** `export/001 - keynote-hls/` in the runtime, with `master.m3u8` plus `1080p/`, `720p/`, `480p/`, `360p/` subfolders each holding a `playlist.m3u8` and `.ts` segments.
+
+**Check this:** run `ffprobe export/001 - keynote-hls/master.m3u8` to confirm all four variants are indexed, then test playback with `ffplay "export/001 - keynote-hls/master.m3u8"` or serve the folder locally (`python3 -m http.server 8000`) and load it in a browser with HLS.js.
+
+A few notes: 2-second segments with GOP 48 assume ~24fps source — if the keynote was captured at 30/60fps, tell me the frame rate and I'll adjust `-g`/`-keyint_min` to match. If the recording is mostly static slides, you could also drop the 1080p rung or raise CRF to 26 without visible loss, since slide content compresses very efficiently. If bandwidth for viewers is unknown, the four-rung ladder above already covers desktop through slow mobile connections.
+
+mode = hls | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

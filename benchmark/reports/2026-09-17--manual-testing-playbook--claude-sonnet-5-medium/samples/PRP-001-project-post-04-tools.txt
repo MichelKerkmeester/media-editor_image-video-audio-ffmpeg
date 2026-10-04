@@ -1,0 +1,8 @@
+scenario PRP-001  arm project  sample 04  post-repair  session D0EA5059-0C0C-4430-85DB-CECE5D57E15C
+tool calls: 0
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: no
+repair-two text in the recorded system prompt: yes
+repair-two text in a tool result (SKILL.md opened): no
+
+(this run made no tool calls)

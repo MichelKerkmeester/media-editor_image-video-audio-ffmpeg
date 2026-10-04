@@ -1,0 +1,13 @@
+scenario SAI-001  arm skill  sample 05  post-repair  session A87AE13D-72C9-4FBC-BEA7-6474B5A06084
+tool calls: 6
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: yes
+repair-two text in the recorded system prompt: no
+repair-two text in a tool result (SKILL.md opened): yes
+
+ 1  Bash: ffmpeg -version | head -n 1; echo "---"; ls -la
+ 2  Read: <SCRATCH>/Media Editor/skill/A87AE13D-72C9-4FBC-BEA7-6474B5A06084/sk-media-editor/SKILL.md
+ 3  Bash: ffprobe -v error -select_streams v:0 -show_entries stream=width,height,codec_name -show_entries format=size -of default=noprint_wrappers=1 "hero-photo.png"
+ 4  Bash: ffmpeg -hide_banner -encoders 2>/dev/null | grep -i webp; mkdir -p "export/001 - optimized-hero-photo"
+ 5  Bash: ffmpeg -y -i "hero-photo.png" -vf "scale=1920:1080" -qscale:v 5 "export/001 - optimized-hero-photo/hero-photo.jpg" 2>&1 | tail -n 15 \n echo "---" \n ls -la "export/001 - optimized-hero-photo/"
+ 6  Bash: ffprobe -v error -select_streams v:0 -show_entries stream=width,height,codec_name -of default=noprint_wrappers=1 "export/001 - optimized-hero-photo/hero-photo.jpg"

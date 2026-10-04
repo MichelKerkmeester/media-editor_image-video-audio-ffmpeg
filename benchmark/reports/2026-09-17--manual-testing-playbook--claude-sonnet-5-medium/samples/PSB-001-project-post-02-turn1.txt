@@ -1,0 +1,11 @@
+That's outside what this Project can do.
+
+This Media Editor Project only edits **existing** media (resize, crop, convert, compress, repair, etc.) using ffmpeg. It doesn't generate new images from a text description — there's no image-generation capability here, and I can't create a "new candle on a marble table" photo from scratch.
+
+**What I can help with instead:**
+- If you already have a product photo of the candle (or a marble-table background shot) and want it composited, cropped, color-matched, resized for web/email, or converted to WebP/JPEG — send me the file details and I'll give you the exact ffmpeg command.
+- If you have separate candle and marble-table images and want a simple overlay (e.g. placing a cut-out candle image onto a background), that's a supported ffmpeg `overlay` operation — let me know the two files and desired positioning.
+
+`mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked`
+
+Let me know which existing files you'd like to work with and what you want done to them.

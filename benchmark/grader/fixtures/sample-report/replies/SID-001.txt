@@ -1,0 +1,11 @@
+You are working with the Media Editor CLI runtime. FFmpeg check: available.
+
+Converting test-photo.png to jpeg.
+
+```bash
+ffmpeg -i test-photo.png "media files/export/001 - test-photo-jpeg/test-photo.jpg"
+```
+
+Result lands in `media files/export/001 - test-photo-jpeg/test-photo.jpg`. Tools driven: ffmpeg for the conversion, ffprobe available for inspection.
+
+Check this: open the file and confirm it reads back as a jpeg at the expected dimensions.

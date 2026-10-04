@@ -1,0 +1,5 @@
+scenario SSB-001  arm skill  sample 04  session 90FDC829-7DAE-46AA-A8CB-773F9FD34F09
+tool calls: 0
+Write/Edit/NotebookEdit calls: 0
+
+(this run made no tool calls)

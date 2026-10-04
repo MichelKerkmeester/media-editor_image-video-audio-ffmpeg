@@ -1,0 +1,17 @@
+Run this:
+
+```
+ffmpeg -i "input_product_demo.mp4" -vn -c:a libmp3lame -b:a 192k "podcast_audio.mp3"
+```
+
+- `-vn` strips the video stream, keeping audio only
+- `-c:a libmp3lame -b:a 192k` encodes MP3 at 192 kbps — the standard bitrate for podcast feeds, giving universal playback support across podcast apps with solid voice/product-demo clarity
+- Swap in your actual input filename/path
+
+**Result lands in:** `export/001 - product-demo-audio/` (create the folder, or let your export step name it)
+
+**Check this:** run `ffprobe podcast_audio.mp3` on the output and confirm it shows an MP3 audio stream at 192 kbps with no video stream, then do a quick playback test to confirm levels sound right (voiceover/product audio, no clipping).
+
+If the demo has background music under a voiceover and you want it leveled for spoken-word podcast norms, say so and I can add loudness normalization (`loudnorm`) to the command.
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

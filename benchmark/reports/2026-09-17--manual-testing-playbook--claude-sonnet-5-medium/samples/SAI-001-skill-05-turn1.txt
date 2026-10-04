@@ -1,0 +1,8 @@
+I don't see a file attached or referenced yet — could you point me to the specific media file (path or filename) you'd like optimized for your website, and let me know a bit about the goal?
+
+A couple of quick things that'll help me pick the right settings:
+
+1. **What type of file is it** — image, video, or audio?
+2. **What's the "make it work better" goal** — e.g., faster load time / smaller file size, correct dimensions for a hero banner or thumbnail, web-compatible format (like WebP/MP4/H.264), or something else?
+
+Once I have the file and the goal, I'll process it with ffmpeg and export the result.

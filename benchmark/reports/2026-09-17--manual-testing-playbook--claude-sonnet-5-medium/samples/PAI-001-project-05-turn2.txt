@@ -1,0 +1,32 @@
+A 6MB PNG hero image is almost always oversized because PNG is lossless — for a photo (not flat graphics/transparency), converting to WebP or JPEG with resizing will cut it drastically with no visible quality loss.
+
+**Run this:**
+
+```bash
+ffmpeg -i hero-original.png -vf "scale=1920:-1" -c:v libwebp -quality 85 hero.webp
+```
+
+- `scale=1920:-1` caps width at 1920px (standard hero width) and preserves aspect ratio — skip/adjust this if your original is already narrower
+- `-quality 85` is the sweet spot for photographic web images: visually near-lossless, big size drop
+
+**Fallback (if your ffmpeg build lacks WebP encoding):**
+
+```bash
+ffmpeg -i hero-original.png -vf "scale=1920:-1" -q:v 5 hero.jpg
+```
+
+JPEG at quality 5 (ffmpeg's 1–31 scale, lower = better) is the universal-support equivalent.
+
+**Result lands in:** `export/001 - hero webp/` (or `export/001 - hero jpg/` for the fallback)
+
+**Check this:**
+- `ffprobe hero.webp` to confirm dimensions and codec
+- Check the resulting file size — you should land well under 500KB, often 100–300KB for a hero photo at this quality
+- Open it at full width in a browser to eyeball sharpness before deploying
+
+One thing to confirm on your end: does the CLI runtime's ffmpeg build actually have `libwebp` compiled in? If you're not sure, run `ffmpeg -encoders | grep webp` first — if nothing returns, use the JPEG fallback above instead.
+
+---
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Run the WebP command first, check the encoder note, and let me know the resulting file size if you want a second pass (e.g. dropping quality further or trying AVIF for even smaller output).

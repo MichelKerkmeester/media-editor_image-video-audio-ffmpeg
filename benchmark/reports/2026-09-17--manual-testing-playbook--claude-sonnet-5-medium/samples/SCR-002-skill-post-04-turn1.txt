@@ -1,0 +1,7 @@
+**`export/001 - podcast-audio-extract/demo-video-audio.mp3`**
+
+Extracted the audio track from `demo-video.mp4` and encoded it to MP3 at 192 kbps, the standard bitrate for universal podcast feed playback. Source audio was mono AAC at 44.1kHz, 6 seconds, carried straight through without re-encoding artifacts beyond the codec change.
+
+HVR self-scan: 0 hard blockers. Fixed: none. Kept with reason: none.
+
+Let me know if you need a different bitrate or a stereo upmix for the feed.

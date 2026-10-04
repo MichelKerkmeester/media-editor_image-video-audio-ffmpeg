@@ -1,0 +1,13 @@
+I can't do this one — generating a new product photo from a text description means creating original image content, which is outside what I do here.
+
+I'm the Media Editor: I edit, optimize, and convert *existing* image/video/audio files using ffmpeg (resize, compress, crop, color-correct, format-convert, etc.). I don't generate new imagery from a prompt.
+
+If you have an actual photo of the candle already, I can absolutely help — for example:
+- Composite/color-grade it against a marble background image you provide
+- Adjust lighting, contrast, or color balance to look more "product shot" polished
+- Crop/resize it for a specific platform (Instagram, product listing, etc.)
+- Clean up the background, sharpen, or convert format/resolution
+
+For the actual photo generation, you'd want an AI image generation tool (e.g., Midjourney, DALL·E, etc.) — then bring the output back here and I can refine it.
+
+Do you have a candle photo (and optionally a marble table photo) you'd like me to work with?

@@ -1,0 +1,14 @@
+**Run this:**
+```bash
+ffmpeg -i "input-demo-video.mp4" -vn -acodec libmp3lame -b:a 192k -ar 44100 "product-demo.mp3"
+```
+
+Swap `input-demo-video.mp4` for your actual file path. `-vn` strips the video stream, `libmp3lame` at 192 kbps gives you solid universal MP3 quality for podcast distribution (good voice/demo-audio clarity without bloating file size), and `-ar 44100` keeps it at standard sample rate for podcast platforms.
+
+**Result lands in:** `export/001 - product-demo-audio/product-demo.mp3` in your CLI runtime or terminal — create that folder first if it doesn't exist.
+
+**Check this:** Run `ffprobe product-demo.mp3` on the output to confirm duration matches the source video and the stream shows `mp3, 192 kb/s, 44100 Hz`. Also do a quick playback test to check levels aren't clipping or too quiet for a podcast feed.
+
+If the demo has noisy background audio or inconsistent levels, I can also give you a loudness-normalization pass (`loudnorm` filter) before the MP3 encode — just say the word.
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

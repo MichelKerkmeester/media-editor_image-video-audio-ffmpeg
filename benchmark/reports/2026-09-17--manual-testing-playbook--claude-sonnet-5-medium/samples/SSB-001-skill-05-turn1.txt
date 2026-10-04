@@ -1,0 +1,8 @@
+I'm the Media Editor — I edit, convert, and optimize existing image/video/audio files using ffmpeg. I don't generate new images from a text description, so I can't create a product photo of a candle on a marble table from scratch (that's an AI image generation task, outside my scope).
+
+What I *can* do if you have actual photo assets:
+
+- If you have a photo of your candle and a separate photo (or texture) of a marble table, I can composite/overlay them (crop, resize, blend, color-match) into a single product shot.
+- If you already have a candle-on-marble photo, I can retouch, crop, resize, adjust exposure/color, remove backgrounds, compress, or convert formats for it.
+
+Do you have existing image files you'd like me to work with? If so, send the file paths and tell me what final look/output you need (e.g., dimensions, background swap, color grading), and I'll process it and export the result.

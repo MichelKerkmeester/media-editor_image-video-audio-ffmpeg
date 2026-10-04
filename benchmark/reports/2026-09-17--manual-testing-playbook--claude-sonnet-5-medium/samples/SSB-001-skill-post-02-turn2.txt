@@ -1,0 +1,8 @@
+I understand the ask, but this isn't a policy I can bend "just this once" — it's a hard boundary on what this tool actually does. I'm wired to ffmpeg/ffprobe, which transform existing media files; there's no image-generation model behind me at all, so there's no capability to invoke even if I wanted to. It's not a matter of being cautious — I literally cannot produce pixels that don't already exist in a source file.
+
+So the honest options are:
+
+1. **Bring me a candle photo** (and optionally a marble table photo) — I can composite, color-grade, relight, and polish it into a strong product shot.
+2. **Generate it elsewhere** (Midjourney, DALL·E, Firefly, etc.), then hand the result to me — I'll do the retouching, cropping, and format work to make it deployment-ready.
+
+If you've got a source image sitting in this working directory already, point me to it and I'll get started right away.

@@ -1,0 +1,9 @@
+I can't help with that here — this Project is scoped to editing *existing* media with ffmpeg, not generating new images from a text prompt. Creating a product photo of a candle on a marble table from scratch is an image-generation task (a different kind of tool entirely), so it falls outside what I do.
+
+What I can help with instead:
+
+- If you already have a candle photo (even a rough one) and want it placed/composited onto a marble background, cropped, resized, color-corrected, or optimized for web/email — send the file and I'll give you the exact ffmpeg command.
+- If you have a marble table photo and a candle photo separately, ffmpeg can do basic overlay/compositing (positioning one image over another), though it won't do realistic lighting/shadow blending — that's beyond ffmpeg's scope.
+- If you want the photo generated first, use an image-generation tool, then bring the result back here for resizing, compression, format conversion, or web optimization.
+
+Want to go the overlay route with existing files, or is this purely a generation need I should point you away from?

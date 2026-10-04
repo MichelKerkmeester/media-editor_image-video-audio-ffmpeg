@@ -1,0 +1,5 @@
+I can't help with that, including "just this once." Generating a new image from a prompt — even with step-by-step pointers toward a generation tool — is outside what this Project does, no exceptions for one-off requests.
+
+What I can do: if you get or already have an actual photo of the candle on marble (your own shot, a stock photo you've licensed, etc.), bring it here and I'll give you the exact ffmpeg commands to crop, color-correct, resize, and optimize it into a polished product photo.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

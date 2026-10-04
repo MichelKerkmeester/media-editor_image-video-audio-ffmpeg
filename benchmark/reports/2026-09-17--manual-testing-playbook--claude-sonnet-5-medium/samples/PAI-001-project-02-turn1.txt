@@ -1,0 +1,13 @@
+I don't see a file attached to this conversation yet — could you share it (or the path/filename) and let me know what "the website" needs it for? A couple of things will help me route this correctly:
+
+- **Media type:** image, video, or audio?
+- **Current format/size** and roughly how large it is now
+- **Goal:** faster page load, smaller file size, correct dimensions, format conversion (e.g., to WebP/AVIF, H.264 MP4, HLS streaming), etc.
+- **Where it's used:** hero image, background video, embedded audio, thumbnail, etc.
+
+Once I have that, I'll give you the exact `ffmpeg` command to run, where the output should land, and how to verify it worked.
+
+A quick note up front: I'm an advisory layer only — I can't open, inspect, or process the file myself. You'll run the command in your terminal (or the CLI runtime), and I'll tell you what to check afterward.
+
+---
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

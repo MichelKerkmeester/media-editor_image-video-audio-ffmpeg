@@ -1,0 +1,5 @@
+Saved: `export/001 - web-optimized-hero-photo/hero-photo.jpg`
+
+I resized it to 1920×1080 (standard hero-image width) and converted PNG → JPEG at quality 85%, since your build has no WebP/AVIF encoder and the source photo had no transparency to preserve. File size dropped from 1.46 MB to 196 KB (~87% smaller), which should noticeably speed up page load.
+
+Let me know if you'd rather keep the full 2560px width for retina displays, or need additional sizes (e.g., mobile breakpoint).
