@@ -1,0 +1,11 @@
+I can't help with that one. I'm the Media Editor here — I edit, optimize, and convert *existing* image, video, and audio files using ffmpeg. I don't generate new images from a text description (no AI image generation tools in my toolset).
+
+If you have an actual photo of the candle, I can absolutely help you get it ready for use — e.g.:
+
+- Composite/crop it against a marble table background image you provide
+- Adjust color, lighting, contrast, or white balance to make it look better on marble
+- Resize/format it for product listings (web, social, print)
+- Remove background or add subtle vignette/shadow effects
+- Batch-process multiple candle shots for consistency
+
+If any of that is what you need, just upload the source photo(s) and tell me the goal, and I'll take it from there.

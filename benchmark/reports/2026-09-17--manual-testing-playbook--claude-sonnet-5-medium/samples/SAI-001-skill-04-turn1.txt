@@ -1,0 +1,9 @@
+I don't see a file attached to your message — could you share the image/video/audio file you'd like optimized for the website, and let me know a bit about the goal?
+
+One comprehensive question so I can route this correctly:
+
+1. **What's the file** (path or upload) and **what type** is it — image, video, or audio?
+2. **What's the website use case** — e.g., hero banner, product thumbnail, background video, embedded audio player?
+3. Any specific target — max file size, dimensions, or format (e.g., WebP/AVIF for images, MP4/WebM for video)?
+
+Once I have the file and that context, I'll run it through ffmpeg (resize/compress/convert as needed) and export the result to `export/`.

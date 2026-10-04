@@ -1,0 +1,17 @@
+**Run this:**
+
+```bash
+ffmpeg -i "input_demo.mp4" -vn -c:a libmp3lame -b:a 192k -ar 44100 "podcast_audio.mp3"
+```
+
+- `-vn` drops the video stream since you only need audio
+- `-c:a libmp3lame -b:a 192k` encodes MP3 at 192 kbps — standard for podcast feeds, good quality/size balance for spoken content
+- If the source track is mono/dialogue-heavy, 128k is often enough and shrinks the file further — swap `-b:a 128k` if size matters more than headroom
+
+**Result lands in:** `export/001 - podcast-audio-mp3/podcast_audio.mp3` (or wherever your CLI runtime writes exports — create the folder first if needed)
+
+**Check this:** run `ffprobe podcast_audio.mp3` and confirm the stream shows `mp3, 192 kb/s, 44100 Hz` with no video stream, then play it back to confirm levels sound right (no video-related silence padding at start/end).
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Run the command above against your actual demo video file path, save the output into the export folder, and confirm the file plays cleanly before dropping it into your podcast feed. If the demo's dialogue is quiet or uneven, let me know — normalization or silence trimming can be added as a second pass before you export the MP3.

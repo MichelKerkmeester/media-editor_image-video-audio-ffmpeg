@@ -1,0 +1,8 @@
+I can help with that — but I'll need a bit more to go on.
+
+I don't see a file attached or referenced yet. To optimize media "for our website," could you share:
+
+1. **The file** (path or drag it in) — image, video, or audio?
+2. **What "work better" means for your site** — e.g. faster load time (compression), correct sizing/dimensions, format conversion (e.g. to WebP/MP4/H.264), or something else?
+
+Once I have the file, I'll load the Media Editor skill and ffmpeg tooling and get it optimized and exported.

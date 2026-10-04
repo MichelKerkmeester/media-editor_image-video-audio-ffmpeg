@@ -1,0 +1,332 @@
+[
+  {
+    "input": "$image resize this to 800px wide",
+    "expect": {
+      "mode": "IMAGE",
+      "tool": "image_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/image-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "$img convert to webp",
+    "expect": {
+      "mode": "IMAGE",
+      "tool": "image_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/image-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "$video trim the first ten seconds",
+    "expect": {
+      "mode": "VIDEO",
+      "tool": "video_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "$vid transcode to mp4",
+    "expect": {
+      "mode": "VIDEO",
+      "tool": "video_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "$audio extract the track from this file",
+    "expect": {
+      "mode": "AUDIO",
+      "tool": "audio_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "$aud normalize the levels",
+    "expect": {
+      "mode": "AUDIO",
+      "tool": "audio_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "$hls build an adaptive ladder from this master",
+    "expect": {
+      "mode": "HLS",
+      "tool": "video_hls_ladder",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "assets/hls-video-conversion.md"
+      ]
+    }
+  },
+  {
+    "input": "$repair this broken mp4",
+    "expect": {
+      "mode": "REPAIR",
+      "tool": "media_probe then media_repair",
+      "fallback": "ffprobe then ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "$int",
+    "expect": {
+      "mode": "INTERACTIVE",
+      "tool": "auto",
+      "fallback": null,
+      "source": "command",
+      "needs_disambiguation": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "compress this photo for the web",
+    "expect": {
+      "mode": "IMAGE",
+      "tool": "image_*",
+      "fallback": "ffmpeg",
+      "source": "semantic",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/image-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "trim the clip and transcode it to mp4",
+    "expect": {
+      "mode": "VIDEO",
+      "tool": "video_*",
+      "fallback": "ffmpeg",
+      "source": "semantic",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "extract audio and save it as mp3",
+    "expect": {
+      "mode": "AUDIO",
+      "tool": "audio_*",
+      "fallback": "ffmpeg",
+      "source": "semantic",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "convert this video to hls adaptive streaming",
+    "expect": {
+      "mode": "HLS",
+      "tool": "video_hls_ladder",
+      "fallback": "ffmpeg",
+      "source": "semantic",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "assets/hls-video-conversion.md"
+      ]
+    }
+  },
+  {
+    "input": "this file is corrupted and won't play",
+    "expect": {
+      "mode": "REPAIR",
+      "tool": "media_probe then media_repair",
+      "fallback": "ffprobe then ffmpeg",
+      "source": "semantic",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "$audio from this video file",
+    "expect": {
+      "mode": "AUDIO",
+      "tool": "audio_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "optimize this file",
+    "expect": {
+      "mode": "INTERACTIVE",
+      "tool": "auto",
+      "fallback": null,
+      "source": "fallback",
+      "needs_disambiguation": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "improve my photography portfolio",
+    "expect": {
+      "mode": "INTERACTIVE",
+      "tool": "auto",
+      "fallback": null,
+      "source": "fallback",
+      "needs_disambiguation": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "$aud strip the track from this $video",
+    "expect": {
+      "mode": "AUDIO",
+      "tool": "audio_*",
+      "fallback": "ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/video-and-audio-operations.md"
+      ]
+    }
+  },
+  {
+    "input": "$interactive help me pick a format",
+    "expect": {
+      "mode": "INTERACTIVE",
+      "tool": "auto",
+      "fallback": null,
+      "source": "command",
+      "needs_disambiguation": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "$r this clip stops playing at 0:12",
+    "expect": {
+      "mode": "REPAIR",
+      "tool": "media_probe then media_repair",
+      "fallback": "ffprobe then ffmpeg",
+      "source": "command",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "$rotate the logo",
+    "expect": {
+      "mode": "INTERACTIVE",
+      "tool": "auto",
+      "fallback": null,
+      "source": "fallback",
+      "needs_disambiguation": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/interactive-intelligence.md"
+      ]
+    }
+  },
+  {
+    "input": "$images for the deck, resize them",
+    "expect": {
+      "mode": "IMAGE",
+      "tool": "image_*",
+      "fallback": "ffmpeg",
+      "source": "semantic",
+      "needs_disambiguation": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/hvr-core.md",
+        "references/image-operations.md"
+      ]
+    }
+  }
+]

@@ -1,0 +1,12 @@
+This falls outside what I can help with here.
+
+This Project is a Media Editor advisor for **existing** media — resizing, converting, compressing, transcoding, and similar operations run through ffmpeg. Generating a brand-new product photo from a text description isn't something ffmpeg (or this Project) does — that's AI image generation, which is out of scope regardless of what tools appear available.
+
+**What I can help with instead**, once you have an actual candle photo (from a camera, a stock image, or a generator elsewhere):
+
+- Clean it up: crop/resize for a specific use (web, email, product listing)
+- Convert format: e.g. JPEG → WebP for web at 85% quality
+- Compress it for faster loading without visible quality loss
+- Color/exposure-adjustable via ffmpeg filters (basic levels/eq, not full retouching)
+
+If you get a candle photo, just say `$image` and describe the source file and what you want done with it (e.g. resize to 1200x1200, convert to WebP, compress for a web store), and I'll give you the exact command.

@@ -1,0 +1,17 @@
+That's outside what I can help with here.
+
+This Project is scoped to editing and optimizing *existing* media with ffmpeg — resizing, cropping, converting, compressing, transcoding, etc. Generating a brand-new product photo from a text prompt (candle on a marble table) is AI image generation, which falls outside this scope.
+
+If you have an existing photo of the candle, I can absolutely help you get it "product-photo ready," for example:
+
+- **Background/composite cleanup** if you already have a shot on marble (crop, straighten, color-correct exposure/white balance with ffmpeg filters)
+- **Resize/crop** to a specific product listing aspect ratio (square, 4:5, etc.)
+- **Format/quality optimization** — convert to WebP or JPEG at web quality for your store or email use
+- **Batch processing** if you have several candle shots to standardize
+
+If any of that's useful, tell me:
+1. Do you have a source photo, and where is it located?
+2. What's the output goal (web listing, email, print)?
+3. Target format/size?
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

@@ -1,0 +1,19 @@
+**Run this:**
+
+```bash
+ffmpeg -i input_demo.mp4 -vn -c:a libmp3lame -b:a 192k -ar 44100 output_demo.mp3
+```
+
+- `-vn` drops the video stream
+- `-c:a libmp3lame -b:a 192k` encodes MP3 at 192 kbps — the standard for universal podcast playback (bump to 128k if file size matters more than fidelity, or use AAC if this feed is Apple Podcasts/modern-app only)
+- `-ar 44100` keeps a standard sample rate for broad player compatibility
+
+**Result lands in:** `export/001 - podcast-audio/output_demo.mp3` (create the folder in your terminal/CLI runtime before running)
+
+**Check this:** `ffprobe output_demo.mp3` to confirm codec is `mp3`, bitrate is ~192 kbps, and duration matches the source video. Then do a quick playback test to confirm audio synced correctly and no channel dropped out.
+
+Before running, confirm your local ffmpeg build actually has `libmp3lame` — check with `ffmpeg -encoders | grep mp3`. If it's missing, most default ffmpeg builds still include it, but some minimal/Homebrew installs trim it out and you'd need to reinstall with the encoder enabled.
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Swap `input_demo.mp4` for your actual file path and run the command in your terminal — save to the export folder above, then verify with the ffprobe check and a playback listen before pushing to your podcast feed.

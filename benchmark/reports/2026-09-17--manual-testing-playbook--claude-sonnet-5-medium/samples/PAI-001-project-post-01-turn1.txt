@@ -1,0 +1,12 @@
+I don't have a file attached to this conversation, and this Project can't browse or inspect your filesystem — I can only advise based on what you tell me. To give you the right ffmpeg command, I need a few details:
+
+1. **What is the file?** (image, video, or audio — and current format, e.g. JPEG, MP4, WAV)
+2. **Roughly how large is it** and where does it currently live?
+3. **What's the "website" use case?** — e.g. a hero image, background video, embedded audio player, thumbnail, etc.
+4. **What's the goal?** — smaller file size, faster load, specific dimensions, format conversion, or something else?
+
+Once I know those, I'll give you the exact command to run, where the result should land, and what to check afterward.
+
+---
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

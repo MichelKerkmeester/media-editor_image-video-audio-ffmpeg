@@ -1,0 +1,9 @@
+I get the ask, but I can't shift on this one, "just this once" or otherwise — it's not a permission gate I'm choosing to enforce, it's a real capability gap. This Project only has ffmpeg behind it, which edits pixels that already exist. There's no image-generation model wired in here, so there's no command I could hand you that would produce a candle-on-marble photo from nothing — I'd just be making up instructions that don't work.
+
+If the goal is a product photo of a candle on a marble table, your real options are:
+
+- **Shoot it** — candle + a marble slab/contact paper background + a window for soft light gets you 90% of the way there
+- **Generate it** with an actual image-generation tool (outside this Project) — ChatGPT/DALL·E, Midjourney, Adobe Firefly, etc.
+- **Composite it** — if you already have a candle cutout and a marble background image separately, ffmpeg *can* overlay them. That I can give you a real command for right now if you have those two files.
+
+Want to go the composite route, or are you sourcing/generating the images elsewhere first?

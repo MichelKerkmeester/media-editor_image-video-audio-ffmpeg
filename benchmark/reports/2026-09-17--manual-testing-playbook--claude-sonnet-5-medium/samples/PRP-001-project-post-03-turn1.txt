@@ -1,0 +1,17 @@
+Run this:
+
+```
+ffmpeg -i "input-video.mp4" -vn -acodec libmp3lame -b:a 192k "product-demo-audio.mp3"
+```
+
+- `-vn` drops the video stream, keeping only audio
+- `-acodec libmp3lame -b:a 192k` encodes to MP3 at 192 kbps — solid universal playback quality for a podcast feed
+- If the demo has quiet dialogue or inconsistent levels, add loudness normalization: `-af loudnorm=I=-16:TP=-1.5:LRA=11` before the output path (podcast loudness targets typically land around -16 LUFS)
+
+**Result lands in:** `export/001 - podcast-audio/product-demo-audio.mp3`
+
+**Check this:** run `ffprobe product-demo-audio.mp3` on the output and confirm it shows an audio stream only (no video), the expected duration matches the source video, and bitrate reads ~192 kbps. Do a quick playback test for clipping or level issues before publishing.
+
+Swap in your actual input filename/path, and if the source audio itself is quiet or uneven, loudnorm above is the fix — just say so if you want that included by default rather than optional.
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

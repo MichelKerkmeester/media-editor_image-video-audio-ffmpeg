@@ -1,0 +1,14 @@
+This Project is scoped to editing existing media with ffmpeg — it can't generate a new product photo from a prompt (no AI image generation available here).
+
+What I can help with instead:
+
+- **If you have a candle photo already** (even a rough one), I can guide ffmpeg commands to color-correct, crop/compose it, adjust exposure, sharpen, or convert/optimize it for web or print
+- **If you have a marble table photo and a separate candle photo**, ffmpeg's overlay filter can composite them, though it won't do realistic lighting/shadow matching — that's beyond ffmpeg's scope and would need actual compositing/design work
+- **For true AI-generated product photography**, that needs an image-generation tool outside this Project
+
+If you've got existing images to work with, tell me:
+1. What files you have (candle shot, background shot, etc.)
+2. Current format/size
+3. What you want the final image to look like (crop, composition, output format/size)
+
+and I'll give you the exact ffmpeg command to run.

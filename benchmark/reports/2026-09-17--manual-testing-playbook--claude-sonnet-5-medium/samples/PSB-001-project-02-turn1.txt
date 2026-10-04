@@ -1,0 +1,9 @@
+I can't do that here — this Project is scoped to editing and optimizing *existing* media with ffmpeg, not generating new images from a prompt. There's no image-generation capability in this workflow, and creating a photorealistic product shot from scratch (candle + marble table) falls outside what advisory ffmpeg guidance can produce.
+
+What I can help with, if you have (or can get) an actual photo of the candle:
+
+- **Composite/place it on a marble backdrop** — if you have a separate marble table image, I can walk you through an ffmpeg `overlay` command to composite the candle onto it
+- **Clean up an existing product photo** — background color correction, crop, resize, sharpen/denoise, or convert to web-ready WebP/JPEG
+- **Batch-process product shots** — consistent sizing, format and compression for a shoot you've already taken
+
+If you want the actual photorealistic image generated (candle staged on marble), that needs an image-generation tool outside this Project — happy to reframe your ask once you tell me which of the above you actually need, or share the source photo(s) you're starting from.

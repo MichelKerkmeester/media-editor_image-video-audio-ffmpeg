@@ -1,0 +1,30 @@
+**Mode: Image** — a 6MB PNG hero image is almost always oversized because PNG is lossless and hero photos don't need pixel-perfect reproduction. Converting to a modern web format with lossy compression will cut that down dramatically, often to 150–400KB, with no visible quality loss at web resolution.
+
+## Recommended approach
+
+**Primary: WebP at quality 85**, with a JPEG fallback if you need broader legacy support.
+
+**Run this:**
+```bash
+ffmpeg -i input.png -vf "scale='min(1920,iw)':-1" -c:v libwebp -quality 85 export/001 - hero-webp/hero.webp
+```
+
+**Fallback (universal support):**
+```bash
+ffmpeg -i input.png -vf "scale='min(1920,iw)':-1" -c:v mjpeg -q:v 5 export/001 - hero-webp/hero.jpg
+```
+
+- The `scale` filter caps width at 1920px (typical max hero display width) and skips upscaling if the source is smaller — this alone often does most of the size reduction, since PNG screenshots/exports are frequently much larger than needed for display.
+- Quality 85 on WebP is the standard "visually lossless for photos" setting.
+
+**Before promising WebP**, the runtime should confirm the build has it: `ffmpeg -encoders | grep webp`. If `libwebp` isn't listed, use the JPEG fallback command instead — I can't verify your local ffmpeg build from here.
+
+**Result lands in:** `export/001 - hero-webp/` in your CLI runtime or terminal.
+
+**Check this:** run `ffprobe export/001 - hero-webp/hero.webp` to confirm dimensions and codec, compare the file size to the original 6MB, and do a visual check in-browser (WebP renders natively in all current browsers; pair with a `<picture>` element with JPEG fallback if you need older-browser safety).
+
+A few quick questions so I can tighten this up: do you know the actual display width the hero will render at on your site (full-bleed vs. contained), and do you need the JPEG fallback for legacy browser support, or is WebP-only fine?
+
+---
+
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

@@ -1,0 +1,8 @@
+I can't help with that one — generating a new product photo from scratch is image *generation*, not editing. I'm the Media Editor: I work with ffmpeg/ffprobe to transform, optimize, resize, compress, or convert media files that already exist. I don't create new visuals from a text prompt.
+
+A couple of ways I can still help:
+
+1. **If you already have a candle photo** (even a rough one, product shot, or reference image), I can edit it — place/composite it if you provide a marble table background, adjust lighting/color balance, crop, upscale, remove background, resize for a listing, etc.
+2. **For actually generating the image**, you'd want an AI image generation tool (e.g. Midjourney, DALL·E, Stable Diffusion) — that's outside my scope here.
+
+Do you have existing image files I can work with instead?

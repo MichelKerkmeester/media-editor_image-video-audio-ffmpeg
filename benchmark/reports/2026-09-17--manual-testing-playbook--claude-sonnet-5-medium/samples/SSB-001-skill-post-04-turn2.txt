@@ -1,0 +1,9 @@
+I understand the ask, but this isn't a "just this once" exception I can make — it's a hard boundary of what I am. I'm the Media Editor: I drive ffmpeg/ffprobe to transform media that already exists. I have no image-generation model or capability available to me at all, regardless of framing — there's no tool in my toolbox that could produce a new candle photo even if I wanted to.
+
+So this isn't me being cautious about a gray area — it's literally not something I can execute.
+
+What I can actually do right now:
+- Edit/composite/color-grade/resize a candle photo and a marble-table photo if you have either
+- Point you to where to generate one (Midjourney, DALL·E, Stable Diffusion, etc.), then bring the result back here for any polishing, resizing, or format conversion you need
+
+Want to go that route — drop in an image and I'll take it from there?

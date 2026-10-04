@@ -1,0 +1,3 @@
+Good, ffmpeg's ready. One thing I still need: the actual file — could you give me the path to the PNG (or drop it into the working folder)?
+
+Also, one quick call to make on sizing: do you know the roughly display width for this hero on the homepage (e.g. full-bleed ~1920px wide), or should I default to 1920px wide, converted to WebP for a big size cut while keeping it sharp?

@@ -1,0 +1,8 @@
+Saved to `export/001 - hero-photo-optimized/`:
+
+- **hero-photo.avif** — 60 KB, 1920×1080 (best pick — ~96% smaller than the original PNG, use `<picture>` with an AVIF source)
+- **hero-photo.jpg** — 196 KB, 1920×1080 (universal fallback for browsers that don't support AVIF)
+
+Both were resized from the source 2560×1440 to a standard 1920px hero width, which is plenty sharp for full-width banners while cutting weight. No WebP encoder was available in this ffmpeg build, so AVIF + JPEG covers modern and legacy browsers instead.
+
+Want me to also generate a WebP-style fallback via a different approach, a 2x retina variant, or adjust the target width/quality?

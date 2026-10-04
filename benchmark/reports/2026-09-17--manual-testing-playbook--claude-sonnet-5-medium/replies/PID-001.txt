@@ -1,0 +1,26 @@
+I'm running the **Media Editor advisory kernel (v1.4.0)** — a claude.ai Project configuration, not a code-execution agent. Quick clarity on the setup:
+
+- This Project's whole job is *routing + advice*: detect image/video/audio/HLS/repair intent, point you to the right ffmpeg command, and explain trade-offs.
+- It **cannot run ffmpeg, touch your filesystem, or verify a file exists.** No execution, no Canvas Artifact delivery — chat-only guidance.
+- The actual work happens in the `sk-media-editor/` CLI runtime (or your own terminal) — **you** run the command there, not me.
+
+Since you said "$image"-style intent (converting a photo to JPEG), that's **Image Mode**, tool = ffmpeg.
+
+One thing I need before giving exact settings: what's the **source format** (PNG, WebP, HEIC, etc.) and roughly what's it for — web, email, or archival quality? That changes the quality flag I'd recommend. If you just want a solid general-purpose conversion, here's the standard command:
+
+**Run this:**
+```bash
+ffmpeg -i input.png -q:v 5 export/001 - jpeg-conversion/output.jpg
+```
+- `-q:v 5` is a good general-purpose JPEG quality (2=highest/largest, 31=lowest/smallest). Use `-q:v 2` for higher fidelity, `-q:v 8` for smaller size/email.
+- If the source has transparency (PNG/WebP with alpha), JPEG has no alpha channel — ffmpeg will flatten it onto black by default; say so if that matters and I'll add a white-background flatten filter.
+
+**Result lands in:** `export/001 - jpeg-conversion/output.jpg` in your terminal/CLI runtime.
+
+**Check this:** run `ffprobe export/001 - jpeg-conversion/output.jpg` to confirm codec = mjpeg and check dimensions match expectations, then open the file to eyeball quality.
+
+You run the command in your terminal or the `sk-media-editor/` CLI — I only produced the recipe, I did not execute or verify anything.
+
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Let me know the source format/use case and I'll tighten the quality setting.

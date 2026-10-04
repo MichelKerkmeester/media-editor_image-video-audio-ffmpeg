@@ -1,0 +1,3 @@
+Audio extracted and saved: `export/001 - podcast-audio-extraction/demo-video.mp3`
+
+It's MP3 at 192 kbps, 44.1kHz — the standard bitrate for universal podcast playback. The source track was mono, so the output stayed mono rather than adding a fake stereo channel.

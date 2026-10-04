@@ -1,0 +1,5 @@
+**`export/001 - podcast-audio-extract/demo-video.mp3`**
+
+Extracted the audio track from your demo video and encoded it as MP3 at 192 kbps (44.1kHz), which is the standard bitrate for podcast feeds and plays reliably across every podcast app. The source audio was mono AAC, so the output stays mono rather than being falsely upmixed to stereo.
+
+Let me know if this meets what you need for the feed, or if you'd like a different bitrate or loudness normalization applied.

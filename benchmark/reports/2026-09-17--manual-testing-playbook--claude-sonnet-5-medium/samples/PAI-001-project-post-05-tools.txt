@@ -1,0 +1,8 @@
+scenario PAI-001  arm project  sample 05  post-repair  session 8E4AF543-2280-4B82-8EE1-FB3C0583489F
+tool calls: 0
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: no
+repair-two text in the recorded system prompt: yes
+repair-two text in a tool result (SKILL.md opened): no
+
+(this run made no tool calls)

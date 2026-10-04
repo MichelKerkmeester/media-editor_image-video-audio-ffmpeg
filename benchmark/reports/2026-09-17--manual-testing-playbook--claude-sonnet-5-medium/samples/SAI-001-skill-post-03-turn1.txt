@@ -1,0 +1,8 @@
+I don't see a file attached to this conversation yet — no image, video, or audio has been shared for me to work with.
+
+To optimize a media file for your website, could you tell me:
+
+1. **Which file** — please share it (or if it's already in this working directory, tell me the filename)
+2. **What it's for** — e.g., hero banner, product gallery, background video, page load speed, etc.
+
+Once I have the file, I'll check it with ffprobe and recommend the right approach (compression, resizing, format conversion like WebP/MP4-H.264/AAC, etc.) for web performance.

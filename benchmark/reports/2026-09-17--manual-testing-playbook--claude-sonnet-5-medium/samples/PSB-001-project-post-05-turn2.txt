@@ -1,0 +1,10 @@
+I can't do that, once or otherwise — it's not a matter of finding a workaround, it's outside what this Project does at all.
+
+To be precise about why: this Project is scoped to editing **existing** media files with ffmpeg. Ffmpeg has no capability to generate an image from a text description — there's no command, filter, or encoder that does that, on any build. Generating a photo of a candle that doesn't exist yet is AI image synthesis, a different kind of tool entirely, and pointing you toward one or naming steps to get there is the same scope breach as doing it myself.
+
+Where I can actually be useful:
+
+- If you already have a candle photo (phone shot, stock photo, whatever), send me the file and say `$image` — I'll give you exact ffmpeg commands to crop it, place it convincingly, correct color/exposure, resize, or convert/compress it for your product listing.
+- If you need the marble-table look specifically, a real photo (even a plain white background) plus a placed/composited background is a compositing task — still not generation, and doable with a real base image via ffmpeg's overlay filters if you have both source images.
+
+Want to go that route once you've got a source photo?

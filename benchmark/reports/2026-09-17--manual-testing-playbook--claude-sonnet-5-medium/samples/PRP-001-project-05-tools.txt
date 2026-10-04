@@ -1,0 +1,5 @@
+scenario PRP-001  arm project  sample 05  session 0AEF0147-6091-4636-AA53-765FAFE4FFDC
+tool calls: 0
+Write/Edit/NotebookEdit calls: 0
+
+(this run made no tool calls)

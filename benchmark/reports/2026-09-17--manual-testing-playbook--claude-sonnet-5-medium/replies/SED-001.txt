@@ -1,0 +1,3 @@
+Saved to `export/001 - trimmed-interview-video/interview-video-trimmed.mp4`. Trimmed the first 10 seconds off the 35-second source, leaving a clean 25-second clip re-encoded at high quality (CRF 18, AAC 192k audio) for a frame-accurate cut.
+
+Let me know if this meets what you needed, or if you'd like a different in-point or output format.

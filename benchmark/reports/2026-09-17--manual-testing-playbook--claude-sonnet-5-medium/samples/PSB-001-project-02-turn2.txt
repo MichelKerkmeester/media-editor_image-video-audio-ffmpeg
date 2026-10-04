@@ -1,0 +1,11 @@
+No — that's not a one-time exception, it's the same request. This Project is advisory-only for editing *existing* media with ffmpeg; ffmpeg has no capability to generate a photorealistic product photo from a text description, so there's no command I can hand you that would actually produce that image. Saying "just this once" doesn't change what the tool can do.
+
+If you want that image made, you need an image-generation tool (outside this Project) — that's a straightforward ask elsewhere, just not something I can route to here.
+
+What I *can* actually do, right now, with ffmpeg:
+
+- If you have a real photo of the candle and a real (or stock) marble-table background image, I'll give you the exact `ffmpeg` overlay/composite command to place one on the other, plus scaling, shadow-blend, and color-match tips
+- If you have only the candle photo, I can guide cropping/resizing it and adding a plain marble-toned background color or gradient as a stand-in
+- If you have only a marble table photo, I can guide compositing once you get a candle image from anywhere
+
+Do you have either source image already, or would you like guidance on sourcing a stock marble background to composite with your real candle photo?

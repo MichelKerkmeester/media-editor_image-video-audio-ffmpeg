@@ -1,0 +1,16 @@
+scenario SCR-002  arm skill  sample 04  post-repair  session A6953062-7B95-4F19-9162-281C22F81E16
+tool calls: 9
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: yes
+repair-two text in the recorded system prompt: no
+repair-two text in a tool result (SKILL.md opened): yes
+
+ 1  Skill: {"skill": "media-editor", "args": "$audio - extract audio to mp3 from product demo video"}
+ 2  Bash: find "sk-media-editor" -maxdepth 3 2>/dev/null; echo "---"; ffmpeg -version | head -3
+ 3  Read: sk-media-editor/SKILL.md
+ 4  Read: sk-media-editor/references/media-framework.md
+ 5  Read: sk-media-editor/references/hvr-core.md
+ 6  Read: sk-media-editor/references/mcp-video-audio.md
+ 7  Bash: pwd; echo "---files---"; ls -la
+ 8  Bash: ffprobe -v error -show_entries stream=codec_type,codec_name,duration,sample_rate,channels -of default=noprint_wrappers=1 "demo-video.mp4"
+ 9  Bash: mkdir -p "export/001 - podcast-audio-extract" && ffmpeg -y -i "demo-video.mp4" -vn -c:a libmp3lame -b:a 192k "export/001 - podcast-audio-extract/demo-video-audio.mp3" -loglevel error && ls -la "export/001 - podcast-audio-extract/"

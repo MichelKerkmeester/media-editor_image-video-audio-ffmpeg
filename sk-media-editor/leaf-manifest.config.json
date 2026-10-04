@@ -1,0 +1,12 @@
+{
+  "workflowMode": "sk-media-editor",
+  "packet": ".",
+  "leafRoots": [
+    "references",
+    "assets",
+    "manual-testing-playbook"
+  ],
+  "excludeIndexFiles": true,
+  "resourceContractVersion": 1,
+  "_note": "Standalone single-mode manifest config. sk-media-editor is a normal skill (no mode-registry.json). Its leaves are the MEDIA framework, operation references, tools catalogue and router contract in references/, the HLS asset in assets/ and the playbook scenarios. changelog/ is release history, not a routable leaf, and the system-level benchmark/ sits outside the skill root, so both stay outside leafRoots. Consumed by generate-leaf-manifest.cjs to emit leaf-manifest.json. leaf-aliases.json is the derived identity projection of that manifest, so regenerate both together via ci-skill-root-metadata.cjs --fix."
+}

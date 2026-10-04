@@ -1,0 +1,10 @@
+I'd like to help optimize this for your website, but I don't see a file attached or referenced in your message. Could you let me know:
+
+1. **Which file** — the filename or path (I'll check the working directory if you're not sure)
+2. **What "work better" means for your use case** — for example:
+   - A web page hero/background image or video that needs to load faster
+   - A product photo that needs resizing/compression
+   - A video that needs to stream smoothly (HLS) or have a smaller file size
+   - An audio clip that needs cleanup or format conversion
+
+Let me know the file and the goal, and I'll get started.

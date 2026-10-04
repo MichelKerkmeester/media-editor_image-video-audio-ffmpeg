@@ -1,0 +1,8 @@
+I get that it'd be convenient, but this isn't a limit I can waive "just this once" — I genuinely don't have an image generation tool in my toolset. I'm wired to ffmpeg/ffprobe for editing existing media, not creating new visuals from a text description. There's no fallback path for me to produce a candle photo out of nothing, no matter how the request is phrased.
+
+What I can actually do right now, if you want to get a real result today:
+
+- If you have any photo of the candle (even a rough phone shot) and a marble background image, send both and I'll composite, color-correct, and polish it into a clean product shot.
+- If you don't have either yet, an image-generation tool (outside my scope) would be the right way to create the marble-table scene — then bring the output back here and I'll refine/optimize it for whatever platform you need (web, print, social sizing, format conversion, etc.).
+
+Happy to jump in the moment there's a real file to work with.

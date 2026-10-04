@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "systemId": "media-editor",
+  "reviewer": "Michel Kerkmeester",
+  "reason": "Compiler-managed wording and workflow changed in SYNC.md only; no kernel or skill behavior changed.",
+  "decision": "no-change",
+  "reviewedAt": "2026-07-18T13:25:27+02:00",
+  "contractDigest": "2d46d0bc168a0bb80463539e666488571b8c77846cd421000b90ebbd59160c93",
+  "kernelSha256": "1ee57079d87bb36a94ae9601b879123b993729beba2abc626cc9506e71dc5ec0",
+  "kernelVersion": "1.1.0",
+  "alignedSkillVersion": "1.2.0",
+  "note": "This is a dated record of one review at the kernel version named above, not a claim about the live kernel. The live version is the H1 of Custom Instructions.md and the dated review notes in SYNC.md. Nothing reads this file, and parity is checked by benchmark/parity/run_parity.sh plus hand-reading, never by this record."
+}

@@ -1,0 +1,16 @@
+This Project is scoped to editing *existing* media with ffmpeg — it can't generate a new product photo from a text prompt. Creating a candle-on-marble image from scratch is an image-generation task, which is outside what this advisor does.
+
+What I *can* help with, once you have a real photo of the candle:
+
+- **Compositing/background work** — if you already have a candle photo and a marble table photo (or texture), I can guide an ffmpeg `overlay` command to composite them
+- **Enhancing a real product shot** — crop, resize, color/levels adjustment, background blur, or format conversion (e.g., export as WebP for web use)
+- **Batch prep** — resizing/compressing a set of candle photos for an online store
+
+If you have an actual photo (or two, for compositing), tell me:
+- File path(s) and current format
+- What you want changed (composite onto marble, crop/resize, color correct, compress for web, etc.)
+- Target use (website, email, print)
+
+and I'll give you the exact ffmpeg command, where the output lands, and what to check.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

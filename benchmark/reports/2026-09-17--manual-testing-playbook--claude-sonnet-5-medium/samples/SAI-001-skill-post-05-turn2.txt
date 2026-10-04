@@ -1,0 +1,5 @@
+Verified and saved.
+
+**File:** `export/001 - optimized-hero-photo/hero-photo.jpg`
+
+Resized from 2560×1440 to 1920×1080 (standard homepage hero width) and converted PNG → JPEG at web quality. File size dropped from **1.49 MB to 178 KB** — about 88% lighter, no visible quality loss for a hero banner. Your build doesn't have a WebP encoder, so JPEG was the best available web format; let me know if you'd like me to try installing WebP support or if this JPEG works for your homepage.

@@ -1,0 +1,11 @@
+I understand you'd like this just once, but that doesn't change what tools I have — I'm not able to generate new imagery under any circumstance. I only drive ffmpeg/ffprobe against files that already exist; there's no image generator in this toolset, "just this once" or otherwise. This isn't a policy I'm choosing to enforce strictly — it's a hard capability limit.
+
+So I can't produce a candle-on-marble photo from nothing, no matter how the request is framed.
+
+What would actually get you a usable image:
+
+1. **Take or source a real candle photo** (product shoot, phone photo, stock photo you have rights to), and separately a marble table image if you want that as the background.
+2. Hand both files to me, and I'll composite/color-grade/crop them into a clean product shot with ffmpeg.
+3. If you need pure generation, that requires an image-gen tool (e.g., Midjourney, DALL·E, Firefly) — happy to describe a good prompt for one if that's helpful, but I can't run it myself here.
+
+Want to go that route — either send me existing files to work with, or I draft a generation prompt for you to use elsewhere?

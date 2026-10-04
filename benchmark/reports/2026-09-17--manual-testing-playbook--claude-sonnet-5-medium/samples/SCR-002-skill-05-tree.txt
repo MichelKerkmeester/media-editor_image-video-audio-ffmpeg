@@ -1,0 +1,12 @@
+scenario SCR-002  arm skill  sample 05  session 87DB8F82-5411-4D6D-848E-0882274010E5
+scratch tree: <SCRATCH>/skill/87DB8F82-5411-4D6D-848E-0882274010E5
+
+seeded fixture:
+  demo-video.mp4  present, 144540 bytes
+
+export/ subtree:
+  export/ does not exist
+
+media files in the tree, ffprobe readout, pre-existing files identified:
+  Favicon.jpg  [pre-existing: Favicon.jpg (Media Editor tree)]
+  demo-video.mp4  [pre-existing: demo-video.mp4]

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.mcpb
+.mcpb-cache/
+coverage/
+tests/.tmp/
+build/
+dist-bundles/
+claude-plugin/server/
+claude-plugin/skills/

@@ -1,0 +1,8 @@
+I don't have a file attached to this conversation, and I'm advisory-only here — I can't browse your project folder or inspect a file directly. To give you the right command, I need a bit more detail:
+
+- **What is the file?** Image, video, or audio — and what's the current format (e.g. JPEG, MP4, WAV)?
+- **Roughly how large is it**, and do you know its current dimensions/resolution or bitrate?
+- **What's "work better for the website" mean for you** — faster load time (compression), correct sizing/responsive dimensions, a more web-friendly format (e.g. WebP/AVIF for images, H.264/HLS for video), or something else?
+- **Where will it be used** — hero image, background video, embedded audio player, etc.?
+
+Once I know the media type and goal, I'll give you the exact `ffmpeg` command to run, where the output should land, and what to check afterward.

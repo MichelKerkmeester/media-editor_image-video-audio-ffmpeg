@@ -1,0 +1,25 @@
+Hero photo, PNG, web-weight goal — that's Image Mode.
+
+**Run this:**
+
+```bash
+# Check the build supports WebP first
+ffmpeg -encoders | grep webp
+
+# Convert + resize for hero use (cap width at 1920px, adjust if your hero is wider)
+ffmpeg -i input.png -vf "scale='min(1920,iw)':-1" -c:v libwebp -quality 85 hero-photo.webp
+```
+
+If you need a universal fallback (older browsers, email, social previews), also generate a JPEG:
+
+```bash
+ffmpeg -i input.png -vf "scale='min(1920,iw)':-1" -q:v 5 hero-photo.jpg
+```
+
+**Result lands in:** `export/001 - hero-photo-web/`
+
+**Check this:** Run `ffprobe hero-photo.webp` to confirm dimensions and codec, compare the new file size against the original 6MB (WebP at quality 85 on a photo typically lands in the 200–600KB range depending on detail), and load it in a browser to confirm no visible banding or artifacting at hero size.
+
+Why WebP at 85%: it's the best size/quality trade-off for a photographic hero on modern browsers — usually 25–35% smaller than an equivalent-quality JPEG. If your PNG has transparency you need to keep, say so and I'll adjust the command, since WebP is lossy here and won't preserve alpha at quality mode.
+
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

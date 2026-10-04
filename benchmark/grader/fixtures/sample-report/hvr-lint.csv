@@ -1,0 +1,7 @@
+file,clean,hard_violations,violations,extraction_confidence
+PHL-001.txt,True,0,none,medium
+PID-001.txt,True,0,none,medium
+PRO-001.txt,True,0,none,medium
+SAI-001.txt,True,0,none,high
+SHL-001.txt,True,0,none,medium
+SID-001.txt,True,0,none,medium

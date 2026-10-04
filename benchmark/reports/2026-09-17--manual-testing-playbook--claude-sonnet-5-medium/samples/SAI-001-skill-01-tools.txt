@@ -1,0 +1,6 @@
+scenario SAI-001  arm skill  sample 01  session 692B96DA-B16E-43A3-A32F-FC1C24B3E859
+tool calls: 2
+Write/Edit/NotebookEdit calls: 0
+
+ 1  Bash: ffmpeg -version | head -5
+ 2  Bash: find . -iname "sk-media-editor" -maxdepth 4 2>/dev/null; pwd

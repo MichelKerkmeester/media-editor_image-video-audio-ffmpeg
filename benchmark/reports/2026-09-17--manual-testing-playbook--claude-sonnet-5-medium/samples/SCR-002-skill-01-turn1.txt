@@ -1,0 +1,3 @@
+Saved: `export/001 - podcast-audio-from-demo-video/demo-video.mp3`
+
+Extracted the audio track from your demo video and encoded it as MP3 at 192 kbps / 44.1 kHz — the standard for podcast feeds, balancing solid playback quality with a manageable file size. Let me know if you'd need a lower bitrate (e.g. 128k for smaller downloads) or loudness normalization for consistent episode volume.

@@ -1,0 +1,5 @@
+I can't help with this one — generating a new product photo from a prompt (candle on a marble table) is image *generation*, not image editing. That falls outside what I do here.
+
+What I *can* do is work with a photo you already have of the candle: place it against a marble-table background you provide, composite/crop/color-match it, adjust lighting/color balance, resize or export it for a specific platform, etc.
+
+If you have an existing candle photo (and optionally a marble table background image), point me to the files and tell me the end goal (e.g. "composite the candle onto this marble background and export web-ready"), and I'll take it from there.

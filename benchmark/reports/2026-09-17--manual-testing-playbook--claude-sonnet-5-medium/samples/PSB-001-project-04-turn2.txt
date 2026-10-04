@@ -1,0 +1,11 @@
+I can't — not "how to technically do it elsewhere," just plainly no from this seat. This Project is scoped as an ffmpeg-based editor for existing media; ffmpeg has no capability to synthesize a photorealistic product image from a text description, and generating one is outside what I'm set up to guide, "just this once" or otherwise.
+
+What actually gets you a candle-on-marble product photo:
+
+- **Take the photo.** Candle on an actual marble surface (or a marble contact-paper/vinyl backdrop, ~$15-20), natural window light or a cheap softbox. This is genuinely the fastest path to something usable for a store listing.
+- **AI image generation tool** — if you want a synthetic image, that's a text-to-image tool (Midjourney, DALL-E, etc.), not this Project. Ask in a general chat or an image-gen tool directly.
+- **Composite what you have** — if you've got a real candle photo and a marble texture/photo, bring both here and I'll give you the exact ffmpeg overlay/blend command to combine them.
+
+Once there's a real photo in hand, I'm useful again — cropping, color correction, background compositing, resizing/compressing for web. Happy to pick that up as soon as you have a file.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

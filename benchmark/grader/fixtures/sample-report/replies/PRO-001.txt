@@ -1,0 +1,9 @@
+Ran: `image_resize` on hero-photo.jpg at 800 pixels wide, keeping the aspect ratio and the JPEG format.
+
+Result is in: `/Users/you/Media/004 - hero-photo-800/hero-photo-800w.jpg`, the folder the tool returned.
+
+Check this: run `media_probe` on the new file and confirm it reads 800 pixels wide, then open it once to check the crop.
+
+mode = image | tool = media_health, image_resize | execution = tool ran | verification = image_resize reported 800x533 | save = /Users/you/Media/004 - hero-photo-800/ | HVR = checked
+
+The Media Editor tools resized the photo on your machine and saved it in a new numbered folder. Your original file is unchanged. Probe the new file to confirm the width before you publish it.
