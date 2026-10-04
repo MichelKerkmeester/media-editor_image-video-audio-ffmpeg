@@ -10,6 +10,6 @@ Result lands in: `media files/export/001 - product-photo-jpeg/product-photo.jpg`
 
 Check this: open the file after the command finishes and confirm it reads back as a jpeg.
 
-mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur
 
 No Media Editor tool is connected here, so I do not run commands or touch your files. You run the command above and verify the result yourself.

@@ -27,7 +27,7 @@ const manifestPath = path.join(packageRoot, 'manifest.json');
 const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 const COPYRIGHT_LINE = 'Copyright (c) 2026 Michel Kerkmeester';
 const ICON_SIZE = 512;
-const TOOL_COUNT = 39;
+const TOOL_COUNT = 40;
 
 const tempDirs: string[] = [];
 const extensionPath = path.join(makeTempDir('media-editor-manifest-'), 'Media Editor ext');

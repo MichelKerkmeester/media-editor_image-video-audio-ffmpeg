@@ -203,7 +203,7 @@ async function runCompress(
 // 6. EXPORTS
 // ───────────────────────────────────────────────────────────────────
 
-/** Compress one image into a new numbered folder without changing the input. */
+/** Compress one image into the export root, or a numbered folder on request, without changing the input. */
 export const imageCompressTool = defineTool({
   name: TOOL_NAME,
   title: 'Compress an image',
@@ -211,7 +211,7 @@ export const imageCompressTool = defineTool({
     'Compresses one jpeg, png, webp, or avif image in its own format. '
     + 'Quality from 1 to 100 is visual quality for jpeg, webp, and avif, '
     + 'and the palette colour target for png. Progressive applies to jpeg only. '
-    + 'It writes one re-encoded file in a new numbered folder '
+    + 'It writes one re-encoded file in the export root, or a numbered folder on request, '
     + 'and never changes the input.',
   inputSchema: {
     inputPath: z

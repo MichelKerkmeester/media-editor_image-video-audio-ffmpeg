@@ -323,6 +323,7 @@ it('names the folder when several sizes are written', async (): Promise<void> =>
     const result = await client.callTool({
       name: 'image_batch_resize',
       arguments: {
+        subfolder: true,
         inputPath: heroPath,
         outputName: 'line check',
         sizes: [
@@ -360,6 +361,7 @@ it('names the single file when one size is written', async (): Promise<void> => 
     const result = await client.callTool({
       name: 'image_batch_resize',
       arguments: {
+        subfolder: true,
         inputPath: heroPath,
         outputName: 'one size',
         sizes: [{ width: 50, suffix: 'sm' }],

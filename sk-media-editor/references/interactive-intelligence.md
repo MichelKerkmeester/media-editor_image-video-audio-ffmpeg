@@ -9,7 +9,7 @@ trigger_phrases:
   - "media conversation flow"
   - "mode question templates"
   - "media clarification"
-version: 1.7.0.5
+version: 1.0.0.0
 ---
 
 # Media Editor - System - Interactive Intelligence
@@ -47,7 +47,8 @@ Start -> tool check -> Question (all info) -> Wait -> Process (MEDIA) -> Deliver
 3. Wait for the response: never proceed without user input
 4. Smart command detection: recognize `$interactive`, `$image`, `$video`, `$audio`, `$hls`, `$repair`
 5. MEDIA processing: apply with two-layer transparency
-6. Delivery: all output properly formatted with bullet lists and saved to `media files/export/` in the runtime
+6. Delivery: all output properly formatted with bullet lists and saved to `media files/export/` in the runtime under the confirmed name
+7. Name proposal: the one question carries a readable file name proposed from what the media shows, and the name is applied only after the user confirms or changes it
 
 ### Conversation templates
 
@@ -106,14 +107,15 @@ Please provide the following at once:
 - Any size or quality targets
 
 4. Output preferences:
-- Save location preference
+- Proposed file name: `[readable-name].[ext]`, keep it or give another
+- For several files: one numbered folder in `media files/export/`, or straight into it
 - Specific format needed, or let the system choose the best
 - Quality versus size priority: balanced, max quality or min size
 ```
 
 ### Mode questions
 
-Each direct command asks a focused question for its media type only.
+Each direct command asks a focused question for its media type only. Every one of them also proposes a readable file name from what the media shows, and asks about a numbered folder only when the operation writes several files.
 
 - `$image`: file and goal, target use, size needs, output format, quality priority, save location
 - `$video`: file and goal, platform, operation, quality priority, save location and format
@@ -140,7 +142,7 @@ Results:
 - Format: [original] to [new]
 
 Output:
-- Saved to: media files/export/[### - description]/
+- Saved to: media files/export/[readable-name].[ext], or media files/export/[###] - [description]/ for several files
 
 Next steps:
 - [Suggestion 1]
@@ -156,7 +158,7 @@ start             -> check the route -> detect command
 detect_command    -> route to mode question (or comprehensive question), wait
 mode_question     -> gather context for the media type, wait
 processing        -> apply MEDIA, concise updates, no wait
-delivery          -> create output files, save to media files/export/, no wait
+delivery          -> create output files, save to media files/export/ under the confirmed name, no wait
 complete          -> ask if another operation is needed, wait
 error_recovery    -> log details, plain-language message, suggest alternatives, wait
 ```
@@ -197,7 +199,7 @@ Fallback: infer from context, use smart defaults and flag the assumption in feed
 
 Core recovery principles: tool check before operations, plain-language error messages, multiple recovery options, graceful handling with smart defaults.
 
-**No tools and no FFmpeg:** give the command as advice and say that nothing ran. Point to the Media Editor extension for Claude Desktop or the plugin for Claude Code, which bring their own ffmpeg, or give install commands for macOS, Ubuntu and Windows, and offer to recheck once one is in place.
+**No tools and no FFmpeg:** give the command as advice and say that nothing ran. Then offer the guided setup once, from `references/setup.md`: the extension for Claude Desktop or the plugin for Claude Code, which bring their own ffmpeg, or ffmpeg itself in a terminal. Give one step at a time, and call it done only when `media_health` or `ffmpeg -version` answers.
 
 **Tools connected, no ffmpeg in the server:** `media_health` names `media_setup_ffmpeg` as the next step. Show the planned download it returns, with its address, size and SHA-256, and call it with consent only after the user agrees.
 
@@ -252,7 +254,7 @@ Must not:
 | Platform | General web |
 | Codec (video) | H.264 for compatibility |
 | Codec (audio) | MP3 192 kbps |
-| Location | media files/export/ folder |
+| Location | media files/export/, one file in it directly, several in one numbered folder |
 
 ### Success factors
 

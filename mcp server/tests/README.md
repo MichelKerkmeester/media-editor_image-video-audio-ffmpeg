@@ -61,7 +61,7 @@ Run from `AI Systems/Media Editor/mcp server/`.
 | `npx vitest run tests/tools/video/trim.vitest.ts` | One file |
 | `npm run test:pinned -- tests/tools/video` | One folder on the pinned ffmpeg |
 
-Expected result for `npm test`: `Test Files  83 passed (83)` and a `Tests` line with only passed and skipped counts.
+Expected result for `npm test`: `Test Files  86 passed (86)` and a `Tests` line with only passed and skipped counts.
 
 ---
 

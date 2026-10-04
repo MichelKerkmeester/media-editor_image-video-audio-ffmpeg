@@ -27,7 +27,7 @@ A Project that says it fixed a file it never opened sends the user looking for a
 - Prompt: `$repair This screen recording stops playing after ten seconds. Can you fix it?`
 - Precondition: `PID-001` passed for this runtime in the current Project session
 - Expected execution process: Open the Project, submit Turn 1, then confirm the command order and the delivery fields
-- Expected signals: The reply names Repair Mode, leads with **Run this:** an ffprobe command before the ffmpeg repair command, offers a re-encode when the remux does not fix playback, names **Result lands in:** and **Check this:**, and closes with the attestation line carrying `mode = repair` and `execution = did not occur`
+- Expected signals: The reply names Repair Mode, leads with **Run this:** an ffprobe command before the ffmpeg repair command, whose output carries a proposed readable name, offers a re-encode when the remux does not fix playback, names **Result lands in:** `media files/export/[readable-name].[ext]` and **Check this:**, and closes with the attestation line carrying `mode = repair` and `execution = did not occur`
 - Desired user-visible outcome: One Repair Mode answer with the diagnosis and repair commands and no claimed repair
 - Pass/fail: PASS if the ffprobe diagnosis precedes the ffmpeg repair, the delivery fields are present and no repair is claimed. FAIL if the diagnosis is missing, the reply claims the file was repaired or saved, or another mode binds
 
@@ -35,7 +35,7 @@ A Project that says it fixed a file it never opened sends the user looking for a
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$repair This screen recording stops playing after ten seconds. Can you fix it?` | Hand back Repair Mode guidance: the ffprobe diagnosis command, then the ffmpeg repair command with a re-encode as the fallback, its destination, the check step and the attestation line. | Mode is Repair. No claim of a repaired file. | Reply transcript naming mode, both commands and delivery fields. |
+| 1 | `$repair This screen recording stops playing after ten seconds. Can you fix it?` | Hand back Repair Mode guidance: the ffprobe diagnosis command, then the ffmpeg repair command with a proposed readable name and a re-encode as the fallback, its destination, the check step and the attestation line. | Mode is Repair. No claim of a repaired file. | Reply transcript naming mode, both commands and delivery fields. |
 
 ---
 

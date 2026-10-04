@@ -13,9 +13,10 @@ import { z } from 'zod';
 
 import { successResult } from '../../core/result.js';
 import { defineTool } from '../../server/tool-registry.js';
+import { imagePreview, previewField, withPreviewBlock } from '../media/preview.js';
 import { imageFormatName, readImageMetadata } from './sharp-output.js';
 
-import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
+import type { CallToolResult, ImageContent } from '@modelcontextprotocol/sdk/types.js';
 import type { Metadata } from 'sharp';
 import type { ToolContext } from '../../server/tool-context.js';
 
@@ -26,6 +27,7 @@ import type { ToolContext } from '../../server/tool-context.js';
 /** Arguments for one probe call. */
 interface ProbeArguments {
   readonly inputPath: string;
+  readonly preview?: boolean;
 }
 
 // ───────────────────────────────────────────────────────────────────
@@ -33,6 +35,7 @@ interface ProbeArguments {
 // ───────────────────────────────────────────────────────────────────
 
 const TOOL_NAME = 'image_probe';
+const PREVIEW_FAILED = 'No preview: the image could not be scaled down.';
 
 /** Sharp depth names that map onto a bit count. Any other name is omitted. */
 const BIT_DEPTHS = {
@@ -129,14 +132,26 @@ async function runProbe(
   const metadata = await readImageMetadata(input);
   const fileSize = statSync(input.realPath).size;
   const fields = probeFields(metadata, fileSize);
-  return successResult({
+  const warnings: string[] = [];
+  let preview: ImageContent | undefined;
+  if (args.preview === true) {
+    try {
+      preview = await imagePreview(input);
+    } catch {
+      // The metadata is the answer. A preview that fails is a warning.
+      warnings.push(PREVIEW_FAILED);
+    }
+  }
+  const text = probeText(path.basename(input.rawPath), fields);
+  const result = successResult({
     tool: TOOL_NAME,
-    text: probeText(path.basename(input.rawPath), fields),
+    text: preview === undefined ? text : `${text} Preview attached.`,
     outputs: [],
-    warnings: [],
+    warnings,
     elapsedMs: Date.now() - startedAt,
     extras: fields,
   });
+  return preview === undefined ? result : withPreviewBlock(result, preview);
 }
 
 // ───────────────────────────────────────────────────────────────────
@@ -149,8 +164,9 @@ export const imageProbeTool = defineTool({
   title: 'Probe an image',
   description:
     'Reads the format, pixel size, channels, bit depth, colour space, '
-    + 'density, alpha and byte size of one image. It writes no file and '
-    + 'never changes the input.',
+    + 'density, alpha and byte size of one image. With preview it also '
+    + 'returns a small JPEG of the picture, to name the file by what it '
+    + 'shows. It writes no file and never changes the input.',
   inputSchema: {
     inputPath: z
       .string()
@@ -159,6 +175,7 @@ export const imageProbeTool = defineTool({
         'Absolute path of the image to read, inside an allowed root. '
         + 'The file is not changed.',
       ),
+    preview: previewField,
   },
   annotations: {
     readOnlyHint: true,

@@ -1,6 +1,6 @@
 {
   "name": "media-editor",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Edit, convert and compress images, video and audio in your project folder with a local MCP server that brings its own ffmpeg, plus the Media Editor skill.",
   "author": {
     "name": "Michel Kerkmeester"

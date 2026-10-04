@@ -129,7 +129,7 @@ async function runConvert(
 // 6. EXPORTS
 // ───────────────────────────────────────────────────────────────────
 
-/** Convert one image into a new numbered folder without changing the input. */
+/** Convert one image into the export root, or a numbered folder on request, without changing the input. */
 export const imageConvertTool = defineTool({
   name: TOOL_NAME,
   title: 'Convert an image',
@@ -137,7 +137,7 @@ export const imageConvertTool = defineTool({
     'Converts one image to jpeg, png, webp, or avif. '
     + 'Quality from 1 to 100 is visual quality for jpeg, webp, and avif, '
     + 'and the palette colour target for png. '
-    + 'It writes one re-encoded file in a new numbered folder '
+    + 'It writes one re-encoded file in the export root, or a numbered folder on request, '
     + 'and never changes the input.',
   inputSchema: {
     inputPath: z

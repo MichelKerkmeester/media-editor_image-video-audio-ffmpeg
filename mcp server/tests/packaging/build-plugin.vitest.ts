@@ -37,10 +37,6 @@ import type { MediaError } from '../../src/core/errors.js';
 const PACKAGE_ROOT = path.resolve(fileURLToPath(new URL('../../', import.meta.url)));
 const TRACKED_SKILL = path.resolve(PACKAGE_ROOT, '..', 'sk-media-editor');
 const PLUGIN_SKILL = path.join(PACKAGE_ROOT, 'claude-plugin', 'skills', 'sk-media-editor');
-const SHARED_CARDS: readonly string[] = [
-  'references/hvr-core.md',
-  'references/human-voice-rules.md',
-];
 
 // ───────────────────────────────────────────────────────────────────
 // 3. HELPERS
@@ -175,15 +171,6 @@ describe.skipIf(process.platform === 'win32')('links in a copied skill', (): voi
     const error = captureError(() => hashTree(source));
     expect(error.code).toBe(ERROR_CODES.INTERNAL);
     expect(error.details).toEqual({ reason: 'unresolved-link', path: 'dangling.md' });
-  });
-
-  it('writes the two shared rule cards as regular files', (): void => {
-    const { destination } = copyTrackedSkill();
-    for (const relative of SHARED_CARDS) {
-      const stats = lstatSync(path.join(destination, relative));
-      expect(stats.isSymbolicLink()).toBe(false);
-      expect(stats.isFile()).toBe(true);
-    }
   });
 });
 

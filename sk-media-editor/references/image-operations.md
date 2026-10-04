@@ -9,7 +9,7 @@ trigger_phrases:
   - "webp avif jpeg png"
   - "image operation commands"
   - "ffmpeg image fallback"
-version: 1.7.0.0
+version: 1.0.0.0
 ---
 
 # Media Editor - Integrations - Image Operations
@@ -43,7 +43,7 @@ If neither the tools nor the check answers, give the command as advice with inst
 
 ## 2. IMAGE TOOLS
 
-Every image tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool except `image_probe` also takes `outputName`, a 1 to 64 character description that names the new numbered output folder, and writes its result there.
+Every image tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool except `image_probe` also takes `outputName`, a 1 to 64 character description, plus the optional `fileName` and `subfolder`. One result file lands in the output folder itself, named `fileName` when given. Several files, as from `image_batch_resize` with two or more sizes, go into a new numbered folder named from `outputName`. `image_probe` with `preview: true` returns a small picture of the image, so the proposed name can say what it shows.
 
 | Tool | Operation | Key parameters and defaults |
 | --- | --- | --- |
@@ -80,7 +80,7 @@ Quality is the sharp scale, where higher is better. It is visual quality for JPE
 5. Convert format
 6. Compress as the final step
 
-Each tool call writes a new numbered folder, so a chain of operations reads the previous call's output path as its `inputPath`.
+Each tool call writes a new file, so a chain of operations reads the previous call's output path as its `inputPath`. Give the confirmed `fileName` to the last call of the chain only, and rename an earlier result with `media_rename` when the user wants to keep it.
 
 ---
 
@@ -109,7 +109,7 @@ ffmpeg -encoders | grep -E "mjpeg|png|libsvtav1|libwebp"
 
 ## 5. FFMPEG FALLBACK RECIPES
 
-FFmpeg decodes, filters and re-encodes images with the same command shape as video: an input, one option set and an output. Write results to `media files/export/[###] - [description]/` in the runtime.
+FFmpeg decodes, filters and re-encodes images with the same command shape as video: an input, one option set and an output. Write one result to `media files/export/[readable-name].[ext]` in the runtime, and several results to one `media files/export/[###] - [description]/` folder.
 
 ### Resize
 

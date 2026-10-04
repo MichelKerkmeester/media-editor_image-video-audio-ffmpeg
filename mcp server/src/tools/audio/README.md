@@ -1,6 +1,6 @@
 ---
 title: "audio: ffmpeg audio tools"
-description: "The six audio tools, each one ffmpeg encode run through the shared attempt runner into a new numbered folder."
+description: "The six audio tools, each one ffmpeg encode run through the shared attempt runner into the export root or a numbered folder."
 trigger_phrases:
   - "media editor audio tools"
   - "audio extract convert"
@@ -39,7 +39,7 @@ Current state:
 | Boundary | Rule |
 |----------|------|
 | Imports | `../../server/` for `defineTool`, `ToolContext` and the field schemas, `../../core/` for probing and containers, `../video/copy-then-encode.ts` for `runAttempts` |
-| Output | One file per call, named `<stem>-<operation><extension>` in a new numbered folder |
+| Output | One file per call, named `<stem>-<operation><extension>` or the caller's `fileName`, in the export root or, with `subfolder: true`, a new numbered folder |
 
 ```text
 resolveInput ─▶ probeMedia ─▶ requireAudioStream ─▶ assertCapabilities

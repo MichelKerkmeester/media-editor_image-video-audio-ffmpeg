@@ -524,7 +524,7 @@ export const videoAddTextOverlayTool = defineTool({
   title: 'Add a text overlay',
   description:
     'Draws one or more timed text overlays over a video, one drawtext filter per '
-    + 'element. It writes one new MP4 file into a new numbered folder and never '
+    + 'element. It writes one new MP4 file into the export root, or a numbered folder on request, and never '
     + 'changes the input. The picture is re-encoded, so run time grows with file '
     + 'size: seconds under 100 MB, up to a few minutes from 100 MB to 1 GB, and '
     + 'minutes to tens of minutes above 1 GB. The call returns when the work ends '

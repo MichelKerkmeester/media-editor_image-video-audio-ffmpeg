@@ -61,7 +61,7 @@ The Media Editor edits existing images, video and audio. Every operation takes t
 ### For the extension or the plugin
 
 - **Claude Desktop** for the extension, or **Claude Code** with **Node.js 20.9.0** or later on the PATH for the plugin
-- **npm**, to build the bundle from `mcp server/`
+- **npm**, only to build the bundle from `mcp server/` instead of downloading it
 
 ### For the manual route
 
@@ -89,7 +89,7 @@ Nothing else. No Docker and no container runtime.
 
 ### Claude Desktop extension (recommended)
 
-The extension is one `.mcpb` file per platform, built from `mcp server/`:
+The extension is one `.mcpb` file per platform. Download the file for your platform from the [latest release](https://github.com/MichelKerkmeester/media-editor_image-video-audio-ffmpeg/releases/latest), or build it from `mcp server/`:
 
 ```bash
 cd "mcp server"
@@ -101,7 +101,7 @@ Use your own platform key: `darwin-arm64`, `darwin-x64`, `win32-x64`, `linux-x64
 
 1. Open the `.mcpb` file with Claude Desktop, or use Install Extension on the Extensions page of its settings
 2. Set **Folders Media Editor may open** to the `media files/` folder, plus any other folder that holds media you want to edit. Leave no empty **Directory path** row: Claude Desktop does not start the tools while one is there
-3. Set **Output folder** to `media files/export/`, so every result lands in its own numbered folder there
+3. Set **Output folder** to `media files/export/`, so every result lands there, one file directly and several files from one operation in a numbered folder
 4. Start a chat, or open the Media Editor Project, and ask it to run `media_health`
 
 The extension carries its own ffmpeg and ffprobe for that platform, and Claude Desktop supplies Node to run it.
@@ -115,7 +115,7 @@ npm run plugin
 claude --plugin-dir "<path to>/mcp server/claude-plugin"
 ```
 
-Claude Code starts the server with `node`, so Node.js 20.9.0 or later must be on the PATH. Start Claude Code in the folder that holds your media: the tools may read that folder, and each result goes into a new numbered folder in its `media files/export/`, created on first use. `mcp server/claude-plugin/README.md` has the details.
+Claude Code starts the server with `node`, so Node.js 20.9.0 or later must be on the PATH. Start Claude Code in the folder that holds your media: the tools may read that folder, and each result goes into its `media files/export/`, created on first use, with a numbered folder only for several files from one operation. `mcp server/claude-plugin/README.md` has the details.
 
 ### When the server finds no ffmpeg
 
@@ -165,7 +165,7 @@ The extension's two settings are covered in section 3, and the plugin needs none
 mkdir -p "media files/import" "media files/export" "media files/tests"
 ```
 
-Every operation writes to `media files/export/[###] - [description]/`, numbered in order, one folder per operation, because a single operation often produces several files. The save happens before the response is written, and the response names the path.
+An operation that writes one file saves it straight into `media files/export/` under a readable name the system proposes and you confirm, such as `team-offsite-hero.webp`. An operation that writes several files, such as an HLS ladder, saves them in one `media files/export/[###] - [description]/` folder, numbered in order. A taken name gets `-2` rather than replacing a file. The save happens before the response is written, and the response names the path.
 
 Put source files in `media files/import/` and test files in `media files/tests/`, or leave them wherever they are. The system reads them in place and never writes over them. In the extension settings, add `media files/` under **Folders Media Editor may open** and set **Output folder** to `media files/export/`, so tool results land beside ffmpeg results.
 
@@ -262,6 +262,7 @@ rm -f /tmp/ffmpeg-check.png /tmp/ffmpeg-check.jpg /tmp/ffmpeg-check.webp /tmp/ff
 - [`sk-media-editor/references/image-operations.md`](sk-media-editor/references/image-operations.md), the image tools first, then ffmpeg image recipes
 - [`sk-media-editor/references/video-and-audio-operations.md`](sk-media-editor/references/video-and-audio-operations.md), the video and audio tools first, then ffmpeg recipes
 - [`sk-media-editor/references/tools.md`](sk-media-editor/references/tools.md), every tool's parameters, the consent rule and the error codes
+- [`sk-media-editor/references/setup.md`](sk-media-editor/references/setup.md), the guided setup the system offers when the tools are not connected
 - [`sk-media-editor/assets/hls-video-conversion.md`](sk-media-editor/assets/hls-video-conversion.md), `video_hls_ladder` and the HLS conversion recipes
 - [`USER-GUIDE.md`](USER-GUIDE.md), the short setup for using the tools from the Media Editor Project in Claude Desktop
 - [`mcp server/README.md`](mcp%20server/README.md), the server behind the tools

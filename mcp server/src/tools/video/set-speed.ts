@@ -179,7 +179,7 @@ export const videoSetSpeedTool = defineTool({
   description:
     'Changes how fast a video plays, speeding the picture up or slowing it down '
     + 'while the audio tempo follows the same factor. It writes the result as an '
-    + 'MP4 file in a new numbered folder and never changes the input.',
+    + 'MP4 file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z
       .string()

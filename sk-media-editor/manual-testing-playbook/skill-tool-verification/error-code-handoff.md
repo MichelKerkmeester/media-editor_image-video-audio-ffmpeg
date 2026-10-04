@@ -27,7 +27,7 @@ A failed call reported as a result tells the user a file exists that does not. N
 - Prompt: `$image Resize the logo at /tmp/outside/logo.png to 400 pixels wide.`
 - Precondition: `SID-001` passed for this runtime in the current disposable copy
 - Expected execution process: Load the Claude Code plugin with the allowed folders limited to the disposable copy, place one logo outside them, submit Turn 1, then confirm the refusal and the reply
-- Expected signals: The tool returns `PATH_NOT_ALLOWED`. The reply names that code, asks the user to start the session in the folder that holds the logo or to add it to the allowed folders, states that nothing ran, and names no output folder
+- Expected signals: The first tool call that touches the logo, `image_probe` for the name preview or `image_resize`, returns `PATH_NOT_ALLOWED`. The refusal arrives before any name is proposed. The reply names that code, asks the user to start the session in the folder that holds the logo or to add it to the allowed folders, states that nothing ran, and names no output folder
 - Desired user-visible outcome: One plain report of the refusal with the next step, and no file
 - Pass/fail: PASS if the reply names `PATH_NOT_ALLOWED` and its next step and claims no output. FAIL if the reply presents a result, names an output folder or quietly copies the file into an allowed folder
 
@@ -35,7 +35,7 @@ A failed call reported as a result tells the user a file exists that does not. N
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$image Resize the logo at /tmp/outside/logo.png to 400 pixels wide.` | Call `image_resize`, receive `PATH_NOT_ALLOWED`, then name the code and the next step and say that nothing was written. | No file written anywhere. | Reply transcript, tool call transcript and the per-turn side-effect ledger. |
+| 1 | `$image Resize the logo at /tmp/outside/logo.png to 400 pixels wide.` | Call the first tool that touches the logo, `image_probe` with `preview: true` or `image_resize`, receive `PATH_NOT_ALLOWED`, then name the code and the next step and say that nothing was written. | No file written anywhere. | Reply transcript, tool call transcript and the per-turn side-effect ledger. |
 
 ---
 

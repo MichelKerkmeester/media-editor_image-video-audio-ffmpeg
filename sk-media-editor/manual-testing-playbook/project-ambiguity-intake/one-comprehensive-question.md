@@ -27,16 +27,16 @@ The intake contract is identical across packagings. A Project that guesses the m
 - Prompt: `Can you make this file work better for our website?`
 - Precondition: `PID-001` passed for this runtime in the current Project session
 - Expected execution process: Open the Project, submit Turn 1, confirm the single intake question, then submit Turn 2 with the missing facts and inspect the guidance
-- Expected signals: Turn 1 asks for media type, file, goal and output in one message and hands back no command yet. Turn 2 routes to Image Mode guidance with an ffmpeg command, names the encoder build check when it promises a specific format and carries the delivery fields and attestation line
+- Expected signals: Turn 1 asks for media type, file, goal, output and a proposed readable file name in one message and hands back no command yet. Turn 2 routes to Image Mode guidance with an ffmpeg command that writes to `media files/export/[readable-name].[ext]` under the proposed name and says it can be changed, names the encoder build check when it promises a specific format and carries the delivery fields and attestation line
 - Desired user-visible outcome: One intake question followed by correct guidance once the facts arrive
-- Pass/fail: PASS if Turn 1 is a single comprehensive question that waits and Turn 2 uses every supplied fact. FAIL if the Project guesses the media type, asks scattered questions or hands back a command before the answer
+- Pass/fail: PASS if Turn 1 is a single comprehensive question that carries a proposed name and waits and Turn 2 uses every supplied fact. FAIL if the Project guesses the media type, asks scattered questions, leaves out the proposed name or hands back a command before the answer
 
 ### Conversation chain
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Can you make this file work better for our website?` | Ask one comprehensive question covering media type, file, goal and output, then wait. Hand back no command yet. | No mode named. | Response transcript and absence of a command block. |
-| 2 | `It is a hero photo, 6MB PNG, and I want it light for the homepage.` | Hand back Image Mode guidance with an ffmpeg command built from the supplied facts, the encoder check when a specific format is promised and the delivery fields. | Media type now bound to Image. | Reply using every Turn 2 fact. |
+| 1 | `Can you make this file work better for our website?` | Ask one comprehensive question covering media type, file, goal, output and a proposed readable file name, then wait. Hand back no command yet. | No mode named. | Response transcript and absence of a command block. |
+| 2 | `It is a hero photo, 6MB PNG, and I want it light for the homepage.` | Hand back Image Mode guidance with an ffmpeg command built from the supplied facts and writing to the proposed name, the encoder check when a specific format is promised and the delivery fields. | Media type now bound to Image. | Reply using every Turn 2 fact. |
 
 ---
 
@@ -50,16 +50,16 @@ The intake contract is identical across packagings. A Project that guesses the m
 
 1. `sandbox: confirm the Project carries Custom Instructions and the knowledge documents`
 2. `session: start fresh -> user: submit Turn 1 exactly`
-3. `operator: confirm one waiting question and no command -> user: submit Turn 2 in the same session`
+3. `operator: confirm one waiting question that carries a proposed name and no command -> user: submit Turn 2 in the same session`
 4. `operator: grade the routed guidance against the supplied facts`
 
 ### Expected
 
-Step 1 fixes the packaging under test. Step 2 returns one intake question. Step 3 proves the wait and produces routed guidance. Step 4 confirms the guidance uses the Turn 2 facts.
+Step 1 fixes the packaging under test. Step 2 returns one intake question with a proposed name. Step 3 proves the wait and produces routed guidance. Step 4 confirms the guidance uses the Turn 2 facts and writes to the proposed name.
 
 ### Evidence
 
-Capture both turns, the question content and the Turn 2 command hand-off with the delivery fields.
+Capture both turns, the question content with its proposed name and the Turn 2 command hand-off with the delivery fields.
 
 ### Pass / fail
 

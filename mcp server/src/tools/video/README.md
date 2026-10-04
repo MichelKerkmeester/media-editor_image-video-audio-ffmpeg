@@ -13,7 +13,7 @@ trigger_phrases:
 
 ## 1. OVERVIEW
 
-`src/tools/video/` holds the video tools and `copy-then-encode.ts`, the runner every ffmpeg tool in the package uses. A tool describes its work as ffmpeg argument lists, and the runner executes them in a private temp folder, checks the file and moves the one it keeps into a new numbered folder.
+`src/tools/video/` holds the video tools and `copy-then-encode.ts`, the runner every ffmpeg tool in the package uses. A tool describes its work as ffmpeg argument lists, and the runner executes them in a private temp folder, checks the file and copies the one it keeps into the export root, or into a new numbered folder when the caller asks for one. A taken name in the export root moves on to `-2`, `-3` and so on, so no file is replaced.
 
 Current state:
 
@@ -33,7 +33,7 @@ video tool ──▶ copy-then-encode.ts   one private temp folder per call
                  └─▶ runInOutputFolder  many files, written in place
                  │
                  ▼
-new numbered folder ──▶ readBack ──▶ successResult
+export root or numbered folder ──▶ readBack ──▶ successResult
 ```
 
 ---
@@ -74,7 +74,7 @@ Several modules also export their pure argument and filter builders, such as `tr
 |----------|------|
 | Imports | `../../server/` for `defineTool`, `ToolContext` and the field schemas, `../../core/` for probing, capabilities, filter escaping and results |
 | Consumers | `../audio/` and `../media/` import `copy-then-encode.ts`. No module here imports another tool group |
-| Temp files | Every ffmpeg output goes into the runner's temp folder first. Only the kept file reaches the numbered folder |
+| Temp files | Every ffmpeg output goes into the runner's temp folder first. Only the kept file reaches the destination |
 
 ---
 

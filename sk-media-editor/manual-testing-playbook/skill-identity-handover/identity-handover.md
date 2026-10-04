@@ -12,7 +12,7 @@ This scenario validates that the running system is genuinely the CLI Media Edito
 
 ## 1. OVERVIEW
 
-The skill runtime must answer a combined identity and processing request by naming `AGENTS.md` as the instruction set it runs, producing a real export and naming the path it wrote. A reply that could have come from either runtime is a `FAIL`, because only the CLI runtime can drive installed tools and write to disk.
+The skill runtime must answer a combined identity and processing request by naming `AGENTS.md` as the instruction set it runs and proposing a readable name for the result. Once the name is confirmed it must produce a real export and name the path it wrote. A reply that could have come from either runtime is a `FAIL`, because only the CLI runtime can drive installed tools and write to disk.
 
 ### Why this matters
 
@@ -47,16 +47,17 @@ Skill identity string: `AGENTS.md`, the file the CLI runtime boots from. It coun
 - Objective: Verify the skill runtime names `AGENTS.md` and proves it with a real written export
 - Real user request: `Who am I talking to, and can you convert this test photo to jpeg and tell me which tools you use and where the file ended up?`
 - Prompt: `Which instruction set are you running right now? Convert this test photo to jpeg and tell me exactly which tools you drive and where the result landed.`
-- Expected execution process: Seed one small test photo, start a fresh skill session, submit Turn 1, then confirm the identity statement, the export on disk and the tool names
-- Expected signals: The reply names `AGENTS.md` as the instruction set it runs, names `ffmpeg` and `ffprobe` as the tools it drives, names a path under `media files/export/[###] - [description]/` that exists and holds a readable jpeg, and never claims that no file was written
-- Desired user-visible outcome: One honest identity answer plus one verified jpeg export
-- Pass/fail: PASS if the reply names `AGENTS.md` as its instruction set and a real export path that reads back as a jpeg. FAIL if `AGENTS.md` is missing from the reply, the path is missing or unreadable, the reply claims no file was written, or the reply could have come from either runtime
+- Expected execution process: Seed one small test photo, start a fresh skill session, submit Turn 1 and confirm the identity statement and the name proposal, submit Turn 2, then confirm the export on disk and the tool names
+- Expected signals: Turn 1 names `AGENTS.md` as the instruction set it runs, names `ffmpeg` and `ffprobe` as the tools it drives, proposes a readable name for the jpeg and waits, with no file written. Turn 2 names the path `media files/export/[readable-name].jpg` that exists and holds a readable jpeg, with no `[###] - ` folder, and never claims that no file was written
+- Desired user-visible outcome: One honest identity answer with a name proposal, then one verified jpeg export
+- Pass/fail: PASS if Turn 1 names `AGENTS.md` as the instruction set and proposes a name before any write, and Turn 2 names a real export path that reads back as a jpeg. FAIL if `AGENTS.md` is missing from the reply, a file was written before the name was confirmed, the path is missing or unreadable, the reply claims no file was written, or the reply could have come from either runtime
 
 ### Conversation chain
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Which instruction set are you running right now? Convert this test photo to jpeg and tell me exactly which tools you drive and where the result landed.` | Name `AGENTS.md` as the instruction set, check ffmpeg, convert the fixture to jpeg, save to `media files/export/`, then reply with the written path first. | Runtime is the CLI skill, not the project packaging. | Reply transcript, the instruction set named, export listing and jpeg readback. |
+| 1 | `Which instruction set are you running right now? Convert this test photo to jpeg and tell me exactly which tools you drive and where the result landed.` | Name `AGENTS.md` as the instruction set, name the tools it drives, check ffmpeg, propose a readable name for the jpeg and wait. | Runtime is the CLI skill, not the project packaging. No file written yet. | Reply transcript, the instruction set named and export listing before and after. |
+| 2 | `Yes, use that name.` | Convert the fixture to jpeg, save to `media files/export/` under the confirmed name, verify the save, then reply with the written path first. | One jpeg in the export root under the confirmed name. | Reply transcript, export listing and jpeg readback. |
 
 ---
 
@@ -69,21 +70,21 @@ Skill identity string: `AGENTS.md`, the file the CLI runtime boots from. It coun
 ### Commands
 
 1. `sandbox: seed test-photo.png in the disposable copy and record the export baseline`
-2. `session: start fresh -> user: submit Turn 1 exactly`
-3. `operator: record the identity statement -> filesystem: read back the named export path`
+2. `session: start fresh -> user: submit Turn 1 exactly -> operator: record the identity statement and confirm an unchanged export folder`
+3. `user: submit Turn 2 exactly -> filesystem: read back the named export path`
 
 ### Expected
 
-Step 1 fixes the fixture and baseline. Step 2 produces the identity answer naming `AGENTS.md` plus the conversion. Step 3 proves the reply names a real written path under `media files/export/` and that the path reads back as a jpeg.
+Step 1 fixes the fixture and baseline. Step 2 produces the identity answer naming `AGENTS.md` plus the name proposal and no write. Step 3 proves the reply names a real written path under `media files/export/` and that the path reads back as a jpeg.
 
 ### Evidence
 
-Capture the full reply, the instruction set it names, the per-turn side-effect ledger, the export folder listing and a readback of the jpeg file.
+Capture both replies, the instruction set Turn 1 names, the per-turn side-effect ledger, the export folder listing and a readback of the jpeg file.
 
 ### Pass / fail
 
-- **Pass**: The reply names `AGENTS.md` as its instruction set and a real `media files/export/` path that reads back as a jpeg
-- **Fail**: The reply does not name `AGENTS.md`, the path does not resolve to a readable file, the reply claims no file was written, or the reply could have come from either runtime
+- **Pass**: Turn 1 names `AGENTS.md` as its instruction set and proposes a name before any write, and Turn 2 names a real `media files/export/` path that reads back as a jpeg
+- **Fail**: The reply does not name `AGENTS.md`, a file was written before the name was confirmed, the path does not resolve to a readable file, the reply claims no file was written, or the reply could have come from either runtime
 
 ### Failure triage
 
@@ -93,7 +94,7 @@ Capture the full reply, the instruction set it names, the per-turn side-effect l
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| SID-001 | Identity handover | Verify the skill runtime names `AGENTS.md` and proves it with a real written export | `Which instruction set are you running right now? Convert this test photo to jpeg and tell me exactly which tools you drive and where the result landed.` | 1. Seed fixture and baseline -> 2. Submit Turn 1 fresh -> 3. Record identity and read back export | Step 1: fixture ready. Step 2: identity reply naming `AGENTS.md` plus conversion. Step 3: readable jpeg and honest tool names | Reply, instruction set named, export listing, jpeg readback | PASS if the reply names `AGENTS.md` and a real export path that reads back as a jpeg. FAIL if `AGENTS.md` is missing or the reply could have come from either runtime | 1. Confirm the skill runtime ran.<br>2. Check the ffmpeg check and named tools.<br>3. Reconcile named path with disk. |
+| SID-001 | Identity handover | Verify the skill runtime names `AGENTS.md` and proves it with a real written export | `Which instruction set are you running right now? Convert this test photo to jpeg and tell me exactly which tools you drive and where the result landed.` | 1. Seed fixture and baseline -> 2. Submit Turn 1 fresh and record identity and the proposal -> 3. Submit Turn 2 and read back export | Step 1: fixture ready. Step 2: identity reply naming `AGENTS.md` plus a name proposal. Step 3: readable jpeg and honest tool names | Both replies, instruction set named, export listing, jpeg readback | PASS if the reply names `AGENTS.md` and a real export path that reads back as a jpeg after a name proposal. FAIL if `AGENTS.md` is missing, a file was written early or the reply could have come from either runtime | 1. Confirm the skill runtime ran.<br>2. Check the ffmpeg check and named tools.<br>3. Reconcile named path with disk. |
 
 ---
 

@@ -36,8 +36,9 @@ real ffmpeg binary to be missing, `SED-001` needs a real file on disk,
 `STV-003` need the Claude Code plugin, `SCR-004`, `SCR-005` and `SRM-001`
 have no Project row with the same prompt, `PGD-001` and `PNE-001` test the
 Project's chat-only limits, `PSB-002` is a size escalation the CLI runtime
-would simply process, and `PRM-001` asks with `$repair` where its skill
-counterpart tests the `$r` alias). These are declared
+would simply process, `PRM-001` asks with `$repair` where its skill
+counterpart tests the `$r` alias, and `PRO-002` needs claude.ai in a browser,
+where the tools cannot run). These are declared
 unpaired rather than left to fall out of a failed match, so a scenario the
 playbook never intended to twin is never reported as one packaging running
 ahead of the other.
@@ -96,9 +97,9 @@ TWIN_PAIRS = {
 # Ids the playbook itself declares as answerable by only one runtime. See the
 # module docstring for why each one cannot have a twin.
 UNPAIRED_IDS = {
-    "SCR-001", "STV-001", "SED-001", "SRO-002",  # Skill-only
+    "SCR-001", "STV-001", "SED-001", "SED-002", "SED-003", "SRO-002",  # Skill-only
     "SCR-004", "SCR-005", "STV-002", "STV-003", "SRM-001",  # Skill-only
-    "PGD-001", "PNE-001", "PSB-002", "PRM-001",  # Project-only
+    "PGD-001", "PNE-001", "PSB-002", "PRM-001", "PRO-002",  # Project-only
 }
 
 # ───────────────────────────────────────────────────────────────

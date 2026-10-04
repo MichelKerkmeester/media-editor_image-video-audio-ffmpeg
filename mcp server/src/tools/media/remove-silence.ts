@@ -429,7 +429,7 @@ export const mediaRemoveSilenceTool = defineTool({
   description:
     'Finds silent stretches in an audio or video file and keeps the loud parts, '
     + 'so the result plays back to back. A file with no audio stream is refused. '
-    + 'It writes one new file into a new numbered folder and never changes the '
+    + 'It writes one new file into the export root, or a numbered folder on request, and never changes the '
     + 'input. Run time grows with file size: seconds under 100 MB, up to a few '
     + 'minutes from 100 MB to 1 GB, and minutes to tens of minutes above 1 GB.',
   inputSchema: {

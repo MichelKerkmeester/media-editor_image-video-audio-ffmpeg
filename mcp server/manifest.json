@@ -2,9 +2,9 @@
   "manifest_version": "0.3",
   "name": "media-editor",
   "display_name": "Media Editor",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Edits images, video and audio on your own computer, inside the folders you choose.",
-  "long_description": "It resizes, converts, crops and compresses images. It trims, converts, subtitles, overlays, joins, repairs and packages video and audio for streaming. ffmpeg and ffprobe ship inside the extension, so nothing else needs installing. It only opens files inside the folders chosen in its settings and never changes an original, saving every result in a new numbered folder inside the output folder. No file, name or metadata leaves the computer.",
+  "long_description": "It resizes, converts, crops and compresses images. It trims, converts, subtitles, overlays, joins, repairs and packages video and audio for streaming. ffmpeg and ffprobe ship inside the extension, so nothing else needs installing. It only opens files inside the folders chosen in its settings and never changes an original. A single result lands in the output folder under a readable name, several results get a numbered folder, and the media_rename tool renames a result in place. No file, name or metadata leaves the computer.",
   "author": {
     "name": "Michel Kerkmeester"
   },
@@ -166,6 +166,10 @@
       "description": "Reads container and stream metadata from one image, audio or video file with ffprobe: format name, duration, size and bit rate, plus the codec, pixel size, frame rate, sample rate and channel layout of every stream."
     },
     {
+      "name": "media_rename",
+      "description": "Gives one image, video or audio file inside the export folder a readable name."
+    },
+    {
       "name": "media_repair",
       "description": "Diagnoses a damaged or partly readable video or audio file with ffprobe, then rewrites it with a matching ffmpeg pass: remux copies the streams into a fresh container, which repairs a missing or broken index or timestamp table; reencode rebuilds the streams as H.264 and AAC (AAC alone for audio), which repairs damaged or cut-short streams."
     },
@@ -198,7 +202,7 @@
     "output_directory": {
       "type": "directory",
       "title": "Output folder",
-      "description": "Edited files are saved here, each run in a new numbered folder. Leave it empty to use the first folder above. To edit a result again, the output folder must also be one of the folders above.",
+      "description": "Edited files are saved here. One file goes straight in, several files from one run get a numbered folder. Leave it empty to use the first folder above. To edit a result again, the output folder must also be one of the folders above.",
       "required": false
     }
   }

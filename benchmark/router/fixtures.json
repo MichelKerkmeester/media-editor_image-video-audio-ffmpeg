@@ -9,7 +9,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/image-operations.md"
       ]
     }
@@ -24,7 +23,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/image-operations.md"
       ]
     }
@@ -39,7 +37,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -54,7 +51,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -69,7 +65,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -84,7 +79,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -99,7 +93,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "assets/hls-video-conversion.md"
       ]
     }
@@ -114,7 +107,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -129,7 +121,6 @@
       "needs_disambiguation": true,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -144,7 +135,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/image-operations.md"
       ]
     }
@@ -159,7 +149,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -174,7 +163,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -189,7 +177,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "assets/hls-video-conversion.md"
       ]
     }
@@ -204,7 +191,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -219,7 +205,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -234,7 +219,6 @@
       "needs_disambiguation": true,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -249,7 +233,6 @@
       "needs_disambiguation": true,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -264,7 +247,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/video-and-audio-operations.md"
       ]
     }
@@ -279,7 +261,6 @@
       "needs_disambiguation": true,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -294,7 +275,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -309,7 +289,6 @@
       "needs_disambiguation": true,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/interactive-intelligence.md"
       ]
     }
@@ -324,7 +303,6 @@
       "needs_disambiguation": false,
       "resources": [
         "references/media-framework.md",
-        "references/hvr-core.md",
         "references/image-operations.md"
       ]
     }

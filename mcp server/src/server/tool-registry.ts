@@ -15,6 +15,8 @@ import {
 import { z } from 'zod';
 
 import { errorResult } from '../core/result.js';
+import { fileNameField, subfolderField } from './field-schemas.js';
+import { withPlacement } from './tool-context.js';
 
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import type { ToolContext } from './tool-context.js';
@@ -41,6 +43,12 @@ export interface ToolDefinition<Shape extends z.ZodRawShape = z.ZodRawShape> {
   description: string;
   inputSchema: Shape;
   annotations?: ToolAnnotations;
+
+  /**
+   * False for a tool that takes `outputName` but always writes a folder of
+   * its own, so it is offered no `fileName` or `subfolder`.
+   */
+  outputPlacement?: false;
   handler(
     args: z.infer<z.ZodObject<Shape>>,
     context: ToolContext,
@@ -68,12 +76,35 @@ function invalidArgumentsMessage(toolName: string, error: z.ZodError): string {
   return `Invalid arguments for tool ${toolName}: ${labels.join(', ')}`;
 }
 
+function takesPlacement(definition: AnyToolDefinition): boolean {
+  return definition.outputPlacement !== false
+    && Object.hasOwn(definition.inputSchema, 'outputName');
+}
+
+/**
+ * The schema a client sees and a call is parsed with. A tool that writes
+ * into one folder also takes `fileName` and `subfolder`.
+ *
+ * @param definition - The tool
+ * @returns Its own fields, plus the two placement fields when they apply
+ */
+export function listedInputSchema(definition: AnyToolDefinition): z.ZodRawShape {
+  if (!takesPlacement(definition)) {
+    return definition.inputSchema;
+  }
+  return {
+    ...definition.inputSchema,
+    fileName: fileNameField,
+    subfolder: subfolderField,
+  };
+}
+
 async function dispatchToolCall(
   definition: AnyToolDefinition,
   context: ToolContext,
   args: unknown,
 ): Promise<CallToolResult> {
-  const parsed = z.object(definition.inputSchema).safeParse(args);
+  const parsed = z.object(listedInputSchema(definition)).safeParse(args);
   if (!parsed.success) {
     throw new McpError(
       ErrorCode.InvalidParams,
@@ -81,7 +112,15 @@ async function dispatchToolCall(
     );
   }
   try {
-    return await definition.handler(parsed.data, context);
+    if (!takesPlacement(definition)) {
+      return await definition.handler(parsed.data, context);
+    }
+    const { fileName, subfolder, ...rest } = parsed.data;
+    const placed = withPlacement(context, {
+      fileName: typeof fileName === 'string' ? fileName : undefined,
+      subfolder: typeof subfolder === 'boolean' ? subfolder : undefined,
+    });
+    return await definition.handler(rest, placed);
   } catch (error: unknown) {
     return errorResult(error, definition.name);
   }
@@ -96,7 +135,7 @@ function registerListedTool(
     {
       title: definition.title,
       description: definition.description,
-      inputSchema: definition.inputSchema,
+      inputSchema: listedInputSchema(definition),
       annotations: definition.annotations,
     },
     () => errorResult(new Error('unreachable')),

@@ -16,7 +16,10 @@ import {
   invalidateBinary,
   resolveBinary as resolveConfiguredBinary,
 } from '../core/ffmpeg-resolver.js';
-import { allocateOutputFolder as allocateNumberedFolder } from '../core/output-folder.js';
+import {
+  allocateOutputFolder as allocateNumberedFolder,
+  useOutputRoot,
+} from '../core/output-folder.js';
 import {
   resolveInputPath,
   resolveInputPaths,
@@ -65,6 +68,22 @@ export interface RunBinaryOptions
    * leaving it out.
    */
   inputs: readonly ResolvedInput[];
+}
+
+/**
+ * How many files one call writes.
+ * `single` is one file, `many` is several side by side, `tree` is a nested
+ * set such as an HLS ladder, which always needs a folder of its own.
+ */
+export type OutputLayout = 'single' | 'many' | 'tree';
+
+/** The caller's choices about where and under what name output lands. */
+export interface OutputPlacement {
+  /** Readable file name, or undefined for `<input stem>-<operation>`. */
+  readonly fileName?: string;
+
+  /** True for a numbered folder, false for the export root, undefined for the default. */
+  readonly subfolder?: boolean;
 }
 
 /** Encoder and filter lists for the ffmpeg that was resolved. */
@@ -144,16 +163,29 @@ export interface ToolContext {
   ) => ResolvedInput[];
 
   /**
-   * Create the next numbered folder under the configured output directory.
+   * Placement the caller chose, or undefined for a direct handler call.
+   * Without it every call gets a numbered folder and the default file name.
+   */
+  readonly placement?: OutputPlacement;
+
+  /**
+   * Pick the destination folder for one call.
    *
-   * @param outputName - Description slugged into the folder name
+   * Without a placement this is always the next numbered folder. With one, a
+   * `tree` layout still gets a numbered folder, and otherwise `subfolder`
+   * decides, defaulting to the export root for one file and a numbered
+   * folder for several.
+   *
+   * @param outputName - Description slugged into a folder name
    * @param tool - Tool name stored on a configuration failure
-   * @returns The folder that was created
+   * @param layout - How many files the call writes, `single` when omitted
+   * @returns The destination, with `created` true for a new folder
    * @throws MediaError when the slug is empty, or the directory is unset
    */
   readonly allocateOutputFolder: (
     outputName: string,
     tool: string,
+    layout?: OutputLayout,
   ) => AllocatedFolder;
 
   /**
@@ -255,9 +287,40 @@ function isTimedMedia(mediaType: OutputMediaType): boolean {
   return mediaType === 'video' || mediaType === 'audio';
 }
 
+function wantsFolder(layout: OutputLayout, placement: OutputPlacement): boolean {
+  if (layout === 'tree') {
+    return true;
+  }
+  return placement.subfolder ?? layout === 'many';
+}
+
 // ───────────────────────────────────────────────────────────────────
 // 5. CORE LOGIC
 // ───────────────────────────────────────────────────────────────────
+
+/**
+ * Give a context the caller's placement for one call.
+ *
+ * @param context - Context shared by every call
+ * @param placement - File name and folder choice of this call
+ * @returns A context whose folder pick follows the placement
+ */
+export function withPlacement(
+  context: ToolContext,
+  placement: OutputPlacement,
+): ToolContext {
+  function allocateOutputFolder(
+    outputName: string,
+    tool: string,
+    layout: OutputLayout = 'single',
+  ): AllocatedFolder {
+    if (wantsFolder(layout, placement)) {
+      return allocateNumberedFolder(context.config.outputDir, outputName, tool);
+    }
+    return useOutputRoot(context.config.outputDir, tool);
+  }
+  return { ...context, placement, allocateOutputFolder };
+}
 
 /**
  * Build the services one tool handler calls.

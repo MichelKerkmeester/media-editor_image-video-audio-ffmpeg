@@ -13,7 +13,11 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 import { ERROR_CODES, isMediaError, MediaError } from '../../core/errors.js';
-import { outputFileName, writeExclusive } from '../../core/output-folder.js';
+import {
+  placedFileName,
+  writeExclusive,
+  writeUnderFreeName,
+} from '../../core/output-folder.js';
 import { assertOutputNotOnInput } from '../../core/path-guard.js';
 import { describeOutput } from '../../core/result.js';
 
@@ -35,7 +39,7 @@ export type OutputFormatValue = (typeof OUTPUT_FORMAT_VALUES)[number];
 export type EncoderFormat = 'jpeg' | 'png' | 'webp' | 'avif';
 
 /**
- * One file a writing image tool wants in the numbered folder.
+ * One file a writing image tool wants in the call's destination.
  * `pipeline` must return a new instance on every call.
  */
 export interface PlannedImage {
@@ -57,7 +61,7 @@ export interface WrittenImage {
 
 /** Everything a writing image call produced. */
 export interface WrittenImages {
-  /** Numbered folder that holds the files. */
+  /** Numbered folder or export root that holds the files. */
   readonly folder: AllocatedFolder;
 
   /** Written files, in plan order. */
@@ -258,11 +262,22 @@ function mappedWriteError(error: unknown): unknown {
   return error;
 }
 
-function removeFolder(folderPath: string): void {
+function removeQuietly(target: string): void {
   try {
-    rmSync(folderPath, { recursive: true, force: true });
+    rmSync(target, { recursive: true, force: true });
   } catch {
     // The original failure has to reach the caller unchanged.
+  }
+}
+
+/** A new folder goes whole. In the shared export root only this call's files go. */
+function removeWritten(folder: AllocatedFolder, images: readonly WrittenImage[]): void {
+  if (folder.created) {
+    removeQuietly(folder.folderPath);
+    return;
+  }
+  for (const image of images) {
+    removeQuietly(image.entry.path);
   }
 }
 
@@ -327,16 +342,20 @@ async function writeOnePlan(
   folder: AllocatedFolder,
   plan: PlannedImage,
   warnings: string[],
+  fileName: string | undefined,
 ): Promise<WrittenImage> {
   const encoded = await plan.pipeline().toBuffer({ resolveWithObject: true });
-  const fileName = outputFileName(
+  const name = placedFileName(
     request.input.rawPath,
     plan.operation,
     extensionForFormat(encoded.info.format),
+    fileName,
+    request.plans.length > 1,
   );
-  const target = path.join(folder.folderPath, fileName);
-  assertOutputNotOnInput(target, [request.input.realPath]);
-  await writeExclusive(target, encoded.data);
+  const target = await writeUnderFreeName(folder, name, async (candidate) => {
+    assertOutputNotOnInput(candidate, [request.input.realPath]);
+    await writeExclusive(candidate, encoded.data);
+  });
   const entry = await entryForWritten(target, encoded.info.format, warnings);
   return { entry, format: imageFormatName(encoded.info.format) };
 }
@@ -456,13 +475,15 @@ export function openImage(input: ResolvedInput): Sharp {
 }
 
 /**
- * Encode each plan into one fresh numbered folder.
+ * Encode each plan into the call's destination.
  *
- * Any failure after the folder exists removes that folder and then throws.
+ * The destination is a fresh numbered folder or the export root, as the
+ * context's placement decides. Any failure after it exists removes a new
+ * folder, or in the export root only the files this call wrote, then throws.
  * A media error is rethrown unchanged. A pixel-limit or corrupt-image failure
  * becomes `UNSUPPORTED_FORMAT`. Any other error is rethrown as it is.
  *
- * @param context - Services for the numbered folder
+ * @param context - Services for the destination and the caller's placement
  * @param request - Tool name, output description, input, and plans
  * @returns The folder, the written images, and any read-back warnings
  * @throws {@link MediaError} When encoding or the exclusive write fails with a
@@ -475,15 +496,17 @@ export async function writeImageOutputs(
   const folder = context.allocateOutputFolder(
     request.outputName,
     request.tool,
+    request.plans.length > 1 ? 'many' : 'single',
   );
+  const fileName = context.placement?.fileName;
   const warnings: string[] = [];
   const images: WrittenImage[] = [];
   try {
     for (const plan of request.plans) {
-      images.push(await writeOnePlan(request, folder, plan, warnings));
+      images.push(await writeOnePlan(request, folder, plan, warnings, fileName));
     }
   } catch (error: unknown) {
-    removeFolder(folder.folderPath);
+    removeWritten(folder, images);
     throw mappedWriteError(error);
   }
   return { folder, images, warnings };

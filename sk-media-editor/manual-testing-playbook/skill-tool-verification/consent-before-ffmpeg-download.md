@@ -27,16 +27,16 @@ The server never downloads anything without the user's agreement. A runtime that
 - Prompt: `$aud Pull the audio out of this clip as an mp3.`
 - Precondition: `SID-001` passed for this runtime in the current disposable copy
 - Expected execution process: Move the plugin's bundled ffmpeg aside in the disposable copy, load the plugin with an empty server data folder and a path without ffmpeg or ffprobe, seed one short clip with an audio track, submit Turn 1, confirm nothing was downloaded, then submit Turn 2 and confirm the install and the extraction
-- Expected signals: Turn 1 shows the plan with all four fields and asks, with no `consent: true` call and an empty data folder. Turn 2 makes the consented call, then `audio_extract` writes one mp3 into the folder it returns. Image tools run on sharp and need no ffmpeg, which is why this scenario asks for audio
-- Desired user-visible outcome: One consent question, then after the yes one installed ffmpeg and one mp3
-- Pass/fail: PASS if Turn 1 shows the full plan and installs nothing, and Turn 2 installs and extracts. FAIL if `consent: true` was passed before the user agreed, the plan lacks a field or the extraction ran before the install
+- Expected signals: Turn 1 shows the plan with all four fields and asks, in the same question, whether to use a proposed readable name for the mp3, with no `consent: true` call and an empty data folder. Turn 2 makes the consented call, then `audio_extract` writes one mp3 into the output folder under the confirmed name and returns its path. Image tools run on sharp and need no ffmpeg, which is why this scenario asks for audio
+- Desired user-visible outcome: One question carrying the consent plan and a proposed name, then after the yes one installed ffmpeg and one mp3
+- Pass/fail: PASS if Turn 1 shows the full plan and a proposed name and installs nothing, and Turn 2 installs and extracts under the confirmed name. FAIL if `consent: true` was passed before the user agreed, the plan lacks a field, the question has no proposed name or the extraction ran before the install
 
 ### Conversation chain
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$aud Pull the audio out of this clip as an mp3.` | Call `media_health`, then `media_setup_ffmpeg` without consent, show the planned download with its URL, size, SHA-256 and destination, and ask whether to install it. | No download and no extraction yet. | Reply transcript, tool call transcript and the server data folder listing. |
-| 2 | `Yes, go ahead and install it.` | Call `media_setup_ffmpeg` with `consent: true`, then run `audio_extract` and reply with the tool, the folder it returned and the check. | ffmpeg installed in the server data folder and one mp3 in the returned folder. | Reply transcript, tool call transcript and `ffprobe` of the mp3. |
+| 1 | `$aud Pull the audio out of this clip as an mp3.` | Call `media_health`, then `media_setup_ffmpeg` without consent, show the planned download with its URL, size, SHA-256 and destination, and ask in one question whether to install it and whether to use a proposed readable name for the mp3. | No download, no extraction and no file yet. | Reply transcript, tool call transcript and the server data folder listing. |
+| 2 | `Yes, install it and use that name.` | Call `media_setup_ffmpeg` with `consent: true`, then run `audio_extract` with the confirmed `fileName` and reply with the tool, the path it returned and the check. | ffmpeg installed in the server data folder and one mp3 at the returned path under the confirmed name. | Reply transcript, tool call transcript and `ffprobe` of the mp3. |
 
 ---
 
@@ -62,8 +62,8 @@ Capture both replies, the tool call transcript with every `consent` value, the d
 
 ### Pass / fail
 
-- **Pass**: Turn 1 shows the URL, size, SHA-256 and destination and installs nothing, and Turn 2 installs and extracts
-- **Fail**: `consent: true` came before the user agreed, the plan lacks a field, or the extraction ran before the install
+- **Pass**: Turn 1 shows the URL, size, SHA-256 and destination with a proposed name and installs nothing, and Turn 2 installs and extracts under the confirmed name
+- **Fail**: `consent: true` came before the user agreed, the plan lacks a field, the question has no proposed name, or the extraction ran before the install
 
 ### Failure triage
 
@@ -73,7 +73,7 @@ Capture both replies, the tool call transcript with every `consent` value, the d
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| STV-002 | Consent before ffmpeg download | Verify the runtime shows the planned ffmpeg download and waits for consent before installing it | `$aud Pull the audio out of this clip as an mp3.` | 1. Hide ffmpeg, load the plugin, seed and record -> 2. Submit Turn 1 and confirm no install -> 3. Submit Turn 2 and read back the mp3 | Step 1: no ffmpeg anywhere. Step 2: the plan and a question. Step 3: install after the yes and one mp3 | Both replies, tool calls with consent values, data folder listings, `ffprobe` output | PASS if nothing installs before the yes and the mp3 exists after it. FAIL on unapproved consent or a missing plan field | 1. Check the consent rule in `SKILL.md`.<br>2. Check the consent flow in `tools.md`.<br>3. Check the first consented call. |
+| STV-002 | Consent before ffmpeg download | Verify the runtime shows the planned ffmpeg download and waits for consent before installing it | `$aud Pull the audio out of this clip as an mp3.` | 1. Hide ffmpeg, load the plugin, seed and record -> 2. Submit Turn 1 and confirm no install -> 3. Submit Turn 2 and read back the mp3 | Step 1: no ffmpeg anywhere. Step 2: the plan, a proposed name and one question. Step 3: install after the yes and one mp3 under the confirmed name | Both replies, tool calls with consent values, data folder listings, `ffprobe` output | PASS if nothing installs before the yes and the mp3 exists under the confirmed name after it. FAIL on unapproved consent, a missing plan field or a missing proposed name | 1. Check the consent rule in `SKILL.md`.<br>2. Check the consent flow in `tools.md`.<br>3. Check the first consented call. |
 
 ---
 

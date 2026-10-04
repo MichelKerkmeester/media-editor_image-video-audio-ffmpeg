@@ -9,7 +9,7 @@ trigger_phrases:
   - "ricce validation"
   - "quality size optimization"
   - "media thinking"
-version: 1.7.0.8
+version: 0.8.0.8
 ---
 
 # Media Editor - Thinking - MEDIA Framework

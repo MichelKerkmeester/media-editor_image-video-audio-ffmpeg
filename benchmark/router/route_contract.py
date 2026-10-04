@@ -105,7 +105,7 @@ SOURCE_VALUES = ["command", "semantic", "fallback"]
 SKILL_ROOT = Path(__file__).resolve().parent.parent.parent / "sk-media-editor"
 RESOURCE_BASES = ("references", "assets")
 
-ALWAYS = ["references/media-framework.md", "references/hvr-core.md"]
+ALWAYS = ["references/media-framework.md"]
 RESOURCE_MAP: Dict[str, List[str]] = {
     "IMAGE": ["references/image-operations.md"],
     "VIDEO": ["references/video-and-audio-operations.md"],

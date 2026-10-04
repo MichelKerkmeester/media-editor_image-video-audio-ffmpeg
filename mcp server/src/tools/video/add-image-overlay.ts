@@ -335,7 +335,7 @@ export const videoAddImageOverlayTool = defineTool({
   title: 'Add an image overlay',
   description:
     'Places one scaled image over a video for a time span, at a chosen position and '
-    + 'with an optional opacity. It writes one new MP4 file into a new numbered folder '
+    + 'with an optional opacity. It writes one new MP4 file into the export root, or a numbered folder on request, '
     + 'and never changes the input. The picture is re-encoded, so run time grows with '
     + 'file size: seconds under 100 MB, up to a few minutes from 100 MB to 1 GB, and '
     + 'minutes to tens of minutes above 1 GB. The call returns when the work ends or '

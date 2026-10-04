@@ -1,6 +1,6 @@
 ---
 title: "Media Editor - Reference - Media Editor Tools"
-description: "Catalogue of the 39 Media Editor tools by group with purpose, parameters and defaults, the consent rule for media_setup_ffmpeg, the 15 error codes with what to do about each, the server settings and the operations no tool covers yet."
+description: "Catalogue of the 40 Media Editor tools by group with purpose, parameters and defaults, the consent rule for media_setup_ffmpeg, the 15 error codes with what to do about each, the server settings and the operations no tool covers yet."
 contextType: implementation
 importance_tier: important
 trigger_phrases:
@@ -9,7 +9,8 @@ trigger_phrases:
   - "media editor error codes"
   - "consent required ffmpeg download"
   - "media_health"
-version: 1.7.0.0
+  - "media_rename"
+version: 1.0.0.0
 ---
 
 # Media Editor - Reference - Media Editor Tools
@@ -18,7 +19,7 @@ Every tool the Media Editor server registers, with what it needs, what it return
 
 **Loading Condition:** ON-DEMAND
 **Purpose:** Gives a tool's exact name, parameters and defaults, the consent rule and the error codes, for a call the mode reference does not already settle
-**Scope:** The 39 tools in four groups, the consent flow, the 15 error codes, the server settings and the gaps
+**Scope:** The 40 tools in four groups, output naming and placement, the consent flow, the 15 error codes, the server settings and the gaps
 **Source:** `mcp server/README.md` sections 4 and 5, and each tool's own schema in `mcp server/src/tools/`
 
 ---
@@ -27,7 +28,7 @@ Every tool the Media Editor server registers, with what it needs, what it return
 
 ### Purpose
 
-The server behind the Media Editor tools runs on the user's machine as the Claude Desktop extension or the Claude Code plugin. It has 39 tools: 8 image, 6 audio, 20 video and 5 media. The image tools run on the sharp image library. The others run ffmpeg and ffprobe, either the copies the server found or a pinned build `media_setup_ffmpeg` installed.
+The server behind the Media Editor tools runs on the user's machine as the Claude Desktop extension or the Claude Code plugin. It has 40 tools: 8 image, 6 audio, 20 video and 6 media. The image tools run on the sharp image library. The others run ffmpeg and ffprobe, either the copies the server found or a pinned build `media_setup_ffmpeg` installed.
 
 ### When to use
 
@@ -38,8 +39,9 @@ The server behind the Media Editor tools runs on the user's machine as the Claud
 ### Rules every tool follows
 
 - `inputPath` and every other input path are absolute and sit inside a folder the user allowed. The input is never changed
-- A writing tool takes `outputName`, a 1 to 64 character description with no `/` or `\`, and writes its result into a new `NNN - description/` folder inside the output folder. That folder is the export, so report its path
-- Nothing is overwritten. A clash returns `OUTPUT_EXISTS`
+- A writing tool takes `outputName`, a 1 to 64 character description with no `/` or `\`. A call that writes one file puts it in the output folder itself. A call that writes several files, such as `image_batch_resize` with two or more sizes, puts them in a new `NNN - description/` folder named from `outputName`. The path the tool returns is the export, so report it
+- Every writing tool except `video_hls_ladder` also takes two optional fields. `fileName` is a readable name, slugged to lowercase words joined by hyphens, and the tool adds the extension: one file becomes `<name><ext>`, several become `<name>-<operation><ext>`. Without it a file is named `<input name>-<operation><ext>`. `subfolder` `true` forces a numbered folder and `false` keeps several files in the output folder. `video_hls_ladder` always writes its own folder
+- Nothing is overwritten. In the output folder a taken name moves on to `-2`, `-3` and so on. A clash inside a numbered folder, or a taken `media_rename` target, returns `OUTPUT_EXISTS`
 - Video and audio tools try a lossless stream copy first and re-encode only when the copy cannot work
 - A tool checks the encoders and filters it needs before it runs and returns `CAPABILITY_MISSING` when its ffmpeg lacks one
 - Times accept seconds, a numeric string, `HH:MM:SS`, `HH:MM:SS.mmm` or `MM:SS`. Bitrates run from `1k` to `100M`, where `k` is 1000 bit/s and `M` is 1000000 bit/s
@@ -51,7 +53,8 @@ The server behind the Media Editor tools runs on the user's machine as the Claud
 | Tool | Purpose | Parameters and defaults |
 | --- | --- | --- |
 | `media_health` | Reports the server version, where ffmpeg and ffprobe were found, their encoders and filters, the image engine versions and the folders and limits in effect. Reads no media file | None |
-| `media_probe` | Reads container and stream metadata from an image, audio or video file with ffprobe. Writes nothing | `inputPath` |
+| `media_probe` | Reads container and stream metadata from an image, audio or video file with ffprobe. Writes nothing | `inputPath`, `preview` (default `false`) returns one small JPEG frame of a video or image to name the file from. Audio has no picture and gets a warning instead |
+| `media_rename` | Gives one result inside the output folder a readable name, in the same folder, keeping its extension. Never overwrites | `path` of the file, `newName` 1 to 64 characters, slugged like `fileName`. A file outside the output folder returns `PATH_NOT_ALLOWED` |
 | `media_repair` | Diagnoses a damaged audio or video file with ffprobe, then rewrites it | `inputPath`, `outputName`, `strategy` `auto` (default), `remux` (copies the streams into a fresh container, for a broken index or timestamp table) or `reencode` (rebuilds as H.264 and AAC, for damaged or cut-short streams) |
 | `media_remove_silence` | Cuts silent stretches from an audio or video file | `inputPath`, `outputName`, `silenceThresholdDb` -100 to 0 (default -30), `minSilenceDurationMs` 1 to 600000 (default 500). A file with no audio stream is refused |
 | `media_setup_ffmpeg` | Finds ffmpeg and ffprobe and installs a pinned build of a missing one after the user consents | `component` `ffmpeg`, `ffprobe` or `both` (default `both`), `consent` (default `false`). See Section 6 |
@@ -72,8 +75,8 @@ Image tools run on sharp and need no ffmpeg. Quality is the sharp scale from 1 t
 | `image_compress` | Compress a JPEG, PNG, WebP or AVIF image in its own format | `quality` (default 80), `progressive` (default `true`, JPEG only) |
 | `image_rotate` | Rotate by any angle | `angle` -360 to 360, positive is clockwise, `background` `#RRGGBB` (default `#000000`) |
 | `image_flip` | Mirror | `direction` `horizontal`, `vertical` or `both` |
-| `image_probe` | Read format, size, channels, bit depth, colour space, density, alpha and byte size. Writes nothing | `inputPath` only |
-| `image_batch_resize` | Resize one image into 1 to 20 sizes, one file each in one folder | `sizes` entries of `width` and optional `height`, `format` (optional, keeps the input format) |
+| `image_probe` | Read format, size, channels, bit depth, colour space, density, alpha and byte size. Writes nothing | `inputPath`, `preview` (default `false`) returns a JPEG at most 512 pixels on its longest side, to name the file from |
+| `image_batch_resize` | Resize one image into 1 to 20 sizes, one file each, in one numbered folder when there are several | `sizes` entries of `width` and optional `height`, `format` (optional, keeps the input format) |
 
 ---
 
@@ -142,7 +145,7 @@ When both binaries are already present the first call reports them ready and dow
 | `PATH_NOT_ALLOWED` | A path sits outside every allowed folder | Ask the user to start the session in the folder that holds the media, or to add that folder to the allowed folders, then retry |
 | `CONFIG_MISSING` | No allowed folder or no usable output folder is set | Ask the user to set the folder in the extension settings, removing any empty Directory path row, or to start the session in the media folder |
 | `INPUT_NOT_FOUND` | The input path does not exist | Check the path with the user |
-| `OUTPUT_EXISTS` | The output would overwrite a file or land on an input | Use another `outputName`, or move the output folder off the input |
+| `OUTPUT_EXISTS` | The output would overwrite a file or land on an input | Use another `fileName`, `newName` or `outputName`, or move the output folder off the input |
 | `UNSUPPORTED_FORMAT` | The tool does not accept this input format | Convert the file first, or pick the tool that takes it |
 | `FFMPEG_NOT_FOUND` | No ffmpeg was found | Run the consent flow in Section 6, or fall back to ffmpeg on the path |
 | `FFPROBE_NOT_FOUND` | No ffprobe was found | Run the consent flow in Section 6 for `ffprobe` |

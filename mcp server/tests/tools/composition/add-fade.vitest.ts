@@ -187,7 +187,10 @@ async function runTool(args: Record<string, unknown>): Promise<CallOutcome> {
 async function runToolWithText(args: Record<string, unknown>): Promise<ToolOutcome> {
   let outcome: ToolOutcome | undefined;
   await withToolClient(sandbox.config, async (client): Promise<void> => {
-    const result = await client.callTool({ name: TOOL_NAME, arguments: args });
+    const result = await client.callTool({
+      name: TOOL_NAME,
+      arguments: { subfolder: true, ...args },
+    });
     outcome = {
       isError: result.isError === true,
       body: asRecord(result.structuredContent),

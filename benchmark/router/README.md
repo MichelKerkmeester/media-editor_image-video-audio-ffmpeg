@@ -43,7 +43,6 @@ Every request resolves to one stable object:
   "needs_disambiguation": false,
   "resources": [
     "references/media-framework.md",
-    "references/hvr-core.md",
     "references/video-and-audio-operations.md"
   ]
 }

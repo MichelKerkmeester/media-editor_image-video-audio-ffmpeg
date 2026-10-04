@@ -27,7 +27,7 @@ If the Project and the CLI bind different modes for the same request, one of the
 - Prompt: `$aud strip the track from this $video and save it as an mp3.`
 - Precondition: `PID-001` passed for this runtime in the current Project session
 - Expected execution process: Open the Project, submit Turn 1, then confirm the bound mode in the guidance and the command contents
-- Expected signals: The reply names Audio Mode, leads with **Run this:** an ffmpeg command that extracts audio to mp3 with `-vn`, names **Result lands in:** and **Check this:**, and closes with the attestation line carrying `mode = audio` and `execution = did not occur`
+- Expected signals: The reply names Audio Mode, leads with **Run this:** an ffmpeg command that extracts audio to mp3 with `-vn` and writes to a proposed readable name, names **Result lands in:** `media files/export/[readable-name].mp3` and **Check this:**, and closes with the attestation line carrying `mode = audio` and `execution = did not occur`
 - Desired user-visible outcome: One Audio Mode answer with the mp3 command and the delivery fields
 - Pass/fail: PASS if the guidance binds Audio Mode to an ffmpeg mp3 command and carries the delivery fields. FAIL if Video Mode guidance appears, both modes are mixed or the command is missing
 
@@ -35,7 +35,7 @@ If the Project and the CLI bind different modes for the same request, one of the
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$aud strip the track from this $video and save it as an mp3.` | Hand back an Audio Mode answer with the ffmpeg mp3 extraction command, its destination, the check step and the attestation line. | Mode is Audio, never Video. | Reply transcript naming mode, command and delivery fields. |
+| 1 | `$aud strip the track from this $video and save it as an mp3.` | Hand back an Audio Mode answer with the ffmpeg mp3 extraction command carrying a proposed readable name, its destination, the check step and the attestation line. | Mode is Audio, never Video. | Reply transcript naming mode, command and delivery fields. |
 
 ---
 

@@ -153,7 +153,7 @@ export const audioConvertPropertiesTool = defineTool({
   title: 'Convert audio properties',
   description:
     'Changes an audio file\'s container and can set its bitrate, sample rate, '
-    + 'and channel count. It writes that file in a new numbered folder and '
+    + 'and channel count. It writes that file in the export root, or a numbered folder on request, and '
     + 'never changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),

@@ -6,14 +6,14 @@
 // 1. IMPORTS
 // ───────────────────────────────────────────────────────────────────
 
-import { constants, copyFile } from 'node:fs/promises';
+import { constants, copyFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 
 import { assertCapabilities } from '../../core/capabilities.js';
 import { ERROR_CODES, MediaError } from '../../core/errors.js';
 import { isMp4FamilyExtension, unportableMp4Codecs } from '../../core/media-containers.js';
 import { probeIntermediateCodecs } from '../../core/media-properties.js';
-import { outputFileName } from '../../core/output-folder.js';
+import { placedFileName, writeUnderFreeName } from '../../core/output-folder.js';
 import { assertOutputNotOnInput } from '../../core/path-guard.js';
 import {
   cleanUpAfterFailure,
@@ -24,7 +24,11 @@ import {
 import type { AllocatedFolder } from '../../core/output-folder.js';
 import type { ResolvedInput } from '../../core/path-guard.js';
 import type { OutputEntry } from '../../core/result.js';
-import type { CapabilitySnapshot, ToolContext } from '../../server/tool-context.js';
+import type {
+  CapabilitySnapshot,
+  OutputLayout,
+  ToolContext,
+} from '../../server/tool-context.js';
 
 // ───────────────────────────────────────────────────────────────────
 // 2. TYPE DEFINITIONS
@@ -68,7 +72,7 @@ export interface AttemptRequest {
   /** Registered tool name, stored on a gate or configuration failure. */
   readonly tool: string;
 
-  /** Description slugged into the numbered folder name. */
+  /** Description slugged into the numbered folder name, when there is one. */
   readonly outputName: string;
 
   /** Caller file every attempt reads. It names the output file. */
@@ -138,7 +142,7 @@ export interface PipelineRequest {
   /** Registered tool name, stored on a gate or configuration failure. */
   readonly tool: string;
 
-  /** Description slugged into the numbered folder name. */
+  /** Description slugged into the numbered folder name, when there is one. */
   readonly outputName: string;
 
   /** Caller files the passes read. The first one names the output file. */
@@ -171,6 +175,9 @@ interface SurvivorCopy {
 interface KeepRequest {
   readonly folder: AllocatedFolder;
   readonly namingInput: ResolvedInput;
+
+  /** Caller's readable name for the kept file, or undefined for the default. */
+  readonly fileName: string | undefined;
   readonly guardPaths: readonly string[];
   readonly operation: string;
   readonly extension: string;
@@ -231,6 +238,8 @@ function gateAttempt(
 /**
  * The exclusive flag keeps an existing file, and a copy rather than a rename
  * works when the temp folder and the output folder sit on different volumes.
+ * Any failure but an existing target leaves at most a part this call made,
+ * which is removed, because the export root outlives the call.
  */
 async function copyExclusive(survivor: string, target: string): Promise<void> {
   try {
@@ -243,21 +252,24 @@ async function copyExclusive(survivor: string, target: string): Promise<void> {
         { path: target, stage: 'run' },
       );
     }
+    await rm(target, { force: true }).catch(() => undefined);
     throw error;
   }
 }
 
 /** The copy runs inside the temp-folder callback, which removes the folder on return. */
 async function keepSurvivor(survivor: string, request: KeepRequest): Promise<string> {
-  const fileName = outputFileName(
+  const fileName = placedFileName(
     request.namingInput.rawPath,
     request.operation,
     request.extension,
+    request.fileName,
+    false,
   );
-  const target = path.join(request.folder.folderPath, fileName);
-  assertOutputNotOnInput(target, request.guardPaths);
-  await copyExclusive(survivor, target);
-  return target;
+  return writeUnderFreeName(request.folder, fileName, async (target) => {
+    assertOutputNotOnInput(target, request.guardPaths);
+    await copyExclusive(survivor, target);
+  });
 }
 
 function attemptTempName(index: number, tempName: string, extension?: string): string {
@@ -270,6 +282,7 @@ async function inNumberedFolder<T>(
   tool: string,
   outputName: string,
   upfront: UpfrontNames,
+  layout: OutputLayout,
   body: (snapshot: CapabilitySnapshot, folder: AllocatedFolder) => Promise<T>,
 ): Promise<T> {
   const snapshot = await context.getCapabilities();
@@ -281,11 +294,14 @@ async function inNumberedFolder<T>(
     filters: upfront.filters,
   });
 
-  const folder = context.allocateOutputFolder(outputName, tool);
+  const folder = context.allocateOutputFolder(outputName, tool, layout);
   try {
     return await body(snapshot, folder);
   } catch (error: unknown) {
-    cleanUpAfterFailure(error, [folder.folderPath]);
+    // The export root holds earlier results, so only a new folder goes.
+    if (folder.created) {
+      cleanUpAfterFailure(error, [folder.folderPath]);
+    }
     throw error;
   }
 }
@@ -338,6 +354,7 @@ async function runInTempDir(
       const target = await keepSurvivor(tempPath, {
         folder,
         namingInput: request.input,
+        fileName: context.placement?.fileName,
         guardPaths: callerInputs.map((input) => input.realPath),
         operation: request.operation,
         extension: attempt.extension ?? request.extension,
@@ -428,14 +445,16 @@ export async function assertPortableMp4(
 /**
  * Run an ordered list of ffmpeg attempts and keep the first file that works.
  *
- * The upfront gate runs before the numbered folder exists. Names that only a
+ * The upfront gate runs before the destination exists. Names that only a
  * later attempt needs are checked just before that attempt. Only an ordinary
  * `PROCESS_FAILED` moves on to the next attempt; every other failure stops the
  * call. An MP4-family file that keeps a PCM or FFV1 stream counts as such a
  * failure, so the next attempt re-encodes it. An optional `prepare` step runs
  * once in the temp folder before the first attempt. Each attempt writes its own
- * temp file, and the survivor is copied into the numbered folder with an
- * exclusive create. Any failure after the folder exists removes it.
+ * temp file, and the survivor is copied into the destination with an
+ * exclusive create, under the next free name in the export root. Any failure
+ * after a new numbered folder exists removes it. The export root is never
+ * removed.
  *
  * @param context - Services for capabilities, folders, runs and read-back
  * @param request - Tool, input, naming, gates and the attempts in order
@@ -455,6 +474,7 @@ export async function runAttempts(
     request.tool,
     request.outputName,
     request.upfront,
+    'single',
     async (snapshot, folder) => {
       const copied = await runInTempDir(context, request, snapshot, folder);
       const { entry, warnings } = await context.readBack(copied.target, request.mediaType);
@@ -472,10 +492,10 @@ export async function runAttempts(
 /**
  * Run a call that needs several ffmpeg passes and keep the one file it makes.
  *
- * The upfront gate runs before the numbered folder exists, and one gate covers
+ * The upfront gate runs before the destination exists, and one gate covers
  * every pass. The step runs its passes through `context.runBinary` inside a
  * private temp folder and returns the last file, which is copied into the
- * numbered folder with an exclusive create. An MP4-family file that keeps a
+ * destination with an exclusive create. An MP4-family file that keeps a
  * PCM or FFV1 stream is refused before the copy. Any failure, including one
  * the step throws on its own, removes the folder.
  *
@@ -499,6 +519,7 @@ export async function runPipeline(
     request.tool,
     request.outputName,
     request.upfront,
+    'single',
     async (_snapshot, folder) => {
       const kept = await withTempDir(async (dir) => {
         const product = await step(dir);
@@ -506,6 +527,7 @@ export async function runPipeline(
         const target = await keepSurvivor(product.tempPath, {
           folder,
           namingInput: request.inputs[0],
+          fileName: context.placement?.fileName,
           guardPaths: request.inputs.map((input) => input.realPath),
           operation: product.operation,
           extension: product.extension,
@@ -524,7 +546,8 @@ export async function runPipeline(
 }
 
 /**
- * Run a call that writes several files straight into its numbered folder.
+ * Run a call that writes a tree of files straight into its numbered folder.
+ * This layout always gets a folder, whatever the caller's placement.
  *
  * The upfront gate runs before the folder exists. The step gets the folder
  * and writes into it, for example with a child whose working directory it is.
@@ -547,6 +570,7 @@ export async function runInOutputFolder<T>(
     request.tool,
     request.outputName,
     request.upfront,
+    'tree',
     async (_snapshot, folder) => step(folder),
   );
 }

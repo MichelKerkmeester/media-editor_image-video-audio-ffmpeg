@@ -329,7 +329,7 @@ export const videoSetAspectRatioTool = defineTool({
   title: 'Set aspect ratio',
   description:
     'Fits one video to a target aspect ratio by padding it or by cropping it. '
-    + 'It writes the file in a new numbered folder and never changes the input.',
+    + 'It writes the file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),
     outputName: outputNameField,

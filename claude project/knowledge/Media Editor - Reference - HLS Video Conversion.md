@@ -10,7 +10,7 @@ trigger_phrases:
   - "m3u8 playlist segments"
   - "hls command recipe"
   - "video_hls_ladder"
-version: 1.7.0.4
+version: 0.8.0.4
 ---
 
 # Media Editor - Reference - HLS Video Conversion

@@ -21,7 +21,7 @@ trigger_phrases:
 
 | File | Responsibility |
 |------|----------------|
-| `tool-client.ts` | `createSandbox` for an allowed folder, output folder and data folder. `withToolClient` connects an in-memory MCP client to `createServer`. `callTool`, `expectProtocolError`, `listFolders`, `sha256Of` |
+| `tool-client.ts` | `createSandbox` for an allowed folder, output folder and data folder. `withToolClient` connects an in-memory MCP client to `createServer`. `callTool` adds `subfolder: true` to a writing call that names no placement, so the older suites keep checking numbered folders. `callToolAsSent` sends the arguments unchanged. `expectProtocolError`, `listFolders`, `sha256Of` |
 | `media.ts` | `generateVideo`, `generateAudio`, `generateImage`, `buildOversizedPng`, `probeJson`, `fixturePath` and `resolveTestBinary`. `makeTempDir` and `removeTempDir` work under `tests/.tmp/` |
 | `composition-media.ts` | Tone and silence patterns, SubRip files, overlay PNGs, fixture copies and frame sampling with `meanLuma` and `meanColor` |
 | `broken-media.ts` | Damaged files for the repair tests: unindexed Matroska, cut MP4 and M4A, index-less MP4, Matroska named `.mp4`, cover-art MP3 and an empty file. `decodeErrorLines` counts the errors ffmpeg logs while decoding a file |

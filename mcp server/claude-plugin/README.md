@@ -6,7 +6,7 @@
 
 ## 1. OVERVIEW
 
-This plugin gives a Claude Code session the Media Editor's 39 tools and its skill. The tools run on your machine through a local MCP server, read files only inside the folder you start Claude Code in, and write every result into a new numbered folder there. Nothing you edit leaves your machine.
+This plugin gives a Claude Code session the Media Editor's 40 tools and its skill. The tools run on your machine through a local MCP server, read files only inside the folder you start Claude Code in, and write a single result straight into `media files/export/`, with a numbered folder only for several files from one call. Nothing you edit leaves your machine.
 
 The server carries a pinned ffmpeg and ffprobe for its platform. When neither a bundled nor an installed ffmpeg can run, the `media_setup_ffmpeg` tool shows the download it would make (address, size and SHA-256) and fetches it only after you agree.
 
@@ -65,7 +65,7 @@ The plugin needs no settings. `.claude-plugin/plugin.json` starts the server lik
 |------|-------|--------|
 | Command | `node ${CLAUDE_PLUGIN_ROOT}/server/dist/index.js` | Runs the unpacked server from the plugin |
 | Allowed folder | `${CLAUDE_PROJECT_DIR}` | The folder you start Claude Code in is the one folder the tools may read |
-| Output folder | `--output-dir "${CLAUDE_PROJECT_DIR}/media files/export"` | Every result goes into a new numbered folder in `media files/export/`, which the server creates on first use. Put source files in `media files/import/` and test files in `media files/tests/` |
+| Output folder | `--output-dir "${CLAUDE_PROJECT_DIR}/media files/export"` | A single result goes straight into `media files/export/`, which the server creates on first use. Several files from one call get a numbered folder there. Put source files in `media files/import/` and test files in `media files/tests/` |
 | `MEDIA_EDITOR_DATA_DIR` | `${CLAUDE_PLUGIN_DATA}` | Where `media_setup_ffmpeg` installs a downloaded ffmpeg, kept across plugin updates |
 
 ---

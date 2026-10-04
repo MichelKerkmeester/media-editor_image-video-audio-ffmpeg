@@ -14,8 +14,9 @@ import { ERROR_CODES, MediaError, isMediaError } from '../../core/errors.js';
 import { readProbeJson } from '../../core/media-properties.js';
 import { successResult } from '../../core/result.js';
 import { defineTool } from '../../server/tool-registry.js';
+import { videoPreview, previewField, withPreviewBlock } from './preview.js';
 
-import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
+import type { CallToolResult, ImageContent } from '@modelcontextprotocol/sdk/types.js';
 import type { ResolvedInput } from '../../core/path-guard.js';
 import type { ToolContext } from '../../server/tool-context.js';
 
@@ -26,6 +27,7 @@ import type { ToolContext } from '../../server/tool-context.js';
 /** Arguments for one probe call. */
 interface ProbeArguments {
   readonly inputPath: string;
+  readonly preview?: boolean;
 }
 
 /** The container block, holding one key per value ffprobe reported. */
@@ -68,6 +70,8 @@ interface ProbeStream {
 // ───────────────────────────────────────────────────────────────────
 
 const TOOL_NAME = 'media_probe';
+const NO_PICTURE = 'No preview: the file has no picture.';
+const PREVIEW_FAILED = 'No preview: ffmpeg could not read a frame.';
 
 const VIDEO_STREAM = 'video';
 const AUDIO_STREAM = 'audio';
@@ -343,6 +347,25 @@ async function readProbe(context: ToolContext, input: ResolvedInput): Promise<un
   }
 }
 
+async function previewOf(
+  context: ToolContext,
+  input: ResolvedInput,
+  summary: ProbeSummary,
+  warnings: string[],
+): Promise<ImageContent | undefined> {
+  if (!summary.hasVideo) {
+    warnings.push(NO_PICTURE);
+    return undefined;
+  }
+  try {
+    return await videoPreview(context, input, summary.durationSeconds);
+  } catch {
+    // The metadata is the answer. A preview that fails is a warning.
+    warnings.push(PREVIEW_FAILED);
+    return undefined;
+  }
+}
+
 // ───────────────────────────────────────────────────────────────────
 // 5. CORE LOGIC
 // ───────────────────────────────────────────────────────────────────
@@ -355,11 +378,16 @@ async function runProbe(args: ProbeArguments, context: ToolContext): Promise<Cal
   const format = formatBlock(root);
   const streams = streamRecords(root);
   const summary = summaryBlock(streams, format.durationSeconds);
-  return successResult({
+  const warnings: string[] = [];
+  const preview = args.preview === true
+    ? await previewOf(context, input, summary, warnings)
+    : undefined;
+  const text = probeText(path.basename(input.rawPath), streams.length, summary.durationSeconds);
+  const result = successResult({
     tool: TOOL_NAME,
-    text: probeText(path.basename(input.rawPath), streams.length, summary.durationSeconds),
+    text: preview === undefined ? text : `${text} Preview attached.`,
     outputs: [],
-    warnings: [],
+    warnings,
     elapsedMs: Date.now() - startedAt,
     extras: {
       format,
@@ -367,6 +395,7 @@ async function runProbe(args: ProbeArguments, context: ToolContext): Promise<Cal
       streams: streams.map((stream) => streamEntry(stream)),
     },
   });
+  return preview === undefined ? result : withPreviewBlock(result, preview);
 }
 
 // ───────────────────────────────────────────────────────────────────
@@ -380,8 +409,9 @@ export const mediaProbeTool = defineTool({
   description:
     'Reads container and stream metadata from one image, audio or video file with ffprobe: '
     + 'format name, duration, size and bit rate, plus the codec, pixel size, frame rate, '
-    + 'sample rate and channel layout of every stream. It writes nothing, creates no output '
-    + 'folder, and never changes the input.',
+    + 'sample rate and channel layout of every stream. With preview it also returns one '
+    + 'small JPEG frame, to name the file by what it shows. It writes nothing, creates no '
+    + 'output folder, and never changes the input.',
   inputSchema: {
     inputPath: z
       .string()
@@ -390,6 +420,7 @@ export const mediaProbeTool = defineTool({
         'Absolute path of the image, audio or video file to read, inside an allowed root. '
         + 'The file is not changed.',
       ),
+    preview: previewField,
   },
   annotations: {
     readOnlyHint: true,

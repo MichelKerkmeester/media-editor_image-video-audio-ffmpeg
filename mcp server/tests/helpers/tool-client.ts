@@ -173,6 +173,11 @@ export async function withToolClient(
 /**
  * Call one tool and return its structured body.
  *
+ * A call that names an `outputName` and makes no folder choice is sent with
+ * `subfolder: true`, so these suites keep checking the numbered folders.
+ * {@link callToolAsSent} sends the arguments unchanged, for the export-root
+ * default.
+ *
  * The first content entry must be text with no line break.
  *
  * @param client - Connected MCP client
@@ -182,6 +187,28 @@ export async function withToolClient(
  * @throws {Error} When the result has no text content entry
  */
 export async function callTool(
+  client: Client,
+  name: string,
+  args: Record<string, unknown>,
+): Promise<CallOutcome> {
+  const pinned = 'outputName' in args && !('subfolder' in args)
+    ? { ...args, subfolder: true }
+    : args;
+  return callToolAsSent(client, name, pinned);
+}
+
+/**
+ * Call one tool with the arguments exactly as given.
+ *
+ * The first content entry must be text with no line break.
+ *
+ * @param client - Connected MCP client
+ * @param name - Registered tool name
+ * @param args - Arguments object, already schema-shaped
+ * @returns Whether the call failed, and its structured body
+ * @throws {Error} When the result has no text content entry
+ */
+export async function callToolAsSent(
   client: Client,
   name: string,
   args: Record<string, unknown>,

@@ -12,7 +12,7 @@ This scenario validates that the Interactive command binds Interactive Mode even
 
 ## 1. OVERVIEW
 
-`$interactive` and `$int` name Interactive Mode outright. The prompt also carries `resize` and `photo`, which score Image Mode, but a command beats keyword scoring, so the runtime must ask one comprehensive question and wait instead of resizing.
+`$interactive` and `$int` name Interactive Mode outright. The prompt also carries `resize` and `photo`, which score Image Mode, but a command beats keyword scoring, so the runtime must ask one comprehensive question and wait instead of resizing. That one question also carries a readable name proposed for the result.
 
 ### Why this matters
 
@@ -27,15 +27,15 @@ A user types `$interactive` to be asked before anything runs. A runtime that let
 - Prompt: `$interactive Resize this photo for the newsletter.`
 - Precondition: `SID-001` passed for this runtime in the current disposable copy
 - Expected execution process: Seed one photo, start a fresh skill session, submit Turn 1, then confirm the reply is one question and that nothing was written
-- Expected signals: The reply asks one comprehensive question, runs no ffmpeg command and writes nothing under `media files/export/`
-- Desired user-visible outcome: One comprehensive question and no edit
-- Pass/fail: PASS if the reply is one comprehensive question and the export folder is unchanged. FAIL if a resize ran, a file was written or the reply splits its questions across several turns
+- Expected signals: The reply asks one comprehensive question that carries a proposed readable name for the result, runs no ffmpeg command and writes nothing under `media files/export/`
+- Desired user-visible outcome: One comprehensive question that carries a proposed name, and no edit
+- Pass/fail: PASS if the reply is one comprehensive question that carries a proposed name and the export folder is unchanged. FAIL if a resize ran, a file was written, the reply splits its questions across several turns or the question leaves out the proposed name
 
 ### Conversation chain
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$interactive Resize this photo for the newsletter.` | Bind Interactive Mode and ask one comprehensive question that covers what is still unknown, such as the target size, the output format and where the file is, then wait. | No operation ran and no file was written. | Reply transcript and the per-turn side-effect ledger. |
+| 1 | `$interactive Resize this photo for the newsletter.` | Bind Interactive Mode and ask one comprehensive question that covers what is still unknown, such as the target size, the output format and where the file is, and that carries a proposed readable name for the result, then wait. | No operation ran and no file was written. | Reply transcript and the per-turn side-effect ledger. |
 
 ---
 
@@ -61,18 +61,18 @@ Capture the full reply, the per-turn side-effect ledger and the export folder li
 
 ### Pass / fail
 
-- **Pass**: The reply is one comprehensive question and the export folder matches the baseline
-- **Fail**: A resize ran, a file was written, or the questions are split across several replies
+- **Pass**: The reply is one comprehensive question that carries a proposed name and the export folder matches the baseline
+- **Fail**: A resize ran, a file was written, the questions are split across several replies, or the question has no proposed name
 
 ### Failure triage
 
 1. Check that `$interactive` and `$int` are in the command table in `SKILL.md` and `references/router-contract.md`.
-2. Check the one-question rule in `references/interactive-intelligence.md`.
+2. Check the one-question rule and the name proposal in `references/interactive-intelligence.md`.
 3. Check the ledger for any write.
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| SCR-005 | Interactive command | Verify `$interactive` binds Interactive Mode over the image keywords and asks one comprehensive question | `$interactive Resize this photo for the newsletter.` | 1. Seed fixture and baseline -> 2. Submit Turn 1 fresh -> 3. Count questions and compare the export folder | Step 1: fixture ready. Step 2: one comprehensive question. Step 3: no write | Reply, side-effect ledger, export listing before and after | PASS if one question and no write. FAIL on any edit or split questions | 1. Check the Interactive commands.<br>2. Check the one-question rule.<br>3. Check the ledger. |
+| SCR-005 | Interactive command | Verify `$interactive` binds Interactive Mode over the image keywords and asks one comprehensive question | `$interactive Resize this photo for the newsletter.` | 1. Seed fixture and baseline -> 2. Submit Turn 1 fresh -> 3. Count questions, check the proposed name and compare the export folder | Step 1: fixture ready. Step 2: one comprehensive question with a proposed name. Step 3: no write | Reply, side-effect ledger, export listing before and after | PASS if one question carries a proposed name and nothing is written. FAIL on any edit, split questions or a missing proposed name | 1. Check the Interactive commands.<br>2. Check the one-question rule and the name proposal.<br>3. Check the ledger. |
 
 ---
 

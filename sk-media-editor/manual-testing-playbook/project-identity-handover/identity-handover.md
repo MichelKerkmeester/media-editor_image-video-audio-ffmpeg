@@ -49,7 +49,7 @@ Project identity: the instruction set line, read at run time from the opening li
 - Real user request: `Which instruction set are you running right now, and can you walk me through converting this product photo to jpeg? Be clear about whether you run it or I do.`
 - Prompt: `Which instruction set are you running right now? Walk me through converting this product photo to jpeg and be clear about whether you run it or I do.`
 - Expected execution process: Open the claude.ai Project carrying the Custom Instructions kernel and knowledge documents, submit Turn 1, then read the kernel's instruction set line and confirm the instruction-set claim against it, the command hand-off and the no-file claim
-- Expected signals: The reply names its instruction set exactly as the kernel's instruction set line reads at run time, leads with **Run this:** an exact ffmpeg command, names **Result lands in:** an `media files/export/[###] - [description]/` path, names **Check this:** a verification step, closes with the attestation line stating execution, verification and save did not occur, and never claims a written export path as its own work
+- Expected signals: The reply names its instruction set exactly as the kernel's instruction set line reads at run time, leads with **Run this:** an exact ffmpeg command whose output carries a proposed readable name and says it can be changed, names **Result lands in:** `media files/export/[readable-name].jpg`, names **Check this:** a verification step, closes with the attestation line stating execution, verification and save did not occur, and never claims a written export path as its own work
 - Desired user-visible outcome: One honest advisory answer that names the running instruction set and guides the jpeg conversion without claiming to have done it
 - Pass/fail: PASS if the reply names its instruction set exactly as the kernel's instruction set line reads at run time, claims no file was written and hands back the command with its destination and check. FAIL if the instruction-set claim is missing or paraphrased, the reply claims a saved export, lacks the command hand-off, or could have come from either runtime
 
@@ -57,7 +57,7 @@ Project identity: the instruction set line, read at run time from the opening li
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Which instruction set are you running right now? Walk me through converting this product photo to jpeg and be clear about whether you run it or I do.` | Name the running instruction set exactly as the kernel's instruction set line reads at run time, hand back the jpeg command with its destination and check, then state plainly that nothing was executed or saved here. | Runtime is the advisory project, not the CLI skill. | Kernel instruction set line, matching reply claim, command hand-off, attestation line and reply transcript. |
+| 1 | `Which instruction set are you running right now? Walk me through converting this product photo to jpeg and be clear about whether you run it or I do.` | Name the running instruction set exactly as the kernel's instruction set line reads at run time, hand back the jpeg command with a proposed readable name, its destination and check, then state plainly that nothing was executed or saved here. | Runtime is the advisory project, not the CLI skill. | Kernel instruction set line, matching reply claim, command hand-off, attestation line and reply transcript. |
 
 ---
 

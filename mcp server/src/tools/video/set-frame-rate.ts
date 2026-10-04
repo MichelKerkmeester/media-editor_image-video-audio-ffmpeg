@@ -140,7 +140,7 @@ export const videoSetFrameRateTool = defineTool({
   title: 'Set video frame rate',
   description:
     'Re-encodes the picture of one video at a target frame rate. It writes '
-    + 'the file in a new numbered folder and never changes the input.',
+    + 'the file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),
     outputName: outputNameField,

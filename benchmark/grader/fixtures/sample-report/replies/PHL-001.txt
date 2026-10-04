@@ -16,6 +16,6 @@ Result lands in: `media files/export/006 - keynote-hls/` in your terminal, one f
 
 Check this: run `ffprobe` on the master playlist after the command finishes and confirm all four variants list.
 
-mode = hls | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+mode = hls | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur
 
 Run the command above, then verify the folder on disk. No file was produced here.

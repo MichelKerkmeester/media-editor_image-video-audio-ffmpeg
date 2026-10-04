@@ -1,6 +1,6 @@
 ---
 title: "STV-001 -- Missing FFmpeg advice"
-description: "Validates that the runtime, with no Media Editor tools connected and no ffmpeg on the path, processes nothing and answers with the exact command, a plain statement that nothing ran and install guidance."
+description: "Validates that the runtime, with no Media Editor tools connected and no ffmpeg on the path, processes nothing and answers with the exact command, a plain statement that nothing ran and a setup offer."
 version: 1.0.0.0
 ---
 
@@ -12,7 +12,7 @@ This scenario validates the last route of the route order: advice when neither t
 
 ## 1. OVERVIEW
 
-The runtime takes the first route that is available: the Media Editor tools, then installed ffmpeg, then advice. This scenario starts the session without the plugin and with ffmpeg off the path, so only advice is left, and submits a compression request. The reply must give the exact command, state plainly that nothing ran, give install guidance for the extension, the plugin or ffmpeg and run no processing call.
+The runtime takes the first route that is available: the Media Editor tools, then installed ffmpeg, then advice. This scenario starts the session without the plugin and with ffmpeg off the path, so only advice is left, and submits a compression request. The reply must give the exact command, state plainly that nothing ran, offer once to walk the user through installing the extension, the plugin or ffmpeg from `references/setup.md` and run no processing call.
 
 ### Why this matters
 
@@ -26,16 +26,16 @@ The tool check is the precondition every mode shares. A runtime that processes a
 - Real user request: `Compress this banner image and get it under 200KB.`
 - Prompt: `Compress this banner image and get it under 200KB.`
 - Precondition: `SID-001` passed for this runtime in the current disposable copy
-- Expected execution process: Seed one banner image, start a session without the plugin and with ffmpeg off the path, submit Turn 1, then confirm the advice, the install guidance and the untouched export baseline
-- Expected signals: No Media Editor tool is connected or claimed, the first tool action is the failing `ffmpeg -version` check, the reply gives the exact compression command, states that nothing ran and gives install guidance, no processing call runs and no export appears
-- Desired user-visible outcome: Advice with the exact command, a plain statement that nothing ran, install guidance and an empty side-effect ledger
-- Pass/fail: PASS if the check ran first, the reply gives the command, says plainly that nothing ran with install guidance and no artifact appears. FAIL if processing started, an export appeared, the reply implies a tool ran or the limitation is hidden. SKIP only when the sandbox cannot start a session with ffmpeg off the path and the plugin unloaded
+- Expected execution process: Seed one banner image, start a session without the plugin and with ffmpeg off the path, submit Turn 1, then confirm the advice, the setup offer and the untouched export baseline
+- Expected signals: No Media Editor tool is connected or claimed, the first tool action is the failing `ffmpeg -version` check, the reply gives the exact compression command with an output path of `media files/export/[readable-name].[ext]` that carries a name proposed from what the banner shows and says it can be changed, the reply states that nothing ran and gives a setup offer, no processing call runs, no question holds the command back and no export appears
+- Desired user-visible outcome: Advice with the exact command and its proposed readable output name, a plain statement that nothing ran, a setup offer and an empty side-effect ledger
+- Pass/fail: PASS if the check ran first, the reply gives the command with a proposed readable name in its output path, says plainly that nothing ran with a setup offer and no artifact appears. FAIL if processing started, an export appeared, the reply holds the command back to ask for a name, the reply implies a tool ran or the limitation is hidden. SKIP only when the sandbox cannot start a session with ffmpeg off the path and the plugin unloaded
 
 ### Conversation chain
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Compress this banner image and get it under 200KB.` | Find no Media Editor tools, run `ffmpeg -version`, find it missing, give the command with a plain statement that nothing ran and install guidance, and create no artifact. | Check ran first, no processing call, no tool claimed. | Reply, failed check output, per-turn side-effect ledger and baseline comparison. |
+| 1 | `Compress this banner image and get it under 200KB.` | Find no Media Editor tools, run `ffmpeg -version`, find it missing, give the command with a proposed readable name in its output path, a plain statement that nothing ran and a setup offer, and create no artifact. | Check ran first, no processing call, no tool claimed. | Reply, failed check output, per-turn side-effect ledger and baseline comparison. |
 
 ---
 
@@ -49,11 +49,11 @@ The tool check is the precondition every mode shares. A runtime that processes a
 
 1. `sandbox: seed banner-image.png over 200KB, record the export baseline, start the runtime without the plugin and with a PATH where ffmpeg does not resolve, and confirm ffmpeg -version fails`
 2. `session: start fresh -> user: submit Turn 1 exactly`
-3. `operator: confirm the check ran first and the advice gives the command, says nothing ran and gives install guidance -> filesystem: confirm the export baseline is unchanged`
+3. `operator: confirm the check ran first and the advice gives the command with a proposed readable name, says nothing ran and gives a setup offer -> filesystem: confirm the export baseline is unchanged`
 
 ### Expected
 
-Step 1 fixes the fixture, the baseline and the missing-tool condition. Step 2 runs the check, sees the failure and advises. Step 3 proves no processing call or export followed and the guidance names a real install path.
+Step 1 fixes the fixture, the baseline and the missing-tool condition. Step 2 runs the check, sees the failure and advises. Step 3 proves no processing call or export followed, the command carries a proposed output name and the offer names a real install path.
 
 ### Evidence
 
@@ -61,8 +61,8 @@ Capture the full reply, the failed `ffmpeg -version` output, the per-turn side-e
 
 ### Pass / fail
 
-- **Pass**: `ffmpeg -version` ran first, the reply gives the command, states plainly that nothing ran with install guidance and the sandbox stays unchanged
-- **Fail**: Processing ran before the check, an export appeared, the reply hides the missing tool or it implies a tool produced a result
+- **Pass**: `ffmpeg -version` ran first, the reply gives the command with a proposed readable name, states plainly that nothing ran with a setup offer and the sandbox stays unchanged
+- **Fail**: Processing ran before the check, an export appeared, the reply holds the command back to ask for a name, the reply hides the missing tool or it implies a tool produced a result
 
 ### Failure triage
 
@@ -72,7 +72,7 @@ Capture the full reply, the failed `ffmpeg -version` output, the per-turn side-e
 
 | Feature ID | Feature Name | Scenario Name / Objective | Exact Prompt | Exact Command Sequence | Expected Signals | Evidence | Pass/Fail Criteria | Failure Triage |
 |---|---|---|---|---|---|---|---|---|
-| STV-001 | Missing FFmpeg advice | Verify the tool check runs first and, with neither route available, the reply advises without processing | `Compress this banner image and get it under 200KB.` | 1. Seed fixture, baseline and a session with no plugin and no ffmpeg -> 2. Submit Turn 1 fresh -> 3. Confirm advice and unchanged baseline | Step 1: fixture ready, no tools and ffmpeg unresolvable. Step 2: failing check then advice. Step 3: no artifact and clear install guidance | Reply, failed check output, per-turn side-effect ledger, baseline comparison | PASS if the check ran first, the reply said nothing ran with the command and install guidance and no artifact appeared. FAIL on processing before the check, a hidden limitation or a tool claim | 1. Check the tool check gate.<br>2. Check the session setup and the failure output.<br>3. Check the ledger for writes. |
+| STV-001 | Missing FFmpeg advice | Verify the tool check runs first and, with neither route available, the reply advises without processing | `Compress this banner image and get it under 200KB.` | 1. Seed fixture, baseline and a session with no plugin and no ffmpeg -> 2. Submit Turn 1 fresh -> 3. Confirm advice, the proposed name and unchanged baseline | Step 1: fixture ready, no tools and ffmpeg unresolvable. Step 2: failing check then advice. Step 3: no artifact, a proposed name in the command and a one-line setup offer | Reply, failed check output, per-turn side-effect ledger, baseline comparison | PASS if the check ran first, the reply said nothing ran with the command, a proposed name and a setup offer and no artifact appeared. FAIL on processing before the check, a held-back command, a hidden limitation or a tool claim | 1. Check the tool check gate.<br>2. Check the session setup and the failure output.<br>3. Check the ledger for writes. |
 
 ---
 
@@ -84,6 +84,7 @@ No feature catalog exists. Current runtime sources are the evidence authority.
 |---|---|
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | ALWAYS 1, NEVER 2, ESCALATE 2 and the tool check |
+| [`setup.md`](../../references/setup.md) | The guided setup the reply offers |
 | [`AGENTS.md`](../../../AGENTS.md) | Deliverable export protocol and the route order |
 
 ---
