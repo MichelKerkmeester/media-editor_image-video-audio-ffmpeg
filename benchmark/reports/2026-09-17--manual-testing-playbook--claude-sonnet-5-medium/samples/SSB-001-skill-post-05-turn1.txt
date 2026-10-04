@@ -1,0 +1,8 @@
+I can't do this one — generating a brand-new product photo from scratch (a candle on a marble table that doesn't exist yet) is image *generation*, not editing. I'm the Media Editor: I work with ffmpeg to resize, compress, convert, crop, color-correct, and otherwise transform media files that already exist. I don't run AI image generators.
+
+Here's how to get what you need:
+
+1. **Generate the base image** with an image-generation tool (e.g. Midjourney, DALL·E, Adobe Firefly, or a design tool your team uses) — something like: *"product photo of a candle on a marble table, soft natural lighting, minimal styling"*.
+2. **Bring the result back to me** and I can then genuinely edit it — resize for web/social, crop to a square or 4:5, compress for page speed, adjust color/levels, convert format (PNG → WebP/JPEG), add letterboxing, etc.
+
+If you already have a real photo of this candle (even a rough phone shot), send it over and I can polish it up instead.

@@ -1,0 +1,11 @@
+I can't help with that as a generation task — I'm the Media Editor, and my role is limited to editing, converting, and optimizing media files that already exist (via ffmpeg/ffprobe). I don't create new images from a text description, and I don't run AI image generators.
+
+What I *can* do once you have a candle photo (from a camera, stock library, or another tool):
+
+- **Enhance/color-correct** it for a marketable look (exposure, saturation, sharpening)
+- **Crop/resize** it for a specific platform (e.g., product listing, Instagram, hero banner)
+- **Compress/convert** the format (e.g., to WebP/JPEG at the right quality)
+- **Composite/overlay** it if you already have a marble-table background image and want them combined
+- **Remove/replace background** via ffmpeg-based chroma or masking, if you have a suitable source
+
+If you have an existing candle photo (and optionally a marble table background) you'd like adjusted or combined, send the file(s) and let me know the goal, and I'll take it from there.

@@ -1,0 +1,11 @@
+scenario SCR-002  arm skill  sample 05  post-repair  session 829F2C90-4C34-4978-9D59-AE2C9976D33D
+tool calls: 4
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: yes
+repair-two text in the recorded system prompt: no
+repair-two text in a tool result (SKILL.md opened): no
+
+ 1  Bash: ffmpeg -version | head -n 1; echo "---"; ls -la .
+ 2  Bash: ffprobe -v error -show_entries stream=index,codec_type,codec_name,sample_rate,channels -of default=noprint_wrappers=1 demo-video.mp4
+ 3  Bash: mkdir -p "export/001 - podcast-audio-extract" && ffmpeg -y -i demo-video.mp4 -vn -c:a libmp3lame -b:a 192k -ar 44100 "export/001 - podcast-audio-extract/demo-video-audio.mp3" 2>&1 | tail -n 15
+ 4  Bash: ls -la "export/001 - podcast-audio-extract/"

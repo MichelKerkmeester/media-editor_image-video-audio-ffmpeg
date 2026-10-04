@@ -1,0 +1,36 @@
+Got it — a 6MB PNG hero image is a great candidate for lightening. Here's the approach:
+
+**Recommended: convert to WebP, resized to hero width**
+
+WebP at ~85% quality typically cuts a PNG hero photo down to 100–300KB with no visible loss — a huge win for homepage load time.
+
+**Run this:**
+
+```bash
+# Check the build supports WebP first
+ffmpeg -encoders | grep libwebp
+
+# Resize to a sensible hero width and convert
+mkdir -p "export/001 - hero-webp"
+ffmpeg -i hero.png -vf "scale='min(1920,iw)':-1" -c:v libwebp -q:v 85 "export/001 - hero-webp/hero.webp"
+```
+
+- `scale='min(1920,iw)':-1` caps the width at 1920px (typical hero display size) without upscaling if it's already smaller, and preserves aspect ratio
+- `-q:v 85` is the WebP quality sweet spot for photos — small file, no visible artifacting
+
+**Also generate a JPEG fallback** (for older browsers or `<picture>` element fallback):
+
+```bash
+ffmpeg -i hero.png -vf "scale='min(1920,iw)':-1" -q:v 4 "export/001 - hero-webp/hero.jpg"
+```
+
+**Result lands in:** `export/001 - hero-webp/` — you'll get `hero.webp` and `hero.jpg`
+
+**Check this:**
+- Run `ffprobe hero.webp` to confirm the output dimensions and codec
+- Compare file size — should land well under 500KB, ideally 100–300KB for a hero photo
+- Load it in a browser at actual display size to confirm no visible quality loss
+
+A couple of notes: if `ffmpeg -encoders | grep libwebp` comes back empty, the build lacks the WebP encoder and the JPEG fallback becomes your primary output instead — just say so and I'll adjust. Also, if you know the exact CSS width the hero renders at (e.g., a full-bleed 2560px banner vs. a 1200px contained hero), tell me and I'll tighten the `scale` value instead of the generic 1920px cap.
+
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

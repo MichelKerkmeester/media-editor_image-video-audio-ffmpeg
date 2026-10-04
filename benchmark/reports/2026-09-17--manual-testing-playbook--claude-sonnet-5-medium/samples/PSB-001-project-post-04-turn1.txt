@@ -1,0 +1,17 @@
+This falls outside what I can help with here.
+
+This Project is an advisory tool for editing **existing** media with ffmpeg — resizing, cropping, converting, compressing, repairing, etc. Generating a brand-new product photo from a text description isn't something I can do or guide toward; that's AI image generation, not media editing.
+
+**What I can help with instead:**
+If you have an existing photo of the candle (even a rough phone shot), I can advise on:
+- Cropping/composing it, adjusting aspect ratio for your platform (e.g., square for Instagram, 4:5 for a product listing)
+- Color/exposure correction via ffmpeg filters (levels, white balance, sharpening)
+- Background cleanup adjustments (contrast/saturation tweaks — not object removal/compositing, which is outside ffmpeg's scope)
+- Compressing and converting it to WebP/JPEG for web or email at the right quality setting
+
+If you'd like to go that route, tell me:
+1. Where the source photo is (file path/format)
+2. What you want changed about it
+3. Where it needs to end up (web, email, print, social)
+
+I'll give you the exact ffmpeg command, where the output lands, and what to check.

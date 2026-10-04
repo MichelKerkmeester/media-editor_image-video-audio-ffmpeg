@@ -1,0 +1,26 @@
+Good — that's Image Mode. A 6MB PNG hero image is almost always oversized because PNG is lossless; for a photographic hero image, converting to a compressed format is the biggest win, with resizing as the second lever.
+
+**Recommended approach: PNG → WebP at 85% quality, resized to a sane hero width**
+
+Hero images rarely need to exceed 1920px wide for a homepage banner, even on retina displays (browsers downscale intelligently, and 1920px covers nearly all viewports well).
+
+**Run this:**
+```bash
+ffmpeg -i input.png -vf "scale=1920:-1" -c:v libwebp -q:v 85 export/001\ -\ hero-webp/hero.webp
+```
+
+**Result lands in:** `export/001 - hero-webp/hero.webp`
+
+**Check this:** Run `ffprobe export/001\ -\ hero-webp/hero.webp` to confirm dimensions and codec, then open the file to confirm visual quality holds up at 85%. Compare file size against the original 6MB — a photographic hero at 1920px/q85 WebP typically lands in the 150–400KB range, a 90%+ reduction.
+
+A few notes:
+- **Encoder check:** WebP output depends on the installed ffmpeg build carrying `libwebp`. Before running, check with `ffmpeg -encoders | grep webp`. If it's missing, JPEG at quality 80 is the universal fallback:
+  ```bash
+  ffmpeg -i input.png -vf "scale=1920:-1" -q:v 5 export/001\ -\ hero-jpeg/hero.jpg
+  ```
+- **If the image needs transparency** (unlikely for a hero photo, but flag if true), WebP still supports alpha — PNG would be the only other option, but it'll stay much larger.
+- **AVIF** would compress even further, but browser support and encoder availability are less universal — only worth it if you confirm `libaom-av1` is in your build and you're comfortable with a WebP fallback via `<picture>`.
+
+Let me know if you want the AVIF variant too, or if this image needs specific crop dimensions for your hero layout.
+
+`mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked`

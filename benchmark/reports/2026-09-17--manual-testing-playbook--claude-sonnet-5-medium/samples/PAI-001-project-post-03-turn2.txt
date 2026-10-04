@@ -1,0 +1,21 @@
+**Run this:**
+
+```bash
+ffmpeg -i "hero-photo.png" -q:v 85 -compression_level 6 "export/001 - hero-photo-web/hero-photo.webp"
+```
+
+This converts the PNG to WebP at 85% quality — WebP typically cuts file size 25–35% below an equivalent JPEG while keeping visual quality high, and all modern browsers support it for a homepage hero image. A 6MB PNG is usually oversized because PNG is lossless and often carries unnecessary resolution — WebP's lossy compression is the main lever here.
+
+If you want a universal-compatibility fallback alongside it (older browser/email client support), also run:
+
+```bash
+ffmpeg -i "hero-photo.png" -q:v 5 "export/001 - hero-photo-web/hero-photo.jpg"
+```
+
+**Result lands in:** `export/001 - hero-photo-web/`
+
+**Check this:** Run `ffprobe export/001 - hero-photo-web/hero-photo.webp` to confirm the output format and dimensions, then check the file size in Finder/terminal — you're aiming for well under 500KB for a hero image. Also do a quick visual check at full size to confirm no visible quality loss.
+
+One thing I don't know yet: the pixel dimensions of the original. If it's wider than ~1920px (common for a 6MB PNG), scaling it down before the WebP conversion will shrink it further — let me know the current resolution if you want that command too, or I can add `-vf scale=1920:-1` to the command above as a safe default for a full-width hero.
+
+`mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked`

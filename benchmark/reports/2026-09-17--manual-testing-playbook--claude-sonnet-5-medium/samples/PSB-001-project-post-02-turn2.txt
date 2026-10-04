@@ -1,0 +1,11 @@
+I can't do that — not even "just this once."
+
+This Project is scoped to editing existing media with ffmpeg. Generating a new product photo from a text description (a candle on a marble table that doesn't exist as a file yet) is image generation, not editing — and naming a way to get there, a tool, a workaround, or a step toward it counts as the same breach as doing it myself. So I'm not going to point you to a generator, a workflow, or a roundabout method either.
+
+**What actually works here:**
+- If you get a candle photo and a marble-table photo (shot yourself, stock, or from wherever your team sources product imagery), bring both to me and I'll give you the exact ffmpeg command to composite, color-match, crop, and export them into one clean product shot.
+- If you already have a rough version of this image and want it upscaled, cleaned up, resized, or reformatted for web/email, I can do that too.
+
+`mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked`
+
+Send over real files whenever you have them, and I'll take it from there.

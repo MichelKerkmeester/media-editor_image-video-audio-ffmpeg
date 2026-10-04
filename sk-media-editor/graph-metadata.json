@@ -1,0 +1,168 @@
+{
+  "schema_version": 2,
+  "skill_id": "sk-media-editor",
+  "family": "sk-util",
+  "category": "media-editing-and-transcoding",
+  "deprecated": false,
+  "edges": {
+    "depends_on": [],
+    "enhances": [
+      {
+        "target": "mcp-tooling",
+        "weight": 0.3,
+        "context": "drives the Media Editor MCP server's 39 tools as its execution layer, with locally installed ffmpeg as the fallback, rather than authoring its own transport layer"
+      }
+    ],
+    "siblings": [
+      {
+        "target": "sk-product-owner",
+        "weight": 0.2,
+        "context": "sibling standalone Barter skill: sk-product-owner authors backlog and documentation artifacts, sk-media-editor edits and packages existing image, video and audio deliverables"
+      }
+    ],
+    "conflicts_with": [],
+    "prerequisite_for": []
+  },
+  "domains": [
+    "media-editing",
+    "image-processing",
+    "video-transcoding",
+    "audio-processing",
+    "hls-streaming",
+    "ffmpeg",
+    "media-editor-tools"
+  ],
+  "intent_signals": [
+    "resize or convert an image",
+    "compress or transcode a video",
+    "extract or convert audio",
+    "convert to HLS adaptive streaming",
+    "repair or diagnose a broken media file",
+    "resize image",
+    "compress video",
+    "extract audio",
+    "make it stream",
+    "remove silence"
+  ],
+  "derived": {
+    "trigger_phrases": [
+      "media editor",
+      "resize image",
+      "compress photo",
+      "convert to webp",
+      "compress video",
+      "trim clip",
+      "transcode to mp4",
+      "extract audio",
+      "convert to mp3",
+      "remove silence",
+      "make it stream",
+      "adaptive streaming",
+      "hls",
+      "optimize for web",
+      "shrink the file",
+      "reduce size",
+      "repair broken file",
+      "diagnose media file"
+    ],
+    "key_topics": [
+      "image-mode",
+      "video-mode",
+      "audio-mode",
+      "hls-mode",
+      "repair-mode",
+      "interactive-mode",
+      "media-framework",
+      "human-voice-core",
+      "human-voice-rules",
+      "tool-verification",
+      "format-and-quality-intelligence",
+      "export-protocol"
+    ],
+    "intent_signals": [
+      "image edit or conversion",
+      "video transcode or edit",
+      "audio extraction or conversion",
+      "HLS adaptive streaming conversion",
+      "broken media file repair or diagnosis"
+    ],
+    "key_files": [
+      "sk-media-editor/SKILL.md",
+      "sk-media-editor/references/media-framework.md",
+      "sk-media-editor/references/hvr-core.md",
+      "sk-media-editor/references/human-voice-rules.md",
+      "sk-media-editor/references/interactive-intelligence.md",
+      "sk-media-editor/references/image-operations.md",
+      "sk-media-editor/references/video-and-audio-operations.md",
+      "sk-media-editor/references/tools.md",
+      "sk-media-editor/references/router-contract.md",
+      "sk-media-editor/assets/hls-video-conversion.md"
+    ],
+    "entities": [
+      {
+        "name": "sk-media-editor",
+        "kind": "skill",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "media-framework",
+        "kind": "reference",
+        "path": "sk-media-editor/references/media-framework.md",
+        "source": "derived"
+      },
+      {
+        "name": "image-operations",
+        "kind": "reference",
+        "path": "sk-media-editor/references/image-operations.md",
+        "source": "derived"
+      },
+      {
+        "name": "video-and-audio-operations",
+        "kind": "reference",
+        "path": "sk-media-editor/references/video-and-audio-operations.md",
+        "source": "derived"
+      },
+      {
+        "name": "tools",
+        "kind": "reference",
+        "path": "sk-media-editor/references/tools.md",
+        "source": "derived"
+      },
+      {
+        "name": "router-contract",
+        "kind": "reference",
+        "path": "sk-media-editor/references/router-contract.md",
+        "source": "derived"
+      },
+      {
+        "name": "interactive-intelligence",
+        "kind": "reference",
+        "path": "sk-media-editor/references/interactive-intelligence.md",
+        "source": "derived"
+      },
+      {
+        "name": "hls-video-conversion",
+        "kind": "asset",
+        "path": "sk-media-editor/assets/hls-video-conversion.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "Standalone Media Editor skill for Barter that edits, converts, compresses and streams existing images, video and audio. Routes every request into one of five intents (Image, Video, Audio, HLS, Repair) through an exact-command then semantic-keyword detection sequence, binds each intent to a Media Editor tool group with locally installed ffmpeg as the fallback, checks the route before any operation, applies the MEDIA thinking framework, and exports a verified result before responding. It matters because it is the one discoverable identity for Barter media editing work, keeping tool-capability promises honest and deliverables saved and verified before every response.",
+    "source_docs": [
+      "SKILL.md",
+      "leaf-manifest.config.json",
+      "references/media-framework.md",
+      "references/hvr-core.md",
+      "references/human-voice-rules.md",
+      "references/interactive-intelligence.md",
+      "references/image-operations.md",
+      "references/video-and-audio-operations.md",
+      "references/tools.md",
+      "references/router-contract.md",
+      "assets/hls-video-conversion.md"
+    ],
+    "created_at": "2026-07-16T00:00:00Z",
+    "last_updated_at": "2026-10-03T00:00:00Z"
+  }
+}

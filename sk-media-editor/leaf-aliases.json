@@ -1,0 +1,182 @@
+[
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "assets/hls-video-conversion.md",
+    "diskPath": "assets/hls-video-conversion.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-ambiguity-intake/one-comprehensive-question.md",
+    "diskPath": "manual-testing-playbook/project-ambiguity-intake/one-comprehensive-question.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-boundaries/generation-request-refusal.md",
+    "diskPath": "manual-testing-playbook/project-boundaries/generation-request-refusal.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-boundaries/size-limit-escalation.md",
+    "diskPath": "manual-testing-playbook/project-boundaries/size-limit-escalation.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-command-routing/command-overrides-keywords.md",
+    "diskPath": "manual-testing-playbook/project-command-routing/command-overrides-keywords.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-command-routing/first-command-wins.md",
+    "diskPath": "manual-testing-playbook/project-command-routing/first-command-wins.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md",
+    "diskPath": "manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-hls-recipe/ffmpeg-terminal-recipe.md",
+    "diskPath": "manual-testing-playbook/project-hls-recipe/ffmpeg-terminal-recipe.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-identity-handover/identity-handover.md",
+    "diskPath": "manual-testing-playbook/project-identity-handover/identity-handover.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-no-execution-truth/cannot-execute-files.md",
+    "diskPath": "manual-testing-playbook/project-no-execution-truth/cannot-execute-files.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-repair-mode/repair-guidance.md",
+    "diskPath": "manual-testing-playbook/project-repair-mode/repair-guidance.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-route-order/connected-tools-in-desktop.md",
+    "diskPath": "manual-testing-playbook/project-route-order/connected-tools-in-desktop.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md",
+    "diskPath": "manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-boundaries/generation-request-refusal.md",
+    "diskPath": "manual-testing-playbook/skill-boundaries/generation-request-refusal.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-command-routing/command-overrides-keywords.md",
+    "diskPath": "manual-testing-playbook/skill-command-routing/command-overrides-keywords.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-command-routing/first-command-wins.md",
+    "diskPath": "manual-testing-playbook/skill-command-routing/first-command-wins.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-command-routing/image-command-routing.md",
+    "diskPath": "manual-testing-playbook/skill-command-routing/image-command-routing.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-command-routing/interactive-command.md",
+    "diskPath": "manual-testing-playbook/skill-command-routing/interactive-command.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-command-routing/video-alias-routing.md",
+    "diskPath": "manual-testing-playbook/skill-command-routing/video-alias-routing.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-export-delivery/export-first-path-response.md",
+    "diskPath": "manual-testing-playbook/skill-export-delivery/export-first-path-response.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-hls-streaming/ffmpeg-only-hls-conversion.md",
+    "diskPath": "manual-testing-playbook/skill-hls-streaming/ffmpeg-only-hls-conversion.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-identity-handover/identity-handover.md",
+    "diskPath": "manual-testing-playbook/skill-identity-handover/identity-handover.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-repair-mode/broken-file-repair.md",
+    "diskPath": "manual-testing-playbook/skill-repair-mode/broken-file-repair.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-route-order/connected-tools-first.md",
+    "diskPath": "manual-testing-playbook/skill-route-order/connected-tools-first.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-route-order/fallback-to-local-ffmpeg.md",
+    "diskPath": "manual-testing-playbook/skill-route-order/fallback-to-local-ffmpeg.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-tool-verification/consent-before-ffmpeg-download.md",
+    "diskPath": "manual-testing-playbook/skill-tool-verification/consent-before-ffmpeg-download.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-tool-verification/error-code-handoff.md",
+    "diskPath": "manual-testing-playbook/skill-tool-verification/error-code-handoff.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md",
+    "diskPath": "manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/human-voice-rules.md",
+    "diskPath": "references/human-voice-rules.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/hvr-core.md",
+    "diskPath": "references/hvr-core.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/image-operations.md",
+    "diskPath": "references/image-operations.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/interactive-intelligence.md",
+    "diskPath": "references/interactive-intelligence.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/media-framework.md",
+    "diskPath": "references/media-framework.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/router-contract.md",
+    "diskPath": "references/router-contract.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/tools.md",
+    "diskPath": "references/tools.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/video-and-audio-operations.md",
+    "diskPath": "references/video-and-audio-operations.md"
+  }
+]

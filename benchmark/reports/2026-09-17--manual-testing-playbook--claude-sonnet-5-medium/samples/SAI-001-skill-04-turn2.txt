@@ -1,0 +1,9 @@
+Got it — a 6MB PNG hero image that needs to be lightweight for the homepage. I just need the actual file to work with.
+
+Could you give me the **file path** (or drag/upload the file) so I can locate it? Once I have that, my plan is:
+
+- Convert to **WebP** (with a JPEG fallback if you need broader compatibility) — this alone typically cuts 6MB down to a few hundred KB
+- Resize to a sensible max width for a hero banner (commonly ~1920px wide) if the source is larger than that
+- Apply quality-optimized compression tuned for photographic content
+
+Let me know the file path and I'll get started.

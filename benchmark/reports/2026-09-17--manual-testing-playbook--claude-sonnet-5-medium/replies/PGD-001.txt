@@ -1,0 +1,17 @@
+Run this:
+
+```
+ffmpeg -i input.mp4 -vf "scale=1280:-2" -c:v libx264 -crf 28 -preset slow -c:a aac -b:a 128k export/001-webinar-email/webinar-compressed.mp4
+```
+
+**Result lands in:** `export/001 - webinar-email/` in the CLI runtime or your terminal.
+
+**Check this:** run `ffprobe export/001-webinar-email/webinar-compressed.mp4` to confirm duration/streams look right, check the resulting file size (most email providers cap attachments at 20-25MB), and play it back to confirm quality is acceptable.
+
+Notes on the settings:
+- `scale=1280:-2` downsizes to 720p, which is usually the biggest single lever for email-sized video — keep the original resolution only if the webinar has fine on-screen text/detail that needs to stay legible.
+- `crf 28` is a moderate-to-aggressive quality target for H.264; drop to `crf 23-25` if quality looks rough, raise toward `30-32` if you still need a smaller file.
+- If it's still too big after this pass, the next lever is trimming length (cut dead air/Q&A) rather than pushing CRF much higher, since past ~32 quality degrades fast.
+- If the destination truly can't take anything near 15-20MB, consider skipping email entirely and sharing a link (e.g. cloud storage) instead — that's outside what I can help execute, but worth considering since email attachment limits are strict and inconsistent across providers.
+
+mode = video | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

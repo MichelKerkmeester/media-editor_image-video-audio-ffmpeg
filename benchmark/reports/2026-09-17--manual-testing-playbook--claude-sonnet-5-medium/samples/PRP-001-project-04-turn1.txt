@@ -1,0 +1,19 @@
+Run this:
+
+```
+ffmpeg -i "input-video.mp4" -vn -acodec libmp3lame -b:a 192k -ar 44100 "output-audio.mp3"
+```
+
+- `-vn` strips the video stream entirely
+- `-b:a 192k` gives universal-playback quality suited for a podcast feed (bump to 256–320k if the source has music/dense mix and file size isn't a concern)
+- Swap in your actual input filename/path
+
+**Result lands in:** `export/001 - podcast audio/` — create that folder in your terminal or the CLI runtime before running the command, and put the output file there.
+
+**Check this:** run `ffprobe "export/001 - podcast audio/output-audio.mp3"` to confirm the audio stream, duration, and 192kbps bitrate match expectations, then do a quick playback test to make sure there's no dropout at the start/end and no leftover video-track artifacts.
+
+If the source demo video has background music or a mixed narration+SFX track, let me know — normalization or a slight loudness pass (`loudnorm` filter) is a quick add if the podcast levels need evening out.
+
+`mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked`
+
+Run the command above, save into that export folder, and verify with ffprobe plus a playback check before dropping it into the podcast feed.

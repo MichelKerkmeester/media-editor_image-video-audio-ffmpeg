@@ -1,0 +1,29 @@
+**Run this:**
+
+A 6MB PNG hero image is almost certainly oversized in *dimensions* as well as format — PNGs don't compress photos well. Converting to WebP (or resizing first, if the source is larger than needed for a hero banner) is the fix.
+
+If the PNG is already close to the display size you need (e.g. ~1920px wide), just convert:
+
+```bash
+ffmpeg -i hero.png -vf "scale=1920:-1" -c:v libwebp -quality 85 export/001 - hero-webp/hero.webp
+```
+
+If you also want a universally-compatible fallback (Safari/older browsers with no WebP support), generate a JPEG alongside it:
+
+```bash
+ffmpeg -i hero.png -vf "scale=1920:-1" -q:v 5 export/001 - hero-webp/hero.jpg
+```
+
+- **`scale=1920:-1`** caps the width at 1920px (standard hero size) and preserves aspect ratio — drop this flag if your source is already sized correctly for display.
+- **WebP at quality 85** is the right call for a web hero: strong compression, no visible artifacts, and it typically lands well under 500KB for a photo that started at 6MB as PNG.
+- **JPEG q5** is the fallback for browsers without WebP support — similar visual quality, slightly larger.
+
+**Result lands in:** `export/001 - hero-webp/` in your terminal (adjust the numbering/description to fit your existing export folder sequence).
+
+**Check this:** Run `ffprobe export/001\ -\ hero-webp/hero.webp` to confirm the output dimensions and confirm the file size with `ls -lh` — you're aiming for well under 1MB, ideally 150–400KB for a hero photo. Then do a quick visual check at full size to make sure quality 85 didn't introduce noticeable artifacts on any fine detail (hair, gradients, text overlays).
+
+One thing to confirm before you run it: does your build actually have the `libwebp` encoder? Run `ffmpeg -encoders | grep webp` first — if it's missing, JPEG alone at q4–5 is a solid fallback that any ffmpeg build supports.
+
+---
+
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

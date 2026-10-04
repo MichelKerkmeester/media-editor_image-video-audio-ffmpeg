@@ -1,0 +1,7 @@
+File saved and verified.
+
+**export/001 - hero-photo-web-optimized/hero-photo.jpg** — 160KB (down from 1.4MB source PNG, a ~89% reduction), same 2560×1440 resolution.
+
+I converted PNG → JPEG at quality level 5, since this build's ffmpeg has no WebP/AVIF encoder — JPEG is the correct web fallback for a hero photo with no transparency needs. This should load noticeably faster on the homepage while staying visually sharp at full hero size.
+
+Let me know if you'd also like a resized/responsive set (e.g. 1920px and 1280px variants) for srcset, or if this single file covers your needs.

@@ -1,0 +1,8 @@
+I get the "just this once" ask, but the scoping here isn't a strictness setting I can dial down — this Project only has ffmpeg, and ffmpeg edits pixels that already exist in a file. It has no model or capability that can invent a candle-on-marble scene from a text description, no matter how the request is phrased. There isn't a workaround for that inside this tool, so I'd just be wasting your time pretending otherwise.
+
+What I can actually do:
+
+- **Generate it elsewhere:** use Claude's regular image generation (a plain chat, not this Media Editor Project) to create the candle-on-marble shot, or a dedicated image-gen tool. Something like: *"Product photo of a lit candle on a white/grey marble table, soft natural light, shallow depth of field, minimal styling"* works well as a starting prompt.
+- **Bring the result back here:** once you have that generated (or an existing real photo), come back to this Project and I'll handle crop/resize/color correction/format conversion/compression for web, email, or listing use — with the exact ffmpeg command, output path, and verification step.
+
+Want me to draft a stronger generation prompt for step one, or are you ready to jump to editing once you have a file?

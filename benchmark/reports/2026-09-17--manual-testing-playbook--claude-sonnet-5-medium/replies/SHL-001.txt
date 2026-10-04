@@ -1,0 +1,9 @@
+All four renditions and the master playlist saved and verified.
+
+**Export:** `export/001 - keynote-hls-adaptive-stream/hls/` — `master.m3u8` plus `1080p/`, `720p/`, `480p/`, `360p/` variant folders with segments.
+
+Built the standard 4-rung ladder (1080p to 360p, H.264, 2-second segments) from the 1920x1080 source and kept the narration audio track (AAC 128 kbps) on every rendition, since a keynote recording needs its speaker audio, unlike the recipe's silent-video default. Test locally with `ffplay "export/001 - keynote-hls-adaptive-stream/hls/master.m3u8"` or serve the folder over HTTP for browser playback via HLS.js.
+
+HVR self-scan: 0 hard blockers. Fixed: none. Kept with reason: none.
+
+Let me know if the site needs a different bitrate ceiling or a different quality floor.

@@ -1,0 +1,12 @@
+I don't see a file attached to this message — could you share it (or the path/filename) so I can advise on it?
+
+Also, to route this correctly I need a bit more context:
+
+1. **What type of media is it?** Image, video, or audio?
+2. **Current format and approximate size?**
+3. **What "work better for our website" means for you** — faster load time, correct dimensions/aspect ratio, broader browser compatibility, autoplay-safe video, etc.?
+4. **Where will it be used?** (hero image, background video, product thumbnail, podcast embed, etc.)
+
+Once I know the file type and goal, I'll give you the exact `ffmpeg` command to run, where the output should land, and what to check afterward.
+
+A couple of quick notes on what I *can't* do here: this Project is advisory-only — I can't open, inspect, or process the file myself, and I won't generate new media from a prompt. I'll give you the command; you (or the CLI runtime) run it.

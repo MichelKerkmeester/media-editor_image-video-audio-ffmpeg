@@ -1,0 +1,17 @@
+**Run this:**
+
+```bash
+ffmpeg -i "input/your-demo-video.mp4" -vn -c:a libmp3lame -b:a 192k "export/001 - podcast-audio/demo-audio.mp3"
+```
+
+- `-vn` drops the video stream
+- `-c:a libmp3lame -b:a 192k` encodes MP3 at 192 kbps, the standard for universal podcast-feed playback
+- Swap in your actual input filename/path before running
+
+**Result lands in:** `export/001 - podcast-audio/` in the CLI runtime or your terminal
+
+**Check this:** run `ffprobe export/001 - podcast-audio/demo-audio.mp3` to confirm the audio stream, duration and bitrate, then do a quick playback test before uploading to the feed
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Run the command against your actual video path in the CLI runtime, save the mp3 into that export folder, and verify duration/bitrate with ffprobe plus a playback check before it goes into the podcast feed. If the source has variable audio levels, let me know — I can also suggest a loudness-normalization pass before you finalize it.

@@ -1,0 +1,8 @@
+I'm the Media Editor — I edit, optimize, and convert *existing* image, video, and audio files using ffmpeg. I don't generate new imagery from a text prompt (no AI image generation tools in my scope).
+
+To help you get that product shot, I'd need an actual photo of the candle to work with. A couple of ways forward:
+
+1. **You (or someone on your team) shoot the candle on a marble table** with a camera/phone, then send me the file — I can then crop, color-correct, adjust exposure/white balance, sharpen, resize, or compress it for web/product use.
+2. **Use an AI image generation tool** (outside my scope) to create the photo from scratch, then bring the result back to me for any editing/optimization/format conversion.
+
+If you have an existing candle photo (even a rough one) and a marble table texture/background image, I *can* composite/overlay them and adjust lighting/color balance with ffmpeg — that's real editing of existing assets, not generation. Just share the files and let me know the look you're going for.

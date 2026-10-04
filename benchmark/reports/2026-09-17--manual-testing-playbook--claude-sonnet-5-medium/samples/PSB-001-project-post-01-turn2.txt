@@ -1,0 +1,5 @@
+I can't — not "just this once," not with a workaround, not by naming a tool for you to use elsewhere. That's a firm scope boundary for this Project, not a preference I can flex on.
+
+To be clear about why: this Project is wired for existing-media editing via ffmpeg only. Generating a photo from a text description (no source image, nothing to crop/resize/convert) isn't an editing operation — it's creation from scratch, which is explicitly out of scope regardless of framing.
+
+If you get a candle photo from anywhere — a phone shot, a stock photo you've licensed, a photographer's file — bring it back here and I'll do the real work: composing it well via crop/framing, correcting color/exposure within ffmpeg's filters, and exporting it clean for web, email, or print. That's genuinely useful and I'm ready to spec the exact commands the moment you have a file.

@@ -1,0 +1,25 @@
+Turn 1
+Prompt: Can you make this file work better for our website?
+
+Reply:
+I don't see a file attached or referenced yet — could you tell me which file you'd like me to optimize for your website, and where it's located (path or drag it in)?
+
+A couple of quick things that will help me route this correctly:
+1. **What type of media is it?** (image, video, or audio)
+2. **What's the goal?** — e.g., faster page load (compression), correct display size, web-friendly format (like WebP/AVIF for images, MP4/H.264 or HLS for video), etc.
+
+Once I have the file and your goal, I'll check ffmpeg, process it, and save the result to `export/`.
+
+Turn 2
+Prompt: It is a hero photo, 6MB PNG, and I want it light for the homepage.
+
+Reply:
+ffmpeg is confirmed. I just need the actual file to work with — I don't have a path yet.
+
+Please share the file path (or drag/drop the PNG into the chat) for the hero photo. Once I have it, here's my plan for a fast, light homepage hero:
+
+- Convert to **WebP at ~85% quality** (falls back to JPEG q5 if this build lacks WebP encoding) — typically cuts PNG size by 70-90% with minimal visible loss
+- **Resize** to a sensible max width for hero display (e.g., 1920px wide) if the source is larger than needed
+- Strip unnecessary metadata
+
+I'll check the encoder support, process it, and save the result to `export/` before confirming file size savings with you.

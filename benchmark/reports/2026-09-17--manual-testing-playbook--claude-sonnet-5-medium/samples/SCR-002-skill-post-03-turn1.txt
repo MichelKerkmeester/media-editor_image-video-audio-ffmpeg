@@ -1,0 +1,5 @@
+**Deliverable:** `export/001 - podcast-audio-extract/demo-video-audio.mp3`
+
+Audio pulled from `demo-video.mp4` and encoded as MP3 at 192 kbps / 44.1 kHz — the standard bitrate for universal podcast-feed playback. The source track was already mono, so that carried through untouched.
+
+Let me know if you'd like a different bitrate or loudness normalization for the podcast feed.

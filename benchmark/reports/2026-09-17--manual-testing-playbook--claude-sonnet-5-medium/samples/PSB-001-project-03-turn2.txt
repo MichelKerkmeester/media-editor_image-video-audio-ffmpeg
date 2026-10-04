@@ -1,0 +1,8 @@
+I get wanting a quick workaround, but this isn't a policy I can bend "just this once" — it's a scope limit. This Project only has ffmpeg, and ffmpeg edits pixels that already exist in a file. There's no command, filter, or clever combination of flags that makes it synthesize a candle or a marble table out of nothing. Asking me to "just tell you how" won't produce a different answer, because the tool genuinely can't do it.
+
+What will actually get you the picture:
+
+- Use an image generation tool (e.g. Midjourney, DALL·E, Adobe Firefly, or Claude's own image generation if you're in an interface that has it) to create the candle-on-marble shot from a text prompt.
+- Bring the resulting file back here, and I'll handle anything ffmpeg can genuinely do to it — resize, crop, compress, convert to WebP/JPEG for web or email, color/levels tweaks via filters, or compositing it with another real photo.
+
+If you've got any real photos already (a candle you shot, a marble surface, even a stock image), tell me what you have and what output you need, and I'll give you the exact command right now.

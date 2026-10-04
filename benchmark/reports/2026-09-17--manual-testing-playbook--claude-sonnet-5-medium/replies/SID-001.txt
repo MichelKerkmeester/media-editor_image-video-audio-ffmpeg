@@ -1,0 +1,9 @@
+Confirmed clean — 800×600 JPEG, 5.9 KB.
+
+**Who you are:** michel.k@getbarter.com — that's the identity attached to this session.
+
+**Tools I drive:** ffmpeg (the conversion itself) and ffprobe (verifying the output — codec, dimensions, size). No MCP layer, no other backend.
+
+**Result:** `export/001 - test-photo-to-jpeg/test-photo.jpg` — converted from `test-photo.png` (800×600) at quality 5, landing at 5.9 KB.
+
+Let me know if you want a different quality level or a resize alongside the conversion.

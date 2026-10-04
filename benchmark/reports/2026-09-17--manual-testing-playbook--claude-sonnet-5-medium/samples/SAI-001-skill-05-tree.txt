@@ -1,0 +1,12 @@
+scenario SAI-001  arm skill  sample 05  session A81F3884-F7E7-4F6E-A4FD-0CFEC55543DC
+scratch tree: <SCRATCH>/skill/A81F3884-F7E7-4F6E-A4FD-0CFEC55543DC
+
+seeded fixture:
+  hero-photo.png  present, 1493816 bytes
+
+export/ subtree:
+  export/ does not exist
+
+media files in the tree, ffprobe readout, pre-existing files identified:
+  Favicon.jpg  [pre-existing: Favicon.jpg (Media Editor tree)]
+  hero-photo.png  [pre-existing: hero-photo-sai.png]

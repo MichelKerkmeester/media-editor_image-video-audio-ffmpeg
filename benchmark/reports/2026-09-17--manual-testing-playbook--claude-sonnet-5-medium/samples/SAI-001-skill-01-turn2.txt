@@ -1,0 +1,9 @@
+Good — ffmpeg's ready. One thing I still need: **the file itself** (its path, or drag/drop it in). I don't see it in this session yet.
+
+While you grab that, here's the plan for a 6MB PNG hero photo going on the homepage:
+
+- Convert to **WebP** (or JPEG as a fallback) — PNG is lossless and overkill for a photo, so this alone typically cuts size 70–90%
+- Resize to a sensible max width for hero display (commonly ~1920px wide) if the source is larger than that
+- Compress with a quality setting tuned to stay visually sharp but small (targeting well under 500KB)
+
+Send me the file path (or the image) and I'll run it through and export the optimized version.

@@ -1,0 +1,16 @@
+Run this:
+
+```
+ffmpeg -i "input-demo-video.mp4" -vn -acodec libmp3lame -b:a 192k "product-demo-audio.mp3"
+```
+
+- `-vn` strips the video stream entirely
+- `-acodec libmp3lame -b:a 192k` gives MP3 at 192 kbps — the standard bitrate for universal podcast-feed playback (bump to 128k if file size matters more than fidelity, drop to VBR `-q:a 2` for a smaller file with similar quality)
+
+**Result lands in:** `export/001 - product-demo-podcast-audio/` — create that folder in your terminal/CLI runtime before running the command, or point the output path there directly.
+
+**Check this:** run `ffprobe product-demo-audio.mp3` on the output and confirm it shows an audio stream only (no video), a duration matching the source video, and 192 kbps/MP3 in the stream info. Also do a quick playback test to check levels sound right for a podcast feed.
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Run that command in your terminal with ffmpeg installed, save the result to the export folder above, and verify with ffprobe plus a playback check before dropping it into the podcast feed.

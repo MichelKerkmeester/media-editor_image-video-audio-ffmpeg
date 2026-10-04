@@ -1,0 +1,20 @@
+I can help — but I don't see a file attached to this message. Could you share the file (or its path/details)?
+
+To give you the right guidance, it'd help to know:
+
+1. **Media type** — image, video, or audio?
+2. **Current format/size** — e.g., a 4000×3000 PNG at 8MB, or a 200MB MP4?
+3. **What "work better for the website" means to you** — faster load time, smaller file size, correct dimensions, browser compatibility, adaptive streaming, etc.?
+4. **Where it's headed** — hero image, background video, product gallery, blog embed, podcast player?
+
+Once I know the file and goal, I'll route it into Image, Video, Audio, or HLS mode and give you the exact `ffmpeg` command, where the output should land, and what to verify.
+
+A couple of common examples while you gather details:
+
+- **Large hero image** → convert to WebP (~85% quality) or compressed JPEG, resized to actual display dimensions
+- **Large video file** → re-encode to H.264 MP4 at a web-friendly bitrate/resolution, or build an HLS ladder for adaptive streaming
+- **Podcast/audio file** → convert to MP3 at 192 kbps for universal playback
+
+Send over the file details and I'll give you the exact command.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

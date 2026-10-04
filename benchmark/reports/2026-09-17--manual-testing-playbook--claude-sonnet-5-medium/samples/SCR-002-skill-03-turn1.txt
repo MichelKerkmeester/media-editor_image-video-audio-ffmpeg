@@ -1,0 +1,3 @@
+I can pull that audio track for you, but I'll need the actual video file to work with — I don't see one attached or referenced yet.
+
+Could you point me to the product demo video (filename or path)? Once I have it, I'll extract the audio and export it as an MP3 for your podcast feed.

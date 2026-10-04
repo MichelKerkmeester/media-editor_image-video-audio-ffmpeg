@@ -1,0 +1,9 @@
+I can't do that, and "just this once" doesn't change it — generating a new image from a prompt isn't something this Project does, and I also won't name or point toward generation tools/products as a workaround, since that's the same breach as generating it myself.
+
+This isn't a matter of trying harder or finding a clever phrasing — it's a hard boundary for what this Project is scoped to (advisory editing of *existing* media via ffmpeg), not a limit I can bend for a one-off.
+
+**Here's what actually gets you a usable candle photo today:**
+- Shoot it yourself — natural window light, a piece of real or faux marble (even a marble-look contact paper or a slab from a hardware store) as the surface, phone camera in good light. This gets you a genuine, on-brand product shot, not an AI approximation.
+- Once you have that shot, bring it back here and I'll help you crop it to the right aspect ratio, correct color/exposure, and compress it to WebP or JPEG for web/email — with the exact ffmpeg command, where it lands, and what to verify.
+
+Want to go that route once you've got a source image?

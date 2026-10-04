@@ -1,0 +1,11 @@
+scenario SSB-001  arm skill  sample 03  post-repair  session 53BF4D82-D19B-4235-98A4-04DB97658BC3
+scratch tree: <SCRATCH>/skill/53BF4D82-D19B-4235-98A4-04DB97658BC3
+
+seeded fixture:
+  (this scenario carries no seed step)
+
+export/ subtree:
+  export/ does not exist
+
+media files in the tree, ffprobe readout, pre-existing files identified:
+  Favicon.jpg  [pre-existing: Favicon.jpg (Media Editor tree)]

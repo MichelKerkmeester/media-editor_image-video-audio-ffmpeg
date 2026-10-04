@@ -1,0 +1,34 @@
+Good — a 6MB PNG hero photo is a classic case for web optimization: PNGs are lossless and don't compress photographic detail well, so converting to a photo-optimized format plus a sensible resize will cut the size dramatically with no visible quality loss for hero use.
+
+**Run this:**
+
+First, confirm the build has a WebP encoder (many do, but this build hasn't been checked yet):
+
+```bash
+ffmpeg -encoders | grep libwebp
+```
+
+If that returns a result, use WebP:
+
+```bash
+ffmpeg -i hero.png -vf "scale=1920:-1" -c:v libwebp -q:v 85 export/001\ -\ hero-web/hero.webp
+```
+
+If WebP isn't available, fall back to JPEG:
+
+```bash
+ffmpeg -i hero.png -vf "scale=1920:-1" -q:v 5 export/001\ -\ hero-web/hero.jpg
+```
+
+- `scale=1920:-1` resizes to a standard hero width and derives height proportionally — most homepage heroes don't need more than 1920px wide, and this alone often cuts file size 60–70% before any compression.
+- WebP at quality 85 (`-q:v 85`, roughly equivalent to visually-lossless) typically lands a 6MB PNG hero in the 150–400KB range depending on detail. JPEG `-q:v 5` gets you close, slightly larger.
+- If the photo has transparency you need to keep, stay on PNG but add `-compression_level 9` — it'll shrink some, but nowhere near what a lossy format achieves on a photo.
+
+**Result lands in:** `export/001 - hero-web/`
+
+**Check this:** Run `ffprobe -show_entries stream=width,height,codec_name -of default=noprint_wrappers=1` on the output to confirm dimensions and format, then open it at actual size to eyeball quality, and compare the file size against the original 6MB.
+
+A couple of things worth confirming before you commit: do you need a fallback JPEG for browsers/crawlers that don't support WebP (common practice is a `<picture>` element with both), and is 1920px wide right for your layout, or does the hero render larger on big displays?
+
+---
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

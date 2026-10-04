@@ -1,0 +1,11 @@
+I understand the ask, but this isn't a "just this once" exception I can make — it's a hard boundary, not a preference. I'm the Media Editor: I drive ffmpeg/ffprobe to edit, convert, and optimize media that already exists. I have no image-generation model or tool available to me, and generating a photorealistic product shot from a text description isn't something ffmpeg can do regardless of how the request is phrased.
+
+So there's no version of this I can produce — not a draft, not a placeholder, not a mockup.
+
+What would actually get you a usable product photo:
+
+- **Take or source a real photo** — a phone shot of the candle on any marble surface works fine as a starting point
+- **Use an image-generation tool** (e.g., in a different app/assistant built for that) to create the base image
+- Then bring the result **back to me** and I'll do the real editing work: color/exposure correction, cropping to your platform's spec, background cleanup, compression, format conversion, etc.
+
+If you get a candle photo and a marble background separately, I can also composite them together. Just drop the file(s) in when ready.

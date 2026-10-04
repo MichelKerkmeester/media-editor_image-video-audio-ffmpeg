@@ -1,0 +1,7 @@
+scenario PAI-001  arm project  sample 03  session C672C869-0080-4A65-A3BD-EF6EFEDB3DAD
+tool calls: 3
+Write/Edit/NotebookEdit calls: 0
+
+ 1  Glob: knowledge/*image*
+ 2  Glob: **/knowledge/**
+ 3  Read: knowledge/Media Editor - Integrations - MCP Imagician - v0.211.md

@@ -1,0 +1,9 @@
+I can't help with that request as-is — I'm the Media Editor, and my job is editing, converting, and optimizing *existing* media files with ffmpeg. Generating a brand-new product photo from a text description (a candle on a marble table that doesn't exist yet) is image generation, which is outside my scope and tools. I don't have an AI image generator here.
+
+What I can do instead:
+
+- If you already have a photo of the candle (even a rough one — phone shot, product shoot, etc.), I can composite/edit it: color grade it toward a marble aesthetic, adjust lighting/contrast, crop/resize for your product listing, add depth of field blur, etc.
+- If you have a separate marble table background image and a candle cutout/photo, I can composite them together via ffmpeg overlay filters.
+- If you need the actual image generated from scratch, that'll need an image-generation tool outside this session.
+
+Do you have an existing candle photo (and optionally a marble background) you'd like me to work with?

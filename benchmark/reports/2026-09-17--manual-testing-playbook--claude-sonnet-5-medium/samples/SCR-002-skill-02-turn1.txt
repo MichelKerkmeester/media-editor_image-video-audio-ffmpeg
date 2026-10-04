@@ -1,0 +1,3 @@
+Done: `export/001 - podcast-audio-extract/demo-video.mp3`
+
+Audio was pulled straight from `demo-video.mp4` and encoded as MP3 at 192 kbps / 44.1 kHz — the standard podcast-feed bitrate for universal playback. File verified on disk at 145.6 KB.

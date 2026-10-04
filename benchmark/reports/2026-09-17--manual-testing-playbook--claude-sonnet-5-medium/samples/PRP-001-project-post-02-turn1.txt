@@ -1,0 +1,17 @@
+Run this:
+
+```bash
+ffmpeg -i input_demo.mp4 -vn -acodec libmp3lame -b:a 192k export/001 - podcast audio/demo-audio.mp3
+```
+
+- `-vn` drops the video stream, keeping only audio
+- `-b:a 192k` targets 192 kbps MP3, the standard sweet spot for podcast feeds (universal player support, good voice/music clarity without bloating file size)
+- If the source audio is already compressed/lower quality, bumping bitrate won't add fidelity — 192k is still fine as a ceiling
+
+**Result lands in:** `export/001 - podcast audio/` in your CLI runtime or terminal (folder name/number is up to you — bump the number if you've already got other exports)
+
+**Check this:** run `ffprobe "export/001 - podcast audio/demo-audio.mp3"` and confirm it shows an audio stream (`mp3, 192 kb/s`) with no video stream, and that duration matches the source video. Also do a quick playback test to confirm no dropouts at the start/end.
+
+If the demo video has background music mixed with voiceover and you want the voice cleaner for a podcast, let me know — that'd add a filter step (e.g. loudness normalization via `loudnorm`) rather than a straight extract.
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

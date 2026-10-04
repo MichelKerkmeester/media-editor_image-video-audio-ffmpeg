@@ -1,0 +1,5 @@
+scenario SAI-001  arm skill  sample 02  session 758B0C9C-1D2D-46A1-8749-69DD361DE733
+tool calls: 1
+Write/Edit/NotebookEdit calls: 0
+
+ 1  Bash: ffmpeg -version | head -n 1

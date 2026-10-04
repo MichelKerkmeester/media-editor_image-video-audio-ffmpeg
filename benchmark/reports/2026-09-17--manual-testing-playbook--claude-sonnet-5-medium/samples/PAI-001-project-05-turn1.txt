@@ -1,0 +1,21 @@
+I can help — but I don't see a file attached to this message. This Project is advisory-only for existing images, video, and audio (via ffmpeg guidance), so before I can recommend how to optimize it "for your website," I need a few things:
+
+1. **What kind of file is it?** Image (JPEG/PNG/etc.), video, or audio?
+2. **Current specs** — roughly, current format, dimensions/resolution, and file size (rough is fine, e.g. "a 4MB PNG" or "a 200MB MOV").
+3. **How it'll be used on the site** — hero image, background video, product thumbnail, podcast embed, etc.
+4. **Any constraints** — target file size, browser/device support needed, whether transparency or audio matters.
+
+Once you share the file (or just describe it) and the intended use, I'll give you:
+
+- **Run this:** the exact ffmpeg command
+- **Result lands in:** `export/[###] - description/`
+- **Check this:** how to verify the output
+
+A couple of quick defaults, in case they help while you gather details:
+- **Web images:** WebP at ~85% quality is usually the best size/quality trade-off (falls back to JPEG q5 if your ffmpeg build lacks WebP encoding).
+- **Web video:** H.264 MP4 for universal playback; H.265/VP9 if you need smaller files and can confirm browser support.
+
+---
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+What's the file and where will it live on the site?

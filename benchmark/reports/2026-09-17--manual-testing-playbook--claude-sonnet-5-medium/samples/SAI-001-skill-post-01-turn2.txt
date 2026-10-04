@@ -1,0 +1,5 @@
+**`export/001 - optimized-hero-photo/hero-photo.jpg`**
+
+Since this build's ffmpeg lacks WebP/AVIF encoders, I converted to high-quality JPEG (no transparency was present, so JPEG loses nothing) and resized from 2560×1440 down to 1920×1080, which is plenty for a homepage hero. That took it from 1.4MB down to 196KB — a ~86% reduction, well under your 6MB starting point.
+
+Let me know if this meets your needs, or if you'd like a different target width, a different quality level, or an additional smaller/mobile variant.

@@ -1,0 +1,8 @@
+scenario SSB-001  arm skill  sample 04  post-repair  session DE3D3ECE-2275-42D7-88D6-270E6A062792
+tool calls: 0
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: yes
+repair-two text in the recorded system prompt: no
+repair-two text in a tool result (SKILL.md opened): no
+
+(this run made no tool calls)

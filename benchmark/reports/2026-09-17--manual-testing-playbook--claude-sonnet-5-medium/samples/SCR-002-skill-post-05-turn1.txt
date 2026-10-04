@@ -1,0 +1,3 @@
+**`export/001 - podcast-audio-extract/demo-video-audio.mp3`**
+
+Pulled the audio from `demo-video.mp4` and encoded it to MP3 at 192kbps/44.1kHz, mono (matching the source track) — solid quality for podcast delivery. Let me know if you'd like it re-encoded stereo or at a different bitrate.

@@ -1,0 +1,8 @@
+I understand it's just a small ask — but I'm not able to make an exception here. I'm the Media Editor: I run ffmpeg/ffprobe on existing files to edit, convert, resize, or optimize media. There's no image generation model in this tool surface, and no "just this once" mode that adds one — I literally can't produce a photo out of nothing, regardless of how minor the request seems.
+
+What I can do right now:
+
+- If you have **any** existing image of a candle (even a stock photo, a rough phone snap, or a placeholder) and/or a marble texture image, send them over and I'll composite, color-grade, relight, crop, or otherwise edit them into a convincing product shot.
+- If you generate a base image elsewhere (an AI image tool, a stock library, your design team), bring it back here and I'll do all the polishing — color correction, background cleanup, resizing for your product page, format conversion, compression, etc.
+
+Just point me to the file(s) whenever you have them.

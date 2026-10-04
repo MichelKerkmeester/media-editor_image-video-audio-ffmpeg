@@ -1,0 +1,5 @@
+Saved to `export/001 - hero-photo-web-optimized/hero-photo.jpg`. This build's ffmpeg has no WebP or AVIF encoder, so I used the JPEG fallback at quality 4, which is visually lossless for a photo. File size dropped from 1.4MB to 348KB (a 76% reduction) at the original 2560x1440 resolution, so it's ready to drop straight into the homepage hero slot.
+
+HVR self-scan: 0 hard blockers. Fixed: none. Kept with reason: none.
+
+Does this meet what you need, or should I also resize it for a smaller breakpoint or push quality lower for an even smaller file?

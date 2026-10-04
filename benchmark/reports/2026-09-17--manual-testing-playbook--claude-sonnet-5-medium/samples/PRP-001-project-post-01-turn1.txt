@@ -1,0 +1,17 @@
+**Run this:**
+
+```bash
+ffmpeg -i "input-demo-video.mp4" -vn -c:a libmp3lame -b:a 192k "export/001 - podcast-audio/demo-audio.mp3"
+```
+
+Replace `input-demo-video.mp4` with your actual file path/name. This strips the video stream (`-vn`) and encodes the audio to MP3 at 192 kbps, a solid bitrate for podcast-feed compatibility across players.
+
+**Result lands in:** `export/001 - podcast-audio/` in your CLI runtime or terminal — create the folder first if it doesn't exist.
+
+**Check this:** run `ffprobe "export/001 - podcast-audio/demo-audio.mp3"` to confirm the output is audio-only (no video stream), has the expected duration matching the source video, and shows `192 kb/s` bitrate. Do a quick playback test to check for any clipping or dropouts, especially if the source had music/SFX under the voiceover.
+
+A couple of notes if relevant:
+- If the demo has background music or SFX mixed with speech, straight extraction keeps it all — fine for most podcast feeds, but let me know if you want the levels normalized (`loudnorm` filter) for consistent podcast loudness.
+- If the source audio itself is noisy or low quality, MP3 encoding won't fix that — it just carries over whatever's in the original track.
+
+mode = audio | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

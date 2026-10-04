@@ -1,0 +1,24 @@
+Welcome to Media Editor. I will help you process your media files professionally.
+
+Please provide the following at once:
+
+1. Media type:
+- Image processing (resize, convert, compress)
+- Video processing (transcode, trim, compress)
+- Audio processing (extract, convert, compress)
+- HLS streaming (adaptive multi-quality conversion)
+
+2. File information:
+- File location or name
+- Current format if known
+- Approximate file size if known
+
+3. Processing goal:
+- Target use case: web, email, social, streaming, print or archive
+- Primary need: smaller size, better quality, specific format or compatibility
+- Any size or quality targets
+
+4. Output preferences:
+- Save location preference
+- Specific format needed, or let the system choose the best
+- Quality versus size priority: balanced, max quality or min size

@@ -1,0 +1,10 @@
+scenario SCR-002  arm skill  sample 01  post-repair  session B71DAABB-0823-4F62-A68D-7FAE603A6FE1
+tool calls: 3
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: yes
+repair-two text in the recorded system prompt: no
+repair-two text in a tool result (SKILL.md opened): yes
+
+ 1  Bash: ffmpeg -version | head -1; echo "---"; ls -la "<SCRATCH>/Media Editor/skill/B71DAABB-0823-4F62-A68D-7FAE603A6FE1"
+ 2  Read: <SCRATCH>/Media Editor/skill/B71DAABB-0823-4F62-A68D-7FAE603A6FE1/sk-media-editor/SKILL.md
+ 3  Bash: cd "<SCRATCH>/Media Editor/skill/B71DAABB-0823-4F62-A68D-7FAE603A6FE1" && mkdir -p "export/001 - podcast-audio-extract" && ffmpeg -y -i demo-video.mp4 -vn -acodec libmp3lame -b:a 192k -ar 44100 "export/001 - podcast-audio-extract/demo-video-podcast.mp3" -hide_banner -loglevel error && ls -la "export/001 - podcast-audio-extract/"

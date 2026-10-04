@@ -1,0 +1,3 @@
+Saved to `export/001 - podcast-audio-extract/demo-video-podcast.mp3`. Extracted the audio track at 192 kbps MP3 / 44.1kHz — the standard bitrate for podcast feeds, giving universal playback support without inflating file size.
+
+Let me know if the demo video has any long silences or level inconsistencies you'd want cleaned up before it goes into the feed.

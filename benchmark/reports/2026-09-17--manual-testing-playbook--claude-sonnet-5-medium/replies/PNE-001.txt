@@ -1,0 +1,24 @@
+I can't actually run this for you — this Project is advisory-only. It's a claude.ai kernel with no filesystem or ffmpeg access, so I can't see your video, execute a command, or hand you back a compressed file. I can only tell you the exact command to run yourself.
+
+To give you the right command, I need a bit more:
+
+- **Which file?** (path/filename, and roughly how big it is)
+- **What format is it now** (MP4, MOV, etc.), and do you know the resolution?
+- **What's the goal** — smaller for email/sharing, uploading to a web page, archiving, or something else? (This affects target bitrate/resolution.)
+- **Any constraint** — must stay MP4/H.264 for compatibility, or is H.265/VP9 okay if it saves more space?
+
+Once I know that, I'll give you something like:
+
+**Run this:**
+```
+ffmpeg -i input.mp4 -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k output.mp4
+```
+
+**Result lands in:** `export/001 - compressed-video/` (create that folder yourself, or pass the full path in the output filename)
+
+**Check this:** run `ffprobe output.mp4` to confirm duration/codec match expectations, compare file size to the original, and play it back to confirm quality is acceptable.
+
+Send me the file details and I'll tune the exact settings (CRF value, resolution, codec) for your case.
+
+---
+mode = video | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

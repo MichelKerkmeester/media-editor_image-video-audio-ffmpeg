@@ -1,0 +1,17 @@
+file,clean,hard_violations,violations,extraction_confidence
+PAI-001.txt,False,3,"em_dashx4, semicolonx1, bullet_ends_in_full_stopx1",medium
+PGD-001.txt,False,3,"em_dashx2, semicolonx1, bullet_ends_in_full_stopx4",medium
+PHL-001.txt,False,1,em_dashx3,medium
+PID-001.txt,False,3,"em_dashx6, semicolonx1, bullet_ends_in_full_stopx5",medium
+PNE-001.txt,False,2,"em_dashx3, horizontal_dividerx1",medium
+PRP-001.txt,False,1,em_dashx1,medium
+PSB-001.txt,False,3,"em_dashx6, semicolonx1, bullet_ends_in_full_stopx5",medium
+PSB-002.txt,False,2,"em_dashx4, semicolonx1",medium
+SAI-001.txt,False,1,em_dashx4,medium
+SCR-001.txt,False,1,em_dashx1,high
+SCR-002.txt,False,1,em_dashx1,medium
+SED-001.txt,True,0,none,medium
+SHL-001.txt,False,1,em_dashx1,medium
+SID-001.txt,False,1,em_dashx4,medium
+SSB-001.txt,False,2,"em_dashx2, bullet_ends_in_full_stopx2",high
+STV-001.txt,False,1,em_dashx1,medium

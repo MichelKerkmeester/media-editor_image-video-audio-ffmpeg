@@ -1,0 +1,15 @@
+Instruction set: Media Editor - Custom Instructions - v1.5.0, with no Media Editor tools connected in this conversation.
+
+Run this: convert the product photo to jpeg with installed ffmpeg on your machine.
+
+```bash
+ffmpeg -i product-photo.png "media files/export/001 - product-photo-jpeg/product-photo.jpg"
+```
+
+Result lands in: `media files/export/001 - product-photo-jpeg/product-photo.jpg` in your terminal.
+
+Check this: open the file after the command finishes and confirm it reads back as a jpeg.
+
+mode = image | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+No Media Editor tool is connected here, so I do not run commands or touch your files. You run the command above and verify the result yourself.

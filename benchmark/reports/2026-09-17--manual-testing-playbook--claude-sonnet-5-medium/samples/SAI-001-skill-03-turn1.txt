@@ -1,0 +1,3 @@
+I don't see a file attached to your message yet — could you share the image, video, or audio file you'd like optimized for the website?
+
+Also, one quick question so I process it correctly: what's it for (e.g., hero banner, product thumbnail, background video, logo) and where does it need to end up performance-wise (e.g., fast-loading page image, autoplay video muted loop)? That tells me the right format/compression target.

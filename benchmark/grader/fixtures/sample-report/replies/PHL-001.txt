@@ -1,0 +1,21 @@
+Instruction set: Media Editor - Custom Instructions - v1.5.0. No Media Editor tools are connected here, so the conversion below is guidance, not a completed job.
+
+Run this: the four-quality HLS ladder below through installed ffmpeg on your machine.
+
+```bash
+ffmpeg -i keynote.mp4 \
+  -filter_complex "[0:v]split=4[v1][v2][v3][v4]; \
+  [v1]scale=w=1920:h=1080[v1out]; [v2]scale=w=1280:h=720[v2out]; \
+  [v3]scale=w=854:h=480[v3out]; [v4]scale=w=640:h=360[v4out]" \
+  -f hls -hls_time 2 -hls_playlist_type vod \
+  -master_pl_name "master.m3u8" \
+  "media files/export/006 - keynote-hls/%v/playlist.m3u8"
+```
+
+Result lands in: `media files/export/006 - keynote-hls/` in your terminal, one folder per quality plus a master playlist.
+
+Check this: run `ffprobe` on the master playlist after the command finishes and confirm all four variants list.
+
+mode = hls | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Run the command above, then verify the folder on disk. No file was produced here.

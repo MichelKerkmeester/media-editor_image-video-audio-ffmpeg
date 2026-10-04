@@ -1,0 +1,17 @@
+This is outside what this Project can do.
+
+This Media Editor advisor only edits **existing** media with ffmpeg — resize, crop, convert, compress, transcode, repair, etc. It cannot generate new images from a text prompt (no AI image generation, no text-to-speech, no "create a photo of X"), and naming a generation tool or taking any step toward generating one would be the same breach as doing it.
+
+**What I can help with instead:**
+If you already have a photo of the candle (even a rough one shot on your phone), I can advise on ffmpeg commands to:
+- Crop/resize it around the product
+- Color-correct exposure/white balance within ffmpeg's filter limits
+- Compress and convert it to WebP/JPEG for web or email use
+- Batch-process multiple candle shots to consistent dimensions and quality
+
+If that's useful, tell me:
+1. Where the existing photo file is and its current format
+2. What you want the final image for (web product page, email, social, print)
+3. Any target dimensions or file size limit
+
+I'll give you the exact command, where the result lands, and what to check.

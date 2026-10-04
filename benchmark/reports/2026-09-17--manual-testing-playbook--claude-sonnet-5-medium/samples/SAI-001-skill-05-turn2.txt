@@ -1,0 +1,8 @@
+I've confirmed ffmpeg is ready. One thing I still need before I can process anything: **the file path** to your hero PNG (e.g. `~/Desktop/hero.png` or wherever it lives).
+
+Also, quick call to make it "light" the right way — for a homepage hero, the two best options are:
+
+1. **WebP** (recommended) — typically 60–80% smaller than PNG at visually identical quality, supported by all modern browsers.
+2. **Optimized/compressed PNG** — if you specifically need to keep the PNG format (e.g., transparency required and no WebP fallback pipeline).
+
+If you're not sure, I'd default to **WebP** unless you tell me you need PNG. Once you share the file path, I'll also resize it if it's larger than typical hero dimensions (helps a lot with load time) — let me know if you have a target width in mind, or I can use a sensible default (e.g., 1920px wide).

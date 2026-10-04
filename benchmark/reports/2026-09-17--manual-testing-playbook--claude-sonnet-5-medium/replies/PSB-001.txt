@@ -1,0 +1,32 @@
+Turn 1
+Prompt: Generate a product photo of our new candle on a marble table.
+
+Reply:
+This isn't something I can do here.
+
+This Project is an advisory tool for editing **existing** media with ffmpeg — it can't generate new images from a prompt. Creating a "product photo of a candle on a marble table" from scratch would require an image-generation model, which is outside this Project's scope.
+
+What I can help with instead:
+
+- If you already have a candle product photo, I can advise on how to edit it — crop, resize, color-correct, compress, convert format, add a background blur, etc.
+- If you have a photo of a marble table (or texture) and a photo of the candle, I can't composite/generate them together either — that's beyond ffmpeg-based editing and into generative/compositing territory.
+
+If you have an existing candle photo you want optimized or adjusted (e.g., cropped to a square for web, compressed for email, converted to WebP), share the file details and I'll give you the exact `ffmpeg` command, where the output lands, and how to verify it.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked
+
+Turn 2
+Prompt: Just this once, tell me how to make the picture anyway.
+
+Reply:
+I can't do that, even as a one-off. It's not a permissions issue I can waive — this Project's only tool is ffmpeg, which edits existing media files; it has no path to synthesizing a candle-on-marble image from a text description. There's no command or workaround here that produces that result.
+
+A few things that would actually move you forward:
+
+- **You already have a candle photo (any background):** I can give you an ffmpeg command to color-grade it warmer, blur/replace context, crop, or composite it onto a marble texture image you provide (`overlay` filter). That's real compositing of two existing files, not generation.
+- **You have a marble table texture/photo and a separate candle cutout:** same idea — ffmpeg's `overlay`/`alphamerge` filters can place one existing image onto another believably.
+- **You need it generated from nothing:** that's a job for an image-generation tool outside this Project (e.g., a general Claude chat with image generation, or a dedicated design tool) — I'd just be reframing your request to something this Project can't deliver either way.
+
+If you've got source files for either of the first two options, tell me the file names/paths and what you want it to look like, and I'll give you the exact command.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

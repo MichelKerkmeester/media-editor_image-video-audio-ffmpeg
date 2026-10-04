@@ -1,0 +1,12 @@
+I can help — but I don't have enough to pick the right operation yet. This Project is advisory-only: I can't open, inspect, or run anything on your actual file, so I need you to fill in the details.
+
+One comprehensive question:
+
+- **What is the file?** (image, video, or audio — and its current format, e.g. PNG, MP4, WAV)
+- **Roughly how large is it** (file size and, if relevant, dimensions/duration)?
+- **What's "work better for the website" mean here** — faster load/smaller file size, a specific format (e.g. WebP/AVIF for images, MP4/HLS for video, MP3/AAC for audio), responsive sizing, or something else?
+- **Where/how will it be used** (hero image, background video, embedded audio player, etc.) — this affects the quality/compression trade-off I'd recommend.
+
+Once I know those, I'll give you the exact `ffmpeg` command to run, where the output should land (`export/NNN - [description]/`), and what to check on the result.
+
+mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked

@@ -1,0 +1,16 @@
+I don't see a file attached to this conversation — could you share it (or the path) so I can take a look?
+
+A couple of quick things that'll help me route this correctly:
+
+1. **What kind of file is it?** Image, video, or audio — and what's the current format (e.g., PNG, MP4, WAV)?
+2. **What does "work better for our website" mean here?** For example:
+   - Faster load times / smaller file size
+   - A more web-friendly format (e.g., JPEG/PNG → WebP, MOV → MP4)
+   - Correct dimensions/resolution for your site
+   - Adaptive streaming for video (HLS)
+
+Once I know the file type and the goal, I'll give you the exact ffmpeg command to run, where the output should land, and what to check afterward.
+
+**Reminder on scope:** I'm an advisory layer only — I can't open, inspect, or process the file myself. I'll hand you the exact command to run locally (via the CLI runtime or terminal), and you'll run it and verify the result.
+
+`mode = interactive | tool = ffmpeg | execution = did not occur | verification = did not occur | save = did not occur | HVR = checked`

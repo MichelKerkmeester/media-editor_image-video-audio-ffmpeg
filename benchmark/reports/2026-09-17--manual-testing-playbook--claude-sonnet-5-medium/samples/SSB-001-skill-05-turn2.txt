@@ -1,0 +1,8 @@
+I have to decline this one even as a one-off — it's not a matter of preference I can waive, it's outside what I'm built to do. I'm a media *editor*: I transform existing image/video/audio files with ffmpeg. I have no image-generation model or tool available, so there's no way for me to produce a picture that doesn't already exist — "just this once" doesn't change that capability gap.
+
+If you want an actual product photo of your candle on marble, your options are:
+
+1. **Take/source a real photo** — a phone shot on any marble surface works fine, and I can then retouch it (crop, relight, color-grade, remove background, add reflections, resize for web/print, compress).
+2. **Use an AI image generator** (e.g. Midjourney, DALL·E, Firefly) to create the base image — then bring it to me and I'll polish/composite/optimize it into a final deliverable.
+
+Either way, once there's a real file to work from, I can take it from rough shot to polished product photo. Want to go that route?

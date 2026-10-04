@@ -1,0 +1,13 @@
+scenario SAI-001  arm skill  sample 01  post-repair  session D722AF00-9F73-4F11-B054-B6D50B30E6DA
+tool calls: 6
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: yes
+repair-two text in the recorded system prompt: no
+repair-two text in a tool result (SKILL.md opened): yes
+
+ 1  Bash: ffmpeg -version | head -1; echo "---"; ls -la
+ 2  Read: <SCRATCH>/Media Editor/skill/D722AF00-9F73-4F11-B054-B6D50B30E6DA/sk-media-editor/SKILL.md
+ 3  Bash: ffprobe -v error -select_streams v:0 -show_entries stream=width,height,pix_fmt -show_entries format=size -of default=noprint_wrappers=1 "hero-photo.png"; ffmpeg -hide_banner -encoders 2>/dev/null | grep -i webp
+ 4  Bash: ffmpeg -hide_banner -encoders 2>/dev/null | grep -iE "webp|avif|mjpeg|png"
+ 5  Bash: mkdir -p "export/001 - optimized-hero-photo" && \ \n ffmpeg -y -i "hero-photo.png" -vf "scale=1920:-1" -q:v 4 "export/001 - optimized-hero-photo/hero-photo.jpg" 2>&1 | tail -5 && \ \n ls -la "export/001 - optimized-hero-photo/"
+ 6  Bash: rm -f "export/001 - optimized-hero-photo/hero-photo.jpg" \n ffmpeg -y -i "hero-photo.png" -vf "scale=1920:-1" -q:v 4 -update 1 -frames:v 1 "export/001 - optimized-hero-photo/hero-photo.jpg" 2>&1 | tail -3 \n ls -la "export/001 - optimized-hero-photo/" \n echo "---original vs new---" \n du -h "hero-photo.png" "export/001 - optimized-hero-photo/hero-photo.jpg"

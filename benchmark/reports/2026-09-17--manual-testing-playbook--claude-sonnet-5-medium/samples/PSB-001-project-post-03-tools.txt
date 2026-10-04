@@ -1,0 +1,8 @@
+scenario PSB-001  arm project  sample 03  post-repair  session E0022400-17E4-4EC3-B18B-EB00CCE7D5A3
+tool calls: 0
+Write/Edit/NotebookEdit calls: 0
+repair-one text in the recorded system prompt: no
+repair-two text in the recorded system prompt: yes
+repair-two text in a tool result (SKILL.md opened): no
+
+(this run made no tool calls)

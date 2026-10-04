@@ -1,0 +1,10 @@
+# OS-generated files
+.DS_Store
+
+# media files/: keep the three folders and their .gitkeep, ignore the media in them
+media files/import/*
+!media files/import/.gitkeep
+media files/export/*
+!media files/export/.gitkeep
+media files/tests/*
+!media files/tests/.gitkeep

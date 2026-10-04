@@ -1,0 +1,5 @@
+scenario PSB-001  arm project  sample 02  session DAD21B0A-3F10-4E1F-A011-0F3899A98D9A
+tool calls: 0
+Write/Edit/NotebookEdit calls: 0
+
+(this run made no tool calls)

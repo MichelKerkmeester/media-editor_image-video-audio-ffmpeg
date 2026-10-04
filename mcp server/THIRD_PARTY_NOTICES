@@ -1,0 +1,83 @@
+THIRD_PARTY_NOTICES
+
+Media Editor MCP server
+Copyright (c) 2026 Michel Kerkmeester
+MIT licence
+
+Portions of this server derive from the MIT licensed projects below. Their
+licence texts are reproduced in full. The licences of the bundled third party
+components follow after them.
+
+================================================================================
+Imagician
+================================================================================
+
+MIT License
+
+Copyright (c) 2024 Hongyi Wang
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+video-audio-mcp (misbahsy/video-audio-mcp)
+================================================================================
+
+MIT License
+
+Copyright (c) 2025 misbahsy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
+
+================================================================================
+Bundled runtime dependencies
+================================================================================
+
+@modelcontextprotocol/sdk         licenses/mcp-sdk-LICENSE.txt
+zod                               licenses/zod-LICENSE.txt
+sharp                             licenses/sharp-LICENSE.txt
+prebuilt libvips behind sharp     licenses/libvips-LICENSE.txt
+ffmpeg-static                     licenses/ffmpeg-static-LICENSE.txt
+ffprobe-static                    licenses/ffprobe-static-LICENSE.txt
+the ffmpeg build in the bundle    licenses/ffmpeg-LICENSE.txt
+                                  licenses/ffmpeg-SOURCE.md
+the ffprobe build in the bundle   covered by the ffmpeg pair above, because each
+                                  bundle's ffprobe comes from the same build as
+                                  its ffmpeg, and licenses/ffmpeg-SOURCE.md
+                                  names both binaries
+Source Sans 3 font                assets/licenses/SourceSans3-OFL.md
+every other package in the bundle licenses/node-modules.txt lists each package
+                                  under node_modules/ with its version and
+                                  licence; each keeps its own licence file or
+                                  licence field inside its package folder

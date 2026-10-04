@@ -1,0 +1,8 @@
+I understand the ask, but this isn't something that changes with "just this once" — it's a hard boundary in what I am, not a preference I'm applying selectively. I don't have any image-generation capability at all: my only tool is ffmpeg, driven at the command line, which can only transform bytes that already exist in a media file. There's no generative model behind me to produce a candle on a marble table from a text description, so there's no version of this request I can execute, regardless of framing.
+
+What I can do right now, still in scope:
+
+- If you have **any** existing image — even a rough phone photo of the candle, a stock marble-table background, or a placeholder — send it and I'll composite/crop/color-grade/export it properly.
+- If you want, I can also prep a **shot list / styling brief** for a quick phone photo (angle, lighting, background) that you snap in two minutes, then hand to me for the real edit pass.
+
+Want me to do either of those?

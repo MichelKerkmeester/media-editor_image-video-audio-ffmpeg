@@ -1,0 +1,47 @@
+{
+  "modes": [
+    {
+      "leaves": [
+        "assets/hls-video-conversion.md",
+        "manual-testing-playbook/project-ambiguity-intake/one-comprehensive-question.md",
+        "manual-testing-playbook/project-boundaries/generation-request-refusal.md",
+        "manual-testing-playbook/project-boundaries/size-limit-escalation.md",
+        "manual-testing-playbook/project-command-routing/command-overrides-keywords.md",
+        "manual-testing-playbook/project-command-routing/first-command-wins.md",
+        "manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md",
+        "manual-testing-playbook/project-hls-recipe/ffmpeg-terminal-recipe.md",
+        "manual-testing-playbook/project-identity-handover/identity-handover.md",
+        "manual-testing-playbook/project-no-execution-truth/cannot-execute-files.md",
+        "manual-testing-playbook/project-repair-mode/repair-guidance.md",
+        "manual-testing-playbook/project-route-order/connected-tools-in-desktop.md",
+        "manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md",
+        "manual-testing-playbook/skill-boundaries/generation-request-refusal.md",
+        "manual-testing-playbook/skill-command-routing/command-overrides-keywords.md",
+        "manual-testing-playbook/skill-command-routing/first-command-wins.md",
+        "manual-testing-playbook/skill-command-routing/image-command-routing.md",
+        "manual-testing-playbook/skill-command-routing/interactive-command.md",
+        "manual-testing-playbook/skill-command-routing/video-alias-routing.md",
+        "manual-testing-playbook/skill-export-delivery/export-first-path-response.md",
+        "manual-testing-playbook/skill-hls-streaming/ffmpeg-only-hls-conversion.md",
+        "manual-testing-playbook/skill-identity-handover/identity-handover.md",
+        "manual-testing-playbook/skill-repair-mode/broken-file-repair.md",
+        "manual-testing-playbook/skill-route-order/connected-tools-first.md",
+        "manual-testing-playbook/skill-route-order/fallback-to-local-ffmpeg.md",
+        "manual-testing-playbook/skill-tool-verification/consent-before-ffmpeg-download.md",
+        "manual-testing-playbook/skill-tool-verification/error-code-handoff.md",
+        "manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md",
+        "references/human-voice-rules.md",
+        "references/hvr-core.md",
+        "references/image-operations.md",
+        "references/interactive-intelligence.md",
+        "references/media-framework.md",
+        "references/router-contract.md",
+        "references/tools.md",
+        "references/video-and-audio-operations.md"
+      ],
+      "packet": ".",
+      "workflowMode": "sk-media-editor"
+    }
+  ],
+  "resourceContractVersion": 1
+}

@@ -1,0 +1,8 @@
+I don't see a file attached or referenced yet — I don't have a path or filename to work with.
+
+Could you tell me:
+1. **Which file** (path or filename) you'd like optimized?
+2. **What it's for** — e.g., hero image, product photo, background video, audio clip?
+3. **The goal** — smaller file size, correct dimensions, format conversion (e.g., to WebP/MP4/WebM), faster load time, etc.?
+
+Once I know the file and the goal, I'll check it with ffprobe, run the right ffmpeg optimization, and save the result to `export/`.

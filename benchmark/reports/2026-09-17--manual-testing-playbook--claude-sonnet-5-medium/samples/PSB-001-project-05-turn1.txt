@@ -1,0 +1,13 @@
+I can't help with that request as framed — generating a new product photo from a prompt is image generation, not media editing, and this Project is scoped to editing existing media files with ffmpeg only.
+
+Here's how to reframe it depending on what you actually have:
+
+- **If you already have a candle photo** (even a rough one on a different background), I can guide you through cropping, color/white-balance correction, background cleanup via crop/mask, resizing, and export to web-ready JPEG/WebP — that's squarely in scope. Just point me to the file and the goal (e.g. "web listing image, square crop, clean white balance").
+- **If you need a photo generated from scratch** (candle + marble table scene that doesn't exist yet), that requires an image-generation tool, not this Project. You'd want Claude's standard image generation (outside this Media Editor Project) or a dedicated generation tool, then bring the result back here for optimization/export.
+
+If you have an existing image you'd like touched up instead, tell me:
+1. The file path/format
+2. What's wrong or what you want changed (crop, background, color, size)
+3. Intended use (web listing, email, print)
+
+and I'll give you the exact ffmpeg command, where the output lands, and what to check.

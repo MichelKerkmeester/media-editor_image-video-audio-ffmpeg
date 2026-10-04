@@ -1,0 +1,205 @@
+{
+  "manifest_version": "0.3",
+  "name": "media-editor",
+  "display_name": "Media Editor",
+  "version": "0.1.0",
+  "description": "Edits images, video and audio on your own computer, inside the folders you choose.",
+  "long_description": "It resizes, converts, crops and compresses images. It trims, converts, subtitles, overlays, joins, repairs and packages video and audio for streaming. ffmpeg and ffprobe ship inside the extension, so nothing else needs installing. It only opens files inside the folders chosen in its settings and never changes an original, saving every result in a new numbered folder inside the output folder. No file, name or metadata leaves the computer.",
+  "author": {
+    "name": "Michel Kerkmeester"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "keywords": ["image", "video", "audio", "ffmpeg", "convert", "resize", "subtitles", "hls"],
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js", "--output-dir", "${user_config.output_directory}", "${user_config.allowed_directories}"],
+      "env": {}
+    }
+  },
+  "tools": [
+    {
+      "name": "media_health",
+      "description": "Reports the server version, where ffmpeg and ffprobe were found, which encoders and filters they offer, the image engine versions, and the folders and limits in effect."
+    },
+    {
+      "name": "image_resize",
+      "description": "Resizes one image to a width, a height, or both."
+    },
+    {
+      "name": "image_convert",
+      "description": "Converts one image to jpeg, png, webp, or avif."
+    },
+    {
+      "name": "image_crop",
+      "description": "Crops one rectangular region from an image."
+    },
+    {
+      "name": "image_compress",
+      "description": "Compresses one jpeg, png, webp, or avif image in its own format."
+    },
+    {
+      "name": "image_rotate",
+      "description": "Rotates one image by an angle in degrees."
+    },
+    {
+      "name": "image_flip",
+      "description": "Mirrors one image horizontally, vertically, or both ways."
+    },
+    {
+      "name": "image_probe",
+      "description": "Reads the format, pixel size, channels, bit depth, colour space, density, alpha and byte size of one image."
+    },
+    {
+      "name": "image_batch_resize",
+      "description": "Resizes one image into each listed size."
+    },
+    {
+      "name": "audio_extract",
+      "description": "Extracts the audio track from a video or audio file into a file of its own."
+    },
+    {
+      "name": "video_trim",
+      "description": "Cuts one video to the span between two times."
+    },
+    {
+      "name": "audio_convert_properties",
+      "description": "Changes an audio file's container and can set its bitrate, sample rate, and channel count."
+    },
+    {
+      "name": "video_convert_properties",
+      "description": "Changes a video's container and can set its resolution, codecs, bitrates, frame rate, and audio properties."
+    },
+    {
+      "name": "video_set_aspect_ratio",
+      "description": "Fits one video to a target aspect ratio by padding it or by cropping it."
+    },
+    {
+      "name": "audio_convert",
+      "description": "Changes the container of one audio file."
+    },
+    {
+      "name": "audio_set_bitrate",
+      "description": "Re-encodes one audio file at a target bitrate."
+    },
+    {
+      "name": "audio_set_sample_rate",
+      "description": "Re-encodes one audio file at a target sample rate."
+    },
+    {
+      "name": "audio_set_channels",
+      "description": "Re-encodes one audio file at a target channel count."
+    },
+    {
+      "name": "video_convert",
+      "description": "Changes the container of one video."
+    },
+    {
+      "name": "video_set_resolution",
+      "description": "Scales one video to a target picture size."
+    },
+    {
+      "name": "video_set_codec",
+      "description": "Re-encodes the picture of one video as libx264, libx265, or libvpx-vp9."
+    },
+    {
+      "name": "video_set_bitrate",
+      "description": "Re-encodes the picture of one video at a target bitrate."
+    },
+    {
+      "name": "video_set_frame_rate",
+      "description": "Re-encodes the picture of one video at a target frame rate."
+    },
+    {
+      "name": "video_set_audio_codec",
+      "description": "Re-encodes the audio track of one video as aac, libmp3lame, or libopus, copying the picture when it can."
+    },
+    {
+      "name": "video_set_audio_bitrate",
+      "description": "Re-encodes the audio track of one video at a target bitrate, copying the picture when it can."
+    },
+    {
+      "name": "video_set_audio_sample_rate",
+      "description": "Re-encodes the audio track of one video at a target sample rate in hertz, copying the picture when it can."
+    },
+    {
+      "name": "video_set_audio_channels",
+      "description": "Re-encodes the audio track of one video at a target channel count, copying the picture when it can."
+    },
+    {
+      "name": "video_add_subtitles",
+      "description": "Burns one SubRip subtitle file into one video, using the subtitles filter and the font folder that ships with the server."
+    },
+    {
+      "name": "video_add_text_overlay",
+      "description": "Draws one or more timed text overlays over a video, one drawtext filter per element."
+    },
+    {
+      "name": "video_add_image_overlay",
+      "description": "Places one scaled image over a video for a time span, at a chosen position and with an optional opacity."
+    },
+    {
+      "name": "video_concat",
+      "description": "Joins two or more videos into one file, in the order they are given."
+    },
+    {
+      "name": "video_set_speed",
+      "description": "Changes how fast a video plays, speeding the picture up or slowing it down while the audio tempo follows the same factor."
+    },
+    {
+      "name": "media_remove_silence",
+      "description": "Finds silent stretches in an audio or video file and keeps the loud parts, so the result plays back to back."
+    },
+    {
+      "name": "video_add_b_roll",
+      "description": "Overlays one or more clips onto a main video as timed overlays, each at its own position and shown length, with optional fades."
+    },
+    {
+      "name": "video_add_fade",
+      "description": "Adds one fade from black at the start or one fade to black at the end of a video."
+    },
+    {
+      "name": "media_probe",
+      "description": "Reads container and stream metadata from one image, audio or video file with ffprobe: format name, duration, size and bit rate, plus the codec, pixel size, frame rate, sample rate and channel layout of every stream."
+    },
+    {
+      "name": "media_repair",
+      "description": "Diagnoses a damaged or partly readable video or audio file with ffprobe, then rewrites it with a matching ffmpeg pass: remux copies the streams into a fresh container, which repairs a missing or broken index or timestamp table; reencode rebuilds the streams as H.264 and AAC (AAC alone for audio), which repairs damaged or cut-short streams."
+    },
+    {
+      "name": "video_hls_ladder",
+      "description": "Encodes one video into an HLS ladder for streaming: one master playlist, one playlist per selected rung (1080p, 720p, 480p, 360p) and H.264 segments beside every playlist, all inside one new numbered folder."
+    },
+    {
+      "name": "media_setup_ffmpeg",
+      "description": "Finds ffmpeg and ffprobe, and downloads a pinned build of either one that is missing after the user consents."
+    }
+  ],
+  "tools_generated": false,
+  "prompts_generated": false,
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=20.9.0"
+    }
+  },
+  "user_config": {
+    "allowed_directories": {
+      "type": "directory",
+      "title": "Folders Media Editor may open",
+      "description": "Media Editor opens files only inside these folders. Add every folder that holds media you want to edit.",
+      "multiple": true,
+      "required": true,
+      "default": ["${DESKTOP}"]
+    },
+    "output_directory": {
+      "type": "directory",
+      "title": "Output folder",
+      "description": "Edited files are saved here, each run in a new numbered folder. Leave it empty to use the first folder above. To edit a result again, the output folder must also be one of the folders above.",
+      "required": false
+    }
+  }
+}

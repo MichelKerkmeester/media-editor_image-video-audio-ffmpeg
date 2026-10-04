@@ -1,0 +1,13 @@
+scenario SCR-002  arm skill  sample 03  post-repair  session E2148F40-66A1-42F3-9493-E6E28840BC08
+scratch tree: <SCRATCH>/skill/E2148F40-66A1-42F3-9493-E6E28840BC08
+
+seeded fixture:
+  demo-video.mp4  present, 144540 bytes
+
+export/ subtree:
+  export/001 - podcast-audio-extract/demo-video-audio.mp3  145595 bytes
+
+media files in the tree, ffprobe readout, pre-existing files identified:
+  Favicon.jpg  [pre-existing: Favicon.jpg (Media Editor tree)]
+  demo-video.mp4  [pre-existing: demo-video.mp4 (fixture)]
+  export/001 - podcast-audio-extract/demo-video-audio.mp3  [PRODUCED BY THIS RUN] mp3|audio 6.000000|145595

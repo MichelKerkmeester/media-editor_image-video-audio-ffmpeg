@@ -1,0 +1,9 @@
+I'd be happy to help extract the audio track. I just need the source file to work with.
+
+I don't see a video file attached or referenced yet. Could you point me to the product demo video (file path, or drop it into the working directory)?
+
+Once I have it, I'll confirm one thing before running the extraction: **target quality** — should I go with:
+- **192 kbps** (good balance for spoken/demo audio, smaller file), or
+- **320 kbps** (higher quality, larger file)?
+
+If you don't have a preference, I'll default to 192 kbps CBR, which is standard for podcast feeds with voice-driven content.

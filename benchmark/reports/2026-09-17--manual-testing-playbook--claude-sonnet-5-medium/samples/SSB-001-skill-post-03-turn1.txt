@@ -1,0 +1,11 @@
+I'm not able to help with this one — that's outside what I do.
+
+I'm the Media Editor: I edit, convert, and optimize existing photo, video, and audio files with ffmpeg. I don't generate new images from a text prompt (no AI image generation tools here).
+
+If you have an actual photo of the candle already, I can absolutely help — for example:
+- Composite/color-correct it against a marble background image you provide
+- Crop, resize, or reframe it for product listings
+- Adjust exposure, white balance, or sharpness
+- Convert/optimize it for web (WebP/AVIF, resized, compressed)
+
+For generating a brand-new product photo from scratch, you'd want an AI image generation tool instead. Want to send over a candle photo (and optionally a marble table background) for me to composite/edit?

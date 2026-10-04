@@ -1,0 +1,9 @@
+ffmpeg isn't installed on this system, so I can't process the image right now.
+
+**What's blocking:** `ffmpeg` is not found on this machine — that's the only tool I have for compression, so there's no fallback.
+
+**To fix it (macOS):**
+```
+brew install ffmpeg
+```
+Once that's installed, tell me to go ahead and I'll compress `banner-image.png` (currently ~906KB) down under 200KB and save it to `export/`.
