@@ -255,6 +255,7 @@ it('converts photo.png to webp without changing the input', async (): Promise<vo
     const result = await client.callTool({
       name: 'image_convert',
       arguments: {
+        subfolder: true,
         inputPath: photoPath,
         outputName: 'photo webp',
         format: 'webp',

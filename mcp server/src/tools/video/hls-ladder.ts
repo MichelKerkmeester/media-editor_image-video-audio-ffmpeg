@@ -489,6 +489,7 @@ export const videoHlsLadderTool = defineTool({
     + 'It never changes the input and drops the audio track. Run time grows '
     + 'with file size: seconds under 100 MB, up to a few minutes from 100 MB '
     + 'to 1 GB, and minutes to tens of minutes above 1 GB.',
+  outputPlacement: false,
   inputSchema: {
     inputPath: z
       .string()

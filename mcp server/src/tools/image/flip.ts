@@ -130,14 +130,14 @@ async function runFlip(
 // 6. EXPORTS
 // ───────────────────────────────────────────────────────────────────
 
-/** Mirror one image into a new numbered folder without changing the input. */
+/** Mirror one image into the export root, or a numbered folder on request, without changing the input. */
 export const imageFlipTool = defineTool({
   name: TOOL_NAME,
   title: 'Flip an image',
   description:
     'Mirrors one image horizontally, vertically, or both ways. '
     + 'The width and height stay the same. '
-    + 'It writes one file in a new numbered folder and never changes the input.',
+    + 'It writes one file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z
       .string()

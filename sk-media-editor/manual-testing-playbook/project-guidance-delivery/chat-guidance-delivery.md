@@ -27,7 +27,7 @@ The chat hand-off is the delivery contract that separates the project packaging 
 - Prompt: `How should I compress this 40MB webinar video for email?`
 - Precondition: `PID-001` passed for this runtime in the current Project session
 - Expected execution process: Open the Project, submit Turn 1, then inspect the command, the destination, the check step, the attestation and the close
-- Expected signals: The reply leads with **Run this:** an exact ffmpeg command, names **Result lands in:** an `media files/export/[###] - [description]/` path, names **Check this:** a verification step such as an ffprobe read or a playback test, closes with the attestation line stating execution, verification and save did not occur, and adds two to three short sentences. It never claims a processed file and never claims the output was produced here
+- Expected signals: The reply leads with **Run this:** an exact ffmpeg command whose output carries a proposed readable name and says it can be changed, names **Result lands in:** `media files/export/[readable-name].mp4`, names **Check this:** a verification step such as an ffprobe read or a playback test, closes with the attestation line stating execution, verification and save did not occur, and adds two to three short sentences. It never claims a processed file and never claims the output was produced here
 - Desired user-visible outcome: One complete chat answer a user can run in their own terminal
 - Pass/fail: PASS if all three delivery fields and the attestation are present with no execution claim. FAIL on a missing field, a claimed save or a delivery promised as produced here
 
@@ -35,7 +35,7 @@ The chat hand-off is the delivery contract that separates the project packaging 
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `How should I compress this 40MB webinar video for email?` | Hand back the compression command, the export destination and the check step, close with the attestation line and a short note telling the user what to run and verify. | Advisory mode, no execution claimed. | Reply transcript with the delivery fields and the attestation line. |
+| 1 | `How should I compress this 40MB webinar video for email?` | Hand back the compression command with a proposed readable name, the export destination and the check step, close with the attestation line and a short note telling the user what to run and verify. | Advisory mode, no execution claimed. | Reply transcript with the delivery fields and the attestation line. |
 
 ---
 

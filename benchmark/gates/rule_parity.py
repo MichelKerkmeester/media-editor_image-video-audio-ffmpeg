@@ -28,7 +28,7 @@ than a locally built map, because that file is the one place all eight
 systems' pairs are written down and the fleet gates already read it there.
 This system ships no source map of its own to read instead.
 
-Measured against the live tree, all eight declared pairs hold byte-identical
+Measured against the live tree, all seven declared pairs hold byte-identical
 content on both sides, so every count below starts equal. That is a true
 statement about today's tree, not a property this gate assumes. The gate still
 runs the comparison rather than trusting it, because an equal count today says
@@ -61,12 +61,8 @@ SYSTEM_ID = "media-editor"
 # `phrases` are verbatim spans, read out of the live documents rather than
 # retyped from memory, and checked once against the source files before this
 # dict was written so a transcription slip could not masquerade as drift.
-# Where one document states several bans in a single sentence (the HVR core
-# card's punctuation line), the whole sentence is the span rather than a
-# fragment, because a fragment would still match after an edit that reversed
-# what the sentence says elsewhere in the same run-on.
 #
-# `min_pairs` is how many of the eight declared pairs teach the rule as
+# `min_pairs` is how many of the seven declared pairs teach the rule as
 # measured against the live tree. A rule that moves from one declared pair to
 # another leaves every per-pair count equal on both sides, agreement by the
 # count check alone, so the floor is what notices a rule leaving the pair that
@@ -75,13 +71,14 @@ SYSTEM_ID = "media-editor"
 RULES = {
     # Every operational document restates the route order before any promise:
     # the Media Editor tools when they are connected, then installed ffmpeg,
-    # then advice that runs nothing. Five of the eight pairs carry it in five
+    # then advice that runs nothing. Five of the seven pairs carry it in five
     # distinct sentences, one per document, which is why the rule needs five
     # phrases rather than one repeated string. Each span keeps the tools-first
     # clause, so a mirror that drops back to an ffmpeg-only check is caught.
     # Re-measured when the tools reference became the eighth pair: still five,
     # because that reference states none of the five sentences, and the
-    # renamed operation references kept theirs word for word.
+    # renamed operation references kept theirs word for word. Still five when
+    # the setup reference joined, since it guides installs and states no route rule.
     "the tool check gates every operation, tools first": {
         "phrases": (
             "When the Media Editor tools are connected, use them: they bring their own ffmpeg, "
@@ -116,20 +113,7 @@ RULES = {
         "min_pairs": 1,
     },
     "the export destination convention": {
-        "phrases": ("Write results to `media files/export/[###] - [description]/` in the runtime",),
-        "min_pairs": 2,
-    },
-    # Carried by the HVR core card as one run-on sentence banning several
-    # marks at once, and by the full EN standard as separate YAML entries. The
-    # two documents state the same ban in unrelated wording, so the rule takes
-    # one phrase from each rather than expecting one string to appear twice.
-    "core punctuation hard blockers (em dash, semicolon)": {
-        "phrases": (
-            'Em dash `—`, semicolon `;`, Oxford comma, asterisk emphasis in delivered output, '
-            'curly quotes (use straight `"` and `\'`), title-case headings (use sentence case).',
-            '{ action: "NEVER use (—)", replace_with: "comma, full stop or colon" }',
-            '{ action: "NEVER use (;)", replace_with: "two sentences or conjunction" }',
-        ),
+        "phrases": ("Write one result to `media files/export/[readable-name].[ext]` in the runtime",),
         "min_pairs": 2,
     },
 }

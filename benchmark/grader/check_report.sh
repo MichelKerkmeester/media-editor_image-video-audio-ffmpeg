@@ -6,26 +6,21 @@
 #
 # The playbook records one PASS/FAIL/SKIP verdict per scenario by hand, so
 # nothing in this system's own review protocol re-reads a finished run as a
-# whole. The two checks that only make sense over a finished report, whether
-# every captured reply stayed clean of an HVR hard blocker and whether every
-# scenario twin agreed, had to be remembered and typed by hand before this
-# script existed, and a check that depends on being remembered is the same as
-# no check.
+# whole. Whether every scenario twin agreed only makes sense over a finished
+# report, and a check that depends on being remembered is the same as no check.
 #
 # Every check runs even after one reports findings, because stopping at the
 # first hides the rest, and the exit code carries how many reported rather
 # than the first one, so a caller cannot read one as one problem.
 #
 # What the exit code means: how many checks reported findings, not how many
-# failed to run. A dirty reply or a diverging twin is a finding about the
-# runtime that produced it during that manual pass, not a defect in this
-# repository, and a caller reading the code should reach for the printed
-# output rather than a revert.
+# failed to run. A diverging twin is a finding about the runtime that produced
+# it during that manual pass, not a defect in this repository, and a caller
+# reading the code should reach for the printed output rather than a revert.
 #
 # Exit Codes:
-#   0 - Both report checks were clean
-#   1 - One check reported findings or could not run
-#   2 - Both checks reported findings or could not run
+#   0 - Every report check was clean
+#   1 - The twin check reported findings or could not run
 #   64 - Usage error: no run report dir named
 #   66 - The named path is not a report directory
 set -uo pipefail
@@ -48,7 +43,7 @@ trap 'rm -rf "$TMP_OUT"' EXIT
 
 found=0
 total=0
-for check in lint_replies twin_divergence; do
+for check in twin_divergence; do
   total=$((total + 1))
   printf '  %-18s ' "$check"
   if python3 "$HERE/$check.py" "$REPORT" > "$TMP_OUT/$check.report.out" 2>&1; then

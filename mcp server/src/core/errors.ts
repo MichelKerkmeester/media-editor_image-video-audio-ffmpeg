@@ -129,3 +129,20 @@ export function toMediaError(error: unknown, tool?: string): MediaError {
   details.cause = causeText(error);
   return new MediaError(ERROR_CODES.INTERNAL, internalMessage(tool), details);
 }
+
+/**
+ * Read the `code` a Node.js system error carries, such as `EEXIST`.
+ *
+ * @param error - Any thrown value
+ * @returns The code, or undefined when the value carries no string code
+ */
+export function nodeErrorCode(error: unknown): string | undefined {
+  if (typeof error !== 'object' || error === null || !('code' in error)) {
+    return undefined;
+  }
+  const code = error.code;
+  if (typeof code !== 'string') {
+    return undefined;
+  }
+  return code;
+}

@@ -104,7 +104,7 @@ export const audioExtractTool = defineTool({
   title: 'Extract audio',
   description:
     'Extracts the audio track from a video or audio file into a file of its own. '
-    + 'It writes that file in a new numbered folder and never changes the input.',
+    + 'It writes that file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z
       .string()

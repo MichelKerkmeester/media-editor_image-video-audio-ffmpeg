@@ -1,6 +1,6 @@
 ---
 title: "server: MCP server layer"
-description: "Builds the MCP server, registers the 39 tools, owns tools/call dispatch and gives every handler its ToolContext services."
+description: "Builds the MCP server, registers the 40 tools, owns tools/call dispatch and gives every handler its ToolContext services."
 trigger_phrases:
   - "tool registry"
   - "tool context"
@@ -17,7 +17,7 @@ trigger_phrases:
 
 Current state:
 
-- `ALL_TOOLS` lists the 39 tools in the order `tools/list` returns them.
+- `ALL_TOOLS` lists the 40 tools in the order `tools/list` returns them.
 - An unknown tool name is a `MethodNotFound` protocol error and arguments that fail the zod schema are `InvalidParams`. Every other failure becomes an error result.
 - The field schemas here keep shared arguments, such as `outputName`, bitrates and resolutions, identical across tools.
 
@@ -46,10 +46,10 @@ Current state:
 | File | Responsibility |
 |------|----------------|
 | `create-server.ts` | `createServer(config, options)`: builds the `McpServer`, the default context and the registrations |
-| `tool-registry.ts` | `defineTool` keeps a schema's type for its handler. `registerTools` lists tools and owns `tools/call` |
-| `tool-context.ts` | `createToolContext`: `resolveBinary`, `getCapabilities`, `resolveInput`, `resolveInputs`, `allocateOutputFolder`, `runBinary`, `readBack` |
+| `tool-registry.ts` | `defineTool` keeps a schema's type for its handler. `registerTools` lists tools and owns `tools/call`. A tool that writes into one folder is listed with `fileName` and `subfolder`, and dispatch moves both onto the handler's context |
+| `tool-context.ts` | `createToolContext`: `resolveBinary`, `getCapabilities`, `resolveInput`, `resolveInputs`, `allocateOutputFolder`, `runBinary`, `readBack`. `withPlacement` returns a context that carries the caller's `fileName` and `subfolder` |
 | `all-tools.ts` | `ALL_TOOLS`, the only place that imports the tool modules |
-| `field-schemas.ts` | `outputNameField`, the `outputName` argument every writing tool shares |
+| `field-schemas.ts` | `outputNameField`, the `outputName` argument every writing tool shares, `fileNameField` and `subfolderField` for placement, and `readableNameSchema`, which `media_rename` reuses |
 | `media-fields.ts` | Bitrate, sample rate, channels, frame rate, resolution, aspect ratio, padding colour and time fields, with their parsers |
 | `server-info.ts` | `SERVER_NAME` and `readServerVersion`, which reads the version from `package.json` |
 

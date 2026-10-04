@@ -12,7 +12,7 @@ import { open } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 
-import { ERROR_CODES, MediaError } from './errors.js';
+import { ERROR_CODES, MediaError, nodeErrorCode } from './errors.js';
 import { verifyUnchanged } from './path-guard.js';
 
 import type { ResolvedInput } from './path-guard.js';
@@ -167,17 +167,6 @@ function binaryLabel(binary: string, kind: BinaryKind): string {
     return path.parse(binary).name;
   }
   return kind;
-}
-
-function nodeErrorCode(error: unknown): string {
-  if (typeof error !== 'object' || error === null || !('code' in error)) {
-    return '';
-  }
-  const code = error.code;
-  if (typeof code === 'string') {
-    return code;
-  }
-  return '';
 }
 
 function isEnoent(error: unknown): boolean {
@@ -435,7 +424,10 @@ function spawnAndWait(
       }
       const spawnCode = nodeErrorCode(error);
       finish(() => {
-        reject(new SpawnFailedError(label, spawnCode.length > 0 ? spawnCode : 'UNKNOWN'));
+        reject(new SpawnFailedError(
+          label,
+          spawnCode !== undefined && spawnCode.length > 0 ? spawnCode : 'UNKNOWN',
+        ));
       });
     });
 

@@ -27,7 +27,7 @@ Guidance that claims the Project ran the conversion fabricates a result. Guidanc
 - Prompt: `$hls Convert this keynote recording for adaptive streaming on the site.`
 - Precondition: `PID-001` passed for this runtime in the current Project session
 - Expected execution process: Open the Project, submit Turn 1, then inspect the command, the destination, the check step and the attestation
-- Expected signals: The reply names HLS Mode and installed ffmpeg, hands back a multi-quality command with `-f hls` and `-var_stream_map`, names **Result lands in:** an `media files/export/[###] - [description]/` path, names **Check this:** a verification step such as reading the master playlist or running `ffprobe`, closes with the attestation line, and never claims execution
+- Expected signals: The reply names HLS Mode and installed ffmpeg, hands back a multi-quality command with `-f hls` and `-var_stream_map`, names **Result lands in:** one `media files/export/[###] - [description]/` folder whose description is a proposed readable name, because a ladder writes several files, names **Check this:** a verification step such as reading the master playlist or running `ffprobe`, closes with the attestation line, and never claims execution
 - Desired user-visible outcome: One complete HLS answer the user can paste into their own terminal
 - Pass/fail: PASS if installed ffmpeg is the only named tool and the ladder command is complete with the delivery fields. FAIL if the command is missing steps, the structure is wrong or execution is claimed
 
@@ -35,7 +35,7 @@ Guidance that claims the Project ran the conversion fabricates a result. Guidanc
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$hls Convert this keynote recording for adaptive streaming on the site.` | Hand back an HLS Mode answer with the ffmpeg ladder command, its destination, the check step and the attestation line. | Tool is installed ffmpeg only. | Reply transcript with the command and the delivery fields. |
+| 1 | `$hls Convert this keynote recording for adaptive streaming on the site.` | Hand back an HLS Mode answer with the ffmpeg ladder command writing to a numbered folder with a proposed readable description, its destination, the check step and the attestation line. | Tool is installed ffmpeg only. | Reply transcript with the command and the delivery fields. |
 
 ---
 

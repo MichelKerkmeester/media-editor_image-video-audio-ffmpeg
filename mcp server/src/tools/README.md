@@ -13,12 +13,12 @@ trigger_phrases:
 
 ## 1. OVERVIEW
 
-`src/tools/` holds the 39 tools the server offers, one module per tool. Each module exports one `defineTool({...})` value with a `name`, `title`, `description`, zod `inputSchema`, `annotations` and a `handler(args, context)`. The handler receives parsed arguments and the `ToolContext` services, and returns a result built by `core/result.ts`.
+`src/tools/` holds the 40 tools the server offers, one module per tool. Each module exports one `defineTool({...})` value with a `name`, `title`, `description`, zod `inputSchema`, `annotations` and a `handler(args, context)`. The handler receives parsed arguments and the `ToolContext` services, and returns a result built by `core/result.ts`.
 
 Current state:
 
 - Tool names follow `<group>_<action>`, and the file is named after the action: `video_set_codec` lives in `video/set-codec.ts`.
-- Every writing tool takes `outputName` and writes into a new numbered folder. Read-only tools set `readOnlyHint: true`.
+- Every writing tool takes `outputName`. The registry also offers each one-folder writing tool `fileName` and `subfolder`: one file goes to the export root by default, several files get a numbered folder, and `video_hls_ladder` always gets one. Read-only tools set `readOnlyHint: true`.
 - Two shared runners carry most of the work: `video/copy-then-encode.ts` for ffmpeg and `image/sharp-output.ts` for sharp.
 
 ---
@@ -30,7 +30,7 @@ tools/
 ├── image/    # 8 image tools on sharp, plus sharp-output.ts
 ├── audio/    # 6 audio tools on ffmpeg
 ├── video/    # 20 video tools on ffmpeg, plus copy-then-encode.ts
-└── media/    # media_health, media_probe, media_repair, media_remove_silence, media_setup_ffmpeg
+└── media/    # media_health, media_probe, media_rename, media_repair, media_remove_silence, media_setup_ffmpeg
 ```
 
 ---
@@ -40,9 +40,9 @@ tools/
 | Boundary | Rule |
 |----------|------|
 | Imports | `../server/` for `defineTool`, `ToolContext` and the field schemas. `../core/` for paths, probing, capabilities and results |
-| Shared runner | `audio/` and `media/` import `video/copy-then-encode.ts`. No other cross-group import exists |
+| Shared runner | `audio/` and `media/` import `video/copy-then-encode.ts`. `image/probe.ts` imports the preview from `media/preview.ts`, which reads the pixel limit from `image/sharp-output.ts`. No other cross-group import exists |
 | Registration | A new tool is registered by adding it to `../server/all-tools.ts` and to `TOOL_NAMES` and `TOOL_REQUIREMENTS` in `../core/capabilities.ts` |
-| Side effects | A handler touches the filesystem and child processes only through `ToolContext` and the core helpers |
+| Side effects | A handler touches the filesystem and child processes through `ToolContext`, the core helpers and its group's shared writer. Two tools move files themselves: `media_rename` inside the export folder and `media_setup_ffmpeg` inside the data folder |
 
 ---
 
@@ -72,7 +72,7 @@ Run from `AI Systems/Media Editor/mcp server/`.
 npx vitest run tests/tools
 ```
 
-Expected result: `Test Files  47 passed (47)`.
+Expected result: `Test Files  50 passed (50)`.
 
 ---
 

@@ -196,6 +196,7 @@ const EXPECTED_REQUIREMENTS: Readonly<Record<ToolName, ToolRequirement>> = {
     filters: ['fade'],
   },
   media_probe: EMPTY_REQUIREMENT,
+  media_rename: EMPTY_REQUIREMENT,
   media_repair: EMPTY_REQUIREMENT,
   video_hls_ladder: {
     encoders: ['libx264'],
@@ -464,7 +465,7 @@ describe('summarizeCapabilities', (): void => {
 });
 
 describe('tool requirements', (): void => {
-  it('has 39 unique tool names and the same requirement keys', (): void => {
+  it('has 40 unique tool names and the same requirement keys', (): void => {
     expect(TOOL_NAMES).toEqual([
       'image_resize',
       'image_convert',
@@ -502,11 +503,12 @@ describe('tool requirements', (): void => {
       'video_add_b_roll',
       'video_add_fade',
       'media_probe',
+      'media_rename',
       'media_repair',
       'video_hls_ladder',
       'media_setup_ffmpeg',
     ]);
-    expect(new Set(TOOL_NAMES).size).toBe(39);
+    expect(new Set(TOOL_NAMES).size).toBe(40);
     expect(Object.keys(TOOL_REQUIREMENTS)).toEqual([...TOOL_NAMES]);
   });
 

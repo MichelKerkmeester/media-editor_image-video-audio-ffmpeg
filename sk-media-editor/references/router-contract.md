@@ -9,7 +9,7 @@ trigger_phrases:
   - "exact routing algorithm"
   - "media editor routing code"
   - "route_contract.py"
-version: 1.7.0.0
+version: 0.8.0.0
 ---
 
 # Media Editor - Router Contract
@@ -98,7 +98,7 @@ FALLBACK_MAP = {
     "INTERACTIVE": None,
 }
 
-ALWAYS = ["references/media-framework.md", "references/hvr-core.md"]
+ALWAYS = ["references/media-framework.md"]
 
 UNKNOWN_FALLBACK_CHECKLIST = [
     "Confirm the media type: image, video, audio or HLS",

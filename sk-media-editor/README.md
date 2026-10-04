@@ -8,7 +8,7 @@ trigger_phrases:
   - "$audio"
   - "$hls"
   - "$repair"
-version: 1.7.0.0
+version: 1.0.0.0
 ---
 
 # sk-media-editor
@@ -30,9 +30,9 @@ version: 1.7.0.0
 
 ### What this is
 
-This folder is the CLI packaging of the Media Editor system: one skill that edits, converts, compresses and streams media that already exists. `SKILL.md` carries the identity, the router, the tool check and every rule. `references/` holds the MEDIA thinking framework, the interactive conversation flow, the image and the video and audio operation references, the catalogue of all 39 tools, the router contract and byte copies of the shared Human Voice card and the full Human Voice Rules. `assets/` holds HLS conversion with `video_hls_ladder` and the ffmpeg command pack. A cold model bootstraps through `../AGENTS.md`, and from that point on it IS the Media Editor: scope, tool check and export rules replace generic assistant behavior.
+This folder is the CLI packaging of the Media Editor system: one skill that edits, converts, compresses and streams media that already exists. `SKILL.md` carries the identity, the router, the tool check and every rule. `references/` holds the MEDIA thinking framework, the interactive conversation flow, the image and the video and audio operation references, the catalogue of all 40 tools and the router contract. `assets/` holds HLS conversion with `video_hls_ladder` and the ffmpeg command pack. A cold model bootstraps through `../AGENTS.md`, and from that point on it IS the Media Editor: scope, tool check and export rules replace generic assistant behavior.
 
-Every operation takes the first route that is available: the Media Editor tools when they are connected, then locally installed ffmpeg, then advice with the exact command when neither can run. The tools come from the Media Editor MCP server in `../mcp server/`, installed as the Claude Desktop extension or the Claude Code plugin, and bring their own pinned ffmpeg. Every processed result lands in `../media files/export/`, or in the numbered folder a tool returns, before any response is written. A second packaging of the same brain lives in `../claude project/` for claude.ai. It runs the tools in a Claude Desktop Project that has them connected, and otherwise answers in chat with the exact command to run, where the result lands and what to check.
+Every operation takes the first route that is available: the Media Editor tools when they are connected, then locally installed ffmpeg, then advice with the exact command when neither can run. The tools come from the Media Editor MCP server in `../mcp server/`, installed as the Claude Desktop extension or the Claude Code plugin, and bring their own pinned ffmpeg. Every processed result lands in `../media files/export/` before any response is written: one file directly under a readable name the skill proposes and the user confirms, several files from one operation in one numbered folder. A second packaging of the same brain lives in `../claude project/` for claude.ai. It runs the tools in a Claude Desktop Project that has them connected, and otherwise answers in chat with the exact command to run, where the result lands and what to check.
 
 ### How a request flows
 
@@ -70,7 +70,7 @@ Every operation takes the first route that is available: the Media Editor tools 
 │          → Implement → Analyze                      │
 │                                                    │
 │   Gates: build reality check, format and quality    │
-│          fit, Human Voice Rules, disk and time      │
+│          fit, disk and time                         │
 └────────────────────────────────────────────────────┘
                            │
                            ▼
@@ -307,27 +307,26 @@ Blocking gates that stand between processing and delivery: no operation runs bef
 
 ## 7. ASSETS AND REFERENCE INVENTORY
 
-The first eight files below are mirrored byte for byte into `claude project/knowledge/`. `references/router-contract.md` is the one reference with no mirror, because the Claude Project kernel ends with its code.
+The first seven files below are mirrored byte for byte into `claude project/knowledge/`. `references/router-contract.md` is the one reference with no mirror, because the Claude Project kernel ends with its code.
 
 | File | What it covers |
 |---|---|
 | `references/media-framework.md` | MEDIA methodology, RICCE validation, quality gates and the two-layer transparency model. ALWAYS-loaded |
-| `references/hvr-core.md` | Byte copy of the shared Human Voice card from the shared knowledge folder. ALWAYS-loaded, carries every hard blocker inline, never edited from this system |
-| `references/human-voice-rules.md` | Byte copy of the shared Human Voice Rules from the shared knowledge folder. ON_DEMAND behind the card, never edited from this system |
 | `references/interactive-intelligence.md` | Conversation flow, state machine, the comprehensive question and the per-mode question templates |
 | `references/image-operations.md` | The eight image tools with parameters and defaults, then the ffmpeg image recipes, format and quality tables |
 | `references/video-and-audio-operations.md` | The video and audio tools with parameters and defaults, the operations no tool covers, then the ffmpeg recipes and codec tables |
-| `references/tools.md` | All 39 tools, the consent rule, the 15 error codes, the server settings and the gaps. ON_DEMAND |
+| `references/tools.md` | All 40 tools, the consent rule, the 15 error codes, the server settings and the gaps. ON_DEMAND |
+| `references/setup.md` | Guided setup when the tools are not connected: where they can run, the extension from the latest release, its folders, ffmpeg with consent, the plugin and local ffmpeg. ON_DEMAND |
 | `assets/hls-video-conversion.md` | `video_hls_ladder`, then the ffmpeg HLS command recipes, quality tables and the batch conversion script |
 | `references/router-contract.md` | The Smart Router as running Python, checked by `../benchmark/router/differential.py`. ON_DEMAND, not mirrored |
 
-The router loads `media-framework.md` and `hvr-core.md` on every invocation, and loads exactly one integration reference on demand, so a request never triggers a bulk read of the whole set.
+The router loads `media-framework.md` on every invocation, and loads exactly one integration reference on demand, so a request never triggers a bulk read of the whole set.
 
 ---
 
 ## 8. DUAL PACKAGING
 
-`sk-media-editor/` is the source of truth and the CLI runtime: it checks the route, runs the operation through the Media Editor tools or ffmpeg and saves the result. `claude project/` is a derived package: the same eight knowledge files are copied byte for byte from the skill sources, while `Custom Instructions.md` remains a hand-synthesized kernel that ends with the router contract's code. It runs the Media Editor tools when a Claude Desktop Project has them connected. Without them it cannot execute a tool, so it applies the same MEDIA thinking and format intelligence and answers in chat with the exact command to run, where the result lands and what to check. The no-execution limitation is stated plainly whenever no tool ran. The Claude Code plugin in `../mcp server/claude-plugin/` ships a copy of this skill beside the server.
+`sk-media-editor/` is the source of truth and the CLI runtime: it checks the route, runs the operation through the Media Editor tools or ffmpeg and saves the result. `claude project/` is a derived package: the same six knowledge files are copied byte for byte from the skill sources, while `Custom Instructions.md` remains a hand-synthesized kernel that ends with the router contract's code. It runs the Media Editor tools when a Claude Desktop Project has them connected. Without them it cannot execute a tool, so it applies the same MEDIA thinking and format intelligence and answers in chat with the exact command to run, where the result lands and what to check. The no-execution limitation is stated plainly whenever no tool ran. The Claude Code plugin in `../mcp server/claude-plugin/` ships a copy of this skill beside the server.
 
 `../SYNC.md` holds the hand-authored parity note. There is no local derive step. Every reference pair is byte identical between the skill source and its Project mirror.
 
@@ -397,9 +396,8 @@ No. That is out of scope and gets refused and reframed into a supported operatio
 | [`references/interactive-intelligence.md`](./references/interactive-intelligence.md) | Conversation flow, state machine and response templates |
 | [`references/image-operations.md`](./references/image-operations.md) | Image tools first, then ffmpeg image recipes |
 | [`references/video-and-audio-operations.md`](./references/video-and-audio-operations.md) | Video and audio tools first, then ffmpeg recipes |
-| [`references/tools.md`](./references/tools.md) | All 39 tools, consent, error codes, settings and gaps |
+| [`references/tools.md`](./references/tools.md) | All 40 tools, consent, error codes, settings and gaps |
+| [`references/setup.md`](./references/setup.md) | Guided setup of the extension, the plugin or ffmpeg |
 | [`references/router-contract.md`](./references/router-contract.md) | The exact routing algorithm the kernel's Router Code copies |
-| [`references/hvr-core.md`](./references/hvr-core.md) | ALWAYS-loaded Human Voice card: every hard blocker inline, plus the self-scan contract |
-| [`references/human-voice-rules.md`](./references/human-voice-rules.md) | Shared voice and style rules every response follows, ON_DEMAND behind the card |
 | [`assets/hls-video-conversion.md`](./assets/hls-video-conversion.md) | `video_hls_ladder`, then ffmpeg HLS recipes, quality tables and the batch script |
 | [`../claude%20project/README.md`](../claude%20project/README.md) | Upload and parity manifest for the Claude Project packaging |

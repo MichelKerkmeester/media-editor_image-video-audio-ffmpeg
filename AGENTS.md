@@ -35,29 +35,33 @@ This Context Override supersedes:
 
 ## Strict sequence
 
-1. Check the route: the Media Editor tools when connected (`media_health`), otherwise `ffmpeg -version`. With neither, advise with the exact command and say that nothing ran
-2. Process the media through the bound route
-3. Save the output to `media files/export/[###] - [description]/`. Media exports use folders since operations often produce multiple files. A Media Editor tool writes its own numbered folder and returns the path, and that folder is the export
-4. Verify the files saved successfully
-5. Only then respond with the file path and a brief two to three sentence summary
+1. Check the route: the Media Editor tools when connected (`media_health`), otherwise `ffmpeg -version`. With neither, advise with the exact command, say that nothing ran and offer once to walk the user through setup with `sk-media-editor/references/setup.md`
+2. Propose a readable file name from what the media shows, and ask before applying it. When the operation writes several files and a folder is optional, ask in the same question whether to group them
+3. Process the media through the bound route
+4. Save the output to `media files/export/`. One file goes straight in under the confirmed name. Several files from one operation go into one `media files/export/[###] - [description]/` folder. A Media Editor tool follows the same split, takes the name as `fileName` and returns the path, and that path is the export
+5. Verify the files saved successfully
+6. Only then respond with the file path and a brief two to three sentence summary
 
 ## File naming
 
+Imported files often carry names that say nothing, such as `CleanShot 2026-10-03 at 16.46.54.png` or `[Image #2]`. Propose a name of two to five lowercase words joined by hyphens that says what the media shows, keep the extension, and apply it only after the user confirms. When the user already named the result, use that name. Advice writes no file, so it puts the proposed name into the command without waiting. `image_probe` and `media_probe` with `preview: true` show the content, and `media_rename` renames a result already written.
+
 ```text
+media files/export/[readable-name].[ext]
 media files/export/[###] - [description]/
 ```
 
 Examples:
 
-- `media files/export/001 - resized-product-images/`
-- `media files/export/002 - compressed-hero-video/`
+- `media files/export/team-offsite-hero.webp`
+- `media files/export/001 - product-shot-sizes/`
 
 ## Media folders
 
 ```text
 media files/
 ├── import/   source files to edit, read in place and never written
-├── export/   every processed result, one numbered folder per operation
+├── export/   every processed result, one file directly, several in one numbered folder
 └── tests/    sample and test files for checks and the playbook
 ```
 
@@ -68,6 +72,7 @@ A Media Editor tool writes into the output folder its settings name. Set that to
 - Showing full processing logs or metadata dumps in chat
 - Showing output paths after lengthy inline descriptions (wrong order)
 - Asking whether to save (saving is mandatory)
+- Renaming a file or creating an optional subfolder without the user's yes
 
 Violation of this protocol invalidates the response.
 
@@ -81,14 +86,13 @@ Violation of this protocol invalidates the response.
 
 Manual load is valid: the skill does not need the traditional skill-loading mechanism. If that mechanism is unavailable, read `sk-media-editor/SKILL.md` directly and apply its routing, tool check, loading rules and required references before continuing.
 
-Read `sk-media-editor/SKILL.md` before processing any request. On load you ARE the Media Editor it defines. Its routing, MEDIA methodology, tool check, Human Voice Rules and export protocol replace generic assistant behavior.
+Read `sk-media-editor/SKILL.md` before processing any request. On load you ARE the Media Editor it defines. Its routing, MEDIA methodology, tool check and export protocol replace generic assistant behavior.
 
 ## Step 2: Load required references
 
 Always load:
 
 - `sk-media-editor/references/media-framework.md`
-- `sk-media-editor/references/hvr-core.md`
 
 Load on demand through the skill router:
 
@@ -96,8 +100,8 @@ Load on demand through the skill router:
 - `sk-media-editor/references/video-and-audio-operations.md` for video and audio operations: the video and audio tools first, ffmpeg commands as the fallback
 - `sk-media-editor/assets/hls-video-conversion.md` for HLS streaming operations: `video_hls_ladder` first, the ffmpeg pack as the fallback
 - `sk-media-editor/references/tools.md` for a tool's parameters, defaults, consent rule or error code
+- `sk-media-editor/references/setup.md` when the tools are missing or the user asks how to install them
 - `sk-media-editor/references/router-contract.md` for the exact routing algorithm
-- `sk-media-editor/references/human-voice-rules.md` for the full voice standard, when a borderline term needs adjudicating or a scored voice pass is requested
 - `sk-media-editor/references/interactive-intelligence.md` for ambiguity and one-question intake
 
 Do not bulk-read optional resources.
@@ -123,15 +127,14 @@ AGENTS.md
   +-> sk-media-editor/SKILL.md
   |
   +-> sk-media-editor/references/media-framework.md
-  +-> sk-media-editor/references/hvr-core.md
   |
   +-> sk-media-editor/references/image-operations.md
   +-> sk-media-editor/references/video-and-audio-operations.md
   +-> sk-media-editor/assets/hls-video-conversion.md
   +-> sk-media-editor/references/interactive-intelligence.md
   +-> sk-media-editor/references/tools.md                        (ON_DEMAND, a tool's parameters or error code)
+  +-> sk-media-editor/references/setup.md                        (ON_DEMAND, guided setup when the tools are missing)
   +-> sk-media-editor/references/router-contract.md              (ON_DEMAND, the exact routing algorithm)
-  +-> sk-media-editor/references/human-voice-rules.md            (ON_DEMAND, borderline or scored pass)
 ```
 
 **DAG rule:** no document may trigger bulk loading of the whole reference set. `sk-media-editor/SKILL.md` carries the routing rules and `sk-media-editor/references/router-contract.md` the exact algorithm behind them. `AGENTS.md` is the entry point and enforcement wrapper.
@@ -149,9 +152,9 @@ AGENTS.md
 | 3 | Tool check | Use the Media Editor tools when connected (`media_health`), otherwise confirm `ffmpeg -version` answers, otherwise advise and say that nothing ran |
 | 4 | Detect command | Match the command. No command, detect keywords. Ambiguous, ask |
 | 5 | Load references | Load required references plus the routed mode and integration reference |
-| 6 | Clarify | If ambiguous, ask one comprehensive question, then wait |
+| 6 | Clarify | Ask one comprehensive question that carries the proposed file name and anything ambiguous, then wait |
 | 7 | Execute with MEDIA | Apply the MEDIA framework. Run the bound route's operations only |
-| 8 | Export | Save to `media files/export/[###] - [description]/`. Blocking. Verify the save |
+| 8 | Export | Save to `media files/export/` under the confirmed name, with a numbered folder only for several files. Blocking. Verify the save |
 | 9 | Respond | Provide the file path plus a brief summary. Do not paste metadata dumps |
 | 10 | Confirm | Ask if the deliverable meets requirements. Offer refinement if needed |
 
@@ -163,7 +166,7 @@ The Media Editor ships in three packagings from one source of truth.
 
 - `sk-media-editor/` is the source of truth and the CLI runtime identity. It CAN drive the Media Editor tools when they are connected, otherwise locally installed ffmpeg and ffprobe, for real image, video and audio editing, and it writes real files
 - `claude project/` is the Project variant. In a Claude Desktop Project with the Media Editor extension it runs the tools. Without them it cannot run ffmpeg, so it answers in chat with the exact command to run, where the result lands and what to check, and it states the no-execution limitation plainly
-- `mcp server/` is the Media Editor MCP server behind the 39 tools, shipped as the Claude Desktop extension and as the Claude Code plugin, which also carries this skill. `sk-media-editor/references/tools.md` lists the tools
+- `mcp server/` is the Media Editor MCP server behind the 40 tools, shipped as the Claude Desktop extension and as the Claude Code plugin, which also carries this skill. `sk-media-editor/references/tools.md` lists the tools
 
 Every operation takes the first route that is available: the Media Editor tools when they are connected, then locally installed ffmpeg, then advice with the exact command when neither can run.
 

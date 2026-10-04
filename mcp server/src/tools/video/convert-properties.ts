@@ -237,8 +237,8 @@ export const videoConvertPropertiesTool = defineTool({
   title: 'Convert video properties',
   description:
     'Changes a video\'s container and can set its resolution, codecs, '
-    + 'bitrates, frame rate, and audio properties. It writes that file in a '
-    + 'new numbered folder and never changes the input.',
+    + 'bitrates, frame rate, and audio properties. It writes that file in the '
+    + 'export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),
     outputName: outputNameField,

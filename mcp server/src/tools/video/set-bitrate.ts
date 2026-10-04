@@ -140,7 +140,7 @@ export const videoSetBitrateTool = defineTool({
   title: 'Set video bitrate',
   description:
     'Re-encodes the picture of one video at a target bitrate. It writes '
-    + 'the file in a new numbered folder and never changes the input.',
+    + 'the file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),
     outputName: outputNameField,

@@ -12,7 +12,7 @@ import path from 'node:path';
 
 import type { FileHandle } from 'node:fs/promises';
 
-import { ERROR_CODES, MediaError } from './errors.js';
+import { ERROR_CODES, MediaError, nodeErrorCode } from './errors.js';
 
 // ───────────────────────────────────────────────────────────────────
 // 2. TYPE DEFINITIONS
@@ -26,8 +26,14 @@ export interface AllocatedFolder {
   /** Sequence number, compared by value. */
   readonly number: number;
 
-  /** Slug used as the description segment. */
+  /** Slug used as the description segment. Empty for the output root. */
   readonly name: string;
+
+  /**
+   * True when this call created the folder. The output root is shared with
+   * earlier results, so a failure must never remove it.
+   */
+  readonly created: boolean;
 }
 
 type OutputFolderReason = 'unset' | 'unusable';
@@ -38,9 +44,13 @@ type OutputFolderReason = 'unset' | 'unusable';
 
 const SLUG_MAX_CHARS = 60;
 const FILE_NAME_MAX_BYTES = 120;
+
+/** Highest counter tried for a free name in the export root. */
+const COUNTER_MAX = 999;
 const MAX_CREATE_ATTEMPTS = 100;
 const NUMBER_WIDTH = 3;
 const FOLDER_NUMBER = /^(\d{3,}) - /;
+const TRAILING_EXTENSION = /\.[A-Za-z0-9]{1,5}$/;
 
 const WINDOWS_DEVICE_NAMES: ReadonlySet<string> = new Set([
   'con',
@@ -84,17 +94,6 @@ function isAsciiSlugBody(char: string): boolean {
   const isLetter = char >= 'a' && char <= 'z';
   const isDigit = char >= '0' && char <= '9';
   return isLetter || isDigit;
-}
-
-function nodeErrorCode(error: unknown): string | undefined {
-  if (typeof error !== 'object' || error === null || !('code' in error)) {
-    return undefined;
-  }
-  const code = error.code;
-  if (typeof code !== 'string') {
-    return undefined;
-  }
-  return code;
 }
 
 function collapseSlug(text: string): string {
@@ -143,16 +142,27 @@ function isWindowsDeviceName(slug: string): boolean {
   return WINDOWS_DEVICE_NAMES.has(slug) || WINDOWS_DEVICE_NAMES.has(beforeDot);
 }
 
-function emptySlug(text: string): MediaError {
+function emptySlug(text: string, parameter: string): MediaError {
   return new MediaError(
     ERROR_CODES.INVALID_INPUT,
-    'Output name leaves no usable slug.',
+    `${parameter} leaves no usable name.`,
     {
-      parameter: 'outputName',
+      parameter,
       value: text,
       reason: 'empty-slug',
     },
   );
+}
+
+function slugFor(text: string, parameter: string): string {
+  const slug = limitSlug(collapseSlug(text));
+  if (slug.length === 0) {
+    throw emptySlug(text, parameter);
+  }
+  if (isWindowsDeviceName(slug)) {
+    return `${slug}-out`;
+  }
+  return slug;
 }
 
 function missingOutputFolder(
@@ -258,14 +268,23 @@ export function slugify(
 ): string {
   // Every host keeps the suffix: Windows cannot create these names.
   void platform;
-  const slug = limitSlug(collapseSlug(text));
-  if (slug.length === 0) {
-    throw emptySlug(text);
-  }
-  if (isWindowsDeviceName(slug)) {
-    return `${slug}-out`;
-  }
-  return slug;
+  return slugFor(text, 'outputName');
+}
+
+/**
+ * Turn a caller's readable name into a file stem.
+ *
+ * A trailing extension is dropped, because the tool sets the extension from
+ * what it wrote. The stem follows the folder slug rules: lowercase ASCII
+ * letters and digits joined by single hyphens, at most 60 characters.
+ *
+ * @param text - Caller name, with or without an extension
+ * @param parameter - Argument name stored on a failure
+ * @returns The file stem
+ * @throws {@link MediaError} When nothing usable remains (`INVALID_INPUT`)
+ */
+export function fileStem(text: string, parameter: string): string {
+  return slugFor(text.replace(TRAILING_EXTENSION, ''), parameter);
 }
 
 /**
@@ -309,7 +328,7 @@ export function allocateOutputFolder(
     const folderPath = path.join(realOutputDir, folderName);
     try {
       mkdirSync(folderPath);
-      return { folderPath, number, name };
+      return { folderPath, number, name, created: true };
     } catch (error: unknown) {
       if (nodeErrorCode(error) === 'EEXIST') {
         continue;
@@ -319,6 +338,89 @@ export function allocateOutputFolder(
   }
 
   throw missingOutputFolder(tool, 'unusable');
+}
+
+/**
+ * The name with `-<counter>` before its extension, within 120 UTF-8 bytes.
+ *
+ * @param fileName - Name the call wanted
+ * @param counter - Counter from 2 up
+ * @returns The counted name
+ */
+export function countedFileName(fileName: string, counter: number): string {
+  const extension = path.extname(fileName);
+  const stem = fileName.slice(0, fileName.length - extension.length);
+  const suffix = `-${counter}${extension}`;
+  const room = FILE_NAME_MAX_BYTES - Buffer.byteLength(suffix, 'utf8');
+  return `${cutUtf8(stem, room)}${suffix}`;
+}
+
+/**
+ * Write one output under a free name, never replacing a file.
+ *
+ * In a numbered folder the call made, the first name is the only one tried,
+ * so a clash still fails. In the shared export root a taken name moves on to
+ * `<stem>-2<ext>`, `<stem>-3<ext>` and so on, because an earlier result with
+ * the same name belongs to the user.
+ *
+ * @param folder - Destination of the call
+ * @param fileName - Name the call wants
+ * @param write - Exclusive write of one candidate path, which throws
+ * `OUTPUT_EXISTS` when that path is taken
+ * @returns The path that was written
+ * @throws {@link MediaError} `OUTPUT_EXISTS` when no candidate is free
+ */
+export async function writeUnderFreeName(
+  folder: AllocatedFolder,
+  fileName: string,
+  write: (target: string) => Promise<void>,
+): Promise<string> {
+  const last = folder.created ? 1 : COUNTER_MAX;
+  for (let counter = 1; ; counter += 1) {
+    const name = counter === 1 ? fileName : countedFileName(fileName, counter);
+    const target = path.join(folder.folderPath, name);
+    try {
+      await write(target);
+      return target;
+    } catch (error: unknown) {
+      const taken = error instanceof MediaError
+        && error.code === ERROR_CODES.OUTPUT_EXISTS;
+      if (!taken || counter >= last) {
+        throw error;
+      }
+    }
+  }
+}
+
+/**
+ * Use the output root itself as the destination of one call.
+ *
+ * A one-file result lands beside earlier results rather than in a folder of
+ * its own. The root is created when missing, and it is never removed.
+ *
+ * @param outputDir - Configured output root, or undefined when unset
+ * @param tool - Tool name stored on a configuration failure
+ * @returns The root as a destination this call did not create
+ * @throws {@link MediaError} When the root is unset or unusable (`CONFIG_MISSING`)
+ */
+export function useOutputRoot(
+  outputDir: string | undefined,
+  tool: string,
+): AllocatedFolder {
+  if (outputDir === undefined) {
+    throw missingOutputFolder(tool, 'unset');
+  }
+  try {
+    mkdirSync(outputDir, { recursive: true });
+    return {
+      folderPath: realpathSync.native(outputDir),
+      number: 0,
+      name: '',
+      created: false,
+    };
+  } catch {
+    throw missingOutputFolder(tool, 'unusable');
+  }
 }
 
 /**
@@ -404,4 +506,48 @@ export function outputFileName(
   const suffix = `-${operation}${extension}`;
   const room = FILE_NAME_MAX_BYTES - Buffer.byteLength(suffix, 'utf8');
   return `${cutUtf8(inputStem(inputPath), room)}${suffix}`;
+}
+
+/**
+ * Name one output file, from the caller's readable name when one was given.
+ *
+ * Without a name the result is `<stem>-<operation><extension>`, as
+ * {@link outputFileName} builds it. With a name and one file the result is
+ * `<name><extension>`. With a name and several files the operation stays in
+ * the name, `<name>-<operation><extension>`, so the files stay distinct.
+ *
+ * @param inputPath - Source path whose base name supplies the default stem
+ * @param operation - Operation token of this file
+ * @param extension - Extension including its leading dot
+ * @param fileName - Caller's readable name, or undefined for the default
+ * @param several - True when the call writes more than one file
+ * @returns The file name, within 120 UTF-8 bytes
+ * @throws {@link MediaError} When the readable name leaves no usable stem
+ */
+export function placedFileName(
+  inputPath: string,
+  operation: string,
+  extension: string,
+  fileName: string | undefined,
+  several: boolean,
+): string {
+  if (fileName === undefined) {
+    return outputFileName(inputPath, operation, extension);
+  }
+  const suffix = several ? `-${operation}${extension}` : extension;
+  return readableFileName(fileName, suffix, 'fileName');
+}
+
+/**
+ * Build `<slug><suffix>` from a readable name, cutting only the slug.
+ *
+ * @param text - Readable name, with or without an extension
+ * @param suffix - Text kept whole after the slug, such as `.webp`
+ * @param parameter - Argument name stored on a failure
+ * @returns The file name, within 120 UTF-8 bytes when the suffix fits
+ * @throws {@link MediaError} When the name leaves no usable stem
+ */
+export function readableFileName(text: string, suffix: string, parameter: string): string {
+  const room = FILE_NAME_MAX_BYTES - Buffer.byteLength(suffix, 'utf8');
+  return `${cutUtf8(fileStem(text, parameter), room)}${suffix}`;
 }

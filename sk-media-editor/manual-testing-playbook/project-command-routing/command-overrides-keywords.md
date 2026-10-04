@@ -27,7 +27,7 @@ If the two packagings route differently, the Project advises the wrong lane and 
 - Prompt: `I need $audio from this product demo video as an mp3 for the podcast feed.`
 - Precondition: `PID-001` passed for this runtime in the current Project session
 - Expected execution process: Open the Project, submit Turn 1, then confirm the bound mode named in the guidance and the command contents
-- Expected signals: The reply names Audio Mode, hands back an ffmpeg command that extracts audio to mp3 with `-vn`, names the export destination and the check step, closes with the attestation line, and mixes in no video editing command
+- Expected signals: The reply names Audio Mode, hands back an ffmpeg command that extracts audio to mp3 with `-vn` and writes to a proposed readable name, names the export destination `media files/export/[readable-name].mp3` and the check step, closes with the attestation line, and mixes in no video editing command
 - Desired user-visible outcome: One Audio Mode answer with the mp3 command and the delivery fields
 - Pass/fail: PASS if the guidance binds Audio Mode to an ffmpeg mp3 command and carries the delivery fields. FAIL if Video Mode guidance appears, both modes are mixed or the command is missing
 
@@ -35,7 +35,7 @@ If the two packagings route differently, the Project advises the wrong lane and 
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `I need $audio from this product demo video as an mp3 for the podcast feed.` | Hand back an Audio Mode answer with the ffmpeg mp3 extraction command, its destination, the check step and the attestation line. | Mode is Audio, never Video. | Reply transcript naming mode, command and delivery fields. |
+| 1 | `I need $audio from this product demo video as an mp3 for the podcast feed.` | Hand back an Audio Mode answer with the ffmpeg mp3 extraction command carrying a proposed readable name, its destination, the check step and the attestation line. | Mode is Audio, never Video. | Reply transcript naming mode, command and delivery fields. |
 
 ---
 

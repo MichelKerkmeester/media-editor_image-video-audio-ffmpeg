@@ -12,7 +12,7 @@ trigger_phrases:
 
 ## 1. OVERVIEW
 
-`src/tools/image/` holds the image tools. They use sharp and never start ffmpeg. `sharp-output.ts` is the shared layer: it checks that a file really is an image, applies the pixel limit, encodes each planned image and writes it into one new numbered folder.
+`src/tools/image/` holds the image tools. They use sharp and never start ffmpeg. `sharp-output.ts` is the shared layer: it checks that a file really is an image, applies the pixel limit, encodes each planned image and writes it into the call's destination: the export root for one file, a new numbered folder for several, unless the caller's `subfolder` says otherwise.
 
 Current state:
 

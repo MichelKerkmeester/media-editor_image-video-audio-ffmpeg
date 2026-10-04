@@ -108,7 +108,7 @@ async function runRotate(
 // 6. EXPORTS
 // ───────────────────────────────────────────────────────────────────
 
-/** Rotate one image into a new numbered folder without changing the input. */
+/** Rotate one image into the export root, or a numbered folder on request, without changing the input. */
 export const imageRotateTool = defineTool({
   name: TOOL_NAME,
   title: 'Rotate an image',
@@ -116,7 +116,7 @@ export const imageRotateTool = defineTool({
     'Rotates one image by an angle in degrees. '
     + 'A turn that is not a multiple of 90 enlarges the canvas and fills '
     + 'the new corners with the background colour. '
-    + 'It writes one file in a new numbered folder and never changes the input.',
+    + 'It writes one file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z
       .string()
