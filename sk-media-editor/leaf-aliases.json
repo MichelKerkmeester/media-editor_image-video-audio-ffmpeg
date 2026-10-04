@@ -61,6 +61,11 @@
   },
   {
     "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-route-order/setup-offer-without-tools.md",
+    "diskPath": "manual-testing-playbook/project-route-order/setup-offer-without-tools.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
     "leafResourceId": "manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md",
     "diskPath": "manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md"
   },
@@ -98,6 +103,16 @@
     "workflowMode": "sk-media-editor",
     "leafResourceId": "manual-testing-playbook/skill-export-delivery/export-first-path-response.md",
     "diskPath": "manual-testing-playbook/skill-export-delivery/export-first-path-response.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-export-delivery/export-root-no-subfolder.md",
+    "diskPath": "manual-testing-playbook/skill-export-delivery/export-root-no-subfolder.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-export-delivery/readable-name-proposal.md",
+    "diskPath": "manual-testing-playbook/skill-export-delivery/readable-name-proposal.md"
   },
   {
     "workflowMode": "sk-media-editor",
@@ -141,16 +156,6 @@
   },
   {
     "workflowMode": "sk-media-editor",
-    "leafResourceId": "references/human-voice-rules.md",
-    "diskPath": "references/human-voice-rules.md"
-  },
-  {
-    "workflowMode": "sk-media-editor",
-    "leafResourceId": "references/hvr-core.md",
-    "diskPath": "references/hvr-core.md"
-  },
-  {
-    "workflowMode": "sk-media-editor",
     "leafResourceId": "references/image-operations.md",
     "diskPath": "references/image-operations.md"
   },
@@ -168,6 +173,11 @@
     "workflowMode": "sk-media-editor",
     "leafResourceId": "references/router-contract.md",
     "diskPath": "references/router-contract.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/setup.md",
+    "diskPath": "references/setup.md"
   },
   {
     "workflowMode": "sk-media-editor",

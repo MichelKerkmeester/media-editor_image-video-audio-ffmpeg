@@ -25,7 +25,7 @@ tools/
 ├── audio/         # The six audio tools
 ├── composition/   # Overlays, subtitles, fade, b-roll, concat, silence removal, capability gates
 ├── image/         # The eight image tools, sharp-output and cross-tool image checks
-├── media/         # Health, probe, repair, ffmpeg setup and the HLS ladder
+├── media/         # Health, probe, previews, rename, placement, repair, ffmpeg setup and the HLS ladder
 └── video/         # Trim, convert, the set-* tools, speed and the copy-then-encode runner
 ```
 
@@ -39,7 +39,7 @@ Run from `AI Systems/Media Editor/mcp server/`.
 npx vitest run tests/tools
 ```
 
-Expected result: `Test Files  47 passed (47)`.
+Expected result: `Test Files  50 passed (50)`.
 
 ---
 

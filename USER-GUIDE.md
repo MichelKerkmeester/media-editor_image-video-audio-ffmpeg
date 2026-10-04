@@ -29,7 +29,7 @@ The tools run on your own computer, so only the Claude Desktop and Claude Code a
 ## 2. BEFORE YOU START
 
 1. **Claude Desktop**, signed in with the account that has the Media Editor Project. It runs on macOS 11+, Windows 10+ and, in beta, Ubuntu 22.04+ or Debian 12+.
-2. **The extension file for your computer**, 65 to 74 MB. Get it from the Media Editor maintainer or build it with section 3 of `INSTALL-GUIDE.md`.
+2. **The extension file for your computer**, 65 to 74 MB. Download it from the [latest release](https://github.com/MichelKerkmeester/media-editor_image-video-audio-ffmpeg/releases/latest), or build it with section 3 of `INSTALL-GUIDE.md`.
 
    | Your computer | File |
    | --- | --- |
@@ -46,7 +46,7 @@ The tools run on your own computer, so only the Claude Desktop and Claude Code a
    ```text
    media files/
    ├── import/   the files you want edited
-   ├── export/   where every result lands, one numbered folder per edit
+   ├── export/   where every result lands, one file directly, several in a numbered folder
    └── tests/    sample files for trying things out
    ```
 
@@ -75,7 +75,7 @@ No ffmpeg or Node.js needed. The extension brings its own.
 
 1. Ask `Run media_health and tell me what it found.` It should report ffmpeg and ffprobe found and list your folder. Allow the tool if asked.
 2. Add a photo to `media files/import` and ask `Resize photo.jpg in media files/import to 800 pixels wide as WebP.`, using your file's name.
-3. The reply names a new numbered folder in `media files/export`. A command to run instead of a saved file means the tools did not run, see section 6.
+3. The reply first proposes a readable name for the result and waits. Say yes, and the reply names the new file in `media files/export`. A command to run instead of a saved file means the tools did not run, see section 6.
 
 ---
 
@@ -98,5 +98,5 @@ No ffmpeg or Node.js needed. The extension brings its own.
 
 - [INSTALL-GUIDE.md](./INSTALL-GUIDE.md): Building the extension, the Claude Code plugin and a manual ffmpeg install
 - [claude project/README.md](./claude%20project/README.md): What the Media Editor Project contains and how to update it
-- [mcp server/README.md](./mcp%20server/README.md): The server behind the tools, its 39 tools and settings
+- [mcp server/README.md](./mcp%20server/README.md): The server behind the tools, its 40 tools and settings
 - [mcp server/claude-plugin/README.md](./mcp%20server/claude-plugin/README.md): The Claude Code plugin

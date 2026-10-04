@@ -310,6 +310,7 @@ it('compresses photo.jpg without changing the input', async (): Promise<void> =>
     const result = await client.callTool({
       name: 'image_compress',
       arguments: {
+        subfolder: true,
         inputPath: photoPath,
         outputName: 'compressed photo',
       },

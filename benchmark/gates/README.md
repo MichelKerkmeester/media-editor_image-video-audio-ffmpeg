@@ -1,5 +1,5 @@
 ---
-title: "benchmark/gates: rule parity across the eight declared pairs"
+title: "benchmark/gates: rule parity across the seven declared pairs"
 description: "Reads the shared parity declaration, holds a named Media Editor rule to the same phrase count on both sides of every pair that teaches it and fails on any retired server name."
 trigger_phrases:
   - "rule parity"
@@ -7,7 +7,7 @@ trigger_phrases:
   - "phrase count mismatch"
 ---
 
-# benchmark/gates: rule parity across the eight declared pairs
+# benchmark/gates: rule parity across the seven declared pairs
 
 ---
 
@@ -17,10 +17,10 @@ trigger_phrases:
 
 Current state:
 
-- `rule_parity.py` reads this system's eight declared pairs from `z — Claude Project Sync Loop/systems.py`, the fleet's one shared declaration, rather than a locally built map
+- `rule_parity.py` reads this system's seven declared pairs from `z — Claude Project Sync Loop/systems.py`, the fleet's one shared declaration, rather than a locally built map
 - It opens that file for reading only, with bytecode caching disabled first, and never writes to it
-- Six rules are named today, each with the verbatim phrase (or phrases) that carry it and a floor for how many of the eight pairs teach it as measured against the live tree
-- Measured against the live tree, all eight pairs hold byte-identical content on both sides, so the check starts from a green baseline it earns by comparison, not one it assumes
+- Five rules are named today, each with the verbatim phrase (or phrases) that carry it and a floor for how many of the seven pairs teach it as measured against the live tree
+- Measured against the live tree, all seven pairs hold byte-identical content on both sides, so the check starts from a green baseline it earns by comparison, not one it assumes
 - A retired-name scan reads every pair, `SKILL.md`, `AGENTS.md`, the kernel and the two metadata files for the names of the two third-party servers this system replaced, and any hit fails
 
 ---
@@ -29,26 +29,25 @@ Current state:
 
 | File | Responsibility |
 |---|---|
-| `rule_parity.py` | CLI script. Reads the eight declared pairs, counts each named rule's phrases on both sides of every pair, enforces the floor, scans for retired names, exits 1 on any finding |
+| `rule_parity.py` | CLI script. Reads the seven declared pairs, counts each named rule's phrases on both sides of every pair, enforces the floor, scans for retired names, exits 1 on any finding |
 
 ---
 
-## 3. THE SIX NAMED RULES
+## 3. THE FIVE NAMED RULES
 
-| Rule | Taught by (of 8 pairs) | Carried in |
+| Rule | Taught by (of 7 pairs) | Carried in |
 |---|---|---|
 | the tool check gates every operation, tools first | 5 | image-operations, video-and-audio-operations, hls-video-conversion, interactive-intelligence, media-framework |
 | no format or filter promised before a build check | 2 | image-operations, video-and-audio-operations |
 | no horizontal dividers in a reply | 1 | interactive-intelligence |
 | one comprehensive question, then wait | 1 | interactive-intelligence |
 | the export destination convention | 2 | image-operations, video-and-audio-operations |
-| core punctuation hard blockers (em dash, semicolon) | 2 | hvr-core, human-voice-rules |
 
-The two Human Voice pairs never teach the five operational rules above, and the five operational documents never teach the punctuation rule. The tools reference teaches none of the six: it lists the tools, and the rules live in the documents that say how to run them. That is the expected shape, not a gap: a pair where neither side carries a phrase does not teach that rule.
+The tools and setup references teach none of the five: one lists the tools, the other walks a user through installing them, and the rules live in the documents that say how to run them. That is the expected shape, not a gap: a pair where neither side carries a phrase does not teach that rule.
 
 ### The retired-name scan
 
-A count cannot see a retired name, because a name restored on both sides of a pair is agreement by count. So the scan has zero tolerance. It reads 20 files, both sides of every pair plus `AGENTS.md`, `SKILL.md`, `graph-metadata.json` and `Custom Instructions.md`, for three spellings: `Imagician`, `MCP Video Audio` with a space or a hyphen and `video-audio` standing alone. The spellings are listed one by one, so `video-and-audio-operations` never matches, and `video-audio` inside a longer hyphenated word, such as the repository's own name, does not count. An unreadable file is a finding as well.
+A count cannot see a retired name, because a name restored on both sides of a pair is agreement by count. So the scan has zero tolerance. It reads 16 files, both sides of every pair plus `AGENTS.md`, `SKILL.md`, `graph-metadata.json` and `Custom Instructions.md`, for three spellings: `Imagician`, `MCP Video Audio` with a space or a hyphen and `video-audio` standing alone. The spellings are listed one by one, so `video-and-audio-operations` never matches, and `video-audio` inside a longer hyphenated word, such as the repository's own name, does not count. An unreadable file is a finding as well.
 
 ---
 
@@ -60,7 +59,7 @@ From the system directory:
 python3 benchmark/gates/rule_parity.py
 ```
 
-Expected result: a `pairs: 8 of 8 declared pairs compared` line, a `retired names: 20 files scanned, 0 finding(s)` line, one line per rule naming how many pairs teach it against its floor, then `PASSED 6 rules hold on both sides of every pair that teaches them`. Exit 0.
+Expected result: a `pairs: 6 of 6 declared pairs compared` line, a `retired names: 16 files scanned, 0 finding(s)` line, one line per rule naming how many pairs teach it against its floor, then `PASSED 5 rules hold on both sides of every pair that teaches them`. Exit 0.
 
 On a finding: the same lines, then `FAILED N rule parity finding(s)` and a dashed list naming the rule and the exact phrase with the count on each side, or the retired name with its file and first line. Exit 1.
 

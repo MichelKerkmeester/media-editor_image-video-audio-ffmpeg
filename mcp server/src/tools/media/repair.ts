@@ -469,7 +469,7 @@ export const mediaRepairTool = defineTool({
     + 'with a matching ffmpeg pass: remux copies the streams into a fresh container, which '
     + 'repairs a missing or broken index or timestamp table; reencode rebuilds the streams as '
     + 'H.264 and AAC (AAC alone for audio), which repairs damaged or cut-short streams. It '
-    + 'writes one new file into a new numbered folder and never changes the input. Run time '
+    + 'writes one new file into the export root, or a numbered folder on request, and never changes the input. Run time '
     + 'grows with file size: seconds under 100 MB, up to a few minutes from 100 MB to 1 GB, '
     + 'and minutes to tens of minutes above 1 GB.',
   inputSchema: {

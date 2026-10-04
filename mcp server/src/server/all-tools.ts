@@ -22,6 +22,7 @@ import { imageResizeTool } from '../tools/image/resize.js';
 import { imageRotateTool } from '../tools/image/rotate.js';
 import { mediaHealthTool } from '../tools/media/health.js';
 import { mediaProbeTool } from '../tools/media/probe.js';
+import { mediaRenameTool } from '../tools/media/rename.js';
 import { mediaRepairTool } from '../tools/media/repair.js';
 import { mediaRemoveSilenceTool } from '../tools/media/remove-silence.js';
 import { mediaSetupFfmpegTool } from '../tools/media/setup-ffmpeg.js';
@@ -90,6 +91,7 @@ export const ALL_TOOLS: readonly AnyToolDefinition[] = [
   videoAddBRollTool,
   videoAddFadeTool,
   mediaProbeTool,
+  mediaRenameTool,
   mediaRepairTool,
   videoHlsLadderTool,
   mediaSetupFfmpegTool,

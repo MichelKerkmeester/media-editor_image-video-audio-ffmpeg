@@ -302,11 +302,12 @@ it('lists the registered tools in contract row order', async (): Promise<void> =
       'video_add_b_roll',
       'video_add_fade',
       'media_probe',
+      'media_rename',
       'media_repair',
       'video_hls_ladder',
       'media_setup_ffmpeg',
     ]);
-    expect(listed.tools).toHaveLength(39);
+    expect(listed.tools).toHaveLength(40);
     const readOnly = listed.tools
       .filter((tool) => tool.annotations?.readOnlyHint === true)
       .map((tool) => tool.name);

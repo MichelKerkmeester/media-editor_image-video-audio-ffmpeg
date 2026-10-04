@@ -141,7 +141,7 @@ export const videoSetCodecTool = defineTool({
   title: 'Set video codec',
   description:
     'Re-encodes the picture of one video as libx264, libx265, or '
-    + 'libvpx-vp9. It writes the file in a new numbered folder and never '
+    + 'libvpx-vp9. It writes the file in the export root, or a numbered folder on request, and never '
     + 'changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),

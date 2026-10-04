@@ -200,7 +200,7 @@ export const imageBatchResizeTool = defineTool({
   title: 'Resize an image into several sizes',
   description:
     'Resizes one image into each listed size. '
-    + 'It writes one file per size, all in one new numbered folder, '
+    + 'It writes one file per size, all in one new numbered folder unless subfolder is false, '
     + 'and never changes the input.',
   inputSchema: {
     inputPath: z

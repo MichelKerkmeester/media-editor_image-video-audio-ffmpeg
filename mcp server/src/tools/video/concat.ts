@@ -587,7 +587,7 @@ export const videoConcatTool = defineTool({
     + 'Without a transition every clip is normalized to the size and frame rate '
     + 'of the first clip and the clips are joined end to end; with a transition '
     + 'exactly two clips are blended into one another. It writes one MP4 file '
-    + 'into a new numbered folder and never changes the input. Run time grows '
+    + 'into the export root, or a numbered folder on request, and never changes the input. Run time grows '
     + 'with the total file size: seconds under 100 MB, up to a few minutes from '
     + '100 MB to 1 GB, and minutes to tens of minutes above 1 GB.',
   inputSchema: {

@@ -114,7 +114,7 @@ export const audioConvertTool = defineTool({
   title: 'Convert audio',
   description:
     'Changes the container of one audio file. '
-    + 'It writes that file in a new numbered folder and never changes the input.',
+    + 'It writes that file in the export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),
     outputName: outputNameField,

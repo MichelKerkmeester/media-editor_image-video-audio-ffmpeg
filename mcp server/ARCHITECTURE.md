@@ -12,18 +12,18 @@ importance_tier: "important"
 
 # Architecture: Media Editor MCP server
 
-> Current architecture of the local MCP server that edits images, video and audio for the Media Editor. One Node process serves 39 tools over stdio and runs its own pinned ffmpeg.
+> Current architecture of the local MCP server that edits images, video and audio for the Media Editor. One Node process serves 40 tools over stdio and runs its own pinned ffmpeg.
 
 ---
 
 ## 1. OVERVIEW
 
-The server is a strict TypeScript package compiled to ESM. A host starts it as a child process and talks to it over stdio: Claude Desktop through a `.mcpb` extension, Claude Code through the plugin in `claude-plugin/`. It registers 39 tools. The 8 image tools run on sharp and the 26 video and audio tools on ffmpeg. The 5 media tools report health, probe, repair, remove silence and install ffmpeg.
+The server is a strict TypeScript package compiled to ESM. A host starts it as a child process and talks to it over stdio: Claude Desktop through a `.mcpb` extension, Claude Code through the plugin in `claude-plugin/`. It registers 40 tools. The 8 image tools run on sharp and the 26 video and audio tools on ffmpeg. The 6 media tools report health, probe, rename a result, repair, remove silence and install ffmpeg.
 
 Three rules hold for every tool:
 
 - **Inputs come from allowed folders only.** `core/path-guard.ts` resolves each caller path to a regular file inside a configured root, and the process runner checks it again right before each spawn.
-- **Nothing is overwritten.** Each writing call creates the next numbered folder, `NNN - <slug>`, under the output folder and writes new files only.
+- **Nothing is overwritten.** A call that writes one file puts it in the output folder itself, and a taken name moves on to `-2`, `-3` and so on. A call that writes several files, or one called with `subfolder: true`, creates the next numbered folder, `NNN - <slug>`. Every write is an exclusive create, and `media_rename` renames by hard link, never over an existing file.
 - **No shell runs.** ffmpeg and ffprobe start from argument arrays through `core/process-runner.ts`, at most two at a time, with an allowlisted environment and a timeout.
 
 ### Architecture diagram
@@ -111,7 +111,7 @@ A `tools/call` request for a copy-first video tool follows this path:
 1. `tool-registry.ts` finds the tool by name and parses the arguments with its zod schema. An unknown tool is a `MethodNotFound` protocol error and a bad argument list is `InvalidParams`.
 2. The handler resolves each input with `context.resolveInput`, reads its streams with `probeMedia` and checks the encoders and filters it needs with `assertCapabilities`.
 3. `runAttempts` runs each ffmpeg attempt in a private temp folder. The first attempt usually copies streams. When ffmpeg refuses the copy, or the kept MP4 would hold PCM audio or FFV1 video, the next attempt re-encodes and its warning joins the result.
-4. The first attempt that passes is copied into a new numbered folder, and `context.readBack` probes the written file.
+4. The first attempt that passes is copied into the call's destination, the output folder or a new numbered folder, and `context.readBack` probes the written file.
 5. `successResult` returns the outputs with path, size, duration, picture size and codec, plus warnings and elapsed time. Any `MediaError` thrown on the way becomes an `errorResult` with its code, message and details.
 
 Other tools use the same services with a different runner:
@@ -121,7 +121,7 @@ Other tools use the same services with a different runner:
 | `runAttempts` | Video and audio conversions, trims, overlays, `media_repair` | Ordered attempts, first success kept |
 | `runPipeline` | `video_concat`, `video_add_b_roll`, `media_remove_silence` | Several ffmpeg passes, one kept file |
 | `runInOutputFolder` | `video_hls_ladder` | Many files written straight into the numbered folder |
-| `writeImageOutputs` | Every writing image tool | sharp encodes each planned image into the numbered folder |
+| `writeImageOutputs` | Every writing image tool | sharp encodes each planned image into the output folder, or a numbered folder for several files |
 
 ---
 
@@ -135,7 +135,9 @@ Other tools use the same services with a different runner:
 
 **Process policy.** `core/process-runner.ts` adds `-hide_banner` and a file-only protocol whitelist to every media run, plus `-nostdin` and `-n` to ffmpeg, so no run reads the terminal or overwrites a file. It forces a C locale, passes only allowlisted variables, runs two children at most and kills a run after `MEDIA_EDITOR_TIMEOUT_SECONDS` (1800 by default). A failed run keeps the last 4 KiB of sanitized stderr for the result.
 
-**Output policy.** `core/output-folder.ts` allocates numbered folders and names files `<stem>-<operation><extension>` within 120 UTF-8 bytes. `core/result.ts` builds one structured result shape for every tool.
+**Output policy.** The registry adds `fileName` and `subfolder` to every tool that writes into one folder and hands the handler a context carrying that placement. `core/output-folder.ts` picks the destination, allocates numbered folders, and names files `<stem>-<operation><extension>`, or the slugged `fileName`, within 120 UTF-8 bytes. `core/result.ts` builds one structured result shape for every tool.
+
+**Rename and preview.** `tools/media/rename.ts` renames one file inside the output folder. It slugs the new name with the same `readableFileName` the placement uses, keeps the extension and the folder, and moves by hard link and unlink, so an existing file is never replaced. `tools/media/preview.ts` adds an optional small JPEG to `image_probe` and `media_probe`, so the model can see what it is naming.
 
 **Filter safety.** `core/filter-escape.ts` escapes caller text for filter graphs and copies a subtitle, font or image into the temp folder when its path cannot enter a graph unchanged. Text filters use the font `core/font-path.ts` points at in `assets/fonts/`.
 
@@ -178,7 +180,7 @@ Other tools use the same services with a different runner:
 | TypeScript on Node, with sharp and static ffmpeg packages | An MCPB Node bundle carries its `node_modules`, and a Python bundle cannot carry compiled dependencies portably |
 | Copy first, then re-encode | A stream copy is fast and lossless, and the re-encode covers every copy ffmpeg or the MP4 rule refuses |
 | An MP4 copy may not keep PCM or FFV1 | Every platform then returns the same widely playable file, whatever its pinned ffmpeg accepts |
-| Numbered output folders and exclusive writes | No call can overwrite an input or an earlier result |
+| Exclusive writes, free names in the output folder and numbered folders for several files | No call can overwrite an input or an earlier result |
 | ffmpeg install only after consent | The user sees the address, size and digest before anything downloads |
 | Pinned builds checked by SHA-256 | A bundle, an install and the pinned test run all use the exact binary the table names |
 

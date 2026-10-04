@@ -27,16 +27,16 @@ Guessing the media type commits the runtime to the wrong lane and wastes a tool 
 - Prompt: `Can you make this file work better for our website?`
 - Precondition: `SID-001` passed for this runtime in the current disposable copy
 - Expected execution process: Start a fresh session, submit Turn 1, confirm the single intake question, then submit Turn 2 with the missing facts and inspect the result
-- Expected signals: Turn 1 asks for media type, file, goal and output in one message, creates no artifact and does not process anything. Turn 2 routes to the confirmed media type, checks ffmpeg, exports in a format the installed build supports and reports the encoder check when the preferred format is unavailable
+- Expected signals: Turn 1 asks for media type, file, goal, output and a proposed readable file name in one message, creates no artifact and does not process anything. Turn 2 confirms the name, routes to the confirmed media type, checks ffmpeg and exports in a format the installed build supports straight into `media files/export/` under the confirmed name, and reports the encoder check when the preferred format is unavailable
 - Desired user-visible outcome: One intake question followed by a correct delivery once the facts arrive
-- Pass/fail: PASS if Turn 1 is a single comprehensive question that waits and Turn 2 uses every supplied fact. FAIL if the runtime guesses the media type, asks scattered questions or processes before the answer
+- Pass/fail: PASS if Turn 1 is a single comprehensive question that carries a proposed name and waits and Turn 2 uses every supplied fact. FAIL if the runtime guesses the media type, asks scattered questions, leaves out the proposed name or processes before the answer
 
 ### Conversation chain
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Can you make this file work better for our website?` | Ask one comprehensive question covering media type, file, goal and output, then wait. Create no artifact. | No mode bound, no tool call. | Response transcript and clean side-effect ledger. |
-| 2 | `It is a hero photo, 6MB PNG, and I want it light for the homepage.` | Route to Image Mode, check ffmpeg, pick a web target, convert or compress, export and reply path first. | Media type now bound to Image. | Response, format choice, export listing and readback. |
+| 1 | `Can you make this file work better for our website?` | Ask one comprehensive question covering media type, file, goal, output and a proposed readable file name, then wait. Create no artifact. | No mode bound, no tool call. | Response transcript and clean side-effect ledger. |
+| 2 | `It is a hero photo, 6MB PNG, and I want it light for the homepage. Keep the name you proposed.` | Route to Image Mode, check ffmpeg, pick a web target, convert or compress, export under the confirmed name and reply path first. | Media type now bound to Image. | Response, format choice, export listing and readback. |
 
 ---
 
@@ -50,16 +50,16 @@ Guessing the media type commits the runtime to the wrong lane and wastes a tool 
 
 1. `sandbox: seed hero-photo.png in the disposable copy and record the export baseline`
 2. `session: start fresh -> user: submit Turn 1 exactly`
-3. `operator: confirm one waiting question and no artifact -> user: submit Turn 2 in the same session`
+3. `operator: confirm one waiting question that carries a proposed name and no artifact -> user: submit Turn 2 in the same session`
 4. `filesystem: inspect the resulting export -> operator: grade state retention and the format choice`
 
 ### Expected
 
-Step 1 fixes the fixture and baseline. Step 2 returns one intake question. Step 3 proves the wait and produces the routed answer. Step 4 finds the expected image export built from the Turn 2 facts.
+Step 1 fixes the fixture and baseline. Step 2 returns one intake question with a proposed name. Step 3 proves the wait and produces the routed answer. Step 4 finds the expected image export built from the Turn 2 facts under the confirmed name.
 
 ### Evidence
 
-Capture both turns, the side-effect ledger, the question content, the ffmpeg check, the chosen format and the export readback.
+Capture both turns, the side-effect ledger, the question content with its proposed name, the ffmpeg check, the chosen format and the export readback.
 
 ### Pass / fail
 

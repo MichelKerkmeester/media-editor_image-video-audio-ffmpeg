@@ -10,7 +10,7 @@
       {
         "target": "mcp-tooling",
         "weight": 0.3,
-        "context": "drives the Media Editor MCP server's 39 tools as its execution layer, with locally installed ffmpeg as the fallback, rather than authoring its own transport layer"
+        "context": "drives the Media Editor MCP server's 40 tools as its execution layer, with locally installed ffmpeg as the fallback, rather than authoring its own transport layer"
       }
     ],
     "siblings": [
@@ -73,8 +73,6 @@
       "repair-mode",
       "interactive-mode",
       "media-framework",
-      "human-voice-core",
-      "human-voice-rules",
       "tool-verification",
       "format-and-quality-intelligence",
       "export-protocol"
@@ -89,12 +87,11 @@
     "key_files": [
       "sk-media-editor/SKILL.md",
       "sk-media-editor/references/media-framework.md",
-      "sk-media-editor/references/hvr-core.md",
-      "sk-media-editor/references/human-voice-rules.md",
       "sk-media-editor/references/interactive-intelligence.md",
       "sk-media-editor/references/image-operations.md",
       "sk-media-editor/references/video-and-audio-operations.md",
       "sk-media-editor/references/tools.md",
+      "sk-media-editor/references/setup.md",
       "sk-media-editor/references/router-contract.md",
       "sk-media-editor/assets/hls-video-conversion.md"
     ],
@@ -130,6 +127,12 @@
         "source": "derived"
       },
       {
+        "name": "setup",
+        "kind": "reference",
+        "path": "sk-media-editor/references/setup.md",
+        "source": "derived"
+      },
+      {
         "name": "router-contract",
         "kind": "reference",
         "path": "sk-media-editor/references/router-contract.md",
@@ -153,12 +156,11 @@
       "SKILL.md",
       "leaf-manifest.config.json",
       "references/media-framework.md",
-      "references/hvr-core.md",
-      "references/human-voice-rules.md",
       "references/interactive-intelligence.md",
       "references/image-operations.md",
       "references/video-and-audio-operations.md",
       "references/tools.md",
+      "references/setup.md",
       "references/router-contract.md",
       "assets/hls-video-conversion.md"
     ],

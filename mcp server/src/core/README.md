@@ -29,10 +29,10 @@ Current state:
 | File | Responsibility |
 |------|----------------|
 | `config.ts` | `loadConfig`: arguments and `MEDIA_EDITOR_*` variables into a `ServerConfig`, with warnings that never repeat a value |
-| `errors.ts` | `ERROR_CODES`, `MediaError`, `isMediaError`, `toMediaError` |
+| `errors.ts` | `ERROR_CODES`, `MediaError`, `isMediaError`, `toMediaError` and `nodeErrorCode`, which reads the code of a Node.js system error |
 | `logger.ts` | `writeLog` and `shouldLog`: one line per message on stderr, filtered by level |
 | `path-guard.ts` | `resolveInputPath`, `verifyUnchanged`, `assertOutputNotOnInput`: inputs must be regular files inside an allowed root |
-| `output-folder.ts` | `allocateOutputFolder`, `writeExclusive`, `outputFileName`: numbered `NNN - <slug>` folders and names within 120 UTF-8 bytes |
+| `output-folder.ts` | `allocateOutputFolder`, `useOutputRoot`, `writeExclusive`, `writeUnderFreeName`, `outputFileName`, `placedFileName`, `readableFileName`: the export root or numbered `NNN - <slug>` folders, `-2` names for a taken name in the root and names within 120 UTF-8 bytes |
 | `process-runner.ts` | `runProcess`, `withTempDir`, `buildChildEnv`, `sanitizeStderr`: argv-only spawns, allowlisted environment, C locale, timeout, stderr tail |
 | `ffmpeg-resolver.ts` | `resolveBinary`, `lookupBinary`: override, bundled, `PATH`, then installed, each checked with `-version` |
 | `capabilities.ts` | `detectCapabilities`, `assertCapabilities`, `TOOL_NAMES`, `TOOL_REQUIREMENTS`: encoder and filter checks per tool |

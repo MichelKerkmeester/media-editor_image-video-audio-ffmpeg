@@ -162,8 +162,8 @@ export const videoSetResolutionTool = defineTool({
   name: TOOL_NAME,
   title: 'Set video resolution',
   description:
-    'Scales one video to a target picture size. It writes the file in a '
-    + 'new numbered folder and never changes the input.',
+    'Scales one video to a target picture size. It writes the file in the '
+    + 'export root, or a numbered folder on request, and never changes the input.',
   inputSchema: {
     inputPath: z.string().min(1).describe(INPUT_PATH_DESCRIPTION),
     outputName: outputNameField,

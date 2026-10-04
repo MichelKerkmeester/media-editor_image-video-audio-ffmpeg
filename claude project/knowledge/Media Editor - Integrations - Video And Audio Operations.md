@@ -9,7 +9,7 @@ trigger_phrases:
   - "transcode trim concatenate"
   - "extract audio remove silence"
   - "ffmpeg video audio fallback"
-version: 1.7.0.0
+version: 1.0.0.0
 ---
 
 # Media Editor - Integrations - Video And Audio Operations
@@ -43,7 +43,7 @@ If neither the tools nor the check answers, give the command as advice with inst
 
 ## 2. VIDEO TOOLS
 
-Every tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool also takes `outputName`, a 1 to 64 character description that names the new numbered output folder, and writes its result there. Times accept seconds, a numeric string, `HH:MM:SS`, `HH:MM:SS.mmm` or `MM:SS`.
+Every tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool also takes `outputName`, a 1 to 64 character description, plus the optional `fileName` and `subfolder`. The one result file lands in the output folder itself, named `fileName` when given, or in a new numbered folder named from `outputName` with `subfolder: true`. `video_hls_ladder` always writes its own folder. `media_probe` with `preview: true` returns one frame, so the proposed name can say what the video shows. Times accept seconds, a numeric string, `HH:MM:SS`, `HH:MM:SS.mmm` or `MM:SS`.
 
 | Tool | Operation | Key parameters and defaults |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ ffmpeg -filters | grep -E "drawtext|subtitles|ass "
 
 ## 5. VIDEO OPERATIONS (FFMPEG FALLBACK)
 
-Write results to `media files/export/[###] - [description]/` in the runtime. Encoder availability varies by build. Check the common encoders before promising a format:
+Write one result to `media files/export/[readable-name].[ext]` in the runtime, and several results to one `media files/export/[###] - [description]/` folder. Encoder availability varies by build. Check the common encoders before promising a format:
 
 ```bash
 ffmpeg -encoders | grep -E "libx264|libx265|libvpx|aac|libmp3lame"

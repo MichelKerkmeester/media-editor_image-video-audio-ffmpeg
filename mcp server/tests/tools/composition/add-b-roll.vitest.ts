@@ -243,7 +243,10 @@ async function runToolWithText(args: Record<string, unknown>): Promise<ToolOutco
   let outcome: CallOutcome | undefined;
   let text = '';
   await withToolClient(sandbox.config, async (client): Promise<void> => {
-    const result = await client.callTool({ name: TOOL_NAME, arguments: args });
+    const result = await client.callTool({
+      name: TOOL_NAME,
+      arguments: { subfolder: true, ...args },
+    });
     text = textContent(result.content);
     outcome = {
       isError: result.isError === true,
