@@ -12,7 +12,7 @@ This scenario validates Repair Mode on the local ffmpeg route: diagnose first, t
 
 ## 1. OVERVIEW
 
-`$repair` and its alias `$r` route to Repair Mode. With the tools connected it runs `media_probe` then `media_repair`. On the local route it runs ffprobe to diagnose, then ffmpeg to repair, usually a remux into a fresh container for a broken index and a re-encode for a damaged stream. The source file is never overwritten.
+`$repair` and its alias `$r` route to Repair Mode. With the `media-editor` command available it runs `media-editor media_probe` then `media-editor media_repair`. On the local route it runs ffprobe to diagnose, then ffmpeg to repair, usually a remux into a fresh container for a broken index and a re-encode for a damaged stream. The source file is never overwritten.
 
 ### Why this matters
 
@@ -26,7 +26,7 @@ A repair that skips the diagnosis guesses at the fix, and a repair that writes o
 - Real user request: `This screen recording stops playing after ten seconds. Can you fix it?`
 - Prompt: `$r This screen recording stops playing after ten seconds. Can you fix it?`
 - Precondition: `SID-001` passed for this runtime in the current disposable copy
-- Expected execution process: Seed one 30 second recording whose final bytes are cut off, record its checksum, start a fresh skill session, submit Turn 1 and confirm the diagnosis and the name proposal with nothing written, submit Turn 2, then confirm the repaired file and the untouched source
+- Expected execution process: Seed one 30 second recording written with `-movflags +faststart` and cut to the first 40 percent of its bytes, so it stops playing early, record its checksum, start a fresh skill session, submit Turn 1 and confirm the diagnosis and the name proposal with nothing written, submit Turn 2, then confirm the repaired file and the untouched source
 - Expected signals: The reply names Repair Mode, an ffprobe call precedes any ffmpeg write and the reply states the finding. Turn 1 proposes a readable name for the repaired copy and writes nothing. Turn 2 saves the repaired file as `media files/export/[readable-name].mp4` with no numbered folder, it plays past the point where the source stopped, and the source checksum is unchanged
 - Desired user-visible outcome: One diagnosis and a name proposal, then one repaired copy, with the source left as it was
 - Pass/fail: PASS if ffprobe ran before the repair, the name was proposed before any write, the repaired file reads back under it with a duration past ten seconds and the source checksum matches. FAIL if no diagnosis ran, a file was written before the name was confirmed, the source was overwritten or no repaired file exists
@@ -35,7 +35,7 @@ A repair that skips the diagnosis guesses at the fix, and a repair that writes o
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$r This screen recording stops playing after ten seconds. Can you fix it?` | Bind Repair Mode, check ffmpeg, run ffprobe on the file and say what it found, propose a readable name for the repaired copy and wait. | Mode is Repair. The source is unchanged and no file written yet. | Reply transcript, the ffprobe diagnosis and export listing before and after. |
+| 1 | `$r This screen recording stops playing after ten seconds. Can you fix it?` | Bind Repair Mode, check ffmpeg, run ffprobe on the file and say what it found, propose a readable name for the repaired copy and wait. | Mode is Repair. The source is unchanged and no file written yet. A naming preview outside `media files/` is a look, not a write. | Reply transcript, the ffprobe diagnosis and export listing before and after. |
 | 2 | `Yes, use that name.` | Repair with ffmpeg into `media files/export/` under the confirmed name, then reply with the written path first. | The source is unchanged and one repaired file exists in the export root. | Reply transcript, export listing and `ffprobe` of the repaired file. |
 
 ---
@@ -48,7 +48,7 @@ A repair that skips the diagnosis guesses at the fix, and a repair that writes o
 
 ### Commands
 
-1. `sandbox: make screen-recording.mp4 at 30 seconds, cut off its final bytes, record its checksum and the export baseline`
+1. `sandbox: make screen-recording.mp4 at 30 seconds with -movflags +faststart, keep the first 40 percent of its bytes, record its checksum and the export baseline`
 2. `session: start fresh -> user: submit Turn 1 exactly -> operator: confirm ffprobe ran and the proposal waited with an unchanged export folder`
 3. `user: submit Turn 2 exactly -> operator: confirm ffprobe ran before ffmpeg -> filesystem: run ffprobe on the repaired file and recompute the source checksum`
 
@@ -79,10 +79,11 @@ Capture both replies, the command order, the per-turn side-effect ledger, the `f
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: media repair](../../feature-catalog/media-utility-tools/media-repair.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | Repair Mode, its commands and its fallback |
 | [`router-contract.md`](../../references/router-contract.md) | The Repair tool group and fallback |

@@ -31,6 +31,11 @@
   },
   {
     "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/project-export-delivery/batch-naming-gate.md",
+    "diskPath": "manual-testing-playbook/project-export-delivery/batch-naming-gate.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
     "leafResourceId": "manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md",
     "diskPath": "manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md"
   },
@@ -101,6 +106,11 @@
   },
   {
     "workflowMode": "sk-media-editor",
+    "leafResourceId": "manual-testing-playbook/skill-export-delivery/batch-naming-gate.md",
+    "diskPath": "manual-testing-playbook/skill-export-delivery/batch-naming-gate.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
     "leafResourceId": "manual-testing-playbook/skill-export-delivery/export-first-path-response.md",
     "diskPath": "manual-testing-playbook/skill-export-delivery/export-first-path-response.md"
   },
@@ -131,8 +141,8 @@
   },
   {
     "workflowMode": "sk-media-editor",
-    "leafResourceId": "manual-testing-playbook/skill-route-order/connected-tools-first.md",
-    "diskPath": "manual-testing-playbook/skill-route-order/connected-tools-first.md"
+    "leafResourceId": "manual-testing-playbook/skill-route-order/command-first.md",
+    "diskPath": "manual-testing-playbook/skill-route-order/command-first.md"
   },
   {
     "workflowMode": "sk-media-editor",
@@ -153,6 +163,11 @@
     "workflowMode": "sk-media-editor",
     "leafResourceId": "manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md",
     "diskPath": "manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md"
+  },
+  {
+    "workflowMode": "sk-media-editor",
+    "leafResourceId": "references/cli.md",
+    "diskPath": "references/cli.md"
   },
   {
     "workflowMode": "sk-media-editor",

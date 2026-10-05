@@ -81,7 +81,7 @@ Capture both turns, the reframe offer and the clean side-effect ledger.
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+No dedicated feature catalog entry matches this scenario.
 
 | File | Role |
 |---|---|

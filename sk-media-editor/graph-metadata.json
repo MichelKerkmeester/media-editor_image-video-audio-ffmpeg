@@ -6,13 +6,7 @@
   "deprecated": false,
   "edges": {
     "depends_on": [],
-    "enhances": [
-      {
-        "target": "mcp-tooling",
-        "weight": 0.3,
-        "context": "drives the Media Editor MCP server's 40 tools as its execution layer, with locally installed ffmpeg as the fallback, rather than authoring its own transport layer"
-      }
-    ],
+    "enhances": [],
     "siblings": [
       {
         "target": "sk-product-owner",

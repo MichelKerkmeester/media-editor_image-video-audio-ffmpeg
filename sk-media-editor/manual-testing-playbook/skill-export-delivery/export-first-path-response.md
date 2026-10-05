@@ -35,7 +35,7 @@ Export is the blocking gate between processing and response. A reply that names 
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Trim the first ten seconds off this interview video.` | Bind Video Mode, check ffmpeg, propose a readable name for the trimmed clip and wait. | No file written yet. | Reply, ffmpeg check and export listing before and after. |
+| 1 | `Trim the first ten seconds off this interview video.` | Bind Video Mode, check ffmpeg, propose a readable name for the trimmed clip and wait. | No file written yet. A naming preview outside `media files/` is a look, not a write. | Reply, ffmpeg check and export listing before and after. |
 | 2 | `Yes, use that name.` | Trim ten seconds, save to `media files/export/` under the confirmed name, verify the save and reply path first. | Export written before the response, one file in the export root. | Reply, export listing, duration readback and response order. |
 
 ---
@@ -79,10 +79,11 @@ Capture both replies, the per-turn side-effect ledger, the ffmpeg check, the exp
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: skill export delivery](../../feature-catalog/skill-behavior/skill-export-delivery.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`AGENTS.md`](../../../AGENTS.md) | Deliverable export protocol and prohibited response shapes |
 | [`SKILL.md`](../../SKILL.md) | Export protocol, Video Mode and the ffmpeg check |

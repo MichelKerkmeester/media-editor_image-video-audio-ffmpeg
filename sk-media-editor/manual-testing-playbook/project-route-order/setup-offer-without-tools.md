@@ -79,10 +79,11 @@ Capture both replies and the tool call transcript.
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project no-execution truth](../../feature-catalog/project-behavior/project-no-execution-truth.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | The tool check, the setup offer and ESCALATE 2 |
 | [`setup.md`](../../references/setup.md) | The guided setup and its first steps |

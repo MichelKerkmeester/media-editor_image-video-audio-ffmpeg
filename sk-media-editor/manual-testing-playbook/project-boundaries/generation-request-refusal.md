@@ -16,7 +16,7 @@ The Project guides editing of existing media only. A request to generate a new i
 
 ### Why this matters
 
-Advising a generation workflow would breach the same identity boundary the CLI runtime enforces, and would point the user at tools the Media Editor never drives.
+Advising a generation workflow would breach the same identity boundary the skill runtime enforces, and would point the user at tools the Media Editor never drives.
 
 ---
 
@@ -80,10 +80,11 @@ Capture both turns and the reframe offer, and check for any generator naming.
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project kernel and knowledge files](../../feature-catalog/project-behavior/project-kernel-and-knowledge-files.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | Objective scope, When not to use and NEVER rules |
 

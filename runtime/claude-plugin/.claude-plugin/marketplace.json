@@ -1,0 +1,15 @@
+{
+  "name": "media-editor-local",
+  "description": "The Media Editor plugin, served from a local build of this package.",
+  "owner": {
+    "name": "Michel Kerkmeester"
+  },
+  "plugins": [
+    {
+      "name": "media-editor",
+      "source": "./",
+      "version": "1.1.0",
+      "description": "Local media-editor command and skill for images, video and audio."
+    }
+  ]
+}

@@ -78,10 +78,11 @@ Capture the full reply, the named mode, both commands in order and the delivery 
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project no-execution truth](../../feature-catalog/project-behavior/project-no-execution-truth.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | The Repair row, the Router Code and the delivery protocol |
 | [`Interactive Intelligence`](../../../claude%20project/knowledge/Media%20Editor%20-%20System%20-%20Interactive%20Intelligence.md) | Repair intake |

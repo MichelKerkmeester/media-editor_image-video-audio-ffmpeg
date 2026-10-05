@@ -71,7 +71,7 @@ contract.
   routes to INTERACTIVE with `needs_disambiguation=true`, so the router
   asks one comprehensive question instead of inventing the media type.
 - **Tool binding**: `tool` is the Media Editor tool group the mode calls
-  when the tools are connected: `image_*`, `video_*`, `audio_*`,
+  when the tools are available: `image_*`, `video_*`, `audio_*`,
   `video_hls_ladder`, `media_probe then media_repair`, and `auto` for
   Interactive. `fallback` is the local tool when they are not: `ffmpeg`,
   `ffprobe then ffmpeg` for Repair, none for Interactive. Which route is
@@ -94,14 +94,15 @@ contract.
 - **Table parity**: commands, keywords in table order, resource lanes, tool
   groups, fallbacks, the token pattern and the checklist match the oracle.
 - **Behavior parity**: every fixture input is routed through the pseudocode
-  and the oracle in three host states. The pseudocode decides the live route
-  from `media_tools_connected()` and `verify_ffmpeg()`, so the gate binds
-  both per state and checks that the route is `tools`, `ffmpeg` or `advice`
-  as the state requires while the routing decision stays the same. `load` is
-  stubbed because it decides nothing.
+  and the oracle in six host states. The pseudocode decides the live route
+  from `media_cli_available()`, `media_tools_connected()` and
+  `verify_ffmpeg()`, so the gate binds all three per state and checks that
+  the route is `cli`, `tools`, `ffmpeg` or `advice` as the state requires
+  while the routing decision stays the same. `load` is stubbed because it
+  decides nothing.
 - **Coverage**: every command, every mode by command and by keyword, the
   fallback and the false prefixes `$rotate` and `$images` appear in the
   fixtures.
 
-The matrix is the fixture inputs times the three host states. A pass prints
+The matrix is the fixture inputs times the six host states. A pass prints
 `PASSED N/N differential checks`.

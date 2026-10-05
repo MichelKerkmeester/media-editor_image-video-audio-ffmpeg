@@ -100,10 +100,11 @@ Capture the kernel instruction set line, the matching reply claim, the command h
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project kernel and knowledge files](../../feature-catalog/project-behavior/project-kernel-and-knowledge-files.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | Advisory kernel, delivery protocol and attestation contract |
 | [`MEDIA Framework`](../../../claude%20project/knowledge/Media%20Editor%20-%20Thinking%20-%20MEDIA%20Framework.md) | Always-loaded methodology mirror |

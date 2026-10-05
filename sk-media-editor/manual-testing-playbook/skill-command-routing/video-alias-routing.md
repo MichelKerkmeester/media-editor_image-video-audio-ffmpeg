@@ -35,7 +35,7 @@ An alias that misses the command table falls through to keyword scoring, which c
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$vid Convert this MOV to an MP4 for the website.` | Bind Video Mode, check ffmpeg, propose a readable name for the MP4 and wait. | Mode is Video. No file written yet. | Reply transcript and export listing. |
+| 1 | `$vid Convert this MOV to an MP4 for the website.` | Bind Video Mode, check ffmpeg, propose a readable name for the MP4 and wait. | Mode is Video. No file written yet. A naming preview outside `media files/` is a look, not a write. | Reply transcript and export listing. |
 | 2 | `Yes, use that name.` | Convert to H.264 MP4 into `media files/export/` under the confirmed name, then reply with the written path first. | One MP4 file in the export root, no folder. | Reply transcript, export listing and `ffprobe` of the MP4. |
 
 ---
@@ -79,10 +79,11 @@ Capture both replies, the bound mode, the per-turn side-effect ledger, the expor
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: command routing and aliases](../../feature-catalog/skill-behavior/command-routing-and-aliases.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | The command table, the aliases and Video Mode |
 | [`router-contract.md`](../../references/router-contract.md) | `$video` and `$vid` in the command table |

@@ -41,7 +41,7 @@ Defines the MEDIA methodology (Measure, Evaluate, Decide, Implement, Analyze) fo
 ### Core capabilities
 
 1. **Intelligent media context assessment:** extract user intent from minimal information, identify implicit requirements (quality preservation, size optimization, compatibility), recognize patterns from similar use cases, reality-check feasibility before committing
-2. **Tool check first:** never process without confirming a route: the Media Editor tools when connected, otherwise ffmpeg on the path. Every image, video and audio operation runs through ffmpeg and ffprobe, the server's own or the installed one. Call `media_health` or pass the `ffmpeg -version` check before any processing
+2. **Tool check first:** never process without confirming a route: the Media Editor tools when available, otherwise ffmpeg on the path. Every image, video and audio operation runs through ffmpeg and ffprobe, the tools' own or the installed one. Call `media_health` or pass the `ffmpeg -version` check before any processing
 3. **Intelligent optimization finding:** evaluate multiple format and quality approaches, balance trade-offs (quality versus size, compatibility versus compression), provide reasoning, prepare backup plans
 4. **Proactive guidance:** suggest improvements beyond the immediate request, recommend best practices, offer next steps, explain optimization approaches clearly
 
@@ -106,7 +106,7 @@ Tailored for media operations with focused analysis. Focus areas: quality versus
 Validate before processing and show a summary to the user.
 
 Tool check:
-- [ ] The Media Editor tools are connected and `media_health` answers, or ffmpeg is on the path and answers `ffmpeg -version`
+- [ ] The Media Editor tools are available and `media_health` answers, or ffmpeg is on the path and answers `ffmpeg -version`
 - [ ] The build has the encoder for every promised output format
 - [ ] Operations supported for the media type
 - [ ] No capability over-promises
@@ -269,7 +269,7 @@ Select formats and quality by use case, then explain the trade-off briefly.
 
 ### Tool reality check
 
-**FFmpeg:** resize, convert (JPEG, PNG, WebP input, AVIF when the encoder is present), compress, crop, rotate, flip and batch image work. Transcode, trim, concatenate, speed, resolution, aspect ratio, fades, image overlays, audio extraction, audio conversion, normalization and silence removal for video and audio. HLS multi-quality streaming through the HLS conversion asset. Runs through the Media Editor tools when they are connected, which bring their own FFmpeg, and otherwise requires FFmpeg on the path.
+**FFmpeg:** resize, convert (JPEG, PNG, WebP input, AVIF when the encoder is present), compress, crop, rotate, flip and batch image work. Transcode, trim, concatenate, speed, resolution, aspect ratio, fades, image overlays, audio extraction, audio conversion, normalization and silence removal for video and audio. HLS multi-quality streaming through the HLS conversion asset. Runs through the Media Editor tools when they are available, which bring their own FFmpeg, and otherwise requires FFmpeg on the path.
 
 **ffprobe:** dimensions, format, codec, duration and stream inspection.
 

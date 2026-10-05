@@ -1,6 +1,6 @@
 ---
 title: "SHL-001 -- FFmpeg-only HLS conversion"
-description: "Validates that $hls falls back to installed ffmpeg alone when the Media Editor tools are not connected and produces a multi-quality HLS export with a master playlist."
+description: "Validates that $hls falls back to installed ffmpeg alone when the media-editor command is not on the PATH and produces a multi-quality HLS export with a master playlist."
 version: 1.0.0.0
 ---
 
@@ -12,11 +12,11 @@ This scenario validates the HLS mode binding and the ffmpeg fallback path.
 
 ## 1. OVERVIEW
 
-`$hls` routes to HLS Mode, which runs `video_hls_ladder` when the Media Editor tools are connected and installed ffmpeg when they are not. This scenario runs with the tools disconnected, so it tests the ffmpeg route. The runtime checks `ffmpeg -version` and proposes a readable name for the export folder. A ladder always writes several files, so its numbered folder is not optional and no folder question is asked. Once the name is confirmed the runtime converts the source into a multi-quality stream and exports segments plus a master playlist into one numbered folder under `media files/export/`.
+`$hls` routes to HLS Mode, which runs `video_hls_ladder` when the `media-editor` command is on the PATH and installed ffmpeg when it is not. This scenario runs with the command off the PATH, so it tests the ffmpeg route. The skill checks `ffmpeg -version` and proposes a readable name for the export folder. A ladder always writes several files, so its numbered folder is not optional and no folder question is asked. Once the name is confirmed the skill converts the source into a multi-quality stream and exports segments plus a master playlist into one numbered folder under `media files/export/`.
 
 ### Why this matters
 
-HLS is the most structure-sensitive mode. If the runtime skips the ffmpeg check or returns an export without variant playlists and segments, the stream will not play or switch quality.
+HLS is the most structure-sensitive mode. If the skill skips the ffmpeg check or returns an export without variant playlists and segments, the stream will not play or switch quality.
 
 ---
 
@@ -25,17 +25,17 @@ HLS is the most structure-sensitive mode. If the runtime skips the ffmpeg check 
 - Objective: Verify `$hls` binds installed ffmpeg only and exports a working multi-quality stream
 - Real user request: `Can you convert this keynote recording for adaptive streaming on the site?`
 - Prompt: `$hls Convert this keynote recording for adaptive streaming on the site.`
-- Precondition: `SID-001` passed for this runtime in the current disposable copy, and the Media Editor tools are not connected in this session, neither the Claude Desktop extension nor the Claude Code plugin. With the tools connected, `$hls` correctly runs `video_hls_ladder` instead, and this scenario does not apply
-- Expected execution process: Seed one keynote recording, start a fresh session, submit Turn 1 and confirm the name proposal with nothing written, submit Turn 2, then confirm the ffmpeg-only path and the exported playlist structure
+- Precondition: `SID-001` passed for the skill runtime in the current disposable copy, and the `media-editor` command is not on the PATH in this session, the plugin is not loaded and no standalone install is linked. With the command on the PATH, `$hls` correctly runs `video_hls_ladder` instead, and this scenario does not apply
+- Expected execution process: Seed one keynote recording, start a fresh session with the command off the PATH, submit Turn 1 and confirm the name proposal with nothing written, submit Turn 2, then confirm the ffmpeg-only path and the exported playlist structure
 - Expected signals: HLS Mode selected from the `$hls` token, `ffmpeg -version` checked first, the HLS conversion asset loaded. Turn 1 proposes a readable name, asks no folder question and writes nothing. Turn 2 exports one `media files/export/[###] - [confirmed-name]/` folder holding variant playlists, segments and a master `m3u8`, with no second tool consulted and a path-led brief reply
 - Desired user-visible outcome: One name proposal, then one HLS export folder named from it with a readable master playlist and at least two quality levels
-- Pass/fail: PASS if the name was proposed before any write, ffmpeg ran alone and the numbered export folder holds a master playlist plus variant segments. FAIL if the ffmpeg check was skipped, a file was written before the name was confirmed, another tool was claimed or the playlist structure is missing. SKIP when ffmpeg itself is unavailable in the sandbox or the tools cannot be disconnected
+- Pass/fail: PASS if the name was proposed before any write, ffmpeg ran alone and the numbered export folder holds a master playlist plus variant segments. FAIL if the ffmpeg check was skipped, a file was written before the name was confirmed, another tool was claimed or the playlist structure is missing. SKIP when ffmpeg itself is unavailable in the sandbox or the command cannot be taken off the PATH
 
 ### Conversation chain
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$hls Convert this keynote recording for adaptive streaming on the site.` | Bind HLS Mode, check `ffmpeg -version`, propose a readable name for the export folder and wait. | Tool is installed ffmpeg only. No folder or file written yet. | Reply, ffmpeg check note and export listing before and after. |
+| 1 | `$hls Convert this keynote recording for adaptive streaming on the site.` | Bind HLS Mode, check `ffmpeg -version`, propose a readable name for the export folder and wait. | The route is installed ffmpeg only. No folder or file written yet. A naming preview outside `media files/` is a look, not a write. | Reply, ffmpeg check note and export listing before and after. |
 | 2 | `Yes, use that name.` | Run the multi-quality conversion on installed ffmpeg into one numbered folder named from the confirmed name, export and reply path first. | One numbered folder holds the whole ladder. | Reply, playlist and segment listing. |
 
 ---
@@ -67,7 +67,7 @@ Capture both replies, the ffmpeg check note, the per-turn side-effect ledger, th
 
 ### Failure triage
 
-1. Check the `$hls` routing row and the route order in `SKILL.md`: the tools first, ffmpeg when they are not connected.
+1. Check the `$hls` routing row and the route order in `SKILL.md`: the `media-editor` command first, ffmpeg when it is not on the PATH.
 2. Check the ladder recipe against `assets/hls-video-conversion.md`.
 3. Reconcile the export tree with the recipe output shape.
 
@@ -79,10 +79,11 @@ Capture both replies, the ffmpeg check note, the per-turn side-effect ledger, th
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: skill route order](../../feature-catalog/skill-behavior/skill-route-order.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | HLS mode binding, lane routing and the ffmpeg check |
 | [`hls-video-conversion.md`](../../assets/hls-video-conversion.md) | Multi-quality recipe, segment and playlist shape |

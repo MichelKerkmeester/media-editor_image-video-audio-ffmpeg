@@ -35,7 +35,7 @@ Command routing is the primary detection signal. If `$image` does not bind Image
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$image Resize this hero photo to 1200 pixels wide for the website.` | Bind Image Mode from the `$image` token, check ffmpeg, propose a readable name for the resized image and wait. | Mode is Image, tool is installed ffmpeg, no file written yet. | Reply, tool check and export listing. |
+| 1 | `$image Resize this hero photo to 1200 pixels wide for the website.` | Bind Image Mode from the `$image` token, check ffmpeg, propose a readable name for the resized image and wait. | Mode is Image, tool is installed ffmpeg, no file written yet. A naming preview outside `media files/` is a look, not a write. | Reply, tool check and export listing. |
 | 2 | `Yes, use that name.` | Resize the fixture to 1200 pixels wide, save to `media files/export/` under the confirmed name and reply path first. | One file in the export root under the confirmed name. | Reply, export listing and width readback. |
 
 ---
@@ -79,10 +79,11 @@ Capture both replies, the observed mode and tool check, the per-turn side-effect
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: command routing and aliases](../../feature-catalog/skill-behavior/command-routing-and-aliases.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | Command triggers, phase detection and the ffmpeg check |
 | [`AGENTS.md`](../../../AGENTS.md) | Command registry and processing hierarchy |

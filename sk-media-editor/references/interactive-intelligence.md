@@ -42,13 +42,13 @@ Start -> tool check -> Question (all info) -> Wait -> Process (MEDIA) -> Deliver
 
 ### Core rules
 
-1. Tool check first: use the Media Editor tools when they are connected, otherwise confirm `ffmpeg -version` answers in the runtime before any operation
+1. Tool check first: use the Media Editor tools when they are available, otherwise confirm `ffmpeg -version` answers in the runtime before any operation
 2. One comprehensive question: ask for all information at once
 3. Wait for the response: never proceed without user input
 4. Smart command detection: recognize `$interactive`, `$image`, `$video`, `$audio`, `$hls`, `$repair`
 5. MEDIA processing: apply with two-layer transparency
 6. Delivery: all output properly formatted with bullet lists and saved to `media files/export/` in the runtime under the confirmed name
-7. Name proposal: the one question carries a readable file name proposed from what the media shows, and the name is applied only after the user confirms or changes it
+7. Name and place before the first write: the one question proposes a readable name from what each output file shows and, for two or more inputs from one request, offers the export root or one numbered folder. It is asked even when the request is clear, and nothing is written until the user confirms or changes the answers
 
 ### Conversation templates
 
@@ -75,10 +75,10 @@ Start -> tool check -> Question (all info) -> Wait -> Process (MEDIA) -> Deliver
 ```markdown
 Checking the tools.
 
-- Media Editor tools: [Connected/Not connected]
+- Media Editor tools: [Available/Not available]
 - FFmpeg: [Available/Not available/Not needed]
 
-[With the tools connected, proceed with them. Without them and with FFmpeg available, proceed with FFmpeg. With neither, give the command as advice with install guidance and say that nothing ran.]
+[With the tools available, proceed with them. Without them and with FFmpeg available, proceed with FFmpeg. With neither, give the command as advice with install guidance and say that nothing ran.]
 ```
 
 ### Comprehensive question (default)
@@ -107,15 +107,35 @@ Please provide the following at once:
 - Any size or quality targets
 
 4. Output preferences:
-- Proposed file name: `[readable-name].[ext]`, keep it or give another
-- For several files: one numbered folder in `media files/export/`, or straight into it
+- Proposed file name for every output file: `[readable-name].[ext]`, keep it or give another
+- For two or more inputs: one numbered folder for all of them in `media files/export/`, or straight into it
 - Specific format needed, or let the system choose the best
-- Quality versus size priority: balanced, max quality or min size
+- Quality versus size priority: balanced, max quality, min size or a size cap such as under 100 KB
+```
+
+### Batch question
+
+Used when one request has two or more inputs, even when the request is clear. It takes the place of the comprehensive question and is still one question.
+
+Must be multi-line markdown. Never convert to single-line text.
+
+```markdown
+Before I write anything, please confirm the names and where the files go.
+
+Proposed names:
+- `[input 1]` becomes `[readable-name-1].[ext]`
+- `[input 2]` becomes `[readable-name-2].[ext]`
+
+Where should all of them go?
+- One numbered folder: `media files/export/[###] - [description]/`
+- Straight into `media files/export/`
+
+[Anything else still open, such as format or a size cap, in this same question]
 ```
 
 ### Mode questions
 
-Each direct command asks a focused question for its media type only. Every one of them also proposes a readable file name from what the media shows, and asks about a numbered folder only when the operation writes several files.
+Each direct command asks one focused question for its media type only, before the first writing call, even when the request is clear. Every one of them also proposes a readable name for every output file from what the media shows, and asks about a numbered folder only for two or more inputs, all in the same question.
 
 - `$image`: file and goal, target use, size needs, output format, quality priority, save location
 - `$video`: file and goal, platform, operation, quality priority, save location and format
@@ -173,7 +193,7 @@ Scan for `$interactive`, `$int`, `$image`, `$img`, `$video`, `$vid`, `$audio`, `
 
 ### Smart command recognition
 
-1. Check the route: the Media Editor tools when connected, otherwise `ffmpeg -version`. With neither, give the command as advice with install guidance
+1. Check the route: the Media Editor tools when available, otherwise `ffmpeg -version`. With neither, give the command as advice with install guidance
 2. Detect the command and extract requirements
 3. Apply the MEDIA framework with automatic depth
 4. Route to the matching mode question, or the comprehensive question when no command is present
@@ -201,7 +221,7 @@ Core recovery principles: tool check before operations, plain-language error mes
 
 **No tools and no FFmpeg:** give the command as advice and say that nothing ran. Then offer the guided setup once, from `references/setup.md`: the extension for Claude Desktop or the plugin for Claude Code, which bring their own ffmpeg, or ffmpeg itself in a terminal. Give one step at a time, and call it done only when `media_health` or `ffmpeg -version` answers.
 
-**Tools connected, no ffmpeg in the server:** `media_health` names `media_setup_ffmpeg` as the next step. Show the planned download it returns, with its address, size and SHA-256, and call it with consent only after the user agrees.
+**Tools available, no ffmpeg found:** `media_health` names `media_setup_ffmpeg` as the next step. Show the planned download it returns, with its address, size and full SHA-256, never shortened, and call it with consent only after the user agrees.
 
 **Encoder not available:** check `ffmpeg -encoders` for the target encoder, explain that the build lacks it, and offer a format the build can produce.
 
@@ -254,7 +274,7 @@ Must not:
 | Platform | General web |
 | Codec (video) | H.264 for compatibility |
 | Codec (audio) | MP3 192 kbps |
-| Location | media files/export/, one file in it directly, several in one numbered folder |
+| Location | media files/export/, one file in it directly, two or more inputs from one request in the one place the user chose |
 
 ### Success factors
 

@@ -1,6 +1,6 @@
 ---
 title: "Media Editor - Integrations - Video And Audio Operations"
-description: "The twenty Media Editor video tools, the six audio tools and media_remove_silence with their parameters and defaults, then the FFmpeg and ffprobe commands that run the same operations when the tools are not connected, with codec, format and timing guidance."
+description: "The twenty Media Editor video tools, the six audio tools and media_remove_silence with their parameters and defaults, then the FFmpeg and ffprobe commands that run the same operations when the tools are not available, with codec, format and timing guidance."
 contextType: implementation
 importance_tier: important
 trigger_phrases:
@@ -14,7 +14,7 @@ version: 1.0.0.0
 
 # Media Editor - Integrations - Video And Audio Operations
 
-Technical reference for video and audio processing: the Media Editor video and audio tools first, locally installed FFmpeg and ffprobe when the tools are not connected.
+Technical reference for video and audio processing: the Media Editor video and audio tools first, locally installed FFmpeg and ffprobe when the tools are not available.
 
 ---
 
@@ -22,7 +22,7 @@ Technical reference for video and audio processing: the Media Editor video and a
 
 ### Purpose
 
-Defines how each video and audio operation runs. Sections 2 and 3 cover the tools, which run the server's own ffmpeg. Section 4 maps every operation to its tool and names the three operations that have no tool yet. Sections 5 to 7 cover the FFmpeg commands for the same operations, which run when the tools are not connected or as advice when nothing can run.
+Defines how each video and audio operation runs. Sections 2 and 3 cover the tools, which run their own ffmpeg. Section 4 maps every operation to its tool and names the three operations that have no tool yet. Sections 5 to 7 cover the FFmpeg commands for the same operations, which run when the tools are not available or as advice when nothing can run.
 
 ### When to use
 
@@ -32,7 +32,7 @@ Defines how each video and audio operation runs. Sections 2 and 3 cover the tool
 
 ### Route order
 
-1. **Media Editor tools connected:** call the tool. The tools bring their own ffmpeg, check the encoders and filters an operation needs and return `CAPABILITY_MISSING` when their build lacks one
+1. **Media Editor tools available:** call the tool. The tools bring their own ffmpeg, check the encoders and filters an operation needs and return `CAPABILITY_MISSING` when their build lacks one
 2. **No tools, FFmpeg on the path:** run the FFmpeg recipe. Check for FFmpeg once per session with `ffmpeg -version`, and check `ffmpeg -encoders` and `ffmpeg -filters` before promising a codec or a burn-in
 
 If neither the tools nor the check answers, give the command as advice with install guidance and run nothing. Say where the result would land.
@@ -43,7 +43,7 @@ If neither the tools nor the check answers, give the command as advice with inst
 
 ## 2. VIDEO TOOLS
 
-Every tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool also takes `outputName`, a 1 to 64 character description, plus the optional `fileName` and `subfolder`. The one result file lands in the output folder itself, named `fileName` when given, or in a new numbered folder named from `outputName` with `subfolder: true`. `video_hls_ladder` always writes its own folder. `media_probe` with `preview: true` returns one frame, so the proposed name can say what the video shows. Times accept seconds, a numeric string, `HH:MM:SS`, `HH:MM:SS.mmm` or `MM:SS`.
+Every tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool also takes `outputName`, a 1 to 64 character description, plus the optional `fileName`, `subfolder` and `targetFolder`. The one result file lands in the output folder itself, named `fileName` when given, in a new numbered folder named from `outputName` with `subfolder: true`, or in the existing folder an earlier call of the same request returned, passed as `targetFolder`. `video_hls_ladder` always writes its own folder. `media_probe` with `preview: true` returns one frame, so the proposed name can say what the video shows. Times accept seconds, a numeric string, `HH:MM:SS`, `HH:MM:SS.mmm` or `MM:SS`.
 
 | Tool | Operation | Key parameters and defaults |
 | --- | --- | --- |
@@ -285,7 +285,7 @@ The container must accept the chosen streams. MP4 does not carry VP9 or Opus rel
 | Over 1GB | 20-60s | 2-10min | 5-20min |
 
 - Required: the Media Editor tools or FFmpeg on the path, sufficient disk space, and the file inside a folder the tools may read or that the terminal can reach
-- A tool call returns when the work ends or the server's timeout stops it, 1800 seconds by default. Tell the user the expected time for a large file and suggest splitting it when that is acceptable
+- A tool call returns when the work ends or the tools' timeout stops it, 1800 seconds by default. Tell the user the expected time for a large file and suggest splitting it when that is acceptable
 - Can do: format conversion, transcoding, trimming, concatenation, speed, resolution and aspect changes, fades, text, image and b-roll overlays, subtitle burn-in, audio extraction, audio conversion and silence removal. Audio trim, loudness normalization and CRF compression run on FFmpeg only
 - Cannot do: AI content generation, complex non-linear editing, real-time processing, direct upload to platforms
 - A stream copy keeps quality and speed but cuts at keyframes and cannot change the encoding. `video_trim` and `video_convert` try the copy first and re-encode when it cannot work

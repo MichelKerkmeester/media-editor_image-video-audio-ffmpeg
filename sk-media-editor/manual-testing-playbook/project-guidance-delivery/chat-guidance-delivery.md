@@ -16,7 +16,7 @@ Every actionable request must produce a chat answer with the exact ffmpeg comman
 
 ### Why this matters
 
-The chat hand-off is the delivery contract that separates the project packaging from the CLI runtime. A missing command, a missing destination or a false execution claim leaves the user without a workable path.
+The chat hand-off is the delivery contract that separates the project packaging from the skill runtime. A missing command, a missing destination or a false execution claim leaves the user without a workable path.
 
 ---
 
@@ -78,10 +78,11 @@ Capture the full reply, the command hand-off, the destination, the check step, t
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project no-execution truth](../../feature-catalog/project-behavior/project-no-execution-truth.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | Delivery protocol, attestation line and advisory truth rules |
 | [`MEDIA Framework`](../../../claude%20project/knowledge/Media%20Editor%20-%20Thinking%20-%20MEDIA%20Framework.md) | Format and quality guidance mirror |

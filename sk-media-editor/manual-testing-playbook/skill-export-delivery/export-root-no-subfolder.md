@@ -12,7 +12,7 @@ This scenario validates the placement rule for single-file results on the ffmpeg
 
 ## 1. OVERVIEW
 
-Each of the two requests names its result, so the runtime must not ask for a name and must not create a `[###] - ` folder. The Media Editor tools are not connected, so both requests run on installed ffmpeg. The first file must land at `media files/export/interview-email.mp4` and the second at `media files/export/interview-720p.mp4`, side by side in the export root.
+Each of the two requests names its result, so the runtime must not ask for a name and must not create a `[###] - ` folder. The `media-editor` command is not on the PATH, so both requests run on installed ffmpeg. The first file must land at `media files/export/interview-email.mp4` and the second at `media files/export/interview-720p.mp4`, side by side in the export root.
 
 ### Why this matters
 
@@ -25,8 +25,8 @@ A numbered folder around one file hides the result one level deeper. Questioning
 - Objective: Verify single-file results land in the export root under the names the user gave, with no folder and no overwrite
 - Real user request: `Can you compress interview.mp4 for email and save it as interview-email.mp4?`
 - Prompt: `Compress interview.mp4 for email and save it as interview-email.mp4.`
-- Precondition: `SID-001` passed for this runtime in the current disposable copy, and the Media Editor tools are not connected in this session
-- Expected execution process: Seed one interview video and one unrelated earlier export, record the export baseline with checksums, start the CLI runtime without the plugin and with ffmpeg on the path, submit Turn 1 and confirm the first export, submit Turn 2 in the same session, then confirm the second export and the earlier files
+- Precondition: `SID-001` passed for this runtime in the current disposable copy, and the `media-editor` command is not on the PATH in this session
+- Expected execution process: Seed one interview video and one unrelated earlier export, record the export baseline with checksums, start Claude Code without the plugin and with no standalone `media-editor` install, with ffmpeg on the path, submit Turn 1 and confirm the first export, submit Turn 2 in the same session, then confirm the second export and the earlier files
 - Expected signals: No Media Editor tool is called or claimed and `ffmpeg -version` runs before the first compression. Turn 1 asks no naming question and writes `media files/export/interview-email.mp4` with no `[###] - ` folder. Turn 2 asks no naming question and writes `media files/export/interview-720p.mp4`, a copy 720 pixels tall, with no folder. The earlier export keeps its checksum
 - Desired user-visible outcome: Two single-file exports side by side in the export root under the names the user gave
 - Pass/fail: PASS if both files exist in the export root under the given names, no numbered folder appears, no name was questioned and the earlier export is unchanged. FAIL if any numbered folder appears for a single file, a name the user gave is questioned or an existing file is overwritten
@@ -35,7 +35,7 @@ A numbered folder around one file hides the result one level deeper. Questioning
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Compress interview.mp4 for email and save it as interview-email.mp4.` | Find no Media Editor tools, run `ffmpeg -version`, ask no naming question, compress with ffmpeg and save as `media files/export/interview-email.mp4`, verify the save and reply path first. | One file in the export root and no numbered folder. | Reply, check output, export listing and `ffprobe` of the file. |
+| 1 | `Compress interview.mp4 for email and save it as interview-email.mp4.` | Find the `media-editor` command off the PATH, run `ffmpeg -version`, ask no naming question, compress with ffmpeg and save as `media files/export/interview-email.mp4`, verify the save and reply path first. | One file in the export root and no numbered folder. | Reply, check output, export listing and `ffprobe` of the file. |
 | 2 | `Now make a 720p copy called interview-720p.` | Ask no naming question, scale to 720 pixels tall with ffmpeg and save as `media files/export/interview-720p.mp4`, verify the save and reply path first. | A second file beside the first, no folder and nothing overwritten. | Reply, export listing, `ffprobe` of the file and checksums of the earlier files. |
 
 ---
@@ -48,7 +48,7 @@ A numbered folder around one file hides the result one level deeper. Questioning
 
 ### Commands
 
-1. `sandbox: seed interview.mp4 in media files/import/ and earlier-result.mp4 in media files/export/, record the export baseline with checksums, start the runtime without the plugin and confirm ffmpeg -version answers`
+1. `sandbox: seed interview.mp4 in media files/import/ and earlier-result.mp4 in media files/export/, record the export baseline with checksums, start Claude Code without the plugin, with no standalone media-editor install, and confirm ffmpeg -version answers`
 2. `session: start fresh -> user: submit Turn 1 exactly -> operator: confirm no tool claim and no naming question -> filesystem: list the export folder and run ffprobe on interview-email.mp4`
 3. `user: submit Turn 2 exactly -> operator: confirm no naming question -> filesystem: list the export folder, run ffprobe on interview-720p.mp4 and recompute the checksums of the earlier files`
 
@@ -79,10 +79,11 @@ Capture both replies, the `ffmpeg -version` output, the per-turn side-effect led
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: output placement](../../feature-catalog/shared-tool-behavior/output-placement.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | File naming, export protocol and the ffmpeg check |
 | [`AGENTS.md`](../../../AGENTS.md) | The strict sequence and the file naming rule |

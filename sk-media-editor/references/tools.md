@@ -1,6 +1,6 @@
 ---
 title: "Media Editor - Reference - Media Editor Tools"
-description: "Catalogue of the 40 Media Editor tools by group with purpose, parameters and defaults, the consent rule for media_setup_ffmpeg, the 15 error codes with what to do about each, the server settings and the operations no tool covers yet."
+description: "Catalogue of the 40 Media Editor tools by group with purpose, parameters and defaults, the consent rule for media_setup_ffmpeg, the 15 error codes with what to do about each, the settings and the operations no tool covers yet."
 contextType: implementation
 importance_tier: important
 trigger_phrases:
@@ -15,12 +15,12 @@ version: 1.0.0.0
 
 # Media Editor - Reference - Media Editor Tools
 
-Every tool the Media Editor server registers, with what it needs, what it returns when it fails and what no tool covers yet.
+Every Media Editor tool, with what it needs, what it returns when it fails and what no tool covers yet.
 
 **Loading Condition:** ON-DEMAND
 **Purpose:** Gives a tool's exact name, parameters and defaults, the consent rule and the error codes, for a call the mode reference does not already settle
-**Scope:** The 40 tools in four groups, output naming and placement, the consent flow, the 15 error codes, the server settings and the gaps
-**Source:** `mcp server/README.md` sections 4 and 5, and each tool's own schema in `mcp server/src/tools/`
+**Scope:** The 40 tools in four groups, output naming and placement, the consent flow, the 15 error codes, the settings and the gaps
+**Source:** `runtime/README.md` sections 4 and 5, and each tool's own schema in `runtime/src/tools/`
 
 ---
 
@@ -28,7 +28,7 @@ Every tool the Media Editor server registers, with what it needs, what it return
 
 ### Purpose
 
-The server behind the Media Editor tools runs on the user's machine as the Claude Desktop extension or the Claude Code plugin. It has 40 tools: 8 image, 6 audio, 20 video and 6 media. The image tools run on the sharp image library. The others run ffmpeg and ffprobe, either the copies the server found or a pinned build `media_setup_ffmpeg` installed.
+The Media Editor tools run on the user's machine, in a Claude Desktop Project through the Media Editor extension and in the skill through the `media-editor` command, which the Claude Code plugin ships. There are 40 tools: 8 image, 6 audio, 20 video and 6 media. The image tools run on the sharp image library. The others run ffmpeg and ffprobe, either the copies the tools found or a pinned build `media_setup_ffmpeg` installed.
 
 ### When to use
 
@@ -40,8 +40,8 @@ The server behind the Media Editor tools runs on the user's machine as the Claud
 
 - `inputPath` and every other input path are absolute and sit inside a folder the user allowed. The input is never changed
 - A writing tool takes `outputName`, a 1 to 64 character description with no `/` or `\`. A call that writes one file puts it in the output folder itself. A call that writes several files, such as `image_batch_resize` with two or more sizes, puts them in a new `NNN - description/` folder named from `outputName`. The path the tool returns is the export, so report it
-- Every writing tool except `video_hls_ladder` also takes two optional fields. `fileName` is a readable name, slugged to lowercase words joined by hyphens, and the tool adds the extension: one file becomes `<name><ext>`, several become `<name>-<operation><ext>`. Without it a file is named `<input name>-<operation><ext>`. `subfolder` `true` forces a numbered folder and `false` keeps several files in the output folder. `video_hls_ladder` always writes its own folder
-- Nothing is overwritten. In the output folder a taken name moves on to `-2`, `-3` and so on. A clash inside a numbered folder, or a taken `media_rename` target, returns `OUTPUT_EXISTS`
+- Every writing tool except `video_hls_ladder` also takes three optional fields. `fileName` is the readable name the user confirmed, slugged to lowercase words joined by hyphens, and the tool adds the extension: one file becomes `<name><ext>`, several become `<name>-<operation><ext>`. Without it a file is named `<input name>-<operation><ext>`. `subfolder` `true` makes a new numbered folder on every call and `false` keeps the files in the output folder. `targetFolder` names an existing numbered folder directly inside the output folder, such as `014 - webp-under-100kb`, exactly as an earlier call returned it, so the separate calls of one request share it: the first call passes `subfolder` `true` and every later call passes `targetFolder`. A missing folder, a name without the `NNN - ` prefix, a path or a symlink returns `INVALID_INPUT` or `PATH_NOT_ALLOWED`, and `targetFolder` with `subfolder` `false` returns `INVALID_INPUT`. `video_hls_ladder` always writes its own folder
+- Nothing is overwritten. In the output folder and in a folder named by `targetFolder`, a taken name moves on to `-2`, `-3` and so on, and a failed call never removes that folder or the files already in it. A clash inside a numbered folder the call created, or a taken `media_rename` target, returns `OUTPUT_EXISTS`
 - Video and audio tools try a lossless stream copy first and re-encode only when the copy cannot work
 - A tool checks the encoders and filters it needs before it runs and returns `CAPABILITY_MISSING` when its ffmpeg lacks one
 - Times accept seconds, a numeric string, `HH:MM:SS`, `HH:MM:SS.mmm` or `MM:SS`. Bitrates run from `1k` to `100M`, where `k` is 1000 bit/s and `M` is 1000000 bit/s
@@ -52,7 +52,7 @@ The server behind the Media Editor tools runs on the user's machine as the Claud
 
 | Tool | Purpose | Parameters and defaults |
 | --- | --- | --- |
-| `media_health` | Reports the server version, where ffmpeg and ffprobe were found, their encoders and filters, the image engine versions and the folders and limits in effect. Reads no media file | None |
+| `media_health` | Reports the server version, where ffmpeg and ffprobe were found, their encoders and filters, the image engine versions, the folders and limits in effect and `nextStep`, which names `media_setup_ffmpeg` when a binary is missing and is null otherwise. Reads no media file | None |
 | `media_probe` | Reads container and stream metadata from an image, audio or video file with ffprobe. Writes nothing | `inputPath`, `preview` (default `false`) returns one small JPEG frame of a video or image to name the file from. Audio has no picture and gets a warning instead |
 | `media_rename` | Gives one result inside the output folder a readable name, in the same folder, keeping its extension. Never overwrites | `path` of the file, `newName` 1 to 64 characters, slugged like `fileName`. A file outside the output folder returns `PATH_NOT_ALLOWED` |
 | `media_repair` | Diagnoses a damaged audio or video file with ffprobe, then rewrites it | `inputPath`, `outputName`, `strategy` `auto` (default), `remux` (copies the streams into a fresh container, for a broken index or timestamp table) or `reencode` (rebuilds as H.264 and AAC, for damaged or cut-short streams) |
@@ -70,7 +70,7 @@ Image tools run on sharp and need no ffmpeg. Quality is the sharp scale from 1 t
 | Tool | Purpose | Parameters and defaults |
 | --- | --- | --- |
 | `image_resize` | Resize one image | `width`, `height` 1 to 32768, one may be omitted to keep the aspect ratio. `fit` `cover` (default), `contain`, `fill`, `inside` or `outside`. `withoutEnlargement` (default `true`) |
-| `image_convert` | Convert to `jpeg`, `png`, `webp` or `avif` | `format`, `quality` (default 80) |
+| `image_convert` | Convert to `jpeg`, `png`, `webp` or `avif` | `format`, `quality` (default 80), `maxBytes` 1 to 100000000, a size cap in bytes for `jpeg`, `webp` and `avif`, where 1 KB is 1,000 bytes, so under 100 KB is `100000`. It lowers `quality` until the file fits and never resizes. When even quality 1 is too large it writes nothing and returns `INVALID_INPUT`, naming the smallest size reached, also given as `smallestBytes`. `maxBytes` with `png` returns `INVALID_INPUT` |
 | `image_crop` | Cut one rectangle that fits inside the image | `left`, `top` 0 to 32767, `width`, `height` 1 to 32768 |
 | `image_compress` | Compress a JPEG, PNG, WebP or AVIF image in its own format | `quality` (default 80), `progressive` (default `true`, JPEG only) |
 | `image_rotate` | Rotate by any angle | `angle` -360 to 360, positive is clockwise, `background` `#RRGGBB` (default `#000000`) |
@@ -126,12 +126,12 @@ Tools that re-encode the picture take seconds under 100 MB, up to a few minutes 
 
 ## 6. CONSENT AND FFMPEG SETUP
 
-The server never downloads anything without the user's agreement.
+The tools never download anything without the user's agreement.
 
-1. `media_health` reports a missing ffmpeg or ffprobe with `FFMPEG_NOT_FOUND` or `FFPROBE_NOT_FOUND` and names `media_setup_ffmpeg` as the next step
-2. Call `media_setup_ffmpeg` without `consent`. When a component is missing it returns `CONSENT_REQUIRED` with the planned download for each one: URL, size, SHA-256 and destination
+1. `media_health` reports a missing ffmpeg or ffprobe with `found: false` and sets its `nextStep` field to `media_setup_ffmpeg`. Another tool that needs the missing binary returns `FFMPEG_NOT_FOUND` or `FFPROBE_NOT_FOUND`
+2. Call `media_setup_ffmpeg` without `consent` in the same turn, before asking the user anything. When a component is missing it returns `CONSENT_REQUIRED` with the planned download for each one: URL, size, SHA-256 and destination. Show every field as the tool returned it, the full SHA-256 included, never shortened
 3. Show the user that plan and ask. Never pass `consent: true` before the user has seen it and agreed
-4. On agreement, call `media_setup_ffmpeg` again with `consent: true`. The download is checked against its SHA-256 and installed into the server's data folder
+4. On agreement, call `media_setup_ffmpeg` again with `consent: true`. The download is checked against its SHA-256 and installed into the tools' data folder
 
 When both binaries are already present the first call reports them ready and downloads nothing. On a platform with no pinned build the tool returns `INVALID_INPUT` and names the two override variables in Section 7.
 
@@ -155,7 +155,7 @@ When both binaries are already present the first call reports them ready and dow
 | `CONSENT_REQUIRED` | `media_setup_ffmpeg` needs the user's agreement | Show the planned download and wait for the user, Section 6 |
 | `DOWNLOAD_FAILED` | The pinned build could not be downloaded or unpacked | Check the connection and retry, or install ffmpeg by hand |
 | `CHECKSUM_MISMATCH` | The download did not match its SHA-256 | Do not retry blindly. Report it and install ffmpeg by hand |
-| `INTERNAL` | An unexpected server error | Retry once, then report it with the tool name |
+| `INTERNAL` | An unexpected internal error | Retry once, then report it with the tool name |
 
 Report the code and the next step in plain words. Never present a failed call as a result.
 
@@ -165,12 +165,12 @@ Report the code and the next step in plain words. Never present a failed call as
 
 ### Settings
 
-The server reads command-line arguments first, then environment variables. The extension and the plugin set the folders for the user.
+Arguments win over environment variables. The extension sets the folders for a Project. The `media-editor` command uses the project folder as its allowed folder and `media files/export/` inside it as its output folder, unless an argument or a variable says otherwise. The project folder is the working folder, or the folder that holds `media files` when the command starts inside it.
 
 | Setting | Argument | Variable | Default |
 | --- | --- | --- | --- |
-| Allowed folders | `--allowed-dir` or a bare path, repeatable | `MEDIA_EDITOR_ALLOWED_DIRS` | None, every tool that opens a file fails until one is set |
-| Output folder | `--output-dir` | `MEDIA_EDITOR_OUTPUT_DIR` | The first allowed folder |
+| Allowed folders | `--allowed-dir`, repeatable. The extension also takes a bare path | `MEDIA_EDITOR_ALLOWED_DIRS` | The project folder for the command. None for the extension, where every tool that opens a file fails until one is set |
+| Output folder | `--output-dir` | `MEDIA_EDITOR_OUTPUT_DIR` | `media files/export/` in the project folder for the command. The first allowed folder for the extension |
 | ffmpeg override | | `MEDIA_EDITOR_FFMPEG_PATH` | Unset |
 | ffprobe override | | `MEDIA_EDITOR_FFPROBE_PATH` | Unset |
 | Process timeout | | `MEDIA_EDITOR_TIMEOUT_SECONDS` | 1800, from 1 to 86400 |
