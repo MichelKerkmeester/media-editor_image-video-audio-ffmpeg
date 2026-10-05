@@ -1,6 +1,6 @@
 # Media Editor Installation Guide
 
-Installing the Media Editor tools as a Claude Desktop extension, a Claude Code plugin or a standalone command, and locally installed ffmpeg with ffprobe as the fallback.
+Installing the Media Editor tools as a Claude Desktop extension, a Claude Code plugin or a standalone `media-editor` command for any terminal agent, such as Codex, OpenCode or Pi, and locally installed ffmpeg with ffprobe as the fallback.
 
 ---
 
@@ -9,10 +9,10 @@ Installing the Media Editor tools as a Claude Desktop extension, a Claude Code p
 **Copy and paste this prompt to your AI assistant to get installation help:**
 
 ```
-I want to set up the Media Editor system. It uses the Media Editor tools through a Claude Desktop extension or the `media-editor` command in Claude Code, and falls back to locally installed ffmpeg.
+I want to set up the Media Editor system. It uses the Media Editor tools through a Claude Desktop extension or the `media-editor` command in a terminal agent such as Claude Code, Codex, OpenCode or Pi, and falls back to locally installed ffmpeg.
 
 Please help me:
-1. Build and install the Media Editor extension for Claude Desktop, or the plugin for Claude Code, and choose the folders it may open
+1. Build and install the Media Editor extension for Claude Desktop, the plugin for Claude Code, or the standalone `media-editor` command for my terminal agent, and choose the folders it may open
 2. Check whether ffmpeg and ffprobe are already on my PATH for the fallback
 3. Install ffmpeg for my platform if they are not (I'm on: [macOS / Ubuntu / Windows])
 4. Show me which encoders my build carries, especially WebP and AVIF
@@ -26,7 +26,7 @@ Give me the exact commands and tell me what each output should look like.
 
 **What the AI will do:**
 
-- Build the extension or the plugin and confirm the health check answers: `media_health` in the extension, `media-editor health` in Claude Code
+- Build the extension, the plugin or the standalone command and confirm the health check answers: `media_health` in the extension, `media-editor health` in a terminal agent
 - Run `ffmpeg -version` and `ffprobe -version` and read the answers
 - Install ffmpeg through your platform's package manager
 - List the encoders your build carries, so nothing is promised that it cannot produce
@@ -51,16 +51,16 @@ The Media Editor edits existing images, video and audio. Every operation takes t
 
 ### What each packaging needs
 
-- `sk-media-editor/` in a terminal runs the Media Editor tools through the `media-editor` command, or ffmpeg from the PATH, and writes real files
+- `sk-media-editor/` in any terminal agent, such as Claude Code, Codex, OpenCode or Pi, runs the Media Editor tools through the `media-editor` command, or ffmpeg from the PATH, and writes real files. It needs no MCP server
 - `claude project/` runs the tools in a Claude Desktop Project with the extension installed. On claude.ai on the web it cannot execute anything, so it answers in chat with the exact command to run, where the result lands and what to check, and a reader there still needs ffmpeg on their own machine
 
 ---
 
 ## 2. PREREQUISITES
 
-### For the extension or the plugin
+### For the extension, the plugin or the command
 
-- **Claude Desktop** for the extension, or **Claude Code** with **Node.js 20.9.0** or later on the PATH for the plugin
+- **Claude Desktop** for the extension, or **Node.js 20.9.0** or later on the PATH for the Claude Code plugin and the standalone command
 - **npm**, only to build the bundle from `runtime/` instead of downloading it
 
 ### For the manual route
@@ -119,9 +119,9 @@ The plugin ships the `media-editor` command in its `bin/` folder, the command's 
 
 claude.ai and Cowork do not install a plugin that has a `bin/` folder. On those surfaces, take the extension route in Claude Desktop.
 
-### Standalone install (npm link)
+### Standalone install for any terminal agent (npm link)
 
-The `media-editor` command can be installed on its own, for any terminal. In a copy of the repository, with Node.js 20.9.0 or later:
+The `media-editor` command can be installed on its own, for Codex, OpenCode, Pi or any other agent that can run a shell command. The agent loads the skill through `AGENTS.md`, so the command is all it needs. In a copy of the repository, with Node.js 20.9.0 or later:
 
 ```bash
 cd runtime
@@ -256,7 +256,7 @@ rm -f /tmp/ffmpeg-check.png /tmp/ffmpeg-check.jpg /tmp/ffmpeg-check.webp /tmp/ff
 | "Unable to connect to extension server" in the extension settings | An empty **Directory path** row under **Folders Media Editor may open**, which Claude Desktop reads as a missing required setting | Remove the empty row, click **Save**, then switch the extension off and on |
 | `media_health` is not listed | The extension is not installed or enabled | Install per section 3, then start a new chat |
 | `command not found: media-editor` | The plugin was not built or loaded, or the standalone install was not linked | Install per section 3, then start a new session or a new terminal |
-| `CONFIG_MISSING` from a tool | No folders are set, or the output folder cannot take a new folder | Set the folders in the extension settings, or start Claude Code in the media folder |
+| `CONFIG_MISSING` from a tool | No folders are set, or the output folder cannot take a new folder | Set the folders in the extension settings, or start your terminal agent in the media folder |
 | `FFMPEG_NOT_FOUND` from a tool | Neither the bundled nor an installed ffmpeg can run on this machine | Run `media_setup_ffmpeg`, read the planned download and agree to it |
 | `command not found: ffmpeg` | Not installed, or installed outside PATH | Install per section 3, then reopen the terminal so PATH is re-read |
 | `ffmpeg` answers, `ffprobe` does not | A partial install, or a wrapper script standing in for the real binary | Reinstall from the package manager rather than patching the PATH |

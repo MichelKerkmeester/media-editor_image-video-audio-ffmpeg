@@ -264,7 +264,7 @@ Export is blocking. Save every processed result to `media files/export/` before 
 - `AGENTS.md` is the CLI bootstrap and identity handoff
 - `sk-media-editor/SKILL.md` is the executable Media Editor identity and routing summary. It drives the `media-editor` command first and ffmpeg as the fallback
 - `claude project/Custom Instructions.md` is the Project synthesis. It uses the tools when a Claude Desktop Project has the extension connected, and otherwise cannot execute ffmpeg and hands back commands instead
-- `runtime/` is the Media Editor runtime behind the tools, packaged as the Claude Desktop extension and as the `media-editor` command the Claude Code plugin ships
+- `runtime/` is the Media Editor runtime behind the tools, packaged as the Claude Desktop extension and as the `media-editor` command, which runs in any terminal agent: the Claude Code plugin ships it, and Codex, OpenCode, Pi or any other agent links it with `npm link`
 - `claude project/knowledge/` holds byte-identical copies of the skill reference sources for claude.ai upload. The router contract has no copy there, because the kernel ends with its code
 
 ---
@@ -321,7 +321,7 @@ The order is fixed: the `media-editor` command, then ffmpeg, then advice. When n
 
 ### Packaging contract
 
-`sk-media-editor/` is the source of truth, and in Claude Code it runs the `media-editor` command or ffmpeg and writes real files. `claude project/` is the Project mirror. It uses the Media Editor tools when a Claude Desktop Project has them connected, and otherwise answers in chat with the exact command to run, where the result lands and what to check. The Claude Code plugin ships the command and a copy of this skill and registers no tool server. The two identity files differ on purpose, every reference pair is byte identical, and the router contract reaches the Project as the kernel's Router Code section rather than as a Knowledge file.
+`sk-media-editor/` is the source of truth, and in any terminal agent, such as Claude Code, Codex, OpenCode or Pi, it runs the `media-editor` command or ffmpeg and writes real files. `claude project/` is the Project mirror. It uses the Media Editor tools when a Claude Desktop Project has them connected, and otherwise answers in chat with the exact command to run, where the result lands and what to check. The Claude Code plugin ships the command and a copy of this skill and registers no tool server. The two identity files differ on purpose, every reference pair is byte identical, and the router contract reaches the Project as the kernel's Router Code section rather than as a Knowledge file.
 
 ### Related skills
 
