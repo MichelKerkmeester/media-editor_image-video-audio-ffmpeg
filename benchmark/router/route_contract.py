@@ -60,9 +60,9 @@ MODE_SIGNALS: Dict[str, Dict[str, float]] = {
 # Tool binding per mode. The tool is the Media Editor tool group the mode calls
 # when the tools are connected, and the fallback is the local tool it runs when
 # they are not. Interactive binds neither until its one question names the
-# media type. Which route is live (tools, local ffmpeg or advice) is a runtime
-# concern and is intentionally not simulated here; this contract fixes only the
-# routing decision.
+# media type. Which route is live (the command line, connected tools, local
+# ffmpeg or advice) is a runtime concern and is intentionally not simulated
+# here. This contract fixes only the routing decision.
 TOOL_MAP: Dict[str, str] = {
     "IMAGE": "image_*",
     "VIDEO": "video_*",

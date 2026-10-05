@@ -12,7 +12,7 @@ This scenario validates that the running system is genuinely the CLI Media Edito
 
 ## 1. OVERVIEW
 
-The skill runtime must answer a combined identity and processing request by naming `AGENTS.md` as the instruction set it runs and proposing a readable name for the result. Once the name is confirmed it must produce a real export and name the path it wrote. A reply that could have come from either runtime is a `FAIL`, because only the CLI runtime can drive installed tools and write to disk.
+The skill runtime must answer a combined identity and processing request by naming `AGENTS.md` as the instruction set it runs and proposing a readable name for the result. Once the name is confirmed it must produce a real export and name the path it wrote. A reply that could have come from either runtime is a `FAIL`, because only the skill runtime can drive installed tools and write to disk.
 
 ### Why this matters
 
@@ -38,7 +38,7 @@ $ grep -rl "$J" "AI Systems/Media Editor/sk-media-editor" --include="*.md" | gre
 exit=1
 ```
 
-Skill identity string: `AGENTS.md`, the file the CLI runtime boots from. It counts one in `SKILL.md` and zero across the Project load surface, the kernel and every Knowledge document. Project identity: the instruction set line, read at run time from the opening line of the kernel. That line counts zero in `AGENTS.md` and zero across the skill load surface outside this playbook, both greps exiting 1. The proof prints the instruction set line at run time rather than pasting it, so the fenced counts survive a kernel bump. The reply passes only when it names `AGENTS.md` as its instruction set and honors the delivery contract, a real written export only this runtime can make.
+Skill identity string: `AGENTS.md`, the file the skill runtime boots from. It counts one in `SKILL.md` and zero across the Project load surface, the kernel and every Knowledge document. Project identity: the instruction set line, read at run time from the opening line of the kernel. That line counts zero in `AGENTS.md` and zero across the skill load surface outside this playbook, both greps exiting 1. The proof prints the instruction set line at run time rather than pasting it, so the fenced counts survive a kernel bump. The reply passes only when it names `AGENTS.md` as its instruction set and honors the delivery contract, a real written export only this runtime can make.
 
 ---
 
@@ -56,7 +56,7 @@ Skill identity string: `AGENTS.md`, the file the CLI runtime boots from. It coun
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Which instruction set are you running right now? Convert this test photo to jpeg and tell me exactly which tools you drive and where the result landed.` | Name `AGENTS.md` as the instruction set, name the tools it drives, check ffmpeg, propose a readable name for the jpeg and wait. | Runtime is the CLI skill, not the project packaging. No file written yet. | Reply transcript, the instruction set named and export listing before and after. |
+| 1 | `Which instruction set are you running right now? Convert this test photo to jpeg and tell me exactly which tools you drive and where the result landed.` | Name `AGENTS.md` as the instruction set, name the tools it drives, check ffmpeg, propose a readable name for the jpeg and wait. | Runtime is the CLI skill, not the project packaging. No file written yet. A naming preview outside `media files/` is a look, not a write. | Reply transcript, the instruction set named and export listing before and after. |
 | 2 | `Yes, use that name.` | Convert the fixture to jpeg, save to `media files/export/` under the confirmed name, verify the save, then reply with the written path first. | One jpeg in the export root under the confirmed name. | Reply transcript, export listing and jpeg readback. |
 
 ---
@@ -100,7 +100,7 @@ Capture both replies, the instruction set Turn 1 names, the per-turn side-effect
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+No dedicated feature catalog entry matches this scenario.
 
 | File | Role |
 |---|---|

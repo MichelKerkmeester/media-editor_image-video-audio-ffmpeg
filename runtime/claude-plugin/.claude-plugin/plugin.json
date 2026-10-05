@@ -1,0 +1,10 @@
+{
+  "name": "media-editor",
+  "version": "1.1.0",
+  "description": "Edit, convert and compress images, video and audio in your project folder with the media-editor command that brings its own ffmpeg, plus the Media Editor skill.",
+  "author": {
+    "name": "Michel Kerkmeester"
+  },
+  "license": "MIT",
+  "keywords": ["media", "image", "video", "audio", "ffmpeg", "hls"]
+}

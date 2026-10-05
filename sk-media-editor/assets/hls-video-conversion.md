@@ -1,6 +1,6 @@
 ---
 title: "Media Editor - Reference - HLS Video Conversion"
-description: "HLS multi-quality conversion with the video_hls_ladder tool first, then the FFmpeg command recipes, codec settings and batch script that run the same ladder when the tools are not connected."
+description: "HLS multi-quality conversion with the video_hls_ladder tool first, then the FFmpeg command recipes, codec settings and batch script that run the same ladder when the tools are not available."
 contextType: general
 importance_tier: important
 trigger_phrases:
@@ -15,7 +15,7 @@ version: 0.8.0.4
 
 # Media Editor - Reference - HLS Video Conversion
 
-HLS (HTTP Live Streaming) video conversion with `video_hls_ladder` when the Media Editor tools are connected, and with copy-and-apply FFmpeg command recipes when they are not.
+HLS (HTTP Live Streaming) video conversion with `video_hls_ladder` when the Media Editor tools are available, and with copy-and-apply FFmpeg command recipes when they are not.
 
 **Loading Condition:** ON-DEMAND
 **Purpose:** Provides the `video_hls_ladder` call and the FFmpeg command patterns for HLS multi-quality video conversion with adaptive streaming
@@ -37,10 +37,10 @@ ffmpeg_installation:
   windows: "Download from ffmpeg.org"
 ```
 
-### Connection verification
+### Route verification
 
-Use `video_hls_ladder` when the Media Editor tools are connected. Otherwise verify FFmpeg before all operations with `ffmpeg -version`.
-- Tools connected: "Media Editor tools connected, `video_hls_ladder` ready."
+Use `video_hls_ladder` when the Media Editor tools are available. Otherwise verify FFmpeg before all operations with `ffmpeg -version`.
+- Tools available: "Media Editor tools available, `video_hls_ladder` ready."
 - Available: "FFmpeg available, terminal HLS conversion ready."
 - Unavailable: "FFmpeg not found, installation required." Give the commands below as advice and say that nothing ran.
 
@@ -80,7 +80,7 @@ Web optimizations: `-movflags +faststart` for immediate playback, `-an` to remov
 
 ### Processing order
 
-1. Check the route: `video_hls_ladder` when the Media Editor tools are connected, otherwise `ffmpeg -version`
+1. Check the route: `video_hls_ladder` when the Media Editor tools are available, otherwise `ffmpeg -version`
 2. Analyze the input video properties
 3. Determine quality levels based on use case
 4. Execute the conversion command
@@ -140,6 +140,8 @@ ffmpeg -i INPUT_VIDEO.mp4 \
   -var_stream_map "v:0,name:1080p v:1,name:720p v:2,name:480p v:3,name:360p" \
   OUTPUT_DIR/%v/playlist.m3u8
 ```
+
+Set `OUTPUT_DIR` to one numbered folder, `media files/export/[###] - [description]`, where `[###]` is the next free three-digit number in `media files/export/`, `001` when it holds none, and create it with `mkdir -p` first.
 
 Key parameters: `split=4` duplicates the video stream four times, `scale` with `force_original_aspect_ratio=decrease` downscales only, `pad` centers content, `-crf 23` is visually transparent quality, `-maxrate` caps streaming bandwidth, `-bufsize` is twice the maxrate, `-g 48` aligns the GOP with 2-second segments at 24fps, `-an` removes audio.
 
@@ -259,7 +261,7 @@ Test playback: `ffplay hls_output/VIDEO_NAME/master.m3u8` or serve with `python3
 
 ### Troubleshooting
 
-- FFmpeg not found: connect the Media Editor tools, or install per platform, then `ffmpeg -version`
+- FFmpeg not found: set up the Media Editor tools, or install per platform, then `ffmpeg -version`
 - Codec not supported: install FFmpeg with libx264, verify with `ffmpeg -codecs | grep 264`
 - Permission denied: `chmod +x script.sh`, `mkdir -p output_directory`
 - Large file size: raise CRF to 26, reduce maxrate to 2000k, or drop the 1080p variant
@@ -276,7 +278,7 @@ Replace `-c:v libx264` with `h264_nvenc` (NVIDIA, 3-5x faster), `h264_qsv` (Inte
 - Cannot do: real-time preview, GUI, live streaming, an audio track in the ladder
 - Input: any FFmpeg-supported video format. Output of this recipe: HLS (.m3u8 playlists plus .ts segments)
 
-HLS runs through `video_hls_ladder` when the Media Editor tools are connected, otherwise on installed FFmpeg. Single-format conversions and interactive editing take the same route order through the video and audio reference.
+HLS runs through `video_hls_ladder` when the Media Editor tools are available, otherwise on installed FFmpeg. Single-format conversions and interactive editing take the same route order through the video and audio reference.
 
 ---
 

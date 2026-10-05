@@ -12,19 +12,19 @@
 
 Ask Claude to resize a photo, cut a clip, pull the audio out of a video or build a streaming ladder, and it does the work on your own computer.
 
-The Media Editor is a local MCP server with 40 editing tools and its own ffmpeg, plus the skill that tells Claude how to use them. Your files never leave your machine, nothing is ever overwritten, and every result gets a name that says what it shows instead of `CleanShot 2026-10-03 at 16.46.54-converted.webp`.
+The Media Editor is 40 editing tools with their own ffmpeg, plus the skill that tells Claude how to use them. Your files never leave your machine, nothing is ever overwritten, and every result gets a name that says what it shows instead of `CleanShot 2026-10-03 at 16.46.54-converted.webp`.
 
 Works in Claude Desktop, in Claude Code and in a claude.ai Project, and in any agent CLI that reads `AGENTS.md`
 
 **What's inside**
 
 - **Claude Desktop Extension** - one `.mcpb` file per platform, installed from Settings, with its own ffmpeg and ffprobe inside
-- **Claude Code Plugin** - the same server plus the skill, loaded for any folder you start Claude Code in
+- **Claude Code Plugin** - the `media-editor` command plus the skill, loaded for any folder you start Claude Code in
 - **Claude Project Package** - a kernel and seven Knowledge files that turn a Project into the Media Editor, running the tools in Claude Desktop and advising everywhere else
 - **40 Tools** - 8 image, 6 audio, 20 video and 6 media tools, from `image_resize` to `video_hls_ladder` and `media_rename`
 - **Readable Names** - Claude looks at the content, proposes a name such as `team-offsite-hero.webp` and asks before it writes
-- **A Tidy Export Folder** - one result lands straight in `media files/export/`, and only an operation that writes several files gets a numbered folder
-- **Checks Without a Model** - 22 router fixtures, 66 differential checks and 86 server test files
+- **A Tidy Export Folder** - one result lands straight in `media files/export/`, a batch of files goes into the one place you choose before anything is written, and an operation that writes several files gets a numbered folder
+- **Checks Without a Model** - 22 router fixtures, 110 differential checks and 91 server test files
 
 **Why it earns a place**
 
@@ -46,11 +46,15 @@ The easiest way in. One file, no terminal, no ffmpeg install.
 
 ### ⌨️ Claude Code Plugin
 
-The same 40 tools in your terminal, plus the skill that drives them.
+The same 40 tools in your terminal through the `media-editor` command, plus the skill that drives them.
 
 - Start Claude Code in the folder that holds your media and the plugin can read that folder and nothing else
 - Results land in that folder's `media files/export/`, created on first use
 - The skill comes with it, so the session already knows the modes, the format rules and the export protocol
+- The plugin ships the `media-editor` command, the server code it runs and a copy of the skill, and registers no MCP server
+- Claude Code puts the command on the Bash tool's path, so `media-editor health` is the check
+
+claude.ai and Cowork do not install a plugin that has a `bin/` folder, so a claude.ai user takes the extension route in Claude Desktop.
 
 ### 💬 Claude Project
 
@@ -87,7 +91,7 @@ Pick the row for where you chat with Claude. You need one of them, not all.
 | Claude Desktop | The Desktop extension, then optionally the Project | Edit your files and save the results |
 | Claude Code | The Claude Code plugin | Edit your files and save the results |
 | claude.ai in a browser, or mobile | Only the Project | Advise with the exact command to run yourself |
-| Another agent CLI | Nothing, plus ffmpeg on the path | Edit with ffmpeg and save the results |
+| Another agent CLI | The `media-editor` command, or ffmpeg on the path | Edit your files and save the results |
 
 ### Get the Code
 
@@ -101,12 +105,12 @@ cd media-editor_image-video-audio-ffmpeg
 Download `media-editor-<key>.mcpb` for your platform from the [latest release](https://github.com/MichelKerkmeester/media-editor_image-video-audio-ffmpeg/releases/latest), or build it with Node.js and npm:
 
 ```bash
-cd "mcp server"
+cd runtime
 npm install
 npm run bundle -- --target darwin-arm64
 ```
 
-Use your own key: `darwin-arm64` for a Mac with an Apple chip, `darwin-x64` for an Intel Mac, `win32-x64`, `linux-x64` or `linux-arm64`. The file lands in `mcp server/dist-bundles/media-editor-<key>.mcpb`.
+Use your own key: `darwin-arm64` for a Mac with an Apple chip, `darwin-x64` for an Intel Mac, `win32-x64`, `linux-x64` or `linux-arm64`. The file lands in `runtime/dist-bundles/media-editor-<key>.mcpb`.
 
 1. In Claude Desktop, open **Settings > Extensions > Advanced settings** and click **Install Extension…** under **Extension Developer**, then choose the `.mcpb` file
 2. Set **Folders Media Editor may open** to the `media files/` folder of this repository, plus any other folder that holds media. Leave no empty **Directory path** row, or the tools will not start
@@ -119,7 +123,7 @@ Use your own key: `darwin-arm64` for a Mac with an Apple chip, `darwin-x64` for 
 ### Claude Code
 
 ```bash
-cd "mcp server"
+cd runtime
 npm install
 npm run bundle -- --target darwin-arm64
 npm run plugin
@@ -128,10 +132,10 @@ npm run plugin
 Then start Claude Code in the folder that holds your media, with the plugin loaded:
 
 ```bash
-claude --plugin-dir "<path to>/mcp server/claude-plugin"
+claude --plugin-dir "<path to>/runtime/claude-plugin"
 ```
 
-`claude --plugin-dir "<path to>/mcp server/claude-plugin" mcp list` should show `plugin:media-editor:media-editor` as `✔ Connected`. The plugin needs Node.js 20.9.0 or later on the path and no settings. [The plugin README](mcp%20server/claude-plugin/README.md) has the details.
+`media-editor health` in the session should report the ffmpeg it found and the folders it may use. Claude Code puts the plugin's `bin/` folder on the Bash tool's path, so the bare command works. The plugin needs Node.js 20.9.0 or later on the path and no settings. [The plugin README](runtime/claude-plugin/README.md) has the details.
 
 ### Claude Project
 
@@ -141,7 +145,18 @@ claude --plugin-dir "<path to>/mcp server/claude-plugin"
 
 ### Any Agent CLI
 
-Open the folder in an agent CLI that reads `AGENTS.md` and point the model at that file. It loads `sk-media-editor/SKILL.md` and works as the Media Editor from then on. Without the plugin it runs ffmpeg and ffprobe from your path, and [INSTALL-GUIDE.md](INSTALL-GUIDE.md) covers a manual ffmpeg install for macOS, Ubuntu and Windows.
+Open the folder in an agent CLI that reads `AGENTS.md` and point the model at that file. It loads `sk-media-editor/SKILL.md` and works as the Media Editor from then on.
+
+The tools come from the `media-editor` command. Install it once from a copy of this repository, with Node.js 20.9.0 or later:
+
+```bash
+cd runtime
+npm install
+npm run build
+npm link
+```
+
+Then `media-editor health` works from any folder, and `npm unlink -g media-editor-mcp` removes it. Without the command it runs ffmpeg and ffprobe from your path, and [INSTALL-GUIDE.md](INSTALL-GUIDE.md) covers a manual ffmpeg install for macOS, Ubuntu and Windows.
 
 ### First Use
 
@@ -151,7 +166,7 @@ Drop a photo into `media files/import/` and ask:
 $image make CleanShot 2026-10-03 at 16.46.54.png a WebP for the website
 ```
 
-Claude checks the tools, looks at the picture and proposes a name:
+Claude checks the route, looks at the picture and proposes a name:
 
 ```text
 This looks like the team on the beach at the offsite. I'd save it as
@@ -170,7 +185,7 @@ bash benchmark/router/run_fixtures.sh
 
 ```text
 PASSED 22/22 fixtures
-PASSED 66/66 differential checks (22 inputs x 3 host states, 11 commands, 6 modes in parity)
+PASSED 110/110 differential checks (22 inputs x 5 host states, 11 commands, 6 modes in parity)
 ```
 
 &nbsp;
@@ -185,7 +200,7 @@ Three steps carry a request through the Media Editor:
 
 2. **Running**
 
-   The tool check picks the first route that answers: the mode's tools, then ffmpeg on the path, then advice. The route decides what runs, never what the mode is.
+   The tool check picks the first route that answers: the `media-editor` command, then hand-written ffmpeg, then advice. The route decides what runs, never what the mode is.
 
 3. **Naming and delivery**
 
@@ -210,8 +225,8 @@ From request to delivered media:
         ┌────────────────────────────────────────────┐
         │                 TOOL CHECK                 │
         │                                            │
-        │  Tools connected   media_health, then the  │
-        │                    mode's tools            │
+        │  media-editor      media-editor health,    │
+        │                    then the tool           │
         │  ffmpeg on path    ffmpeg -version, then   │
         │                    the recipe              │
         │  Neither           advice, nothing ran     │
@@ -250,7 +265,7 @@ One request, one mode. `$image`, `$video`, `$audio`, `$hls`, `$repair` and `$int
 
 ### Tool Check
 
-Tools first, then ffmpeg, then advice. With the tools connected, `media_health` reports the ffmpeg it found, its encoders and filters and the folders in effect. Without them, `ffmpeg -version` decides whether the recipe runs. With neither, the reply gives the exact command and says that nothing ran.
+The `media-editor` command first, then hand-written ffmpeg, then advice. With the command available, `media-editor health` reports the ffmpeg it found, its encoders and filters and the folders in effect. Without it, `ffmpeg -version` decides whether the recipe runs. With neither, the reply gives the exact command and says that nothing ran.
 
 ### MEDIA Thinking
 
@@ -264,7 +279,7 @@ The save happens before the reply, and the reply reports only what ran.
 
 #### How a Name Is Chosen
 
-1. The runtime looks at what the media shows. With the tools connected, `image_probe` or `media_probe` with `preview: true` returns a small JPEG, one frame for a video
+1. The skill looks at what the media shows. With the command available, `image_probe` or `media_probe` with `preview: true` writes a small JPEG, one frame for a video
 2. It proposes two to five lowercase words joined by hyphens and keeps the extension: `team-offsite-hero.webp`, `product-demo-720p.mp4`, `standup-voice-memo.mp3`
 3. It asks you to confirm or change the name in the same question as anything else it needs, then waits
 4. It writes the result under the confirmed name, through the tool's `fileName`, or renames an existing result with `media_rename`
@@ -289,7 +304,7 @@ media files/
 
 #### Save Before Reply
 
-1. Check the route: the tools when connected, otherwise `ffmpeg -version`
+1. Check the route: `media-editor health`, otherwise `ffmpeg -version`
 2. Propose a readable name and wait for the answer
 3. Process the media through the bound route
 4. Save to `media files/export/` under the confirmed name
@@ -302,12 +317,12 @@ A full processing log, a path buried after a long description and a question abo
 
 ## 6. 🛠️ THE 40 TOOLS
 
-The tools come from the Media Editor MCP server in `mcp server/`. A host starts it on your machine and calls its tools over stdio.
+The tools come from the Media Editor runtime in `runtime/`, shipped as the Claude Desktop extension and as the `media-editor` command in the Claude Code plugin. The extension serves the tools over stdio, and the command runs the same tools, one process per call.
 
 #### Every Tool Follows the Same Rules
 
 - It opens files only inside the folders you allow, and an input path outside them fails with `PATH_NOT_ALLOWED`
-- A writing tool takes `outputName`, plus an optional `fileName` for a readable name and an optional `subfolder` to force or skip a numbered folder. `video_hls_ladder` always writes its own folder
+- A writing tool takes `outputName`, plus an optional `fileName` for a readable name, an optional `subfolder` to force or skip a numbered folder and an optional `targetFolder` that puts later calls of one batch into the folder the first call made. `video_hls_ladder` always writes its own folder
 - Every write is an exclusive create, so no call can overwrite an input or an earlier result
 - Video and audio tools try a lossless stream copy first and re-encode only when the copy cannot work
 - Image tools run on the sharp image library and need no ffmpeg at all
@@ -321,11 +336,11 @@ The tools come from the Media Editor MCP server in `mcp server/`. A host starts 
 | Video | 20 | `video_trim`, `video_convert`, `video_convert_properties`, `video_set_aspect_ratio`, `video_set_resolution`, `video_set_codec`, `video_set_bitrate`, `video_set_frame_rate`, `video_set_audio_codec`, `video_set_audio_bitrate`, `video_set_audio_sample_rate`, `video_set_audio_channels`, `video_set_speed`, `video_add_fade`, `video_add_text_overlay`, `video_add_image_overlay`, `video_add_subtitles`, `video_add_b_roll`, `video_concat`, `video_hls_ladder` |
 | Media | 6 | `media_health`, `media_probe`, `media_rename`, `media_repair`, `media_remove_silence`, `media_setup_ffmpeg` |
 
-[tools.md](sk-media-editor/references/tools.md) lists every parameter and default. `media_health` is the first call to make when something fails.
+[tools.md](sk-media-editor/references/tools.md) lists every parameter and default. `media-editor health` is the first call to make when something fails.
 
 #### Consent Before Any Download
 
-1. `media_health` reports a missing ffmpeg or ffprobe and names `media_setup_ffmpeg` as the next step
+1. `media-editor health` reports a missing ffmpeg or ffprobe and names `media_setup_ffmpeg` as the next step
 2. A first call to `media_setup_ffmpeg` returns `CONSENT_REQUIRED` with the planned download for each binary: address, size, SHA-256 and destination
 3. The plan is shown to you, and the second call with `consent: true` runs only after you agree
 4. The download is checked against its SHA-256 before it is installed into the server's data folder
@@ -388,7 +403,7 @@ Tokens match whole, after case normalization. [AGENTS.md](AGENTS.md) holds the c
 2. With no command, score six keyword sets on word boundaries. The highest score wins, and table order breaks a tie
 3. With no command and no keyword hit, route to Interactive and ask one question
 4. Load `media-framework.md`, then the one file the mode routes to, never a second pack
-5. Run the tool check and bind the route: tools, ffmpeg or advice
+5. Run the tool check and bind the route: the `media-editor` command, hand-written ffmpeg or advice
 
 #### Keywords
 
@@ -429,11 +444,11 @@ python3 benchmark/router/route_contract.py "\$audio from this video file"
 }
 ```
 
-`tool` is the tool group the mode calls when the tools are connected, and `fallback` is what runs when they are not. `needs_disambiguation` is true exactly when the mode is Interactive.
+`tool` is the tool group the mode calls when the `media-editor` command is available, and `fallback` is what runs when it is not. `needs_disambiguation` is true exactly when the mode is Interactive.
 
 #### The One Question
 
-A request with no command and no keyword gets one question covering everything at once, including the proposed file name, then waits. Before asking for a path, the CLI lists `media files/import/` and the working directory and uses the file whose name or type matches.
+A request with no command and no keyword gets one question covering everything at once, including the proposed file name, then waits. Before asking for a path, the skill lists `media files/import/` and the working directory and uses the file whose name or type matches.
 
 &nbsp;
 
@@ -485,7 +500,7 @@ media files/export/[###] - [description]/
 └── 360p/    playlist.m3u8 + segment_*.ts
 ```
 
-`video_hls_ladder` encodes the ladder in one call with aligned keyframes and MPEG-TS segments. `rungs` picks 1 to 4 qualities, `crf` defaults to 23 and `segmentDuration` to 2 seconds, and the audio track is dropped. Without the tools, [hls-video-conversion.md](sk-media-editor/assets/hls-video-conversion.md) holds the ffmpeg command pack for the same ladder.
+`video_hls_ladder` encodes the ladder in one call with aligned keyframes and MPEG-TS segments. `rungs` picks 1 to 4 qualities, `crf` defaults to 23 and `segmentDuration` to 2 seconds, and the audio track is dropped. Without the command, [hls-video-conversion.md](sk-media-editor/assets/hls-video-conversion.md) holds the ffmpeg command pack for the same ladder.
 
 &nbsp;
 
@@ -493,16 +508,16 @@ media files/export/[###] - [description]/
 
 `claude project/` carries the same system for a claude.ai Project, which never loads `SKILL.md`.
 
-- `Custom Instructions.md` is the kernel, v1.0.0, aligned to skill v1.0.0.0. Its eight sections end with Section 8, Router Code, and it is the routing authority inside the Project
+- `Custom Instructions.md` is the kernel, v1.1.0, aligned to skill v1.1.0.0. Its eight sections end with Section 8, Router Code, and it is the routing authority inside the Project
 - `knowledge/` holds 6 files: the MEDIA framework, Interactive Intelligence, the image and the video and audio operation references, the tools reference and HLS conversion
 - `README.md` holds the upload steps, the parity rule and the smoke checks
 - `kernel-review.json` is a dated record of one kernel review, read by no tool
 
 #### What Changes in a Project
 
-| Skill in a CLI | Project in Claude Desktop with the extension | Project on claude.ai in a browser |
+| Skill in a terminal agent | Project in Claude Desktop with the extension | Project on claude.ai in a browser |
 |---|---|---|
-| Runs the tools, or ffmpeg on the path | Runs the tools on your machine | Runs nothing |
+| Runs the tools through the `media-editor` command, or ffmpeg on the path | Runs the tools on your machine | Runs nothing |
 | Saves to `media files/export/` and checks the save | Reports the path the tool returned | Hands back the command, where the result lands and the check |
 | Loads files from `references/` and `assets/` | Consults the matching Knowledge document | Consults the matching Knowledge document |
 
@@ -516,23 +531,23 @@ Every Knowledge file is a copy of its skill source. The router contract has no m
 
 | Command | What it checks | Result on this tree |
 |---|---|---|
-| `bash benchmark/router/run_fixtures.sh` | 22 route fixtures, then the differential against `router-contract.md` | `PASSED 22/22 fixtures` and `PASSED 66/66 differential checks` |
+| `bash benchmark/router/run_fixtures.sh` | 22 route fixtures, then the differential against `router-contract.md` | `PASSED 22/22 fixtures` and `PASSED 110/110 differential checks` |
 | `python3 benchmark/router/route_contract.py "<request>"` | One request through the oracle | The route object |
 | `bash benchmark/grader/check_report.sh <report-folder>` | Twin agreement between the skill and Project verdicts of a captured run | Exit 0 when every pair agrees |
 
-The server has its own suites. In `mcp server/`, `npm test` runs 86 vitest files over the tools, the server and the packaging on the development ffmpeg. `npm run test:pinned` runs the same suites on this machine's pinned ffmpeg after checking its digest, which is the route to use on a Mac with an Apple chip, where the development `ffprobe-static` binary is Intel only.
+The server has its own suites. In `runtime/`, `npm test` runs 91 vitest files over the tools, the server and the packaging on the development ffmpeg. `npm run test:pinned` runs the same suites on this machine's pinned ffmpeg after checking its digest, which is the route to use on a Mac with an Apple chip, where the development `ffprobe-static` binary is Intel only.
 
 #### What the Router Differential Proves
 
-`differential.py` lifts the router code out of `router-contract.md`, runs it and compares it with `route_contract.py` and the kernel copy on four guards: copy parity, table parity, behavior parity in three host states (tools connected, ffmpeg only and neither) and coverage of every command, mode and false prefix. Prose and code cannot drift apart without one of the four failing.
+`differential.py` lifts the router code out of `router-contract.md`, runs it and compares it with `route_contract.py` and the kernel copy on four guards: copy parity, table parity, behavior parity in five host states (the command, the command beside connected tools, connected tools, ffmpeg only and neither) and coverage of every command, mode and false prefix. Prose and code cannot drift apart without one of the four failing.
 
 #### The Manual Testing Playbook
 
-[The playbook](sk-media-editor/manual-testing-playbook/manual-testing-playbook.md) turns the contract into 29 conversations in 18 category folders, run against both the CLI skill and the Project. They cover the identity handover, command routing, the tool check with the ffmpeg consent flow, one-question intake, the generation boundary, readable names, export without needless folders, HLS, Repair Mode and the route order with the tools connected in Claude Code and in Claude Desktop.
+[The playbook](sk-media-editor/manual-testing-playbook/manual-testing-playbook.md) turns the contract into 32 conversations in 19 category folders, run against both the skill in Claude Code and the Project. They cover the identity handover, command routing, the tool check with the ffmpeg consent flow, one-question intake, the generation boundary, readable names, export without needless folders, HLS, Repair Mode and the route order with the `media-editor` command in Claude Code and the connected tools in Claude Desktop.
 
 #### The Captured Run
 
-One run sits in `benchmark/reports/`: the 2026-09-17 run, Claude Sonnet 5 at medium effort, over the 16 scenarios of that day. It found that the CLI asked for a file path it could have found, so the CLI now lists `media files/import/` and the working directory before it asks.
+One run sits in `benchmark/reports/`: the 2026-09-17 run, Claude Sonnet 5 at medium effort, over the 16 scenarios of that day. It found that the skill asked for a file path it could have found, so the skill now lists `media files/import/` and the working directory before it asks.
 
 #### Maintainer Scripts
 
@@ -545,7 +560,7 @@ One run sits in `benchmark/reports/`: the 2026-09-17 run, Claude Sonnet 5 at med
 ```text
 .
 ├── AGENTS.md                        CLI entry point, export protocol and command registry
-├── INSTALL-GUIDE.md                 extension, plugin and manual ffmpeg install
+├── INSTALL-GUIDE.md                 extension, plugin, standalone command and manual ffmpeg install
 ├── USER-GUIDE.md                    Claude Desktop setup for the Media Editor Project
 ├── README.md                        this guide
 ├── SYNC.md                          parity method and dated change records
@@ -557,27 +572,27 @@ One run sits in `benchmark/reports/`: the 2026-09-17 run, Claude Sonnet 5 at med
 │   ├── reports/                     one captured playbook run
 │   └── router/                      route_contract.py, 22 fixtures and the differential
 ├── claude project/
-│   ├── Custom Instructions.md       claude.ai kernel v1.0.0, ends with the router code
+│   ├── Custom Instructions.md       claude.ai kernel v1.1.0, ends with the router code
 │   ├── README.md                    upload steps, parity rule and smoke checks
 │   ├── kernel-review.json           dated record of one kernel review
 │   └── knowledge/                   7 Knowledge files
-├── mcp server/
-│   ├── src/                         server source and the 40 tools
-│   ├── scripts/                     bundle, plugin and pinned-test builds
-│   ├── tests/                       86 vitest files
-│   ├── claude-plugin/               Claude Code plugin
-│   └── manifest.json                Claude Desktop extension manifest
 ├── media files/
 │   ├── import/                      source files to edit
 │   ├── export/                      every result, one file directly, several in a numbered folder
 │   └── tests/                       sample media for checks and the playbook
+├── runtime/
+│   ├── src/                         server source and the 40 tools
+│   ├── scripts/                     bundle, plugin and pinned-test builds
+│   ├── tests/                       91 vitest files
+│   ├── claude-plugin/               Claude Code plugin
+│   └── manifest.json                Claude Desktop extension manifest
 └── sk-media-editor/
     ├── SKILL.md                     router rules, tool check, naming and delivery protocol
     ├── README.md                    skill guide
     ├── assets/                      HLS conversion with video_hls_ladder and ffmpeg
-    ├── changelog/                   release notes, v0.1.0.0 to v1.0.0.0
-    ├── manual-testing-playbook/     29 scenarios in 18 category folders
-    └── references/                  7 reference files, loaded always, per route or on demand
+    ├── changelog/                   release notes, v0.1.0.0 to v1.1.0.0
+    ├── manual-testing-playbook/     32 scenarios in 19 category folders
+    └── references/                  8 reference files, loaded always, per route or on demand
 ```
 
 &nbsp;
@@ -590,7 +605,7 @@ The Desktop extension if you chat in Claude Desktop, the plugin if you work in C
 
 **Q: Do I need ffmpeg installed?**
 
-Not with the extension or the plugin, which bring their own. Without them, the CLI uses ffmpeg and ffprobe from the path, and without either it hands back the command and says nothing ran.
+Not with the extension or the plugin, which bring their own. Without them, the skill uses ffmpeg and ffprobe from the path, and without either it hands back the command and says nothing ran.
 
 **Q: Do my files leave my machine?**
 
@@ -602,7 +617,7 @@ Because imported names rarely say what a file shows, and a rename you did not as
 
 **Q: Why is my result not in a numbered folder anymore?**
 
-A folder for one file is clutter. One result goes straight into `media files/export/`, and an operation that writes several files still gets one folder. Ask for a folder and you get one.
+A folder for one file is clutter. One result goes straight into `media files/export/`, and an operation that writes several files still gets one folder. For a batch of files, the system asks once before writing whether they go straight into `media files/export/` or into one numbered folder, and every file lands there. Ask for a folder and you get one.
 
 **Q: Can it generate a new image, video or clip from a prompt?**
 
@@ -622,7 +637,7 @@ No. Those are out of scope and get reframed into a supported operation, the same
 
 **The reply gives an ffmpeg command instead of editing**
 
-Neither the tools nor ffmpeg answered. Install the extension or the plugin, or install ffmpeg and confirm `ffmpeg -version` answers. In Claude Desktop, check that Media Editor is on under **+ > Connectors**.
+Neither the `media-editor` command nor ffmpeg answered. Install the extension, the plugin or a standalone command, or install ffmpeg and confirm `ffmpeg -version` answers. In Claude Desktop, check that Media Editor is on under **+ > Connectors**.
 
 **"Unable to connect to extension server" in Claude Desktop**
 
@@ -634,11 +649,11 @@ The extension or plugin predates `media_rename`. Rebuild with `npm run bundle` o
 
 **A tool returns `PATH_NOT_ALLOWED`**
 
-The file sits outside the allowed folders. Add its folder in the extension settings, move the file into `media files/import/`, or start Claude Code in the folder that holds it. `media_rename` only renames files inside the export folder.
+The file sits outside the allowed folders. Add its folder in the extension settings, move the file into `media files/import/`, start Claude Code in the folder that holds it, or pass `--allowed-dir` with that folder. `media_rename` only renames files inside the export folder.
 
-**`media_health` says ffmpeg is missing**
+**`media-editor health` says ffmpeg is missing**
 
-The bundled ffmpeg cannot run on this machine. Ask for `media_setup_ffmpeg`, read the planned download and agree to it.
+The bundled ffmpeg cannot run on this machine. Run `media-editor media_setup_ffmpeg --args '{}'`, read the planned download and agree to it.
 
 **The request routed to the wrong mode**
 
@@ -659,9 +674,9 @@ Large sources take minutes. A tool stops at `PROCESS_TIMEOUT` after 1800 seconds
 **Install and setup**
 
 - **[→ User Guide](USER-GUIDE.md)** - Claude Desktop setup for the Media Editor Project
-- **[→ Install Guide](INSTALL-GUIDE.md)** - extension, plugin and manual ffmpeg install
-- **[→ Claude Code Plugin](mcp%20server/claude-plugin/README.md)** - plugin install and use
-- **[→ MCP Server](mcp%20server/README.md)** - build, test and configure the server
+- **[→ Install Guide](INSTALL-GUIDE.md)** - extension, plugin, standalone command and manual ffmpeg install
+- **[→ Claude Code Plugin](runtime/claude-plugin/README.md)** - plugin install and use
+- **[→ MCP Server](runtime/README.md)** - build, test and configure the server
 
 **Claude Project package**
 
@@ -675,7 +690,8 @@ Large sources take minutes. A tool stops at `PROCESS_TIMEOUT` after 1800 seconds
 - **[→ Media Editor Skill](sk-media-editor/SKILL.md)** - router rules, tool check, naming and delivery protocol
 - **[→ Skill README](sk-media-editor/README.md)** - mode-by-mode guide to the skill folder
 - **[→ Media Editor Tools](sk-media-editor/references/tools.md)** - all 40 tools, consent, error codes, settings and gaps
-- **[→ Setup](sk-media-editor/references/setup.md)** - the guided setup offered when the tools are not connected
+- **[→ Setup](sk-media-editor/references/setup.md)** - the guided setup offered when the command is missing
+- **[→ Command Line](sk-media-editor/references/cli.md)** - the `media-editor` command: health, arguments, output, exit codes, previews and the batch pattern
 - **[→ Image Operations](sk-media-editor/references/image-operations.md)** - the image tools first, then ffmpeg image recipes
 - **[→ Video and Audio Operations](sk-media-editor/references/video-and-audio-operations.md)** - the video and audio tools first, then ffmpeg recipes
 - **[→ HLS Video Conversion](sk-media-editor/assets/hls-video-conversion.md)** - `video_hls_ladder`, then the ffmpeg command pack

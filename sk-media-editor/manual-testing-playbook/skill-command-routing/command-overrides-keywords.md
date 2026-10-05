@@ -35,7 +35,7 @@ Mixed-signal requests are the common real-world case. If keyword scoring can ove
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `I need $audio from this product demo video as an mp3 for the podcast feed.` | Bind Audio Mode from the `$audio` token, check ffmpeg, propose a readable name for the mp3 and wait. | Mode is Audio, never Video. No file written yet. | Reply, mode label and export listing. |
+| 1 | `I need $audio from this product demo video as an mp3 for the podcast feed.` | Bind Audio Mode from the `$audio` token, check ffmpeg, propose a readable name for the mp3 and wait. | Mode is Audio, never Video. No file written yet. A naming preview outside `media files/` is a look, not a write. | Reply, mode label and export listing. |
 | 2 | `Yes, use that name.` | Extract the audio as mp3, save to `media files/export/` under the confirmed name and reply path first. | One mp3 in the export root under the confirmed name. | Reply, export listing and mp3 readback. |
 
 ---
@@ -79,10 +79,11 @@ Capture both replies, the observed mode and tool check, the per-turn side-effect
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: command routing and aliases](../../feature-catalog/skill-behavior/command-routing-and-aliases.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | Command-wins routing rule and phase detection |
 | [`AGENTS.md`](../../../AGENTS.md) | Command registry and processing hierarchy |

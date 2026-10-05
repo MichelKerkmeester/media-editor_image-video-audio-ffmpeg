@@ -35,7 +35,7 @@ The intake contract is identical across packagings. A Project that guesses the m
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `Can you make this file work better for our website?` | Ask one comprehensive question covering media type, file, goal, output and a proposed readable file name, then wait. Hand back no command yet. | No mode named. | Response transcript and absence of a command block. |
+| 1 | `Can you make this file work better for our website?` | Ask one comprehensive question covering media type, file, goal, output and a proposed readable file name, then wait. Hand back no command yet. | No media mode named: the attestation names Interactive Mode, the mode an unclear request binds, and no image, video, audio, HLS or repair mode. | Response transcript and absence of a command block. |
 | 2 | `It is a hero photo, 6MB PNG, and I want it light for the homepage.` | Hand back Image Mode guidance with an ffmpeg command built from the supplied facts and writing to the proposed name, the encoder check when a specific format is promised and the delivery fields. | Media type now bound to Image. | Reply using every Turn 2 fact. |
 
 ---
@@ -80,10 +80,11 @@ Capture both turns, the question content with its proposed name and the Turn 2 c
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project kernel and knowledge files](../../feature-catalog/project-behavior/project-kernel-and-knowledge-files.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | Ambiguous routing and the one-question rule |
 | [`Interactive Intelligence`](../../../claude%20project/knowledge/Media%20Editor%20-%20System%20-%20Interactive%20Intelligence.md) | Intake checklist and conversation flow mirror |

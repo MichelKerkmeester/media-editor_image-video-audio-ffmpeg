@@ -78,10 +78,11 @@ Capture the full reply, the stated size cost and the suggested alternative.
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project kernel and knowledge files](../../feature-catalog/project-behavior/project-kernel-and-knowledge-files.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | NEVER 3 and ESCALATE 3 practical-limit rules |
 | [`HLS Video Conversion`](../../../claude%20project/knowledge/Media%20Editor%20-%20Reference%20-%20HLS%20Video%20Conversion.md) | HLS recipe and constraint mirror |

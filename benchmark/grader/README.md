@@ -13,7 +13,7 @@ trigger_phrases:
 
 ## 1. OVERVIEW
 
-The manual testing playbook (`sk-media-editor/manual-testing-playbook/`) runs its scenarios by hand, a skill set against the CLI skill runtime and a project set against the claude.ai Project, and records one `PASS`, `FAIL` or `SKIP` verdict per scenario. Nothing else re-reads a finished run as a whole. This folder holds the check that only makes sense over such a run, plus a one-command runner.
+The manual testing playbook (`sk-media-editor/manual-testing-playbook/`) runs its scenarios by hand, a skill set against the skill in a real terminal and a project set against the claude.ai Project, and records one `PASS`, `FAIL` or `SKIP` verdict per scenario. Nothing else re-reads a finished run as a whole. This folder holds the check that only makes sense over such a run, plus a one-command runner.
 
 Current state:
 
@@ -93,10 +93,10 @@ The playbook's scenarios do not share a category code between the skill and Proj
 | `SAI-001` | `PAI-001` | identical prompt, the one-comprehensive-question scenario |
 | `SSB-001` | `PSB-001` | identical prompt, the generation-request refusal |
 | `SHL-001` | `PHL-001` | identical prompt, `$hls Convert this keynote recording` |
-| `SRO-001` | `PRO-001` | identical prompt, the tools connected in Claude Code and in Claude Desktop |
+| `SRO-001` | `PRO-001` | identical prompt, the media-editor command in Claude Code and the connected tools in Claude Desktop |
 | `SCR-003` | `PRP-002` | identical prompt, `$aud strip the track from this $video` |
 
-Sixteen scenarios test something only one runtime can produce or have no Project row with the same prompt, and are declared unpaired rather than left to fall out of a failed match. On the skill side, `SCR-001`, `STV-001`, `SED-001`, `SED-002`, `SED-003` and `SRO-002` need the real CLI runtime, `STV-002` and `STV-003` need the Claude Code plugin, and `SCR-004`, `SCR-005` and `SRM-001` have no Project twin. On the Project side, `PGD-001`, `PNE-001` and `PSB-002` test the chat-only limits, and `PRM-001` asks with `$repair` where `SRM-001` tests the `$r` alias. `PRO-002` needs claude.ai in a browser, where the tools cannot run.
+Sixteen scenarios test something only one runtime can produce or have no Project row with the same prompt, and are declared unpaired rather than left to fall out of a failed match. On the skill side, `SCR-001`, `STV-001`, `SED-001`, `SED-002`, `SED-003` and `SRO-002` need the skill in a real terminal, `STV-002` and `STV-003` need the Claude Code plugin, and `SCR-004`, `SCR-005` and `SRM-001` have no Project twin. On the Project side, `PGD-001`, `PNE-001` and `PSB-002` test the chat-only limits, and `PRM-001` asks with `$repair` where `SRM-001` tests the `$r` alias. `PRO-002` needs claude.ai in a browser, where the tools cannot run.
 
 Two of the seven pairs, `SAI-001`/`PAI-001` and `SSB-001`/`PSB-001`, are two-turn scenarios in the playbook's own conversation chains. A result recorded after only the first turn is not one of this playbook's three verdicts, so `twin_divergence.py` refuses to compare it rather than count it as agreement with a finished run on the other side.
 

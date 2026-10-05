@@ -78,10 +78,11 @@ Capture the full reply, the named mode, the ffmpeg command and the delivery fiel
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: project kernel and knowledge files](../../feature-catalog/project-behavior/project-kernel-and-knowledge-files.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`Custom Instructions.md`](../../../claude%20project/Custom%20Instructions.md) | Routing authority and command-wins phase detection |
 | `Media Editor - Integrations - Video And Audio Operations` (knowledge mirror) | Audio extraction commands and codec guidance |

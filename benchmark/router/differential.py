@@ -25,11 +25,12 @@ Four guards fire, each on its own:
    the disambiguation checklist must match value for value, so a drifted table
    fails even when no input happens to expose it.
 3. Behavior parity. Every input is routed through both, once per host state:
-   tools connected, local ffmpeg only, and neither. The pseudocode decides the
-   route from two host calls, `media_tools_connected` and `verify_ffmpeg`, so
-   the gate re-binds both per state, proves the route lands on tools, ffmpeg or
-   advice as that state requires, and proves the routing decision itself never
-   changes with the host.
+   the command beside ffmpeg, the command with no ffmpeg, the command beside
+   connected tools, connected tools alone, local ffmpeg only, and neither. The pseudocode decides the route
+   from three host calls, `media_cli_available`, `media_tools_connected` and
+   `verify_ffmpeg`, so the gate re-binds all three per state, proves the route
+   lands on cli, tools, ffmpeg or advice as that state requires, and proves
+   the routing decision itself never changes with the host.
 4. Corpus coverage. Every command and alias, every mode by command and by
    keyword, the fallback and the named false prefixes must be exercised, so
    behavior parity cannot pass by leaving a table untested.
@@ -94,13 +95,20 @@ PYTHON_FENCE_SPELLINGS = (
     "```{python}", "``` {.python}",
 )
 
-# Host states as (media_tools_connected, verify_ffmpeg) and the route each one
-# must produce. The first available route wins, so ffmpeg on the path never
-# outranks connected tools.
-HOST_STATES: Dict[str, Tuple[bool, bool, str]] = {
-    "tools connected": (True, True, "tools"),
-    "ffmpeg only": (False, True, "ffmpeg"),
-    "neither": (False, False, "advice"),
+# Host states as (media_cli_available, media_tools_connected, verify_ffmpeg)
+# and the route each one must produce. The first available route wins, so the
+# media-editor command outranks connected tools and ffmpeg on the path never
+# outranks either. "cli available" is the skill's own state, "cli without
+# ffmpeg" proves the command route never leans on ffmpeg being on the path,
+# "cli beside tools" proves the order when both tool routes answer, and
+# "tools connected" is a Project with the extension.
+HOST_STATES: Dict[str, Tuple[bool, bool, bool, str]] = {
+    "cli available": (True, False, True, "cli"),
+    "cli without ffmpeg": (True, False, False, "cli"),
+    "cli beside tools": (True, True, True, "cli"),
+    "tools connected": (False, True, True, "tools"),
+    "ffmpeg only": (False, False, True, "ffmpeg"),
+    "neither": (False, False, False, "advice"),
 }
 
 # Tokens that look like a command and must never fire one.
@@ -265,7 +273,7 @@ def build_skill_router(contract_text: str) -> types.ModuleType:
     """Execute the router contract's pseudocode as a module.
 
     `load` is a side effect rather than a routing decision, so it is stubbed.
-    The two host calls do decide the route, so they start unbound and each
+    The three host calls do decide the route, so they start unbound and each
     behavior check binds them to one host state. `__file__` points at SKILL.md,
     a sibling of the `references/` and `assets/` folders the block's own
     resource discovery walks.
@@ -311,16 +319,17 @@ def check_table_parity(skill: types.ModuleType) -> List[str]:
 # 4. GUARD 3: BEHAVIOR PARITY ACROSS HOST STATES
 # ───────────────────────────────────────────────────────────────
 
-def bind_host(skill: types.ModuleType, tools: bool, ffmpeg: bool) -> None:
-    """Point the two host calls at one host state."""
+def bind_host(skill: types.ModuleType, cli: bool, tools: bool, ffmpeg: bool) -> None:
+    """Point the three host calls at one host state."""
+    skill.__dict__["media_cli_available"] = lambda: cli
     skill.__dict__["media_tools_connected"] = lambda: tools
     skill.__dict__["verify_ffmpeg"] = lambda: ffmpeg
 
 
 def compare_input(skill: types.ModuleType, text: str, state: str) -> List[str]:
     """Route one input through both in one host state and name each field that disagrees."""
-    tools, ffmpeg, expected_route = HOST_STATES[state]
-    bind_host(skill, tools, ffmpeg)
+    cli, tools, ffmpeg, expected_route = HOST_STATES[state]
+    bind_host(skill, cli, tools, ffmpeg)
     raw = skill.route_media_editor_resources(text)
     actual = rc.route_request(text)
 

@@ -10,9 +10,11 @@ You will see three names for the Media Editor tools. They are one program in thr
 
 | Name | What it is | Do you install it? |
 | --- | --- | --- |
-| MCP server | The program that edits images, video and audio. It carries its own ffmpeg | Never on its own. It comes inside the two below |
+| Media Editor runtime | The program that edits images, video and audio. It carries its own ffmpeg | Never on its own. It comes inside the two below |
 | Desktop extension | One `.mcpb` file for Claude Desktop | **Yes, for the Media Editor Project** |
-| Claude Code plugin | A folder for Claude Code, the terminal app | Only if you work in Claude Code |
+| Claude Code plugin | A folder for Claude Code, the terminal app. It ships the `media-editor` command that runs the tools. Its check is `media-editor health` | Only if you work in Claude Code |
+
+claude.ai and Cowork do not install a plugin that has a `bin/` folder, so a claude.ai user takes the extension route in Claude Desktop.
 
 Pick by where you chat with Claude:
 
@@ -98,5 +100,5 @@ No ffmpeg or Node.js needed. The extension brings its own.
 
 - [INSTALL-GUIDE.md](./INSTALL-GUIDE.md): Building the extension, the Claude Code plugin and a manual ffmpeg install
 - [claude project/README.md](./claude%20project/README.md): What the Media Editor Project contains and how to update it
-- [mcp server/README.md](./mcp%20server/README.md): The server behind the tools, its 40 tools and settings
-- [mcp server/claude-plugin/README.md](./mcp%20server/claude-plugin/README.md): The Claude Code plugin
+- [runtime/README.md](./runtime/README.md): The server behind the tools, its 40 tools and settings
+- [runtime/claude-plugin/README.md](./runtime/claude-plugin/README.md): The Claude Code plugin

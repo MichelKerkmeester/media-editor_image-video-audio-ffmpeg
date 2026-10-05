@@ -6,11 +6,11 @@
 """Report scenario twins whose two packagings disagreed in a run.
 
 The manual testing playbook (`sk-media-editor/manual-testing-playbook/`) runs
-its scenarios twice over, a skill set against the CLI skill runtime and a
-project set against the claude.ai Project, because the system ships from one source of truth in two
+its scenarios twice over, a skill set against the skill in a real terminal
+and a project set against the claude.ai Project, because the system ships from one source of truth in two
 packagings and only a live run shows whether they actually agree. A rule can
-be stated once, read by both, and still land differently: the skill runtime
-can write a real file and describe it, and the Project runtime without the
+be stated once, read by both, and still land differently: the skill
+can write a real file and describe it, and the Project without the
 Media Editor tools can only hand back a command, so the same request should
 produce a recognisably different reply shape on each side while agreeing on
 the substance the playbook's own contract fields state (mode, tool, whether a
@@ -32,13 +32,15 @@ quietly not pairing at all.
 
 Some scenarios test something only one runtime can produce (`STV-001` needs a
 real ffmpeg binary to be missing, `SED-001` needs a real file on disk,
-`SRO-002` needs a terminal ffmpeg with the tools disconnected, `STV-002` and
+`SRO-002` needs a terminal ffmpeg with the command off the PATH, `STV-002` and
 `STV-003` need the Claude Code plugin, `SCR-004`, `SCR-005` and `SRM-001`
 have no Project row with the same prompt, `PGD-001` and `PNE-001` test the
-Project's chat-only limits, `PSB-002` is a size escalation the CLI runtime
-would simply process, `PRM-001` asks with `$repair` where its skill
-counterpart tests the `$r` alias, and `PRO-002` needs claude.ai in a browser,
-where the tools cannot run). These are declared
+Project's chat-only limits, `PSB-002` is a size escalation the skill in a
+real terminal would simply process, `PRM-001` asks with `$repair` where its skill
+counterpart tests the `$r` alias, `PRO-002` needs claude.ai in a browser,
+where the tools cannot run, and `SED-004` asks the batch through `$image`
+where `PED-001` replays the live request without a command, so no prompt
+matches). These are declared
 unpaired rather than left to fall out of a failed match, so a scenario the
 playbook never intended to twin is never reported as one packaging running
 ahead of the other.
@@ -90,7 +92,7 @@ TWIN_PAIRS = {
     "SAI-001": "PAI-001",  # Identical prompt on both sides: "make this file work better"
     "SSB-001": "PSB-001",  # Generation-request refusal, an identical prompt on both sides
     "SHL-001": "PHL-001",  # Identical prompt on both sides: "$hls Convert this keynote recording"
-    "SRO-001": "PRO-001",  # Identical prompt, tools connected in Claude Code and Claude Desktop
+    "SRO-001": "PRO-001",  # Identical prompt, the media-editor command in Claude Code and the connected tools in Claude Desktop
     "SCR-003": "PRP-002",  # Identical prompt on both sides: "$aud strip the track from this $video"
 }
 
@@ -98,8 +100,8 @@ TWIN_PAIRS = {
 # module docstring for why each one cannot have a twin.
 UNPAIRED_IDS = {
     "SCR-001", "STV-001", "SED-001", "SED-002", "SED-003", "SRO-002",  # Skill-only
-    "SCR-004", "SCR-005", "STV-002", "STV-003", "SRM-001",  # Skill-only
-    "PGD-001", "PNE-001", "PSB-002", "PRM-001", "PRO-002",  # Project-only
+    "SCR-004", "SCR-005", "STV-002", "STV-003", "SRM-001", "SED-004",  # Skill-only
+    "PGD-001", "PNE-001", "PSB-002", "PRM-001", "PRO-002", "PED-001",  # Project-only
 }
 
 # ───────────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 ---
 title: "Media Editor - Integrations - Image Operations"
-description: "The eight Media Editor image tools with their parameters and defaults, then the FFmpeg and ffprobe commands that run the same operations when the tools are not connected, with format support and quality guidance."
+description: "The eight Media Editor image tools with their parameters and defaults, then the FFmpeg and ffprobe commands that run the same operations when the tools are not available, with format support and quality guidance."
 contextType: implementation
 importance_tier: important
 trigger_phrases:
@@ -14,7 +14,7 @@ version: 1.0.0.0
 
 # Media Editor - Integrations - Image Operations
 
-Technical reference for image processing: the Media Editor image tools first, locally installed FFmpeg and ffprobe when the tools are not connected.
+Technical reference for image processing: the Media Editor image tools first, locally installed FFmpeg and ffprobe when the tools are not available.
 
 ---
 
@@ -22,7 +22,7 @@ Technical reference for image processing: the Media Editor image tools first, lo
 
 ### Purpose
 
-Defines how each image operation runs. Section 2 covers the eight image tools, which run on the sharp image library inside the Media Editor server. Sections 5 to 7 cover the FFmpeg commands for the same operations, which run when the tools are not connected or as advice when nothing can run.
+Defines how each image operation runs. Section 2 covers the eight image tools, which run on the sharp image library inside the Media Editor runtime. Sections 5 to 7 cover the FFmpeg commands for the same operations, which run when the tools are not available or as advice when nothing can run.
 
 ### When to use
 
@@ -32,7 +32,7 @@ Defines how each image operation runs. Section 2 covers the eight image tools, w
 
 ### Route order
 
-1. **Media Editor tools connected:** call the image tool. The image tools run on sharp and need no ffmpeg, so they work even when `media_health` reports no ffmpeg
+1. **Media Editor tools available:** call the image tool. The image tools run on sharp and need no ffmpeg, so they work even when `media_health` reports no ffmpeg
 2. **No tools, FFmpeg on the path:** run the FFmpeg recipe from Section 5. Check for FFmpeg once per session with `ffmpeg -version`
 
 If neither the tools nor the check answers, give the command as advice with install guidance and run nothing. Say where the result would land.
@@ -43,12 +43,12 @@ If neither the tools nor the check answers, give the command as advice with inst
 
 ## 2. IMAGE TOOLS
 
-Every image tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool except `image_probe` also takes `outputName`, a 1 to 64 character description, plus the optional `fileName` and `subfolder`. One result file lands in the output folder itself, named `fileName` when given. Several files, as from `image_batch_resize` with two or more sizes, go into a new numbered folder named from `outputName`. `image_probe` with `preview: true` returns a small picture of the image, so the proposed name can say what it shows.
+Every image tool takes `inputPath`, an absolute path inside a folder the user allowed, and never changes that file. Every tool except `image_probe` also requires `outputName`, a 1 to 64 character description, on every call, plus the optional `fileName`, `subfolder` and `targetFolder`. One result file lands in the output folder itself, named `fileName` when given. Several files, as from `image_batch_resize` with two or more sizes, go into a new numbered folder named from `outputName`. The separate calls of one batch share one folder: the first passes `subfolder: true`, every later call passes the folder it returned as `targetFolder`. `image_probe` with `preview: true` returns a small picture of the image, so the proposed name can say what it shows.
 
 | Tool | Operation | Key parameters and defaults |
 | --- | --- | --- |
 | `image_resize` | Resize to a width, a height or both | `width` and `height` 1 to 32768, an omitted side keeps the aspect ratio. `fit` is `cover`, `contain`, `fill`, `inside` or `outside`, default `cover`. `withoutEnlargement` default `true` |
-| `image_convert` | Convert to another format | `format` is `jpeg`, `png`, `webp` or `avif`. `quality` 1 to 100, default 80 |
+| `image_convert` | Convert to another format | `format` is `jpeg`, `png`, `webp` or `avif`. `quality` 1 to 100, default 80. `maxBytes` caps the size of a `jpeg`, `webp` or `avif` file by lowering quality, never by resizing, where 1 KB is 1,000 bytes |
 | `image_crop` | Cut one rectangle | `left` and `top` 0 to 32767, `width` and `height` 1 to 32768. The region must fit inside the image |
 | `image_compress` | Compress in the image's own format | `quality` 1 to 100, default 80. `progressive` default `true`, JPEG only. Accepts JPEG, PNG, WebP and AVIF |
 | `image_rotate` | Rotate by any angle | `angle` -360 to 360, positive is clockwise. `background` `#RRGGBB` fills the corners of a turn that is not a multiple of 90, default `#000000` |
@@ -69,11 +69,11 @@ Quality is the sharp scale, where higher is better. It is visual quality for JPE
 - **Rotate:** `image_rotate`, any angle
 - **Flip:** `image_flip`
 - **Metadata:** `image_probe`, or `media_probe` for the ffprobe view of the same file
-- **Batch:** one tool call per file. `image_batch_resize` covers several sizes of one file, not several files
+- **Batch:** one tool call per file, after one question that settles every name and the place. When the user chose one folder, the first call passes `subfolder: true` and every later call passes the folder it returned as `targetFolder`, each call with its `outputName`. `image_batch_resize` covers several sizes of one file, not several files
 
 ### Processing order
 
-1. Check the route: the Media Editor tools when connected, otherwise FFmpeg on the path
+1. Check the route: the Media Editor tools when available, otherwise FFmpeg on the path
 2. Crop first to remove unwanted areas
 3. Resize next
 4. Rotate or flip
