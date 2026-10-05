@@ -3,7 +3,6 @@ title: "MCP server entry"
 description: "The MCP server starts on stdio and registers the runtime tool roster with the server SDK."
 trigger_phrases:
   - "MCP server entry"
-  - "mcp server entry"
   - "media-editor-mcp"
 version: "1.0.0.0"
 ---
