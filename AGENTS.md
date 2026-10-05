@@ -168,7 +168,7 @@ The Media Editor ships in three packagings from one source of truth.
 
 - `sk-media-editor/` is the source of truth and the skill identity. It CAN drive the Media Editor tools through the `media-editor` command in the Bash tool, otherwise locally installed ffmpeg and ffprobe, for real image, video and audio editing, and it writes real files
 - `claude project/` is the Project variant. In a Claude Desktop Project with the Media Editor extension it runs the tools. Without them it cannot run ffmpeg, so it answers in chat with the exact command to run, where the result lands and what to check, and it states the no-execution limitation plainly
-- `runtime/` is the Media Editor runtime behind the 40 tools, shipped as the Claude Desktop extension and as the `media-editor` command in the Claude Code plugin, which also carries this skill. `sk-media-editor/references/tools.md` lists the tools
+- `runtime/` is the Media Editor runtime behind the 40 tools, shipped as the Claude Desktop extension and as the `media-editor` command. Any terminal agent can run the command: the Claude Code plugin carries it with this skill, and Codex, OpenCode, Pi or any other agent installs it with `npm link` in `runtime/`. `sk-media-editor/references/tools.md` lists the tools
 
 Every operation takes the first route that is available: the `media-editor` command, then locally installed ffmpeg, then advice with the exact command when neither can run.
 

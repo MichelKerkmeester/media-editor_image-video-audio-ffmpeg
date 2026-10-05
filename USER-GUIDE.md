@@ -6,13 +6,14 @@ Setting up the Media Editor so it edits your files from the Claude Media Editor 
 
 ## 1. OVERVIEW
 
-You will see three names for the Media Editor tools. They are one program in three wrappers, and you install only one of them.
+You will see four names for the Media Editor tools. They are one program and three ways to install it, and you install only one of them.
 
 | Name | What it is | Do you install it? |
 | --- | --- | --- |
-| Media Editor runtime | The program that edits images, video and audio. It carries its own ffmpeg | Never on its own. It comes inside the two below |
+| Media Editor runtime | The program that edits images, video and audio. It carries its own ffmpeg | Never on its own. It comes inside the three below |
 | Desktop extension | One `.mcpb` file for Claude Desktop | **Yes, for the Media Editor Project** |
 | Claude Code plugin | A folder for Claude Code, the terminal app. It ships the `media-editor` command that runs the tools. Its check is `media-editor health` | Only if you work in Claude Code |
+| Standalone `media-editor` command | The same command, linked onto your path once, for Codex, OpenCode, Pi or any other terminal agent. Its check is `media-editor health` | Only if you work in a terminal agent other than Claude Code |
 
 claude.ai and Cowork do not install a plugin that has a `bin/` folder, so a claude.ai user takes the extension route in Claude Desktop.
 
@@ -22,9 +23,10 @@ Pick by where you chat with Claude:
 | --- | --- | --- |
 | Claude Desktop on macOS, Windows or Linux | The Desktop extension | Edit your files and save the results |
 | Claude Code in a terminal | The Claude Code plugin, see `INSTALL-GUIDE.md` | Edit your files and save the results |
+| Codex, OpenCode, Pi or another terminal agent | The standalone `media-editor` command, see `INSTALL-GUIDE.md` | Edit your files and save the results |
 | claude.ai in a browser, or the mobile app | Nothing, the tools cannot run there | Advise only: it gives you the exact command to run yourself |
 
-The tools run on your own computer, so only the Claude Desktop and Claude Code apps can reach them. Your files never leave your machine.
+The tools run on your own computer, so only Claude Desktop and terminal agents such as Claude Code, Codex, OpenCode or Pi can reach them. Your files never leave your machine.
 
 ---
 
@@ -98,7 +100,7 @@ No ffmpeg or Node.js needed. The extension brings its own.
 
 ## 7. RELATED
 
-- [INSTALL-GUIDE.md](./INSTALL-GUIDE.md): Building the extension, the Claude Code plugin and a manual ffmpeg install
+- [INSTALL-GUIDE.md](./INSTALL-GUIDE.md): Building the extension, the Claude Code plugin, the standalone command for any terminal agent and a manual ffmpeg install
 - [claude project/README.md](./claude%20project/README.md): What the Media Editor Project contains and how to update it
 - [runtime/README.md](./runtime/README.md): The server behind the tools, its 40 tools and settings
 - [runtime/claude-plugin/README.md](./runtime/claude-plugin/README.md): The Claude Code plugin

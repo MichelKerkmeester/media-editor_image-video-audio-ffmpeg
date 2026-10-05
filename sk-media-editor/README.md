@@ -32,7 +32,7 @@ version: 1.0.0.0
 
 This folder is the skill packaging of the Media Editor system: one skill that edits, converts, compresses and streams media that already exists. `SKILL.md` carries the identity, the router, the tool check and every rule. `references/` holds the MEDIA thinking framework, the interactive conversation flow, the image and the video and audio operation references, the catalogue of all 40 tools, the command reference and the router contract. `assets/` holds HLS conversion with `video_hls_ladder` and the ffmpeg command pack. A cold model bootstraps through `../AGENTS.md`, and from that point on it IS the Media Editor: scope, tool check and export rules replace generic assistant behavior.
 
-Every operation takes the first route that is available: the `media-editor` command, then locally installed ffmpeg, then advice with the exact command when neither can run. The tools come from the Media Editor runtime in `../runtime/`, packaged as the Media Editor extension and as the `media-editor` command the Claude Code plugin ships, and bring their own pinned ffmpeg. Every processed result lands in `../media files/export/` before any response is written: one file directly under a readable name the skill proposes and the user confirms, several files from one operation in one numbered folder. A second packaging of the same brain lives in `../claude project/` for claude.ai. It runs the tools in a Claude Desktop Project with the Media Editor extension, and otherwise answers in chat with the exact command to run, where the result lands and what to check.
+Every operation takes the first route that is available: the `media-editor` command, then locally installed ffmpeg, then advice with the exact command when neither can run. The tools come from the Media Editor runtime in `../runtime/`, packaged as the Media Editor extension and as the `media-editor` command, which runs in any terminal agent, from the Claude Code plugin in Claude Code or from a standalone install in Codex, OpenCode, Pi and the rest, and bring their own pinned ffmpeg. Every processed result lands in `../media files/export/` before any response is written: one file directly under a readable name the skill proposes and the user confirms, several files from one operation in one numbered folder. A second packaging of the same brain lives in `../claude project/` for claude.ai. It runs the tools in a Claude Desktop Project with the Media Editor extension, and otherwise answers in chat with the exact command to run, where the result lands and what to check.
 
 ### How a request flows
 
@@ -351,7 +351,7 @@ Format and codec references worth bookmarking.
 ## 10. FAQ
 
 **What happens when ffmpeg is not on the path?**
-With the `media-editor` command available, nothing: it brings its own ffmpeg. Without it, the reply gives the exact command as advice, says plainly that nothing ran and points to a Claude Desktop Project with the Media Editor extension, the Claude Code plugin or an ffmpeg install for macOS, Ubuntu and Windows.
+With the `media-editor` command available, nothing: it brings its own ffmpeg. Without it, the reply gives the exact command as advice, says plainly that nothing ran and points to a Claude Desktop Project with the Media Editor extension, the Claude Code plugin, the standalone command for any other terminal agent or an ffmpeg install for macOS, Ubuntu and Windows.
 
 **Can it generate a new image, video or clip from a text prompt?**
 No. The Media Editor edits, converts, compresses and streams media that already exists. A generation request gets refused and reframed into a supported editing operation where one applies.
@@ -377,7 +377,7 @@ No. That is out of scope and gets refused and reframed into a supported operatio
 
 | What you see | What to do |
 |---|---|
-| The response gives advice with a missing-ffmpeg warning instead of processing | Install the Media Editor extension in Claude Desktop, or the Claude Code plugin, which puts `media-editor` on the Bash tool's PATH and brings its own ffmpeg, or install ffmpeg (`brew install ffmpeg`, `sudo apt install ffmpeg` or a build from ffmpeg.org) and run `ffmpeg -version` to confirm |
+| The response gives advice with a missing-ffmpeg warning instead of processing | Install the Media Editor extension in Claude Desktop, the Claude Code plugin, which puts `media-editor` on the Bash tool's PATH, or in Codex, OpenCode, Pi or another terminal agent the standalone command with `npm link` in `runtime/`. The command brings its own ffmpeg. Otherwise install ffmpeg (`brew install ffmpeg`, `sudo apt install ffmpeg` or a build from ffmpeg.org) and run `ffmpeg -version` to confirm |
 | A response shows a wall of processing log or metadata | That violates the export protocol. Treat the response as non-compliant and ask for the path and summary form instead |
 | A request routed to the wrong mode | Add the exact command token (`$image`, `$video`, `$audio`, `$hls`, `$repair`) instead of relying on keyword scoring |
 | The system keeps asking one comprehensive question | No command and no keyword scored above zero. Answer the question in one reply, or add a command token to skip straight to that mode |

@@ -1,6 +1,6 @@
 ---
 title: "Media Editor Runtime"
-description: "Local MCP server and media-editor command with 40 tools that edit, convert and inspect images, video and audio, shipped as a Claude Desktop extension and, as the command, in a Claude Code plugin, with its own ffmpeg."
+description: "Local MCP server and media-editor command with 40 tools that edit, convert and inspect images, video and audio, shipped as a Claude Desktop extension and as a command for any terminal agent, with its own ffmpeg."
 trigger_phrases:
   - "media editor runtime"
   - "media editor tools"
@@ -16,7 +16,7 @@ trigger_phrases:
 
 ## 1. OVERVIEW
 
-This package is the server behind the Media Editor's tools. A host starts it on your machine and calls its 40 tools over stdio. Claude Desktop runs it from a one-click `.mcpb` extension. The Claude Code plugin in `claude-plugin/` ships the `media-editor` command instead, section 5, which runs the same tools one process per call with no host. Files never leave your machine.
+This package is the server behind the Media Editor's tools. A host starts it on your machine and calls its 40 tools over stdio. Claude Desktop runs it from a one-click `.mcpb` extension. Terminal agents use the `media-editor` command instead, section 5, which runs the same tools one process per call with no host: the Claude Code plugin in `claude-plugin/` ships it, and Codex, OpenCode, Pi or any other agent installs it with `npm link`. Files never leave your machine.
 
 Every tool follows the same rules. It opens files only inside the folders you allow, writes a single result straight into the output folder, gives several results from one call a numbered folder, and never overwrites a file. A writing tool takes an optional `fileName` for a readable name, `media_rename` renames a result afterwards, and both probe tools can return a small preview so the name can follow what the file shows. Video and audio tools try a lossless stream copy first and re-encode when the copy cannot work.
 
@@ -74,7 +74,7 @@ Each tool lists its own schema and description through `tools/list`. `media_heal
 
 ## 5. COMMAND LINE
 
-The same 40 tools also run from a terminal as `media-editor`, with no MCP host. Each call is one process: it builds its configuration, runs one tool and prints one JSON object on stdout.
+The same 40 tools also run from a terminal as `media-editor`, with no MCP host, so any agent that can run a shell command can use them, such as Claude Code, Codex, OpenCode or Pi. Each call is one process: it builds its configuration, runs one tool and prints one JSON object on stdout.
 
 ```bash
 media-editor list
