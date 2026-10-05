@@ -70,27 +70,30 @@ SYSTEM_ID = "media-editor"
 # on purpose after reading why it changed.
 RULES = {
     # Every operational document restates the route order before any promise:
-    # the Media Editor tools when they are connected, then installed ffmpeg,
-    # then advice that runs nothing. Five of the seven pairs carry it in five
-    # distinct sentences, one per document, which is why the rule needs five
-    # phrases rather than one repeated string. Each span keeps the tools-first
-    # clause, so a mirror that drops back to an ffmpeg-only check is caught.
-    # Re-measured when the tools reference became the eighth pair: still five,
-    # because that reference states none of the five sentences, and the
-    # renamed operation references kept theirs word for word. Still five when
-    # the setup reference joined, since it guides installs and states no route rule.
+    # the Media Editor tools when they are available, then installed ffmpeg,
+    # then advice that runs nothing. The route word is "available", never
+    # "connected", because the mirrored documents are shared with the Project
+    # and stay transport-neutral about how the tools are reached. Five of the
+    # seven pairs carry it in five distinct sentences, one per document, which
+    # is why the rule needs five phrases rather than one repeated string. Each
+    # span keeps the tools-first clause, so a mirror that drops back to an
+    # ffmpeg-only check is caught. Re-measured when the tools reference became
+    # the eighth pair: still five, because that reference states none of the
+    # five sentences, and the renamed operation references kept theirs word
+    # for word. Still five when the setup reference joined, since it guides
+    # installs and states no route rule.
     "the tool check gates every operation, tools first": {
         "phrases": (
-            "When the Media Editor tools are connected, use them: they bring their own ffmpeg, "
+            "When the Media Editor tools are available, use them: they bring their own ffmpeg, "
             "and `media_health` reports what it can do.",
             "If neither the tools nor the check answers, give the command as advice with install "
             "guidance and run nothing.",
-            "Use `video_hls_ladder` when the Media Editor tools are connected. Otherwise verify "
+            "Use `video_hls_ladder` when the Media Editor tools are available. Otherwise verify "
             "FFmpeg before all operations with `ffmpeg -version`.",
-            "Tool check first: use the Media Editor tools when they are connected, otherwise confirm "
+            "Tool check first: use the Media Editor tools when they are available, otherwise confirm "
             "`ffmpeg -version` answers in the runtime before any operation",
             "**Tool check first:** never process without confirming a route: the Media Editor tools "
-            "when connected, otherwise ffmpeg on the path.",
+            "when available, otherwise ffmpeg on the path.",
         ),
         "min_pairs": 5,
     },

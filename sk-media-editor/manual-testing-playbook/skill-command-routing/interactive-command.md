@@ -35,7 +35,7 @@ A user types `$interactive` to be asked before anything runs. A runtime that let
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$interactive Resize this photo for the newsletter.` | Bind Interactive Mode and ask one comprehensive question that covers what is still unknown, such as the target size, the output format and where the file is, and that carries a proposed readable name for the result, then wait. | No operation ran and no file was written. | Reply transcript and the per-turn side-effect ledger. |
+| 1 | `$interactive Resize this photo for the newsletter.` | Bind Interactive Mode and ask one comprehensive question that covers what is still unknown, such as the target size, the output format and where the file is, and that carries a proposed readable name for the result, then wait. | No operation ran and no file was written. A naming preview outside `media files/` is a look, not a write. | Reply transcript and the per-turn side-effect ledger. |
 
 ---
 
@@ -78,10 +78,11 @@ Capture the full reply, the per-turn side-effect ledger and the export folder li
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: command routing and aliases](../../feature-catalog/skill-behavior/command-routing-and-aliases.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`SKILL.md`](../../SKILL.md) | The command table and Interactive Mode |
 | [`router-contract.md`](../../references/router-contract.md) | Commands beat keyword scoring |

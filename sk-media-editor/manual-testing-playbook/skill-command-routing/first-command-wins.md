@@ -35,7 +35,7 @@ Before this rule the earlier row in the router table won, so `$video` beat `$aud
 
 | Turn | Exact user input | Expected assistant behavior | State check | Evidence |
 |---|---|---|---|---|
-| 1 | `$aud strip the track from this $video and save it as an mp3.` | Bind Audio Mode, check ffmpeg, propose a readable name for the mp3 and wait. | Mode is Audio, never Video. No file written yet. | Reply transcript and export listing. |
+| 1 | `$aud strip the track from this $video and save it as an mp3.` | Bind Audio Mode, check ffmpeg, propose a readable name for the mp3 and wait. | Mode is Audio, never Video. No file written yet. A naming preview outside `media files/` is a look, not a write. | Reply transcript and export listing. |
 | 2 | `Yes, use that name.` | Extract the audio track to mp3 into `media files/export/` under the confirmed name, then reply with the written path first. | One mp3 file, no edited video. | Reply transcript, export listing and `ffprobe` of the mp3. |
 
 ---
@@ -79,10 +79,11 @@ Capture both replies, the bound mode, the per-turn side-effect ledger, the expor
 
 ## 4. SOURCE FILES
 
-No feature catalog exists. Current runtime sources are the evidence authority.
+
 
 | File | Role |
 |---|---|
+| [catalog: command routing and aliases](../../feature-catalog/skill-behavior/command-routing-and-aliases.md) | Matching feature catalog entry |
 | [Root playbook](../manual-testing-playbook.md) | Shared execution policy and root summary |
 | [`router-contract.md`](../../references/router-contract.md) | The first command in the text wins |
 | [`SKILL.md`](../../SKILL.md) | The command table and Audio Mode |

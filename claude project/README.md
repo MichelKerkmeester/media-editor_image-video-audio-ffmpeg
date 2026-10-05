@@ -8,7 +8,7 @@ This folder is the source for the live claude.ai **Media Editor** Project. The l
 
 ```text
 claude project/
-|-- Custom Instructions.md        <- Project kernel v1.0.0, Skill v1.0.0.0 aligned, ends with the router code
+|-- Custom Instructions.md        <- Project kernel v1.1.0, Skill v1.1.0.0 aligned, ends with the router code
 |-- README.md                     <- this manifest and parity contract
 `-- knowledge/                    <- upload every file below as Project Knowledge
     |-- Media Editor - Thinking - MEDIA Framework.md
@@ -28,13 +28,13 @@ claude project/
 
 ## Custom Instructions = skill kernel, Project-adapted
 
-`Custom Instructions.md` is the synthesized claude.ai Project kernel, v1.0.0, aligned to **Media Editor Skill v1.0.0.0**. It preserves existing-media scope, MEDIA thinking, image, video, audio and HLS modes, the tool check and chat delivery, with the Media Editor tools first when they are connected. It ends with Section 8, Router Code, the code of `../sk-media-editor/references/router-contract.md` with its comments removed, and `../benchmark/router/differential.py` holds the two equal.
+`Custom Instructions.md` is the synthesized claude.ai Project kernel, v1.1.0, aligned to **Media Editor Skill v1.1.0.0**. It preserves existing-media scope, MEDIA thinking, image, video, audio and HLS modes, the tool check and chat delivery, with the Media Editor tools first when they are connected. It ends with Section 8, Router Code, the code of `../sk-media-editor/references/router-contract.md` with its comments removed, and `../benchmark/router/differential.py` holds the two equal.
 
-CLI-only mechanics are adapted for claude.ai Projects. Without the Media Editor tools, tool execution becomes advisory recipes in chat, direct file loading becomes Project Knowledge consultation and media export becomes a user-run `media files/export/` path in the CLI runtime or terminal, a readable file name for one result and a numbered folder for several. With the tools connected in Claude Desktop, the tools run, the kernel proposes a readable name from the content and passes it as `fileName` once the user confirms, and one result lands straight in the output folder.
+Skill-only mechanics are adapted for claude.ai Projects. Without the Media Editor tools, tool execution becomes advisory recipes in chat, direct file loading becomes Project Knowledge consultation and media export becomes a user-run `media files/export/` path in Claude Code or the user's terminal, a readable file name for one result and a numbered folder for several. With the tools connected in Claude Desktop, the tools run, the kernel proposes a readable name from the content and passes it as `fileName` once the user confirms, and one result lands straight in the output folder.
 
 The kernel claims execution only for what a Media Editor tool did in the conversation. Do not add language that claims claude.ai can run ffmpeg or terminal commands itself, or save edited media files without the tools, and do not add Canvas Artifact delivery.
 
-In Claude Desktop with the Media Editor extension installed, the Project runs the tools on the user's machine. Without them a claude.ai Project cannot run ffmpeg, so it cannot execute media edits, and it answers in chat with the exact command to run, where the result lands and what to check. The CLI `sk-media-editor/` package and the Claude Code plugin run the same tools from a terminal.
+In Claude Desktop with the Media Editor extension installed, the Project runs the tools on the user's machine. Without them a claude.ai Project cannot run ffmpeg, so it cannot execute media edits, and it answers in chat with the exact command to run, where the result lands and what to check. The `sk-media-editor/` skill runs the same tools from a terminal through the `media-editor` command, in Claude Code with the plugin or with a standalone install.
 
 ### Key statistics
 

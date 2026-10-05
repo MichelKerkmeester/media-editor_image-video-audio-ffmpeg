@@ -18,7 +18,7 @@ The Smart Router expressed as running Python, one level below the prose routing 
 
 **Loading Condition:** ON-DEMAND
 **Purpose:** Provides the exact router algorithm, command tokens, keyword scoring, tool binding, the route check and resource loading, for a reader who needs the precise behavior rather than the summarized rule
-**Scope:** Command detection, keyword scoring, the tool group and local fallback per mode, the tools-then-ffmpeg-then-advice route check, the disambiguation checklist and guarded resource loading
+**Scope:** Command detection, keyword scoring, the tool group and local fallback per mode, the route check in its fixed order, the disambiguation checklist and guarded resource loading
 **Output Path:** None. This file decides which resources a request loads and which route runs it, and writes no artifact
 **Loads With:** nothing. It is read alone, one level below the prose routing rules in `SKILL.md` Section 2, when a request needs the exact algorithm rather than the rule
 **Routed By:** nothing automatic. A reader opens it deliberately, and `benchmark/router/differential.py` extracts its Python fence on every gate run to prove `benchmark/router/route_contract.py` never drifts from it
@@ -34,11 +34,14 @@ This is the algorithm the routing prose in `SKILL.md` summarizes, and the exact 
 
 ### Host calls
 
-The code calls three names it does not define, because each one is an action of the host rather than a routing decision:
+The code calls four names it does not define, because each one is an action of the host rather than a routing decision:
 
 - `load(path)` reads a resource. In a Claude Project it means consulting the uploaded Knowledge document with the matching name
-- `media_tools_connected()` is true when the Media Editor tools are listed and `media_health` answers
+- `media_cli_available()` is true when `media-editor health` answers in the Bash tool. A Claude Project has no Bash tool, so there it is always false
+- `media_tools_connected()` is true when the Media Editor extension's tools are listed and `media_health` answers. The skill never connects them, so there it is always false
 - `verify_ffmpeg()` is true when `ffmpeg -version` answers on the path. A Claude Project cannot run it, so there it is always false
+
+Each surface therefore sees one tool route. The skill runs the `media-editor` command, then ffmpeg, then advice. A Project runs the connected extension, then advice.
 
 ---
 
@@ -77,7 +80,7 @@ RESOURCE_MAP = {
     "INTERACTIVE": ["references/interactive-intelligence.md"],
 }
 
-# The tool group each mode calls when the Media Editor tools are connected, and
+# The tool group each mode calls when the Media Editor tools are available, and
 # the local tool it falls back to when they are not. Audio also reaches
 # media_remove_silence, which sits outside the audio_* names. Interactive binds
 # neither until its one question names the media type.
@@ -145,9 +148,12 @@ def detect_intent(text: str):
     return "INTERACTIVE", "fallback"
 
 def choose_route() -> str:
-    # The first available route wins. The tools route runs the mode's tool
-    # group, the ffmpeg route runs its fallback, and advice runs nothing and
-    # says so, so a missing tool never turns into a claimed result.
+    # The first available route wins. The cli route runs the mode's tool group
+    # through the media-editor command, the tools route runs it through the
+    # connected extension, the ffmpeg route runs its fallback, and advice runs
+    # nothing and says so, so a missing tool never turns into a claimed result.
+    if media_cli_available():  # `media-editor health` answers
+        return "cli"
     if media_tools_connected():  # media_health is listed and answers
         return "tools"
     if verify_ffmpeg():  # `ffmpeg -version` answers
