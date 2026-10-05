@@ -14,12 +14,13 @@ Ask Claude to resize a photo, cut a clip, pull the audio out of a video or build
 
 The Media Editor is 40 editing tools with their own ffmpeg, plus the skill that tells Claude how to use them. Your files never leave your machine, nothing is ever overwritten, and every result gets a name that says what it shows instead of `CleanShot 2026-10-03 at 16.46.54-converted.webp`.
 
-Works in Claude Desktop, in Claude Code and in a claude.ai Project, and in any agent CLI that reads `AGENTS.md`
+Works in Claude Desktop and in a claude.ai Project, and in any terminal agent, such as Claude Code, Codex, OpenCode or Pi, through the `media-editor` command
 
 **What's inside**
 
 - **Claude Desktop Extension** - one `.mcpb` file per platform, installed from Settings, with its own ffmpeg and ffprobe inside
-- **Claude Code Plugin** - the `media-editor` command plus the skill, loaded for any folder you start Claude Code in
+- **The `media-editor` Command** - the 40 tools as one terminal command, for Claude Code, Codex, OpenCode, Pi or any agent that can run a shell command
+- **Claude Code Plugin** - the command plus the skill, packaged for Claude Code
 - **Claude Project Package** - a kernel and seven Knowledge files that turn a Project into the Media Editor, running the tools in Claude Desktop and advising everywhere else
 - **40 Tools** - 8 image, 6 audio, 20 video and 6 media tools, from `image_resize` to `video_hls_ladder` and `media_rename`
 - **Readable Names** - Claude looks at the content, proposes a name such as `team-offsite-hero.webp` and asks before it writes
@@ -44,15 +45,15 @@ The easiest way in. One file, no terminal, no ffmpeg install.
 - Chat normally, or open the Media Editor Project, and Claude calls the tools for you
 - ffmpeg and ffprobe ship inside the extension for macOS on Apple and Intel chips, Windows and Linux on x64 and arm64
 
-### ⌨️ Claude Code Plugin
+### ⌨️ Any Terminal Agent
 
-The same 40 tools in your terminal through the `media-editor` command, plus the skill that drives them.
+The same 40 tools through the `media-editor` command, plus the skill that drives them. The skill needs no MCP server, so any agent that can run a shell command can use it: Claude Code, Codex, OpenCode, Pi and the rest.
 
-- Start Claude Code in the folder that holds your media and the plugin can read that folder and nothing else
+- Start the agent in the folder that holds your media, and the command reads that folder and nothing else
 - Results land in that folder's `media files/export/`, created on first use
-- The skill comes with it, so the session already knows the modes, the format rules and the export protocol
-- The plugin ships the `media-editor` command, the server code it runs and a copy of the skill, and registers no MCP server
-- Claude Code puts the command on the Bash tool's path, so `media-editor health` is the check
+- `media-editor health` is the check, and it reports the ffmpeg it found and the folders it may use
+- **Claude Code** gets the command and the skill from the plugin, which puts the command on the Bash tool's path and registers no MCP server
+- **Codex, OpenCode, Pi and other agents** get the command from a one-time `npm link`, and load the skill through `AGENTS.md`
 
 claude.ai and Cowork do not install a plugin that has a `bin/` folder, so a claude.ai user takes the extension route in Claude Desktop.
 
@@ -90,8 +91,8 @@ Pick the row for where you chat with Claude. You need one of them, not all.
 |---|---|---|
 | Claude Desktop | The Desktop extension, then optionally the Project | Edit your files and save the results |
 | Claude Code | The Claude Code plugin | Edit your files and save the results |
+| Codex, OpenCode, Pi or another terminal agent | The `media-editor` command, linked once, or ffmpeg on the path | Edit your files and save the results |
 | claude.ai in a browser, or mobile | Only the Project | Advise with the exact command to run yourself |
-| Another agent CLI | The `media-editor` command, or ffmpeg on the path | Edit your files and save the results |
 
 ### Get the Code
 
@@ -143,9 +144,9 @@ claude --plugin-dir "<path to>/runtime/claude-plugin"
 2. Upload the six files in `claude project/knowledge/` with their filenames unchanged, after removing any older upload of the same document
 3. Open the Project in Claude Desktop with the extension switched on, so the tools run. On claude.ai in a browser the Project advises only
 
-### Any Agent CLI
+### Codex, OpenCode, Pi and Other Terminal Agents
 
-Open the folder in an agent CLI that reads `AGENTS.md` and point the model at that file. It loads `sk-media-editor/SKILL.md` and works as the Media Editor from then on.
+Open the folder in Codex, OpenCode, Pi or any other agent that reads `AGENTS.md`, and point the model at that file. It loads `sk-media-editor/SKILL.md` and works as the Media Editor from then on.
 
 The tools come from the `media-editor` command. Install it once from a copy of this repository, with Node.js 20.9.0 or later:
 
@@ -317,7 +318,7 @@ A full processing log, a path buried after a long description and a question abo
 
 ## 6. 🛠️ THE 40 TOOLS
 
-The tools come from the Media Editor runtime in `runtime/`, shipped as the Claude Desktop extension and as the `media-editor` command in the Claude Code plugin. The extension serves the tools over stdio, and the command runs the same tools, one process per call.
+The tools come from the Media Editor runtime in `runtime/`, shipped as the Claude Desktop extension and as the `media-editor` command, which any terminal agent can run and the Claude Code plugin carries. The extension serves the tools over stdio, and the command runs the same tools, one process per call.
 
 #### Every Tool Follows the Same Rules
 
@@ -601,7 +602,7 @@ One run sits in `benchmark/reports/`: the 2026-09-17 run, Claude Sonnet 5 at med
 
 **Q: Which one should I install?**
 
-The Desktop extension if you chat in Claude Desktop, the plugin if you work in Claude Code. The Project is optional on top of the extension, and it is the only part that does anything on claude.ai in a browser, where it advises.
+The Desktop extension if you chat in Claude Desktop, the plugin if you work in Claude Code, and the `media-editor` command on its own if you work in Codex, OpenCode, Pi or another terminal agent. The Project is optional on top of the extension, and it is the only part that does anything on claude.ai in a browser, where it advises.
 
 **Q: Do I need ffmpeg installed?**
 
@@ -649,7 +650,7 @@ The extension or plugin predates `media_rename`. Rebuild with `npm run bundle` o
 
 **A tool returns `PATH_NOT_ALLOWED`**
 
-The file sits outside the allowed folders. Add its folder in the extension settings, move the file into `media files/import/`, start Claude Code in the folder that holds it, or pass `--allowed-dir` with that folder. `media_rename` only renames files inside the export folder.
+The file sits outside the allowed folders. Add its folder in the extension settings, move the file into `media files/import/`, start your terminal agent in the folder that holds it, or pass `--allowed-dir` with that folder. `media_rename` only renames files inside the export folder.
 
 **`media-editor health` says ffmpeg is missing**
 
@@ -674,7 +675,7 @@ Large sources take minutes. A tool stops at `PROCESS_TIMEOUT` after 1800 seconds
 **Install and setup**
 
 - **[→ User Guide](USER-GUIDE.md)** - Claude Desktop setup for the Media Editor Project
-- **[→ Install Guide](INSTALL-GUIDE.md)** - extension, plugin, standalone command and manual ffmpeg install
+- **[→ Install Guide](INSTALL-GUIDE.md)** - extension, plugin, the standalone command for any terminal agent and manual ffmpeg install
 - **[→ Claude Code Plugin](runtime/claude-plugin/README.md)** - plugin install and use
 - **[→ MCP Server](runtime/README.md)** - build, test and configure the server
 
