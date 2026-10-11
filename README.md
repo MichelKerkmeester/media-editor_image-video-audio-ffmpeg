@@ -27,12 +27,6 @@ Works in Claude Desktop and in a claude.ai Project, and in any terminal agent, s
 - **A Tidy Export Folder** - one result lands straight in `media files/export/`, a batch of files goes into the one place you choose before anything is written, and an operation that writes several files gets a numbered folder
 - **Checks Without a Model** - 22 router fixtures, 110 differential checks and 91 server test files
 
-**Why it earns a place**
-
-- Private by construction: the tools open only the folders you allow, write only into the export folder and never replace a file
-- Honest about what ran: a reply where no tool and no ffmpeg ran hands back the exact command and says that nothing ran
-- No surprise downloads: a missing ffmpeg is fetched only after you have seen its address, size and SHA-256 and said yes
-
 &nbsp;
 
 ## 2. 🎁 WHAT YOU GET
