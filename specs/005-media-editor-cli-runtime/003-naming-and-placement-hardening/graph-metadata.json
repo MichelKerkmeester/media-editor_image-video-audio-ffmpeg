@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "packet_id": "005-media-editor-cli-runtime/003-naming-and-placement-hardening",
+  "spec_folder": "005-media-editor-cli-runtime/003-naming-and-placement-hardening",
+  "parent_id": "005-media-editor-cli-runtime",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor naming gate",
+      "batch placement hardening",
+      "ask once before the first write",
+      "webp batch split bug",
+      "naming gate plan",
+      "batch-aware placement plan",
+      "kernel hard gate",
+      "batch playbook scenario",
+      "naming gate tasks",
+      "batch placement tasks",
+      "hardening verification checklist",
+      "batch scenario tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "naming",
+      "gate",
+      "batch",
+      "placement",
+      "hardening",
+      "ask",
+      "first",
+      "write",
+      "webp",
+      "split"
+    ],
+    "importance_tier": "normal",
+    "status": "in_progress",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "claude project/Custom Instructions.md",
+      "sk-media-editor/SKILL.md",
+      "sk-media-editor/references/interactive-intelligence.md",
+      "sk-media-editor/references/tools.md",
+      "sk-media-editor/references/image-operations.md",
+      "runtime/src/core/output-folder.ts",
+      "runtime/src/server/field-schemas.ts",
+      "runtime/src/tools/image/convert.ts",
+      "runtime/tests/core/output-folder.vitest.ts",
+      "benchmark/grader/twin_divergence.py",
+      "sk-media-editor/leaf-manifest.json",
+      "claude project/README.md",
+      "claude project/knowledge/Media Editor - System - Interactive Intelligence.md",
+      "runtime/src/core/errors.ts"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "interactive-intelligence.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/interactive-intelligence.md",
+        "source": "derived"
+      },
+      {
+        "name": "tools.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/tools.md",
+        "source": "derived"
+      },
+      {
+        "name": "image-operations.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/image-operations.md",
+        "source": "derived"
+      },
+      {
+        "name": "output-folder.ts",
+        "kind": "code",
+        "path": "runtime/src/core/output-folder.ts",
+        "source": "derived"
+      },
+      {
+        "name": "field-schemas.ts",
+        "kind": "code",
+        "path": "runtime/src/server/field-schemas.ts",
+        "source": "derived"
+      },
+      {
+        "name": "convert.ts",
+        "kind": "code",
+        "path": "runtime/src/tools/image/convert.ts",
+        "source": "derived"
+      },
+      {
+        "name": "output-folder.vitest.ts",
+        "kind": "test",
+        "path": "runtime/tests/core/output-folder.vitest.ts",
+        "source": "derived"
+      },
+      {
+        "name": "twin_divergence.py",
+        "kind": "file",
+        "path": "benchmark/grader/twin_divergence.py",
+        "source": "derived"
+      },
+      {
+        "name": "leaf-manifest.json",
+        "kind": "config",
+        "path": "sk-media-editor/leaf-manifest.json",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "claude project/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor - System - Interactive Intelligence.md",
+        "kind": "doc",
+        "path": "claude project/knowledge/Media Editor - System - Interactive Intelligence.md",
+        "source": "derived"
+      },
+      {
+        "name": "errors.ts",
+        "kind": "code",
+        "path": "runtime/src/core/errors.ts",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "In Progress",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "In a Claude Desktop Project, Sonnet 5.5 medium converted four PNGs from `media files/import` to WebP under 100 KB without asking about names or a folder",
+    "created_at": "2026-10-04T11:47:30Z",
+    "last_save_at": "2026-10-13T12:53:41.768Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:a77146d56ee68508e56d0b3221352ac48703f66864cafd0face825b99bcb0f38",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "6d1bc5b0792c8cb3ebb8b395fcdea6aa18bc1a5cfe9fb2ae60b27502b3511ea9",
+      "plan.md": "ad2a52a10735fec85244b6d4206f8bdddc784238dfdaffdbd30c00749807d8e0",
+      "tasks.md": "daa43365c97fe0e5d69602dca45932677071d4b677573b76d52a26fc6fa39bb5",
+      "implementation-summary.md": "706c43d09c86f2a6454c944d7b420efe309d9cd01c834dc48e75b195d6af6ea8"
+    },
+    "last_active_at": null
+  }
+}

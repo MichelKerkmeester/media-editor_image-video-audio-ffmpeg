@@ -1,0 +1,415 @@
+M	AGENTS.md
+M	INSTALL-GUIDE.md
+M	README.md
+M	SYNC.md
+M	USER-GUIDE.md
+M	benchmark/gates/rule_parity.py
+M	benchmark/grader/README.md
+M	benchmark/grader/twin_divergence.py
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/README.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PAI-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PED-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PGD-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PHL-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PID-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PNE-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRM-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRO-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRO-002.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRP-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRP-002.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PSB-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PSB-002.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SAI-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-002.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-003.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-004.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-005.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-002.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-003.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-004.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SHL-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SID-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SRM-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SRO-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SRO-002.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SSB-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/STV-001.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/STV-002.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/STV-003.md
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/results.csv
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/verdicts/deepseek.jsonl
+A	benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/verdicts/luna.jsonl
+M	benchmark/router/README.md
+M	benchmark/router/differential.py
+M	benchmark/router/route_contract.py
+M	claude project/Custom Instructions.md
+M	claude project/README.md
+M	claude project/knowledge/Media Editor - Integrations - Image Operations.md
+M	claude project/knowledge/Media Editor - Integrations - Video And Audio Operations.md
+M	claude project/knowledge/Media Editor - Reference - HLS Video Conversion.md
+M	claude project/knowledge/Media Editor - Reference - Media Editor Tools.md
+M	claude project/knowledge/Media Editor - Reference - Setup.md
+M	claude project/knowledge/Media Editor - System - Interactive Intelligence.md
+M	claude project/knowledge/Media Editor - Thinking - MEDIA Framework.md
+D	mcp server/claude-plugin/.claude-plugin/plugin.json
+D	mcp server/claude-plugin/README.md
+R086	mcp server/.gitignore	runtime/.gitignore
+R090	mcp server/ARCHITECTURE.md	runtime/ARCHITECTURE.md
+R100	mcp server/LICENSE	runtime/LICENSE
+R059	mcp server/README.md	runtime/README.md
+R100	mcp server/THIRD_PARTY_NOTICES	runtime/THIRD_PARTY_NOTICES
+R100	mcp server/assets/fonts/SourceSans3-Regular.ttf	runtime/assets/fonts/SourceSans3-Regular.ttf
+R100	mcp server/assets/licenses/SourceSans3-OFL.md	runtime/assets/licenses/SourceSans3-OFL.md
+R069	mcp server/claude-plugin/.claude-plugin/marketplace.json	runtime/claude-plugin/.claude-plugin/marketplace.json
+A	runtime/claude-plugin/.claude-plugin/plugin.json
+A	runtime/claude-plugin/README.md
+R100	mcp server/icon.png	runtime/icon.png
+R100	mcp server/licenses/ffmpeg-builds/darwin-arm64-LICENSE.txt	runtime/licenses/ffmpeg-builds/darwin-arm64-LICENSE.txt
+R100	mcp server/licenses/ffmpeg-builds/darwin-x64-LICENSE.txt	runtime/licenses/ffmpeg-builds/darwin-x64-LICENSE.txt
+R100	mcp server/licenses/ffmpeg-builds/linux-arm64-LICENSE.txt	runtime/licenses/ffmpeg-builds/linux-arm64-LICENSE.txt
+R100	mcp server/licenses/ffmpeg-builds/linux-x64-LICENSE.txt	runtime/licenses/ffmpeg-builds/linux-x64-LICENSE.txt
+R100	mcp server/licenses/ffmpeg-builds/win32-x64-LICENSE.txt	runtime/licenses/ffmpeg-builds/win32-x64-LICENSE.txt
+R100	mcp server/licenses/ffmpeg-static-LICENSE.txt	runtime/licenses/ffmpeg-static-LICENSE.txt
+R100	mcp server/licenses/ffprobe-static-LICENSE.txt	runtime/licenses/ffprobe-static-LICENSE.txt
+R100	mcp server/licenses/libvips-LICENSE.txt	runtime/licenses/libvips-LICENSE.txt
+R100	mcp server/licenses/mcp-sdk-LICENSE.txt	runtime/licenses/mcp-sdk-LICENSE.txt
+R100	mcp server/licenses/sharp-LICENSE.txt	runtime/licenses/sharp-LICENSE.txt
+R100	mcp server/licenses/zod-LICENSE.txt	runtime/licenses/zod-LICENSE.txt
+R099	mcp server/manifest.json	runtime/manifest.json
+R099	mcp server/package-lock.json	runtime/package-lock.json
+R091	mcp server/package.json	runtime/package.json
+R098	mcp server/scripts/README.md	runtime/scripts/README.md
+R100	mcp server/scripts/build-bundle.ts	runtime/scripts/build-bundle.ts
+R079	mcp server/scripts/build-plugin.ts	runtime/scripts/build-plugin.ts
+R097	mcp server/scripts/bundle/README.md	runtime/scripts/bundle/README.md
+R100	mcp server/scripts/bundle/artifacts.ts	runtime/scripts/bundle/artifacts.ts
+R100	mcp server/scripts/bundle/notices.ts	runtime/scripts/bundle/notices.ts
+R100	mcp server/scripts/bundle/targets.ts	runtime/scripts/bundle/targets.ts
+R100	mcp server/scripts/package-root.ts	runtime/scripts/package-root.ts
+R100	mcp server/scripts/test-pinned.ts	runtime/scripts/test-pinned.ts
+R083	mcp server/src/README.md	runtime/src/README.md
+A	runtime/src/cli.ts
+R084	mcp server/src/core/README.md	runtime/src/core/README.md
+R100	mcp server/src/core/artifact-download.ts	runtime/src/core/artifact-download.ts
+R089	mcp server/src/core/capabilities.ts	runtime/src/core/capabilities.ts
+R100	mcp server/src/core/concat-list.ts	runtime/src/core/concat-list.ts
+R100	mcp server/src/core/config.ts	runtime/src/core/config.ts
+R100	mcp server/src/core/errors.ts	runtime/src/core/errors.ts
+R086	mcp server/src/core/ffmpeg-resolver.ts	runtime/src/core/ffmpeg-resolver.ts
+R100	mcp server/src/core/filter-escape.ts	runtime/src/core/filter-escape.ts
+R100	mcp server/src/core/font-path.ts	runtime/src/core/font-path.ts
+R100	mcp server/src/core/hls-folders.ts	runtime/src/core/hls-folders.ts
+R100	mcp server/src/core/logger.ts	runtime/src/core/logger.ts
+R100	mcp server/src/core/media-containers.ts	runtime/src/core/media-containers.ts
+R100	mcp server/src/core/media-properties.ts	runtime/src/core/media-properties.ts
+R083	mcp server/src/core/output-folder.ts	runtime/src/core/output-folder.ts
+R100	mcp server/src/core/overlay-position.ts	runtime/src/core/overlay-position.ts
+R100	mcp server/src/core/path-guard.ts	runtime/src/core/path-guard.ts
+R100	mcp server/src/core/pinned-builds.ts	runtime/src/core/pinned-builds.ts
+A	runtime/src/core/probe-cache.ts
+R085	mcp server/src/core/process-runner.ts	runtime/src/core/process-runner.ts
+R100	mcp server/src/core/result.ts	runtime/src/core/result.ts
+R100	mcp server/src/core/source-notice.ts	runtime/src/core/source-notice.ts
+R100	mcp server/src/core/time-parse.ts	runtime/src/core/time-parse.ts
+R100	mcp server/src/core/zip-entry.ts	runtime/src/core/zip-entry.ts
+R100	mcp server/src/index.ts	runtime/src/index.ts
+R082	mcp server/src/server/README.md	runtime/src/server/README.md
+R100	mcp server/src/server/all-tools.ts	runtime/src/server/all-tools.ts
+R100	mcp server/src/server/create-server.ts	runtime/src/server/create-server.ts
+A	runtime/src/server/dispatch.ts
+R073	mcp server/src/server/field-schemas.ts	runtime/src/server/field-schemas.ts
+R100	mcp server/src/server/media-fields.ts	runtime/src/server/media-fields.ts
+R100	mcp server/src/server/server-info.ts	runtime/src/server/server-info.ts
+R077	mcp server/src/server/tool-context.ts	runtime/src/server/tool-context.ts
+R069	mcp server/src/server/tool-registry.ts	runtime/src/server/tool-registry.ts
+R090	mcp server/src/tools/README.md	runtime/src/tools/README.md
+R098	mcp server/src/tools/audio/README.md	runtime/src/tools/audio/README.md
+R098	mcp server/src/tools/audio/convert-properties.ts	runtime/src/tools/audio/convert-properties.ts
+R096	mcp server/src/tools/audio/convert.ts	runtime/src/tools/audio/convert.ts
+R096	mcp server/src/tools/audio/extract.ts	runtime/src/tools/audio/extract.ts
+R096	mcp server/src/tools/audio/set-bitrate.ts	runtime/src/tools/audio/set-bitrate.ts
+R096	mcp server/src/tools/audio/set-channels.ts	runtime/src/tools/audio/set-channels.ts
+R096	mcp server/src/tools/audio/set-sample-rate.ts	runtime/src/tools/audio/set-sample-rate.ts
+R094	mcp server/src/tools/image/README.md	runtime/src/tools/image/README.md
+R097	mcp server/src/tools/image/batch-resize.ts	runtime/src/tools/image/batch-resize.ts
+R095	mcp server/src/tools/image/compress.ts	runtime/src/tools/image/compress.ts
+R068	mcp server/src/tools/image/convert.ts	runtime/src/tools/image/convert.ts
+R095	mcp server/src/tools/image/crop.ts	runtime/src/tools/image/crop.ts
+R094	mcp server/src/tools/image/flip.ts	runtime/src/tools/image/flip.ts
+R098	mcp server/src/tools/image/probe.ts	runtime/src/tools/image/probe.ts
+R095	mcp server/src/tools/image/resize.ts	runtime/src/tools/image/resize.ts
+R094	mcp server/src/tools/image/rotate.ts	runtime/src/tools/image/rotate.ts
+R100	mcp server/src/tools/image/sharp-output.ts	runtime/src/tools/image/sharp-output.ts
+R098	mcp server/src/tools/media/README.md	runtime/src/tools/media/README.md
+R098	mcp server/src/tools/media/health.ts	runtime/src/tools/media/health.ts
+R092	mcp server/src/tools/media/preview.ts	runtime/src/tools/media/preview.ts
+R098	mcp server/src/tools/media/probe.ts	runtime/src/tools/media/probe.ts
+R097	mcp server/src/tools/media/remove-silence.ts	runtime/src/tools/media/remove-silence.ts
+R100	mcp server/src/tools/media/rename.ts	runtime/src/tools/media/rename.ts
+R098	mcp server/src/tools/media/repair.ts	runtime/src/tools/media/repair.ts
+R100	mcp server/src/tools/media/setup-ffmpeg.ts	runtime/src/tools/media/setup-ffmpeg.ts
+R094	mcp server/src/tools/video/README.md	runtime/src/tools/video/README.md
+R098	mcp server/src/tools/video/add-b-roll.ts	runtime/src/tools/video/add-b-roll.ts
+R098	mcp server/src/tools/video/add-fade.ts	runtime/src/tools/video/add-fade.ts
+R098	mcp server/src/tools/video/add-image-overlay.ts	runtime/src/tools/video/add-image-overlay.ts
+R098	mcp server/src/tools/video/add-subtitles.ts	runtime/src/tools/video/add-subtitles.ts
+R098	mcp server/src/tools/video/add-text-overlay.ts	runtime/src/tools/video/add-text-overlay.ts
+R099	mcp server/src/tools/video/concat.ts	runtime/src/tools/video/concat.ts
+R098	mcp server/src/tools/video/convert-properties.ts	runtime/src/tools/video/convert-properties.ts
+R097	mcp server/src/tools/video/convert.ts	runtime/src/tools/video/convert.ts
+R100	mcp server/src/tools/video/copy-then-encode.ts	runtime/src/tools/video/copy-then-encode.ts
+R100	mcp server/src/tools/video/hls-ladder.ts	runtime/src/tools/video/hls-ladder.ts
+R098	mcp server/src/tools/video/set-aspect-ratio.ts	runtime/src/tools/video/set-aspect-ratio.ts
+R096	mcp server/src/tools/video/set-audio-bitrate.ts	runtime/src/tools/video/set-audio-bitrate.ts
+R096	mcp server/src/tools/video/set-audio-channels.ts	runtime/src/tools/video/set-audio-channels.ts
+R096	mcp server/src/tools/video/set-audio-codec.ts	runtime/src/tools/video/set-audio-codec.ts
+R096	mcp server/src/tools/video/set-audio-sample-rate.ts	runtime/src/tools/video/set-audio-sample-rate.ts
+R097	mcp server/src/tools/video/set-bitrate.ts	runtime/src/tools/video/set-bitrate.ts
+R096	mcp server/src/tools/video/set-codec.ts	runtime/src/tools/video/set-codec.ts
+R097	mcp server/src/tools/video/set-frame-rate.ts	runtime/src/tools/video/set-frame-rate.ts
+R097	mcp server/src/tools/video/set-resolution.ts	runtime/src/tools/video/set-resolution.ts
+R097	mcp server/src/tools/video/set-speed.ts	runtime/src/tools/video/set-speed.ts
+R097	mcp server/src/tools/video/trim.ts	runtime/src/tools/video/trim.ts
+R095	mcp server/src/types/README.md	runtime/src/types/README.md
+R100	mcp server/src/types/ffprobe-static.d.ts	runtime/src/types/ffprobe-static.d.ts
+R077	mcp server/tests/README.md	runtime/tests/README.md
+A	runtime/tests/cli/README.md
+A	runtime/tests/cli/cli-process.vitest.ts
+A	runtime/tests/cli/dispatch.vitest.ts
+A	runtime/tests/cli/in-flight-outputs.vitest.ts
+A	runtime/tests/cli/pinned-smoke.vitest.ts
+R096	mcp server/tests/core/README.md	runtime/tests/core/README.md
+R100	mcp server/tests/core/artifact-download.vitest.ts	runtime/tests/core/artifact-download.vitest.ts
+R093	mcp server/tests/core/capabilities.vitest.ts	runtime/tests/core/capabilities.vitest.ts
+R100	mcp server/tests/core/concat-list.vitest.ts	runtime/tests/core/concat-list.vitest.ts
+R100	mcp server/tests/core/config.vitest.ts	runtime/tests/core/config.vitest.ts
+R100	mcp server/tests/core/errors.vitest.ts	runtime/tests/core/errors.vitest.ts
+R093	mcp server/tests/core/ffmpeg-resolver.vitest.ts	runtime/tests/core/ffmpeg-resolver.vitest.ts
+R100	mcp server/tests/core/filter-escape.vitest.ts	runtime/tests/core/filter-escape.vitest.ts
+R100	mcp server/tests/core/font-path.vitest.ts	runtime/tests/core/font-path.vitest.ts
+R100	mcp server/tests/core/hls-folders.vitest.ts	runtime/tests/core/hls-folders.vitest.ts
+R100	mcp server/tests/core/logger.vitest.ts	runtime/tests/core/logger.vitest.ts
+R100	mcp server/tests/core/media-containers.vitest.ts	runtime/tests/core/media-containers.vitest.ts
+R100	mcp server/tests/core/media-properties.vitest.ts	runtime/tests/core/media-properties.vitest.ts
+R068	mcp server/tests/core/output-folder.vitest.ts	runtime/tests/core/output-folder.vitest.ts
+R100	mcp server/tests/core/overlay-position.vitest.ts	runtime/tests/core/overlay-position.vitest.ts
+R100	mcp server/tests/core/path-guard.vitest.ts	runtime/tests/core/path-guard.vitest.ts
+R100	mcp server/tests/core/pinned-builds.vitest.ts	runtime/tests/core/pinned-builds.vitest.ts
+A	runtime/tests/core/probe-cache.vitest.ts
+R089	mcp server/tests/core/process-runner.vitest.ts	runtime/tests/core/process-runner.vitest.ts
+R100	mcp server/tests/core/result.vitest.ts	runtime/tests/core/result.vitest.ts
+R100	mcp server/tests/core/time-parse.vitest.ts	runtime/tests/core/time-parse.vitest.ts
+R100	mcp server/tests/core/zip-entry.vitest.ts	runtime/tests/core/zip-entry.vitest.ts
+R100	mcp server/tests/fixtures/README.md	runtime/tests/fixtures/README.md
+R100	mcp server/tests/fixtures/broll1.mp4	runtime/tests/fixtures/broll1.mp4
+R100	mcp server/tests/fixtures/broll2.mp4	runtime/tests/fixtures/broll2.mp4
+R100	mcp server/tests/fixtures/main_video.mp4	runtime/tests/fixtures/main_video.mp4
+R100	mcp server/tests/fixtures/short_video1.mp4	runtime/tests/fixtures/short_video1.mp4
+R100	mcp server/tests/fixtures/short_video2.mp4	runtime/tests/fixtures/short_video2.mp4
+R098	mcp server/tests/helpers/README.md	runtime/tests/helpers/README.md
+R100	mcp server/tests/helpers/broken-media.ts	runtime/tests/helpers/broken-media.ts
+R100	mcp server/tests/helpers/broken-media.vitest.ts	runtime/tests/helpers/broken-media.vitest.ts
+R100	mcp server/tests/helpers/composition-media.ts	runtime/tests/helpers/composition-media.ts
+R100	mcp server/tests/helpers/composition-media.vitest.ts	runtime/tests/helpers/composition-media.vitest.ts
+R100	mcp server/tests/helpers/media.ts	runtime/tests/helpers/media.ts
+R100	mcp server/tests/helpers/media.vitest.ts	runtime/tests/helpers/media.vitest.ts
+R100	mcp server/tests/helpers/pinned-ffmpeg-static.ts	runtime/tests/helpers/pinned-ffmpeg-static.ts
+R100	mcp server/tests/helpers/pinned-ffprobe-static.ts	runtime/tests/helpers/pinned-ffprobe-static.ts
+R100	mcp server/tests/helpers/tool-client.ts	runtime/tests/helpers/tool-client.ts
+R098	mcp server/tests/packaging/README.md	runtime/tests/packaging/README.md
+R100	mcp server/tests/packaging/artifacts.vitest.ts	runtime/tests/packaging/artifacts.vitest.ts
+R064	mcp server/tests/packaging/build-plugin.vitest.ts	runtime/tests/packaging/build-plugin.vitest.ts
+R098	mcp server/tests/packaging/bundle-contents.vitest.ts	runtime/tests/packaging/bundle-contents.vitest.ts
+R100	mcp server/tests/packaging/manifest.vitest.ts	runtime/tests/packaging/manifest.vitest.ts
+R100	mcp server/tests/packaging/notices.vitest.ts	runtime/tests/packaging/notices.vitest.ts
+R100	mcp server/tests/packaging/package-root.vitest.ts	runtime/tests/packaging/package-root.vitest.ts
+R100	mcp server/tests/packaging/targets.vitest.ts	runtime/tests/packaging/targets.vitest.ts
+R100	mcp server/tests/packaging/test-pinned.vitest.ts	runtime/tests/packaging/test-pinned.vitest.ts
+R097	mcp server/tests/server/README.md	runtime/tests/server/README.md
+R100	mcp server/tests/server/media-fields.vitest.ts	runtime/tests/server/media-fields.vitest.ts
+R100	mcp server/tests/server/registry.vitest.ts	runtime/tests/server/registry.vitest.ts
+R100	mcp server/tests/server/stdio.vitest.ts	runtime/tests/server/stdio.vitest.ts
+R100	mcp server/tests/server/tool-context.vitest.ts	runtime/tests/server/tool-context.vitest.ts
+R100	mcp server/tests/smoke.vitest.ts	runtime/tests/smoke.vitest.ts
+R097	mcp server/tests/tools/README.md	runtime/tests/tools/README.md
+R095	mcp server/tests/tools/audio/README.md	runtime/tests/tools/audio/README.md
+R100	mcp server/tests/tools/audio/convert-properties.vitest.ts	runtime/tests/tools/audio/convert-properties.vitest.ts
+R100	mcp server/tests/tools/audio/convert.vitest.ts	runtime/tests/tools/audio/convert.vitest.ts
+R100	mcp server/tests/tools/audio/extract.vitest.ts	runtime/tests/tools/audio/extract.vitest.ts
+R100	mcp server/tests/tools/audio/set-bitrate.vitest.ts	runtime/tests/tools/audio/set-bitrate.vitest.ts
+R100	mcp server/tests/tools/audio/set-channels.vitest.ts	runtime/tests/tools/audio/set-channels.vitest.ts
+R100	mcp server/tests/tools/audio/set-sample-rate.vitest.ts	runtime/tests/tools/audio/set-sample-rate.vitest.ts
+R097	mcp server/tests/tools/composition/README.md	runtime/tests/tools/composition/README.md
+R100	mcp server/tests/tools/composition/add-b-roll.vitest.ts	runtime/tests/tools/composition/add-b-roll.vitest.ts
+R100	mcp server/tests/tools/composition/add-fade.vitest.ts	runtime/tests/tools/composition/add-fade.vitest.ts
+R100	mcp server/tests/tools/composition/add-image-overlay.vitest.ts	runtime/tests/tools/composition/add-image-overlay.vitest.ts
+R100	mcp server/tests/tools/composition/add-subtitles.vitest.ts	runtime/tests/tools/composition/add-subtitles.vitest.ts
+R100	mcp server/tests/tools/composition/add-text-overlay.vitest.ts	runtime/tests/tools/composition/add-text-overlay.vitest.ts
+R100	mcp server/tests/tools/composition/capability-gating.vitest.ts	runtime/tests/tools/composition/capability-gating.vitest.ts
+R100	mcp server/tests/tools/composition/concat-xfade.vitest.ts	runtime/tests/tools/composition/concat-xfade.vitest.ts
+R100	mcp server/tests/tools/composition/concat.vitest.ts	runtime/tests/tools/composition/concat.vitest.ts
+R100	mcp server/tests/tools/composition/remove-silence.vitest.ts	runtime/tests/tools/composition/remove-silence.vitest.ts
+R097	mcp server/tests/tools/image/README.md	runtime/tests/tools/image/README.md
+R100	mcp server/tests/tools/image/batch-resize.vitest.ts	runtime/tests/tools/image/batch-resize.vitest.ts
+R100	mcp server/tests/tools/image/compress.vitest.ts	runtime/tests/tools/image/compress.vitest.ts
+R078	mcp server/tests/tools/image/convert.vitest.ts	runtime/tests/tools/image/convert.vitest.ts
+R100	mcp server/tests/tools/image/crop.vitest.ts	runtime/tests/tools/image/crop.vitest.ts
+R100	mcp server/tests/tools/image/flip.vitest.ts	runtime/tests/tools/image/flip.vitest.ts
+R100	mcp server/tests/tools/image/output-name.vitest.ts	runtime/tests/tools/image/output-name.vitest.ts
+R100	mcp server/tests/tools/image/probe.vitest.ts	runtime/tests/tools/image/probe.vitest.ts
+R100	mcp server/tests/tools/image/resize.vitest.ts	runtime/tests/tools/image/resize.vitest.ts
+R100	mcp server/tests/tools/image/rotate.vitest.ts	runtime/tests/tools/image/rotate.vitest.ts
+R100	mcp server/tests/tools/image/sharp-output.vitest.ts	runtime/tests/tools/image/sharp-output.vitest.ts
+R100	mcp server/tests/tools/image/write-failure.vitest.ts	runtime/tests/tools/image/write-failure.vitest.ts
+R089	mcp server/tests/tools/media/README.md	runtime/tests/tools/media/README.md
+R098	mcp server/tests/tools/media/health.vitest.ts	runtime/tests/tools/media/health.vitest.ts
+R100	mcp server/tests/tools/media/hls-ladder.vitest.ts	runtime/tests/tools/media/hls-ladder.vitest.ts
+R100	mcp server/tests/tools/media/hls-rungs.vitest.ts	runtime/tests/tools/media/hls-rungs.vitest.ts
+R053	mcp server/tests/tools/media/placement.vitest.ts	runtime/tests/tools/media/placement.vitest.ts
+R100	mcp server/tests/tools/media/preview.vitest.ts	runtime/tests/tools/media/preview.vitest.ts
+R100	mcp server/tests/tools/media/probe.vitest.ts	runtime/tests/tools/media/probe.vitest.ts
+R100	mcp server/tests/tools/media/rename.vitest.ts	runtime/tests/tools/media/rename.vitest.ts
+R100	mcp server/tests/tools/media/repair-diagnose.vitest.ts	runtime/tests/tools/media/repair-diagnose.vitest.ts
+R100	mcp server/tests/tools/media/repair-strategies.vitest.ts	runtime/tests/tools/media/repair-strategies.vitest.ts
+R100	mcp server/tests/tools/media/setup-ffmpeg.vitest.ts	runtime/tests/tools/media/setup-ffmpeg.vitest.ts
+R097	mcp server/tests/tools/video/README.md	runtime/tests/tools/video/README.md
+R100	mcp server/tests/tools/video/convert-properties.vitest.ts	runtime/tests/tools/video/convert-properties.vitest.ts
+R100	mcp server/tests/tools/video/convert.vitest.ts	runtime/tests/tools/video/convert.vitest.ts
+R100	mcp server/tests/tools/video/copy-then-encode.vitest.ts	runtime/tests/tools/video/copy-then-encode.vitest.ts
+R100	mcp server/tests/tools/video/set-aspect-ratio.vitest.ts	runtime/tests/tools/video/set-aspect-ratio.vitest.ts
+R100	mcp server/tests/tools/video/set-audio-bitrate.vitest.ts	runtime/tests/tools/video/set-audio-bitrate.vitest.ts
+R100	mcp server/tests/tools/video/set-audio-channels.vitest.ts	runtime/tests/tools/video/set-audio-channels.vitest.ts
+R100	mcp server/tests/tools/video/set-audio-codec.vitest.ts	runtime/tests/tools/video/set-audio-codec.vitest.ts
+R100	mcp server/tests/tools/video/set-audio-sample-rate.vitest.ts	runtime/tests/tools/video/set-audio-sample-rate.vitest.ts
+R100	mcp server/tests/tools/video/set-bitrate.vitest.ts	runtime/tests/tools/video/set-bitrate.vitest.ts
+R100	mcp server/tests/tools/video/set-codec.vitest.ts	runtime/tests/tools/video/set-codec.vitest.ts
+R100	mcp server/tests/tools/video/set-frame-rate.vitest.ts	runtime/tests/tools/video/set-frame-rate.vitest.ts
+R100	mcp server/tests/tools/video/set-resolution.vitest.ts	runtime/tests/tools/video/set-resolution.vitest.ts
+R100	mcp server/tests/tools/video/set-speed.vitest.ts	runtime/tests/tools/video/set-speed.vitest.ts
+R100	mcp server/tests/tools/video/trim.vitest.ts	runtime/tests/tools/video/trim.vitest.ts
+R100	mcp server/tsconfig.build.json	runtime/tsconfig.build.json
+R100	mcp server/tsconfig.json	runtime/tsconfig.json
+R100	mcp server/tsconfig.scripts.json	runtime/tsconfig.scripts.json
+R100	mcp server/vitest.config.ts	runtime/vitest.config.ts
+M	sk-media-editor/README.md
+M	sk-media-editor/SKILL.md
+M	sk-media-editor/assets/hls-video-conversion.md
+A	sk-media-editor/changelog/v1.1.0.0.md
+A	sk-media-editor/feature-catalog/audio-tools/audio-convert-properties.md
+A	sk-media-editor/feature-catalog/audio-tools/audio-convert.md
+A	sk-media-editor/feature-catalog/audio-tools/audio-extract.md
+A	sk-media-editor/feature-catalog/audio-tools/audio-set-bitrate.md
+A	sk-media-editor/feature-catalog/audio-tools/audio-set-channels.md
+A	sk-media-editor/feature-catalog/audio-tools/audio-set-sample-rate.md
+A	sk-media-editor/feature-catalog/command-line/argument-input.md
+A	sk-media-editor/feature-catalog/command-line/media-editor-command.md
+A	sk-media-editor/feature-catalog/command-line/runtime-options.md
+A	sk-media-editor/feature-catalog/command-line/stdout-contract-exit-codes-and-signal-cleanup.md
+A	sk-media-editor/feature-catalog/distribution/bundle-and-plugin-build-scripts.md
+A	sk-media-editor/feature-catalog/distribution/claude-code-plugin.md
+A	sk-media-editor/feature-catalog/distribution/claude-desktop-extension-bundle.md
+A	sk-media-editor/feature-catalog/distribution/mcp-server-entry.md
+A	sk-media-editor/feature-catalog/feature-catalog.md
+A	sk-media-editor/feature-catalog/image-tools/image-batch-resize.md
+A	sk-media-editor/feature-catalog/image-tools/image-compress.md
+A	sk-media-editor/feature-catalog/image-tools/image-convert.md
+A	sk-media-editor/feature-catalog/image-tools/image-crop.md
+A	sk-media-editor/feature-catalog/image-tools/image-flip.md
+A	sk-media-editor/feature-catalog/image-tools/image-probe.md
+A	sk-media-editor/feature-catalog/image-tools/image-resize.md
+A	sk-media-editor/feature-catalog/image-tools/image-rotate.md
+A	sk-media-editor/feature-catalog/media-utility-tools/media-health.md
+A	sk-media-editor/feature-catalog/media-utility-tools/media-probe.md
+A	sk-media-editor/feature-catalog/media-utility-tools/media-remove-silence.md
+A	sk-media-editor/feature-catalog/media-utility-tools/media-rename.md
+A	sk-media-editor/feature-catalog/media-utility-tools/media-repair.md
+A	sk-media-editor/feature-catalog/media-utility-tools/media-setup-ffmpeg.md
+A	sk-media-editor/feature-catalog/project-behavior/desktop-extension-route.md
+A	sk-media-editor/feature-catalog/project-behavior/project-kernel-and-knowledge-files.md
+A	sk-media-editor/feature-catalog/project-behavior/project-naming-and-placement-gate.md
+A	sk-media-editor/feature-catalog/project-behavior/project-no-execution-truth.md
+A	sk-media-editor/feature-catalog/quality-gates/parity-wrappers.md
+A	sk-media-editor/feature-catalog/quality-gates/router-contract-fixtures-and-differential.md
+A	sk-media-editor/feature-catalog/quality-gates/rule-parity-script.md
+A	sk-media-editor/feature-catalog/quality-gates/runtime-test-suites-and-pinned-run.md
+A	sk-media-editor/feature-catalog/quality-gates/twin-divergence-grader-and-report-check.md
+A	sk-media-editor/feature-catalog/shared-tool-behavior/error-codes-and-result-shape.md
+A	sk-media-editor/feature-catalog/shared-tool-behavior/ffmpeg-resolution-and-pinned-builds.md
+A	sk-media-editor/feature-catalog/shared-tool-behavior/output-naming.md
+A	sk-media-editor/feature-catalog/shared-tool-behavior/output-placement.md
+A	sk-media-editor/feature-catalog/shared-tool-behavior/path-guard-and-allowed-folders.md
+A	sk-media-editor/feature-catalog/shared-tool-behavior/persistent-probe-cache.md
+A	sk-media-editor/feature-catalog/shared-tool-behavior/preview-image.md
+A	sk-media-editor/feature-catalog/skill-behavior/command-routing-and-aliases.md
+A	sk-media-editor/feature-catalog/skill-behavior/skill-export-delivery.md
+A	sk-media-editor/feature-catalog/skill-behavior/skill-naming-and-placement-gate.md
+A	sk-media-editor/feature-catalog/skill-behavior/skill-route-order.md
+A	sk-media-editor/feature-catalog/skill-behavior/tool-check-behavior.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-add-b-roll.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-add-fade.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-add-image-overlay.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-add-subtitles.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-add-text-overlay.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-concat.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-hls-ladder.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-set-speed.md
+A	sk-media-editor/feature-catalog/video-editing-tools/video-trim.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-convert-properties.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-convert.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-aspect-ratio.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-audio-bitrate.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-audio-channels.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-audio-codec.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-audio-sample-rate.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-bitrate.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-codec.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-frame-rate.md
+A	sk-media-editor/feature-catalog/video-format-tools/video-set-resolution.md
+M	sk-media-editor/graph-metadata.json
+M	sk-media-editor/leaf-aliases.json
+M	sk-media-editor/leaf-manifest.json
+M	sk-media-editor/manual-testing-playbook/manual-testing-playbook.md
+M	sk-media-editor/manual-testing-playbook/project-ambiguity-intake/one-comprehensive-question.md
+M	sk-media-editor/manual-testing-playbook/project-boundaries/generation-request-refusal.md
+M	sk-media-editor/manual-testing-playbook/project-boundaries/size-limit-escalation.md
+M	sk-media-editor/manual-testing-playbook/project-command-routing/command-overrides-keywords.md
+M	sk-media-editor/manual-testing-playbook/project-command-routing/first-command-wins.md
+A	sk-media-editor/manual-testing-playbook/project-export-delivery/batch-naming-gate.md
+M	sk-media-editor/manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md
+M	sk-media-editor/manual-testing-playbook/project-hls-recipe/ffmpeg-terminal-recipe.md
+M	sk-media-editor/manual-testing-playbook/project-identity-handover/identity-handover.md
+M	sk-media-editor/manual-testing-playbook/project-no-execution-truth/cannot-execute-files.md
+M	sk-media-editor/manual-testing-playbook/project-repair-mode/repair-guidance.md
+M	sk-media-editor/manual-testing-playbook/project-route-order/connected-tools-in-desktop.md
+M	sk-media-editor/manual-testing-playbook/project-route-order/setup-offer-without-tools.md
+M	sk-media-editor/manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md
+M	sk-media-editor/manual-testing-playbook/skill-boundaries/generation-request-refusal.md
+M	sk-media-editor/manual-testing-playbook/skill-command-routing/command-overrides-keywords.md
+M	sk-media-editor/manual-testing-playbook/skill-command-routing/first-command-wins.md
+M	sk-media-editor/manual-testing-playbook/skill-command-routing/image-command-routing.md
+M	sk-media-editor/manual-testing-playbook/skill-command-routing/interactive-command.md
+M	sk-media-editor/manual-testing-playbook/skill-command-routing/video-alias-routing.md
+A	sk-media-editor/manual-testing-playbook/skill-export-delivery/batch-naming-gate.md
+M	sk-media-editor/manual-testing-playbook/skill-export-delivery/export-first-path-response.md
+M	sk-media-editor/manual-testing-playbook/skill-export-delivery/export-root-no-subfolder.md
+M	sk-media-editor/manual-testing-playbook/skill-export-delivery/readable-name-proposal.md
+M	sk-media-editor/manual-testing-playbook/skill-hls-streaming/ffmpeg-only-hls-conversion.md
+M	sk-media-editor/manual-testing-playbook/skill-identity-handover/identity-handover.md
+M	sk-media-editor/manual-testing-playbook/skill-repair-mode/broken-file-repair.md
+A	sk-media-editor/manual-testing-playbook/skill-route-order/command-first.md
+D	sk-media-editor/manual-testing-playbook/skill-route-order/connected-tools-first.md
+M	sk-media-editor/manual-testing-playbook/skill-route-order/fallback-to-local-ffmpeg.md
+M	sk-media-editor/manual-testing-playbook/skill-tool-verification/consent-before-ffmpeg-download.md
+M	sk-media-editor/manual-testing-playbook/skill-tool-verification/error-code-handoff.md
+M	sk-media-editor/manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md
+A	sk-media-editor/references/cli.md
+M	sk-media-editor/references/image-operations.md
+M	sk-media-editor/references/interactive-intelligence.md
+M	sk-media-editor/references/media-framework.md
+M	sk-media-editor/references/router-contract.md
+M	sk-media-editor/references/setup.md
+M	sk-media-editor/references/tools.md
+M	sk-media-editor/references/video-and-audio-operations.md

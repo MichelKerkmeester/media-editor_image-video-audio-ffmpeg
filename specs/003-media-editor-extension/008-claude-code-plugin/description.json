@@ -1,0 +1,17 @@
+{
+  "specFolder": "003-media-editor-extension/008-claude-code-plugin",
+  "description": "Phase 8: claude-code-plugin",
+  "keywords": [
+    "phase",
+    "claude-code-plugin"
+  ],
+  "lastUpdated": "2026-09-28T16:12:09.618Z",
+  "specId": "008",
+  "folderSlug": "claude-code-plugin",
+  "parentChain": [
+    "003-media-editor-extension"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "3"
+}

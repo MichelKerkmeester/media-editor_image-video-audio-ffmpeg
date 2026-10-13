@@ -1,0 +1,11 @@
+Media Editor parity, range origin/main..HEAD
+  pairs: 7 of 7 declared resolved, 7 sources, 0 deliberately unmirrored
+  adapted pairs: 0 declared, 0 omitted source line(s) held to the pair's files
+  shared sources: 2 checked, 0 of them vendored copies, 0 forked, 0 fork(s) declared with a reason
+  manifest: 7 named across 0 roll-up row(s), 7 on disk, declared total(s) [7]
+  kernel bumps: 1 of 1 kernel commits in origin/main..HEAD moved the H1, 0 commit(s) left it unchanged
+  version record: live kernel v1.6.0 named among 12 dated notes, a record of the version and not proof of a review
+  version claims: kernel v1.6.0 and Skill v1.6.0 live, README states ['1.6.0'] and ['1.6.0']
+  review-due drift: 5 of 5 owned pairs in step, 0 source change(s) confined to constructs a mirror never carries, 0 where the source caught up to an already-correct mirror, 0 cleared by a review recorded at the current source commit, 0 recorded review(s) whose recorded commit the source has moved past, 0 pair(s) whose history could not be read, 0 path(s) differing from their committed revision, 0 pair(s) with no record and a review due on the drift alone
+  review keys: compared for all 0 declared record(s) before any timestamp comparison ran, 0 still stand at the commit they name
+PASSED 7/7 declared pairs, seven checks

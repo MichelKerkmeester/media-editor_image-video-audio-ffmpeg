@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "packet_id": "004-media-editor-tool-alignment",
+  "spec_folder": "004-media-editor-tool-alignment",
+  "parent_id": null,
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor tool alignment",
+      "media editor router code",
+      "mcp imagician rename",
+      "media editor knowledge refresh",
+      "media editor tool alignment plan",
+      "media editor router contract plan",
+      "media editor rename plan",
+      "media editor tool alignment tasks",
+      "media editor router contract tasks",
+      "acceptance criteria",
+      "closure gate",
+      "ac traceability"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "tool",
+      "alignment",
+      "router",
+      "code",
+      "mcp",
+      "imagician",
+      "rename",
+      "knowledge",
+      "refresh",
+      "plan"
+    ],
+    "importance_tier": "normal",
+    "status": "complete",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "implementation-summary.md",
+      "research/research.md",
+      "benchmark/router/differential.py",
+      "sk-media-editor/references/router-contract.md",
+      "sk-media-editor/SKILL.md",
+      "sk-media-editor/changelog/v0.8.0.0.md",
+      "claude project/Custom Instructions.md",
+      "benchmark/router/route_contract.py",
+      "benchmark/gates/rule_parity.py",
+      "benchmark/parity/README.md",
+      "sk-media-editor/references/tools.md",
+      "sk-media-editor/references/image-operations.md",
+      "sk-media-editor/references/video-and-audio-operations.md",
+      "sk-media-editor/assets/hls-video-conversion.md",
+      "claude project/README.md",
+      "benchmark/gates/README.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "research.md",
+        "kind": "doc",
+        "path": "research/research.md",
+        "source": "derived"
+      },
+      {
+        "name": "differential.py",
+        "kind": "file",
+        "path": "benchmark/router/differential.py",
+        "source": "derived"
+      },
+      {
+        "name": "router-contract.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/router-contract.md",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "v0.8.0.0.md",
+        "kind": "doc",
+        "path": "sk-media-editor/changelog/v0.8.0.0.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "route_contract.py",
+        "kind": "file",
+        "path": "benchmark/router/route_contract.py",
+        "source": "derived"
+      },
+      {
+        "name": "rule_parity.py",
+        "kind": "file",
+        "path": "benchmark/gates/rule_parity.py",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "benchmark/parity/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "tools.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/tools.md",
+        "source": "derived"
+      },
+      {
+        "name": "image-operations.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/image-operations.md",
+        "source": "derived"
+      },
+      {
+        "name": "video-and-audio-operations.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/video-and-audio-operations.md",
+        "source": "derived"
+      },
+      {
+        "name": "hls-video-conversion.md",
+        "kind": "doc",
+        "path": "sk-media-editor/assets/hls-video-conversion.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "research/research.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Media Editor",
+        "kind": "proper_noun",
+        "path": "research/research.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Project",
+        "kind": "proper_noun",
+        "path": "research/research.md",
+        "source": "derived"
+      },
+      {
+        "name": "Problem Statement The Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Desktop",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The Media Editor now ships its own MCP server with 39 tools, as a Claude Desktop extension and a Claude Code plugin",
+    "created_at": "2026-10-03T14:40:59Z",
+    "last_save_at": "2026-10-13T16:25:31.639Z",
+    "save_lineage": "same_pass",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "implementation-summary.md",
+      "research/research.md"
+    ],
+    "source_fingerprint": "sha256:143b6798f8a924612e8846868e514323e6ca9b3fccd3da491aca46f440d804a8",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "bf1efb215035d557a103829d91c345d5c304a95466065d7df070ee900b77bcce",
+      "plan.md": "a805a444393d0294648a20722a0de1f1ae8b5fda4303e15833994e37fa9b61f8",
+      "tasks.md": "a0f1574ad3777e92770aeabf096f182e028570def5342ceccdb8fb4e86aab5fa",
+      "implementation-summary.md": "7aa0dffce4168ddf8c67e5c4aad1d117918a09ea2c3b03208139debae8c17d98",
+      "research/research.md": "27490635d62aa98f4a2e0f1b11343498a7cbfd45f63d82169d5a710f18a403bd"
+    },
+    "last_active_at": null
+  }
+}

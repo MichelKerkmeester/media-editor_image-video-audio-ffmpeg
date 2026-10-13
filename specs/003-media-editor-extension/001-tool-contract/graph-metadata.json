@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "packet_id": "003-media-editor-extension/001-tool-contract",
+  "spec_folder": "003-media-editor-extension/001-tool-contract",
+  "parent_id": "003-media-editor-extension",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor tool contract",
+      "unified mcp tool names",
+      "media editor path policy",
+      "ffmpeg resolution order",
+      "tool contract plan",
+      "contract.md sections",
+      "media editor naming conventions",
+      "mimo contract review",
+      "task breakdown",
+      "implementation tasks",
+      "verification checklist",
+      "tool contract tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "tool",
+      "contract",
+      "unified",
+      "mcp",
+      "names",
+      "path",
+      "policy",
+      "ffmpeg",
+      "resolution",
+      "order"
+    ],
+    "importance_tier": "normal",
+    "status": "in_progress",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md",
+      "scratch/name-diff.md",
+      "scratch/spot-check.md",
+      "scratch/unknowns.md",
+      "AI Systems/Media Editor/sk-media-editor/assets/hls-video-conversion.md",
+      ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "decision-record.md",
+        "kind": "doc",
+        "path": "decision-record.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "name-diff.md",
+        "kind": "doc",
+        "path": "scratch/name-diff.md",
+        "source": "derived"
+      },
+      {
+        "name": "spot-check.md",
+        "kind": "doc",
+        "path": "scratch/spot-check.md",
+        "source": "derived"
+      },
+      {
+        "name": "unknowns.md",
+        "kind": "doc",
+        "path": "scratch/unknowns.md",
+        "source": "derived"
+      },
+      {
+        "name": "hls-video-conversion.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/sk-media-editor/assets/hls-video-conversion.md",
+        "source": "derived"
+      },
+      {
+        "name": "child-dispatch-preamble.md",
+        "kind": "doc",
+        "path": ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context This",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Overview The",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Specification",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Components",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Data Flow The",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The two sources cannot be combined as they stand",
+    "created_at": "2026-09-28T16:12:01Z",
+    "last_save_at": "2026-10-13T11:10:10.550Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:fc89cfce1e5aefb7e0e851ddcf4553b56df3ac8639ea4431b89ac32f4859224e",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "59a9a45102cc6a0f0a2bc20082d7bfba2ec2771673333cd02b14ca05e7d6a3e2",
+      "plan.md": "995eb297e2e5ae45af58f82fff46a4e3643acd1cd5eee69ec549539a6dd7b271",
+      "tasks.md": "ba5caf47712c327c1a1302514ec6b21f026502e327541e8ac36a4958fa1adfcf",
+      "decision-record.md": "14a365254a61d4e110074c4da805547489b916c73fcd2a7714981c04127c7b33",
+      "implementation-summary.md": "05410c0ce353f4392884755bdf2afeb6595c7f1d640a3f012c7caee271a0d887"
+    },
+    "last_active_at": null
+  }
+}

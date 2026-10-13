@@ -1,0 +1,383 @@
+{
+  "label": "BASELINE (SKILL.md.before fence, guard patched to .absolute())",
+  "fixture_count": 25,
+  "passed": 25,
+  "results": [
+    {
+      "id": 1,
+      "request": "$image resize this file",
+      "actual_intent": "IMAGE",
+      "actual_tool": "imagician",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-imagician.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 2,
+      "request": "$img crop it please",
+      "actual_intent": "IMAGE",
+      "actual_tool": "imagician",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-imagician.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 3,
+      "request": "$video trim this clip",
+      "actual_intent": "VIDEO",
+      "actual_tool": "video-audio",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 4,
+      "request": "$vid speed up the footage",
+      "actual_intent": "VIDEO",
+      "actual_tool": "video-audio",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 5,
+      "request": "$audio extract this track",
+      "actual_intent": "AUDIO",
+      "actual_tool": "video-audio",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 6,
+      "request": "$aud normalize the levels",
+      "actual_intent": "AUDIO",
+      "actual_tool": "video-audio",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 7,
+      "request": "$hls convert to streaming",
+      "actual_intent": "HLS",
+      "actual_tool": "ffmpeg",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "assets/hls-video-conversion.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 8,
+      "request": "$repair diagnose this file",
+      "actual_intent": "REPAIR",
+      "actual_tool": "auto",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 9,
+      "request": "$r fix this broken clip",
+      "actual_intent": "REPAIR",
+      "actual_tool": "auto",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 10,
+      "request": "$interactive help me decide",
+      "actual_intent": "INTERACTIVE",
+      "actual_tool": "auto",
+      "actual_source": "fallback",
+      "actual_disambig": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 11,
+      "request": "$int",
+      "actual_intent": "INTERACTIVE",
+      "actual_tool": "auto",
+      "actual_source": "fallback",
+      "actual_disambig": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 12,
+      "request": "resize image to webp",
+      "actual_intent": "IMAGE",
+      "actual_tool": "imagician",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-imagician.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 13,
+      "request": "compress photo for email attachment",
+      "actual_intent": "IMAGE",
+      "actual_tool": "imagician",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-imagician.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 14,
+      "request": "convert this mp4 to mov please",
+      "actual_intent": "VIDEO",
+      "actual_tool": "video-audio",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 15,
+      "request": "trim the clip and add an overlay",
+      "actual_intent": "VIDEO",
+      "actual_tool": "video-audio",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 16,
+      "request": "extract audio and convert to mp3",
+      "actual_intent": "AUDIO",
+      "actual_tool": "video-audio",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 17,
+      "request": "cut the silence gaps out of this recording",
+      "actual_intent": "AUDIO",
+      "actual_tool": "video-audio",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-video-audio.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 18,
+      "request": "make this an adaptive streaming playlist",
+      "actual_intent": "HLS",
+      "actual_tool": "ffmpeg",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "assets/hls-video-conversion.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 19,
+      "request": "the file is corrupted, please recover it",
+      "actual_intent": "REPAIR",
+      "actual_tool": "auto",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 20,
+      "request": "what's the weather today",
+      "actual_intent": "INTERACTIVE",
+      "actual_tool": "auto",
+      "actual_source": "fallback",
+      "actual_disambig": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 21,
+      "request": "",
+      "actual_intent": "INTERACTIVE",
+      "actual_tool": "auto",
+      "actual_source": "fallback",
+      "actual_disambig": true,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 22,
+      "request": "RESIZE THE IMAGE NOW",
+      "actual_intent": "IMAGE",
+      "actual_tool": "imagician",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-imagician.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 23,
+      "request": "$IMAGE convert this file",
+      "actual_intent": "IMAGE",
+      "actual_tool": "imagician",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-imagician.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 24,
+      "request": "convert this broken video file, recover it",
+      "actual_intent": "REPAIR",
+      "actual_tool": "auto",
+      "actual_source": "semantic",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/interactive-intelligence.md"
+      ],
+      "problems": [],
+      "pass": true
+    },
+    {
+      "id": 25,
+      "request": "$image $video conflict test",
+      "actual_intent": "IMAGE",
+      "actual_tool": "imagician",
+      "actual_source": "command",
+      "actual_disambig": false,
+      "resources": [
+        "references/media-framework.md",
+        "references/human-voice-rules.md",
+        "references/mcp-imagician.md"
+      ],
+      "problems": [],
+      "pass": true
+    }
+  ],
+  "unpatched_guard_crash": "'/Users/michelkerkmeester/MEGA/Development/AI_Systems/Barter/z \u2014 Knowledge/Rules - Human Voice - EN - v0.210.md' is not in the subpath of '/Users/michelkerkmeester/MEGA/Development/AI_Systems/Barter/Media Editor/sk-media-editor' OR one path is relative and the other is absolute."
+}

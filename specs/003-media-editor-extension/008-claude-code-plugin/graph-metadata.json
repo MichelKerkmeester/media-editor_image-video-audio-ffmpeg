@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "packet_id": "003-media-editor-extension/008-claude-code-plugin",
+  "spec_folder": "003-media-editor-extension/008-claude-code-plugin",
+  "parent_id": "003-media-editor-extension",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor claude code plugin",
+      "plugin json mcpServers mcpb",
+      "media_setup_ffmpeg consent",
+      "claude plugin validate",
+      "claude code plugin plan",
+      "plugin mcpServers bundle",
+      "skill copy at pack time",
+      "consent gated setup tool",
+      "task breakdown",
+      "implementation tasks",
+      "verification checklist",
+      "claude code plugin tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "claude",
+      "code",
+      "plugin",
+      "json",
+      "mcpservers",
+      "mcpb",
+      "consent",
+      "validate",
+      "plan",
+      "bundle"
+    ],
+    "importance_tier": "normal",
+    "status": "complete",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md",
+      ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+      ".claude/agents/code.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "decision-record.md",
+        "kind": "doc",
+        "path": "decision-record.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "child-dispatch-preamble.md",
+        "kind": "doc",
+        "path": ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+        "source": "derived"
+      },
+      {
+        "name": "code.md",
+        "kind": "doc",
+        "path": ".claude/agents/code.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Code",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Overview The",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Plugin",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Components",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Test Files",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Completion Criteria",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "Claude Code does not install Desktop extensions by opening them, so a Claude Code user today gets the Media Editor skill with no tools behind it",
+    "created_at": "2026-09-28T16:12:08Z",
+    "last_save_at": "2026-10-13T11:10:12.152Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:a7328305af5ede56a0f33c0925e10cdd7d25392c4c52c7458e9a0cb41939b1fc",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "56762445364acab4d894d2b033f45853d0f623310256951e60b00ee45cb0fdf1",
+      "plan.md": "ed576411eb53868f3e6aaf778407556c306b2aacee5fed99039dd6d2f08f4791",
+      "tasks.md": "2ead6a8b2f31e14765865e918b13d3e2c7684869bc73404b42dbaa966443a923",
+      "decision-record.md": "20250b43c5fb7621b78302898555b3d999d840b44332cf2b5131493feb1c6790",
+      "implementation-summary.md": "d95448fd4f6d8e77ec20700b4bbd74229a5c1a3c12e67f553af286034d0c44b2"
+    },
+    "last_active_at": null
+  }
+}

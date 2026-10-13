@@ -1,0 +1,196 @@
+{
+  "openQuestions": [],
+  "resolvedQuestions": [
+    "How can dispatchToolCall be made transport-neutral and shared by MCP and CLI while keeping argument errors as CLI results?",
+    "What CLI interface, JSON output, preview-file behavior, cache lifetime, and shared data directory satisfy direct terminal use?",
+    "How should the plugin and standalone package expose the CLI while preserving dist-relative assets?",
+    "How should a batch receive confirmed output names and one selected export location in both Project and skill flows?",
+    "Should image_convert support a maximum byte target and should the server guard unconfirmed names?"
+  ],
+  "keyFindings": [
+    {
+      "id": "f-cli-shared-registry",
+      "text": "The CLI can consume ALL_TOOLS, the same 40-entry registry passed to registerTools.",
+      "source": "AI Systems/Media Editor/mcp server/src/server/all-tools.ts:57-98"
+    },
+    {
+      "id": "f-cli-neutral-dispatch",
+      "text": "dispatchToolCall has reusable schema, placement, and handler behavior, but currently turns validation errors into McpError.",
+      "source": "AI Systems/Media Editor/mcp server/src/server/tool-registry.ts:102-127"
+    },
+    {
+      "id": "f-cli-argv-isolation",
+      "text": "CLI tool arguments must not flow into loadConfig because bare argv tokens become allowed roots.",
+      "source": "AI Systems/Media Editor/mcp server/src/core/config.ts:155-175,400-418"
+    },
+    {
+      "id": "f-cli-lifecycle",
+      "text": "A separate entry avoids src/index.ts self-running, while signal cancellation must settle children before temp cleanup.",
+      "source": "AI Systems/Media Editor/mcp server/src/index.ts:94-126, AI Systems/Media Editor/mcp server/src/core/process-runner.ts:360-479,687-702"
+    },
+    {
+      "id": "f-cli-json-schema",
+      "text": "Zod v4 exposes toJSONSchema, and listedInputSchema provides the exact caller-facing fields for describe.",
+      "source": "AI Systems/Media Editor/mcp server/src/server/tool-registry.ts:91-99, AI Systems/Media Editor/mcp server/node_modules/zod/v4/classic/schemas.d.ts:7-18"
+    },
+    {
+      "id": "f-cli-preview-file",
+      "text": "Probe previews are base64 MCP image blocks outside structuredContent, so the CLI needs a file adapter.",
+      "source": "AI Systems/Media Editor/mcp server/src/tools/media/preview.ts:38-45,119-123"
+    },
+    {
+      "id": "f-cli-persistent-cache",
+      "text": "Capability and binary resolver caches are in-memory only, while dataDir already identifies shared setup installs.",
+      "source": "AI Systems/Media Editor/mcp server/src/core/capabilities.ts:163,348-386, AI Systems/Media Editor/mcp server/src/core/ffmpeg-resolver.ts:446-485"
+    },
+    {
+      "id": "f-cli-shared-data-dir",
+      "text": "MEDIA_EDITOR_DATA_DIR is read by config, setup installs under it, and health reports the configured data folder.",
+      "source": "AI Systems/Media Editor/mcp server/src/core/config.ts:87-103,410-451, AI Systems/Media Editor/mcp server/src/tools/media/setup-ffmpeg.ts:433-475, AI Systems/Media Editor/mcp server/src/tools/media/health.ts:176-205"
+    },
+    {
+      "id": "f-plugin-no-mcp",
+      "text": "Current plugin metadata registers MCP and must be changed while retaining Desktop's separate MCP manifest.",
+      "source": "AI Systems/Media Editor/mcp server/claude-plugin/.claude-plugin/plugin.json:10-22, AI Systems/Media Editor/mcp server/claude-plugin/server/manifest.json:23-35"
+    },
+    {
+      "id": "f-plugin-root-substitution",
+      "text": "Claude Code expands CLAUDE_PLUGIN_ROOT in plugin skill Markdown, but does not export it to Bash processes.",
+      "source": "https://code.claude.com/docs/en/skills, https://code.claude.com/docs/en/plugins-reference"
+    },
+    {
+      "id": "f-plugin-assets",
+      "text": "The CLI package must preserve dist, package metadata, assets, and platform native dependencies for package and font resolution.",
+      "source": "AI Systems/Media Editor/mcp server/scripts/build-bundle.ts:68-76, AI Systems/Media Editor/mcp server/src/core/font-path.ts:41-60"
+    },
+    {
+      "id": "f-standalone-cli",
+      "text": "The package currently exposes only the MCP server executable and guides do not document CLI installation.",
+      "source": "AI Systems/Media Editor/mcp server/package.json:8-22, AI Systems/Media Editor/INSTALL-GUIDE.md:90-118"
+    },
+    {
+      "id": "f-route-surface-split",
+      "text": "The skill must route covered handlers through CLI then ffmpeg then advice, while the Project stays MCP then advice.",
+      "source": "AI Systems/Media Editor/sk-media-editor/SKILL.md:73-103, AI Systems/Media Editor/claude project/Custom Instructions.md:157,192-196"
+    },
+    {
+      "id": "f-mirror-safe-cli-reference",
+      "text": "A skill-only cli.md can hold invocation while tools, setup, and interactive-intelligence stay paired with the Project.",
+      "source": "AI Systems/Media Editor/SYNC.md:8-13, AI Systems/z - Claude Project Sync Loop/systems.py:1252-1265"
+    },
+    {
+      "id": "f-route-oracle-host-state",
+      "text": "The deterministic route oracle and differential gate currently lack a surface or backend argument.",
+      "source": "AI Systems/Media Editor/benchmark/router/route_contract.py:87-95,215-225, AI Systems/Media Editor/benchmark/router/differential.py:97-104,314-343"
+    },
+    {
+      "id": "f-rule-parity-surface",
+      "text": "Current route phrase counts encode one tools then ffmpeg route and cannot prove the new split without surface-specific assertions.",
+      "source": "AI Systems/Media Editor/benchmark/gates/rule_parity.py:71-117,245-265"
+    },
+    {
+      "id": "f-twin-verdict-only",
+      "text": "The twin comparator currently compares only verdict equality although its documentation claims to compare route substance.",
+      "source": "AI Systems/Media Editor/benchmark/grader/twin_divergence.py:10-18,155-163"
+    },
+    {
+      "id": "f-plugin-route-scenario",
+      "text": "SRO-001 assumes the Claude Code plugin registers MCP, while PRO-001 correctly tests Desktop MCP.",
+      "source": "AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-route-order/connected-tools-first.md:3,15,51, AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-route-order/connected-tools-in-desktop.md:15,51"
+    },
+    {
+      "id": "f-sync-loop-route-residency",
+      "text": "The Sync Loop declares seven pairs and keeps router-contract.md out of the Project mirror list.",
+      "source": "AI Systems/z - Claude Project Sync Loop/systems.py:1252-1275"
+    },
+    {
+      "id": "f-batch-confirmation-gate",
+      "text": "The Project gate is ambiguity-triggered and does not require one confirmation question before every first writing call.",
+      "source": "AI Systems/Media Editor/claude project/Custom Instructions.md:145,181-196"
+    },
+    {
+      "id": "f-batch-per-call-placement",
+      "text": "image_convert accepts one input and the writer allocates one destination per call, so separate inputs cannot share one fresh folder.",
+      "source": "AI Systems/Media Editor/mcp server/src/tools/image/convert.ts:100-125, AI Systems/Media Editor/mcp server/src/tools/image/sharp-output.ts:492-512"
+    },
+    {
+      "id": "f-maxbytes-gap",
+      "text": "image_convert has a quality control but no strict maximum byte argument.",
+      "source": "AI Systems/Media Editor/mcp server/src/tools/image/convert.ts:150-166"
+    },
+    {
+      "id": "f-no-trusted-name-confirmation",
+      "text": "The current tool argument boundary has no trusted field proving the user confirmed a proposed name.",
+      "source": "AI Systems/Media Editor/mcp server/src/server/tool-registry.ts:102-123"
+    },
+    {
+      "id": "f-batch-playbook-gap",
+      "text": "The current naming scenario tests one screenshot and one output and does not cover a two-or-more-input confirmation gate.",
+      "source": "AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-export-delivery/readable-name-proposal.md:25-39, AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/manual-testing-playbook.md:22-24"
+    }
+  ],
+  "ruledOutDirections": [
+    {
+      "approach": "Make paired setup.md surface-exclusive on each side",
+      "reason": "That would break a currently byte-identical declared setup mirror",
+      "evidence": "AI Systems/Media Editor/SYNC.md:8-13, AI Systems/z - Claude Project Sync Loop/systems.py:1259-1261"
+    },
+    {
+      "approach": "Use one global route order for skill and Project",
+      "reason": "The Project cannot run terminal ffmpeg and the skill route is CLI-first",
+      "evidence": "AI Systems/Media Editor/claude project/Custom Instructions.md:157,192-196, AI Systems/Media Editor/sk-media-editor/SKILL.md:77,101"
+    },
+    {
+      "approach": "Keep MCP as the connected Claude Code plugin route",
+      "reason": "Conflicts with the fixed plugin distribution decision and leaves SRO-001 testing the wrong runtime",
+      "evidence": "AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-route-order/connected-tools-first.md:3,51"
+    },
+    {
+      "approach": "Treat equal twin verdicts as route equivalence",
+      "reason": "The comparator currently inspects only the result verdict",
+      "evidence": "AI Systems/Media Editor/benchmark/grader/twin_divergence.py:155-163"
+    },
+    {
+      "approach": "Use input-derived names when fileName is omitted for a batch",
+      "reason": "That default makes the missing name decision a successful write",
+      "evidence": "AI Systems/Media Editor/mcp server/src/server/field-schemas.ts:62-68"
+    },
+    {
+      "approach": "Set subfolder true on separate calls to reuse one numbered folder",
+      "reason": "Each call allocates a new numbered folder",
+      "evidence": "AI Systems/Media Editor/mcp server/src/core/output-folder.ts:301-341, AI Systems/Media Editor/mcp server/src/tools/image/sharp-output.ts:492-512"
+    },
+    {
+      "approach": "Trust a model supplied confirmed boolean",
+      "reason": "Tool arguments do not carry a trusted user approval event",
+      "evidence": "AI Systems/Media Editor/mcp server/src/server/tool-registry.ts:102-123"
+    },
+    {
+      "approach": "Treat quality as a strict byte cap",
+      "reason": "The image_convert schema exposes quality but has no maxBytes field",
+      "evidence": "AI Systems/Media Editor/mcp server/src/tools/image/convert.ts:150-166"
+    },
+    {
+      "approach": "Silently resize an image until it satisfies maxBytes",
+      "reason": "This changes dimensions without user approval",
+      "evidence": "AI Systems/Media Editor/mcp server/src/tools/image/convert.ts:132-166"
+    }
+  ],
+  "metrics": {
+    "iterationsCompleted": 5,
+    "openQuestions": 0,
+    "resolvedQuestions": 5,
+    "keyFindings": 24,
+    "convergenceScore": 0,
+    "coverageBySources": {
+      "server": 5,
+      "core": 5,
+      "packaging": 5,
+      "docs": 2,
+      "officialDocs": 2,
+      "imageTools": 3,
+      "naming": 3,
+      "playbook": 2
+    }
+  }
+}

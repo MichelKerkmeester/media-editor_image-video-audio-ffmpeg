@@ -1,0 +1,28 @@
+{
+  "level": "2",
+  "specFolder": "003-media-editor-extension/011-code-documentation",
+  "description": "The package has 39 tools across 71 source files and 83 test suites, and only the fixture folder and the generated plugin folder carried a README",
+  "keywords": [
+    "package",
+    "tools",
+    "across",
+    "source",
+    "files",
+    "test",
+    "suites",
+    "only",
+    "fixture",
+    "folder",
+    "plugin",
+    "carried",
+    "readme"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.508Z",
+  "specId": "011",
+  "folderSlug": "code-documentation",
+  "parentChain": [
+    "003-media-editor-extension"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

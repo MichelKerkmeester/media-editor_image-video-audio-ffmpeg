@@ -1,0 +1,668 @@
+{
+  "sessionId": "2026-10-03T14:44:01.000Z",
+  "parentSessionId": null,
+  "lineageMode": "new",
+  "generation": 1,
+  "continuedFromRun": null,
+  "terminalStop": null,
+  "keyQuestions": [
+    {
+      "id": "question-1-q1-tool-surface-which-of-the-server-s-tools-mcp-server-src-server-all-tools-ts-s",
+      "inboxId": null,
+      "text": "Q1 Tool surface: which of the server's tools (mcp server/src/server/all-tools.ts, src/tools/**) with their purpose, key parameters, defaults, consent rules and error codes (src/core/errors.ts) are documented, misdocumented or missing across the skill and Project, and which documented operations have no tool",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null,
+      "resolved": false
+    },
+    {
+      "id": "question-2-q2-integration-references-what-should-references-mcp-imagician-md-references-mcp",
+      "inboxId": null,
+      "text": "Q2 Integration references: what should references/mcp-imagician.md, references/mcp-video-audio.md and assets/hls-video-conversion.md become (file and Knowledge names, tool first with ffmpeg fallback, legacy vocabulary to drop), and is a separate tools reference needed",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null,
+      "resolved": false
+    },
+    {
+      "id": "question-3-q3-skill-md-agents-md-and-readme-what-changes-in-the-command-to-tool-mapping-too",
+      "inboxId": null,
+      "text": "Q3 SKILL.md, AGENTS.md and README: what changes in the command-to-tool mapping, TOOL_MAP and RESOURCE_MAP, tool check, export to media files/export and Desktop setup, and how to extract the router to references/router-contract.md per the fleet pattern",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null,
+      "resolved": false
+    },
+    {
+      "id": "question-4-q4-kernel-and-knowledge-how-should-claude-project-custom-instructions-md-end-wit",
+      "inboxId": null,
+      "text": "Q4 Kernel and Knowledge: how should claude project/Custom Instructions.md end with a ROUTER CODE section, reduce section 2 to a pointer, adopt upper-case fleet headings, and which Knowledge files to add, rename or drop, plus the delivery protocol for tool runs",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null,
+      "resolved": false
+    },
+    {
+      "id": "question-5-q5-gates-and-change-list-what-must-change-in-benchmark-gates-rule-parity-py-a-ne",
+      "inboxId": null,
+      "text": "Q5 Gates and change list: what must change in benchmark/gates/rule_parity.py, a new benchmark/router/differential.py modelled on Product Owner's, the Sync Loop pairs and residency rows in systems.py, playbook scenarios, the plugin skill copy and both guides, ranked by priority with file paths",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null,
+      "resolved": false
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "question-1-q1-tool-surface-which-of-the-server-s-tools-mcp-server-src-server-all-tools-ts-s",
+      "inboxId": null,
+      "text": "Q1 Tool surface: which of the server's tools (mcp server/src/server/all-tools.ts, src/tools/**) with their purpose, key parameters, defaults, consent rules and error codes (src/core/errors.ts) are documented, misdocumented or missing across the skill and Project, and which documented operations have no tool",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null
+    },
+    {
+      "id": "question-2-q2-integration-references-what-should-references-mcp-imagician-md-references-mcp",
+      "inboxId": null,
+      "text": "Q2 Integration references: what should references/mcp-imagician.md, references/mcp-video-audio.md and assets/hls-video-conversion.md become (file and Knowledge names, tool first with ffmpeg fallback, legacy vocabulary to drop), and is a separate tools reference needed",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null
+    },
+    {
+      "id": "question-3-q3-skill-md-agents-md-and-readme-what-changes-in-the-command-to-tool-mapping-too",
+      "inboxId": null,
+      "text": "Q3 SKILL.md, AGENTS.md and README: what changes in the command-to-tool mapping, TOOL_MAP and RESOURCE_MAP, tool check, export to media files/export and Desktop setup, and how to extract the router to references/router-contract.md per the fleet pattern",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null
+    },
+    {
+      "id": "question-4-q4-kernel-and-knowledge-how-should-claude-project-custom-instructions-md-end-wit",
+      "inboxId": null,
+      "text": "Q4 Kernel and Knowledge: how should claude project/Custom Instructions.md end with a ROUTER CODE section, reduce section 2 to a pointer, adopt upper-case fleet headings, and which Knowledge files to add, rename or drop, plus the delivery protocol for tool runs",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null
+    },
+    {
+      "id": "question-5-q5-gates-and-change-list-what-must-change-in-benchmark-gates-rule-parity-py-a-ne",
+      "inboxId": null,
+      "text": "Q5 Gates and change list: what must change in benchmark/gates/rule_parity.py, a new benchmark/router/differential.py modelled on Product Owner's, the Sync Loop pairs and residency rows in systems.py, playbook scenarios, the plugin skill copy and both guides, ranked by priority with file paths",
+      "origin": "legacy-import",
+      "source": "key-questions",
+      "injectedAtIteration": 0,
+      "promotedQuestionId": null,
+      "addedAtIteration": 0,
+      "resolvedAtIteration": null
+    }
+  ],
+  "resolvedQuestions": [],
+  "carriedForwardOpenQuestions": [
+    {
+      "text": "Q5 gates and ranked change list (`rule_parity.py`, new `benchmark/router/differential.py`, Sync Loop pairs/residency, playbook, plugin copy, guides).",
+      "addedAtIteration": 1,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q3 `SKILL.md`/`AGENTS.md`/`README.md` changes (command→tool mapping, `TOOL_MAP`/`RESOURCE_MAP`, tool check, export path, router extraction to `references/router-contract.md`).",
+      "addedAtIteration": 1,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q1 residual: confirm whether `audio_extract` or `video_trim` covers audio trim before the change list is written (one spot-check in a later iteration or at implementation time).",
+      "addedAtIteration": 1,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q2 integration references (file/Knowledge names, tool-first rewrite with ffmpeg fallback, separate tools reference?).",
+      "addedAtIteration": 1,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q4 kernel and Knowledge (ROUTER CODE section, section 2 reduced to pointer, upper-case fleet headings, Knowledge add/rename/drop, delivery protocol for tool runs).",
+      "addedAtIteration": 1,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q1 residual: whether `audio_extract` or `video_trim` covers audio trim (one spot-check before the change list is written).",
+      "addedAtIteration": 2,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q3 `SKILL.md` / `AGENTS.md` / `README.md`: confirmed coupling to add to Q3 — the skill's `## 2. Smart routing` (lines 73-247) is the mirror of the kernel's section 2, so the pointer sentence, the contract extraction and the heading-case pass must reach both sides in the same change or the drift is invisible.",
+      "addedAtIteration": 2,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q2 integration references: the rename target above is this iteration's recommendation, but the tool-first rewrite's file/Knowledge names, and whether the tools catalogue absorbs the integration files' tool tables, are Q2's call.",
+      "addedAtIteration": 2,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "Q5 gates and ranked change list: this iteration adds two entries — the kernel-code ≡ `references/router-contract.md` − comments gate (Prompt Improver's `kernel_parity.py` precedent, since Media Editor's `benchmark/router/` has `route_contract.py`, `fixtures.json`, `run_fixtures.sh`, `README.md` and no differential), and residency rows for the renamed documents and the new catalogue.",
+      "addedAtIteration": 2,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q5 gates and ranked change list:** Q2 adds (a) the residency rows in `systems.py` and `benchmark/parity/run_residency.sh` for the two renames and the catalogue, (b) the `benchmark/gates/README.md` rows keyed on the old filenames at lines 39, 40, 43 and 76, (c) the router contract/fixtures/`route_contract.py` tool-id rebinding, (d) the visual-inspection-free risk from guarded loading that makes a missing pointer silent rather than fatal, and (e) the `description.json`/`graph-metadata.json` spot-check in the plugin copy.",
+      "addedAtIteration": 3,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q4 (answered, with one open tail):** the open tail is the pointer text the kernel uses to name each newly named document, which now has to change for the catalogue, the two renamed references and the HLS version bump in the same pass.",
+      "addedAtIteration": 3,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q3 `SKILL.md` / `AGENTS.md` / `README.md`:** now carrying four Q2-derived additions — the `TOOL_MAP`/`RESOURCE_MAP` rebinding to the renamed files and the new catalogue, the router's tool-binding vocabulary (`\"tool\": \"video-audio\"` in the contract shape), whether `assets/hls-video-conversion.md` moves under `references/`, and the `### Escalate if` → upper-case heading pass coupled to the kernel's section 2 in the same change.",
+      "addedAtIteration": 3,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q1 residual (carried):** whether `audio_extract` or `video_trim` covers audio trim — one spot-check before the change list is written. Still unverified after three iterations; it is a one-line fixture check at implementation time.",
+      "addedAtIteration": 3,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q4 tail — pointer text.** The kernel pointer must name each document as it will be called after the renames: the catalogue, the two renamed references, the HLS version bump, and now additionally the router contract, since the kernel's §2 pointer and its `## 7. ROUTER CODE` preamble both cite `references/router-contract.md`.",
+      "addedAtIteration": 4,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q5 tail — whether `differential.py` can execute the Media Editor fence unchanged.** PO's `differential.py` execs the md fence; the Media Editor fence calls `load()`, `media_tools_connected()` and `verify_ffmpeg()`, which are host functions rather than module-level stubs. Whether the extraction must factor those into injectable seams (and therefore whether `route_contract.py` gains a shim) is a gate-design question for iteration 5, not a naming one.",
+      "addedAtIteration": 4,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q2 tail — Knowledge document names.** `claude project/knowledge/` still lists `Media Editor - Integrations - MCP Imagician - v0.211.md` and `... - MCP Video Audio - v0.212.md`, and README §7/§12 publish those names. The content rename is Q2's; the published names and the seven→eight count (F5) are the coupling that Q4's knowledge set and Q5's residency rows must both absorb.",
+      "addedAtIteration": 4,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q5 — gates and the ranked change list.** Now carrying Q3's contributions: the `TOOL_VALUES` enum rebinding in `fixtures.json` (10 fixtures), the new `benchmark/router/differential.py` modelled on Product Owner's, the `rule_parity` blind spot for `RESOURCE_MAP`/`TOOL_MAP`, the `benchmark/gates/README.md` rows keyed on the old filenames (lines 39, 40, 43, 76), residency rows for the renamed documents and the catalogue, the README §8 seven→eight count against the SYNC declaration, the playbook scenarios, the plugin-skill copy rebuild, and both guides.",
+      "addedAtIteration": 4,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Implementation-time verifications (not research questions):** whether the catalogue pair raises the tool-check `min_pairs` floor; whether SHL-001 needs a tools-connected state; whether the `description.json`/`graph-metadata.json` schemas hold extra path keys beyond the measured lines; and the packaging test run after the plugin rebuild.",
+      "addedAtIteration": 5,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q4 pointer tail (now fully specified, not open).** The kernel pointer text must name the post-rename documents verbatim: `references/image-operations.md`, `references/video-and-audio-operations.md`, `references/tools.md`, `references/router-contract.md` and HLS `v0.112`; the §2 pointer and the `## 7. ROUTER CODE` preamble both cite the contract, so they change in one pass.",
+      "addedAtIteration": 5,
+      "source": "iteration-markdown"
+    },
+    {
+      "text": "**Q2 knowledge-name tail (now fully specified, not open).** Mirrors become `Media Editor - Integrations - Image Operations - v0.213.md`, `Media Editor - Integrations - Video And Audio Operations - v0.213.md`, `Media Editor - Reference - Media Editor Tools - v0.100.md` and `Media Editor - Reference - HLS Video Conversion - v0.112.md`; the seven-to-eight count and the parity declaration absorb them together.",
+      "addedAtIteration": 5,
+      "source": "iteration-markdown"
+    }
+  ],
+  "uncoveredQuestions": [
+    "Q1 Tool surface: which of the server's tools (mcp server/src/server/all-tools.ts, src/tools/**) with their purpose, key parameters, defaults, consent rules and error codes (src/core/errors.ts) are documented, misdocumented or missing across the skill and Project, and which documented operations have no tool",
+    "Q2 Integration references: what should references/mcp-imagician.md, references/mcp-video-audio.md and assets/hls-video-conversion.md become (file and Knowledge names, tool first with ffmpeg fallback, legacy vocabulary to drop), and is a separate tools reference needed",
+    "Q3 SKILL.md, AGENTS.md and README: what changes in the command-to-tool mapping, TOOL_MAP and RESOURCE_MAP, tool check, export to media files/export and Desktop setup, and how to extract the router to references/router-contract.md per the fleet pattern",
+    "Q4 Kernel and Knowledge: how should claude project/Custom Instructions.md end with a ROUTER CODE section, reduce section 2 to a pointer, adopt upper-case fleet headings, and which Knowledge files to add, rename or drop, plus the delivery protocol for tool runs",
+    "Q5 Gates and change list: what must change in benchmark/gates/rule_parity.py, a new benchmark/router/differential.py modelled on Product Owner's, the Sync Loop pairs and residency rows in systems.py, playbook scenarios, the plugin skill copy and both guides, ranked by priority with file paths"
+  ],
+  "keyFindings": [
+    {
+      "id": "finding-1-10-q2-q5-seed-legacy-vocabulary-paths-that-must-be-renamed-or-rewritten-sk-media-ed",
+      "text": "**Q2/Q5 seed:** legacy vocabulary paths that must be renamed or rewritten: `sk-media-editor/references/mcp-imagician.md`, `sk-media-editor/references/mcp-video-audio.md`, their Knowledge twins `claude project/knowledge/Media Editor - Integrations - MCP Imagician - v0.211.md` and `... MCP Video Audio - v0.212.md`, plus references in `AGENTS.md:95-96,101,128-129`, `sk-media-editor/README.md:64,316-317,328,396-397`, `INSTALL-GUIDE.md:262-263`, `SYNC.md`, `benchmark/gates/README.md`, `benchmark/router/README.md`, the playbook `skill-route-order/fallback-to-local-ffmpeg.md`, and `systems.py` pairs (`z — Claude Project Sync Loop/systems.py:1242-1245`). The plugin copy `mcp server/claude-plugin/skills/media-editor/` is byte-identical for `SKILL.md` and `references/mcp-imagician.md`, so every skill edit propagates there too. The internal H1 titles of the two references already read \"Media Editor - Integrations - FFmpeg Image Operations - v0.211\" and \"… FFmpeg Video Audio - v0.212\".",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-9-q3-q4-seed-the-router-is-inline-in-skill-md-73-244-with-a-commented-python-block",
+      "text": "**Q3/Q4 seed:** the router is inline in `SKILL.md:73-244` (with a commented Python block) and duplicated in kernel `Custom Instructions.md:41-215`; no `references/router-contract.md` exists. The fleet pattern is visible in `Barter - Copywriter`, `Barter - Deal Templates`, `Product Owner`, `Sales - Direct Communication`: all four ship `references/router-contract.md` + `benchmark/router/differential.py`, and all four kernels end with a `## N. ROUTER CODE` section (\"It is `references/router-contract.md` with its comments removed\"). Media Editor's kernel ends at section 6 with no Router Code section, and its `benchmark/router/` holds `route_contract.py`, `fixtures.json`, `run_fixtures.sh`, `README.md` — but no `differential.py`.",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-6-consent-required-is-raised-only-in-setup-ffmpeg-ts-no-other-tool-takes-consent",
+      "text": "`CONSENT_REQUIRED` is raised only in `setup-ffmpeg.ts`; no other tool takes consent.",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-5-mcp-server-src-tools-media-setup-ffmpeg-ts-147-153-consent-boolean-default-false",
+      "text": "`mcp server/src/tools/media/setup-ffmpeg.ts:147-153`: `consent` boolean, **default false**, \"Pass true only after the user has seen the planned download for every missing component, including its URL, size, SHA-256 and destination, and accepted it. Without it the call writes nothing.\"",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-7-media-health-names-media-setup-ffmpeg-as-the-next-step-mcp-server-src-tools-medi",
+      "text": "`media_health` names `media_setup_ffmpeg` as the next step (`mcp server/src/tools/media/health.ts:53,120`).",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-4-skill-md-117-states-the-two-integration-files-keep-their-historical-mcp-prefixes",
+      "text": "`SKILL.md:117` states the two integration files \"keep their historical `mcp-` prefixes\"; `sk-media-editor/README.md:328` repeats the justification (\"because the parity declaration and every cross reference point at them\"). This is exactly the vocabulary the topic requires dropping, and it is currently codified as policy in both files.",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-1-skill-md-145-151-resource-map-binds-image-references-mcp-imagician-md-video-audi",
+      "text": "`SKILL.md:145-151` `RESOURCE_MAP` binds IMAGE → `references/mcp-imagician.md`, VIDEO/AUDIO → `references/mcp-video-audio.md`, HLS → `assets/hls-video-conversion.md`, REPAIR → `references/interactive-intelligence.md`; the kernel duplicates this at `Custom Instructions.md:112-114`.",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-2-skill-md-157-163-tool-map-names-ffmpeg-ffprobe-and-ffmpeg-per-mode-never-a-tool-",
+      "text": "`SKILL.md:157-163` `TOOL_MAP` names `ffmpeg`/`ffprobe and ffmpeg` per mode, never a tool; the kernel duplicates this at `Custom Instructions.md:119-122` (including the comment block that explains the route order).",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-3-skill-md-44-46-command-triggers-describe-image-video-audio-as-routing-to-the-ffm",
+      "text": "`SKILL.md:44-46` command triggers describe `$image`, `$video`, `$audio` as routing to \"the ffmpeg image reference\" / \"the ffmpeg video and audio reference\".",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-1-8-docs-say-the-behaviour-skill-md-270-kernel-226-install-guide-md-user-guide-md-bu",
+      "text": "Docs say the behaviour (`SKILL.md:270`, kernel `226`, `INSTALL-GUIDE.md`, `USER-GUIDE.md`) but never name the `consent` parameter, its default, the `component` enum (`ffmpeg|ffprobe|both`, default `both`), or the `CONSENT_REQUIRED` code. A user or model reading only the skill cannot tell how consent is expressed or that the default writes nothing.",
+      "addedAtIteration": 1,
+      "sources": []
+    },
+    {
+      "id": "finding-2-4-clickup-connector-delivery-is-the-precedent-for-a-connected-tool-surface-and-is-",
+      "text": "**`### ClickUp Connector Delivery`** is the precedent for a connected tool surface and is deliberately concrete: it names `clickup_create_task`, `clickup_update_task`, `clickup_create_document`, `clickup_create_document_page`, names the exact parameter (`markdown_description`), names the read-back requirement (`include_markdown_description=true`, \"confirm the rendered body matches the pushed artifact before reporting delivery complete\"), names the never-unsolicited rule, and names the failure mode (\"Literal `##` visible in a ClickUp task means the wrong field was used\"). Media Editor's analogue must therefore name real tools rather than wildcard families — the spec's `image_*` / `video_*` / `audio_*` shorthand cannot survive into the delivery protocol — and must state the `media_setup_ffmpeg` consent contract (`consent` default false, `component` enum, writes nothing without it) at the point of delivery rather than only in the tool check.",
+      "addedAtIteration": 2,
+      "sources": []
+    },
+    {
+      "id": "finding-2-5-export-equivalent-paths-is-the-fleet-s-name-for-media-editor-s-export-protocol-c",
+      "text": "**`### Export-Equivalent Paths`** is the fleet's name for Media Editor's `### Export protocol` content, and the advice-only branch (`media files/export/[###] - [description]/`) should move under it, with the file-does-not-exist caveat kept.",
+      "addedAtIteration": 2,
+      "sources": []
+    },
+    {
+      "id": "finding-2-3-strict-sequence-a-numbered-pipeline-product-owner-8-steps-sales-hubspot-3-deal-t",
+      "text": "**`### Strict Sequence`** — a numbered pipeline (Product Owner 8 steps, Sales HubSpot 3, Deal Templates by block). For Media Editor: detect mode and route → `media_health` when tools are connected → run the mode's tool(s) → verify with `media_probe` on the output → report the returned folder → attestation.",
+      "addedAtIteration": 2,
+      "sources": []
+    },
+    {
+      "id": "finding-2-6-attestation-divergence-worth-fixing-in-the-same-pass-the-fleet-s-voice-line-is-a",
+      "text": "**Attestation divergence worth fixing in the same pass:** the fleet's voice line is a count, not an assertion — \"`HVR self-scan: N hard blockers. Fixed: <terms>. Kept with reason: <terms>.`\", with Product Owner stating plainly that \"This line is the count itself rather than an assertion that a count was taken, so producing it is the point\". Media Editor's attestation ends `HVR = checked`, which is the assertion rather than the count.",
+      "addedAtIteration": 2,
+      "sources": []
+    },
+    {
+      "id": "finding-2-2-mid-section-2-carriers-prompt-improver-sales-direct-sales-hubspot-move-the-kerne",
+      "text": "**Mid-section-2 carriers** (Prompt Improver, Sales Direct, Sales HubSpot): \"move the kernel's router block from section 2 to a Router Code section at the end, keep section 2's prose, and hold the block equal to the skill's router with a gate\".",
+      "addedAtIteration": 2,
+      "sources": []
+    },
+    {
+      "id": "finding-2-1-router-contract-carriers-copywriter-product-owner-the-code-lived-in-a-knowledge-",
+      "text": "**Router Contract carriers** (Copywriter, Product Owner): the code lived in a Knowledge document; the kernel gained the code and the pointers were repointed to the Router Code section.",
+      "addedAtIteration": 2,
+      "sources": []
+    },
+    {
+      "id": "finding-3-12-the-catalogue-cannot-absorb-the-media-references-they-carry-per-media-operation-",
+      "text": "**The catalogue cannot absorb the media references.** They carry per-media operation semantics, format and quality tables and the ffmpeg fallback recipes that the catalogue deliberately does not: the server's §4 is a one-line-per-tool list, not a recipe book. Iteration 2's F6 already ruled the two integration documents out of deletion on this ground; Q2 confirms it and adds the sharper reason — the fallback layer is the *only* layer that exists on claude.ai on the web, in the CLI without the plugin, and in the reply a tool-less runtime hands back.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-10-the-cross-cutting-contracts-are-singular-the-media-setup-ffmpeg-consent-contract",
+      "text": "**The cross-cutting contracts are singular.** The `media_setup_ffmpeg` consent contract (`consent` defaults false, a `component` enum, writes nothing without it) and the 15 error codes in `src/core/errors.ts` are properties of the server, not of a media type. One home, or two copies that drift.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-9-the-media-group-has-no-media-type-home-media-health-media-probe-media-repair-med",
+      "text": "**The Media group has no media-type home.** `media_health`, `media_probe`, `media_repair`, `media_remove_silence` and `media_setup_ffmpeg` are cross-media. Splitting the catalogue per media type would either duplicate all five or leave them in no document.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-11-the-server-already-ships-exactly-this-artefact-mcp-server-readme-md-4-groups-the",
+      "text": "**The server already ships exactly this artefact.** `mcp server/README.md` §4 groups the 39 tools; §5 carries the configuration table (allowed-folder precondition with \"every tool that opens a file fails until one is set\", output folder defaulting to the first allowed folder, 1800 s timeout with the 1-86400 range, `MEDIA_EDITOR_*` overrides and their defaults). The reference file is a restatement of §4-5 in reference voice, which makes it verifiable against a source rather than newly invented — the same property the two integration documents have.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-1-purpose-and-when-to-use-stay-with-ffmpeg-and-ffprobe-replaced-by-the-tool-layer-",
+      "text": "`### Purpose` and `### When to use` stay, with \"FFmpeg and ffprobe\" replaced by the tool layer plus the fallback.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-8-ai-systems-commands-and-both-agents-md-files-at-app-level-zero-hits-the-retired-",
+      "text": "`AI Systems/Commands/` and both `AGENTS.md` files at app level — zero hits. The retired vocabulary is contained entirely inside the system directory.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-7-benchmark-gates-rule-parity-py-zero-hits-the-gate-is-filename-agnostic-it-matche",
+      "text": "`benchmark/gates/rule_parity.py` — zero hits. The gate is filename-agnostic: it matches rule text, and `benchmark/gates/README.md` is the file that names the pairs.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-5-install-guide-md-zero-hits-it-was-rewritten-on-2026-09-17-as-an-ffmpeg-install-a",
+      "text": "`INSTALL-GUIDE.md` — zero hits. It was rewritten on 2026-09-17 as an ffmpeg-install and verification guide, and that rewrite already removed the retired names.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-6-user-guide-md-zero-hits-despite-being-the-operator-facing-entry-point-that-names",
+      "text": "`USER-GUIDE.md` — zero hits, despite being the operator-facing entry point that names the extension, the plugin and the server by role.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-2-a-new-tool-first-section-naming-the-group-s-tools-each-with-its-purpose-and-key-",
+      "text": "A new tool-first section naming the group's tools, each with its purpose and key parameters in the reference's own voice, pointing at the catalogue (F5) for schemas, defaults, consent and error codes rather than repeating them.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-4-the-precondition-paragraph-replaced-by-the-layer-statement-and-the-one-check-cos",
+      "text": "The `### Precondition` paragraph replaced by the layer statement and the one-check cost (`media_health` once per session instead of `ffmpeg -version` once per session, with `ffmpeg -version` surviving only on the local route).",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-3-3-the-existing-ffmpeg-sections-demoted-to-an-explicit-fallback-layer-the-same-comm",
+      "text": "The existing ffmpeg sections demoted to an explicit **fallback layer** — the same commands, retitled so a reader knows they apply when the tools are absent, which is exactly the route order the kernel already states.",
+      "addedAtIteration": 3,
+      "sources": []
+    },
+    {
+      "id": "finding-4-7-benchmark-gates-rule-parity-py-does-not-read-resource-map-or-tool-map-its-own-ma",
+      "text": "`benchmark/gates/rule_parity.py` does not read `RESOURCE_MAP` or `TOOL_MAP`. Its own machinery is `declared_pairs()` / `body()` / `inside()` — it walks declared skill↔Project pairs, so the rename is invisible to it.",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-5-benchmark-router-differential-py-is-added-so-the-fence-and-the-contract-cannot-d",
+      "text": "`benchmark/router/differential.py` is added so the fence and the contract cannot drift again.",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-1-skill-md-2-keeps-its-prose-primary-detection-signal-phase-detection-resource-dom",
+      "text": "`SKILL.md` §2 keeps its prose (`### Primary detection signal`, `### Phase detection`, `### Resource domains`, `### Resource loading levels`) and gains a pointer sentence in Product Owner's shape: `references/router-contract.md` carries this router as running Python, the exact algorithm `benchmark/router/route_contract.py` is checked against… It is ON_DEMAND, read only when a request needs the precise implementation rather than the rule (PO `SKILL.md` L148).",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-3-skill-md-5-references-adds-the-contract-as-an-on-demand-entry-po-skill-md-l325-i",
+      "text": "`SKILL.md` §5 References adds the contract as an ON_DEMAND entry (PO `SKILL.md` L325 is the model line).",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-12-skill-md-l366-sk-media-editor-skill-md-is-the-executable-media-editor-identity-a",
+      "text": "`SKILL.md` L366 — \"`sk-media-editor/SKILL.md` is the executable Media Editor identity and router **that drives ffmpeg**\".",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-13-skill-md-l414-ffmpeg-s-purpose-reads-every-image-video-and-audio-operation-which",
+      "text": "`SKILL.md` L414 — FFmpeg's Purpose reads \"**every** image, video and audio operation\", which contradicts the tool-first order stated four lines below it.",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-14-skill-md-l425-readme-8-it-runs-the-media-editor-tools-or-ffmpeg-additive-where-t",
+      "text": "`SKILL.md` L425 / README §8 — \"It runs the Media Editor tools **or** ffmpeg\" (additive, where the system's own rule is ordered preference).",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-9-allow-media-files-plus-any-media-folder-under-folders-media-editor-may-open-set-",
+      "text": "Allow `media files/` (plus any media folder) under **Folders Media Editor may open**; set **Output folder** to `media files/export/` (L103).",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-10-leave-no-empty-directory-path-row-claude-desktop-does-not-start-the-tools-while-",
+      "text": "Leave no empty **Directory path** row — \"Claude Desktop does not start the tools while one is there\", and the troubleshooting table repeats it as the cause of \"Unable to connect to extension server\" (L241).",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-6-loading-is-guarded-route-media-editor-resources-calls-load-if-available-which-ch",
+      "text": "Loading is guarded: `route_media_editor_resources` calls `load_if_available`, which checks `discover_markdown_resources()` and silently skips an absent path. A renamed-but-not-updated `RESOURCE_MAP` entry produces *no error and no load* — the mode answers with a thinner reference set.",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-2-the-fence-moves-into-references-router-contract-md-with-po-s-reference-frontmatt",
+      "text": "The fence moves into `references/router-contract.md` with PO's reference frontmatter (`title`, `description`, `version`, `contextType: reference`, `importance_tier`, `trigger_phrases`) and its body metadata block (`Loading Condition`, `Purpose`, `Scope`, `Output Path`, `Loads With`, `Routed By`, `Hands Off To` — PO answers these as ON_DEMAND, \"Routed By: nothing automatic\", \"Hands Off To: nothing\").",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-4-the-kernel-s-copy-is-re-derived-rather-than-rewritten-the-router-section-moves-o",
+      "text": "The kernel's copy is re-derived rather than rewritten: the router section moves out of §2 to the **end** of the kernel, as `## 7. ROUTER CODE`, whose preamble states it is `references/router-contract.md` with its comments removed. Verified fleet position: Product Owner `## 11. ROUTER CODE` and Barter Copywriter `## 11. ROUTER CODE` are their kernels' last sections, Barter Deal Templates' is `## 12. ROUTER CODE`. The Media Editor kernel has six sections today (§1 Objective … §6 Quality checklist), so seven is the correct number and it lands after the quality checklist.",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-11-the-plugin-needs-no-settings-run-receipts-plugin-readme-shows-output-dir-claude-",
+      "text": "The plugin needs no settings: `run_receipts`/plugin README shows `--output-dir \"${CLAUDE_PROJECT_DIR}/media files/export\"` (L68), matching `plugin.json` L17.",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-4-8-what-does-catch-it-is-benchmark-router-run-fixtures-sh-via-fixtures-json-which-a",
+      "text": "What does catch it is `benchmark/router/run_fixtures.sh` via `fixtures.json`, which asserts the per-mode `resources` list in 10 fixtures naming the old files (L13, L28, L43, L58, L73, L88, L148, L163, L178, L223). That is a loud failure, but it lives at the contract's end of the chain, not the skill's.",
+      "addedAtIteration": 4,
+      "sources": []
+    },
+    {
+      "id": "finding-5-16-atomic-rename-resource-map-is-triple-copied-skill-md-145-151-kernel-fence-route-",
+      "text": "**Atomic rename.** `RESOURCE_MAP` is triple-copied (`SKILL.md` 145–151, kernel fence, `route_contract.py` 106–113) and guarded loading makes a stale entry silent; `fixtures.json` is the only loud check, at the far end.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-17-count-coupling-readme-md-8-s-seven-knowledge-files-becomes-eight-the-sync-declar",
+      "text": "**Count coupling.** `README.md` §8's \"seven knowledge files\" becomes eight; the SYNC declaration's pair count and `rule_parity.py`'s denominators move with it.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-15-enum-coupling-the-tool-vocabulary-must-be-one-decision-landing-in-skill-md-the-k",
+      "text": "**Enum coupling.** The `tool` vocabulary must be one decision landing in `SKILL.md`, the kernel fence, `route_contract.py` (`TOOL_MAP` + `TOOL_VALUES`), `fixtures.json` and the router README example in one pass; today `SKILL.md` emits `ffprobe and ffmpeg`, a phrase the contract's own enum would reject. Recommended default: the server's real tool names as lane tokens (`image_*`, `video_*`, `audio_*`, `video_hls_ladder`, `media_probe`/`media_repair`, `auto`), since `SKILL.md` 297 already states them in prose and the enum can hold them verbatim.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-18-plugin-coupling-escalate-if-the-renames-and-the-playbook-anchors-must-be-rebuilt",
+      "text": "**Plugin coupling.** `### Escalate if`, the renames and the playbook anchors must be rebuilt into `claude-plugin/skills/media-editor/`, and `description.json`/`graph-metadata.json` move with them.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-4-min-pairs-must-be-re-measured-not-assumed-the-catalogue-pair-teaches-the-tool-ch",
+      "text": "`min_pairs` must be re-measured, not assumed: the catalogue pair teaches the tool-check rule (it carries the `media_health` / consent contract), so the tool-check floor at line 89 likely rises from 5 to 6. The gate's own doctrine (lines 63–68) says a rise is a deliberate update after reading why it changed, so the re-measure must be recorded, not silently bumped.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-10-pairs-lines-1241-1254-keys-7-project-mirrors-to-skill-relative-sources-the-renam",
+      "text": "`pairs` (lines 1241–1254) keys 7 Project mirrors to skill-relative sources; the rename changes two keys and two values, the catalogue adds an eighth.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-11-residency-holds-44-rows-43-homed-on-kernel-and-one-on-the-media-framework-mirror",
+      "text": "`residency` holds 44 rows, 43 homed on `kernel` and one on the MEDIA Framework mirror. Section labels are lower-case (`1 objective` … `6 quality checklist`, `Header`); **no `7 router code` row exists**, and `residency_check.py` fails any kernel section that no row maps, so adding `## 7. ROUTER CODE` without a row turns the residency run red.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-1-retired-names-the-two-product-names-in-their-filename-and-prose-spellings-plus-t",
+      "text": "`RETIRED_NAMES` = the two product names in their filename and prose spellings, plus the bare `imagician` / `video-audio` ids; `video-and-audio-operations` must not match the second name, so the scan needs its own spelling list rather than substring reuse.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-13-unmirrored-sources-is-empty-and-stays-empty-the-catalogue-is-mirrored",
+      "text": "`unmirrored_sources` is empty and stays empty: the catalogue is mirrored.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-7-assert-the-fence-s-route-field-directly-against-the-three-expected-states-tools-",
+      "text": "assert the fence's `route` field directly against the three expected states (tools when both true, ffmpeg when only the check answers, advice when neither does — the last one must bind no tool);",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-19-compression-is-not-toolless-video-set-bitrate-audio-set-bitrate-and-video-set-au",
+      "text": "Compression is **not** toolless: `video_set_bitrate`, `audio_set_bitrate` and `video_set_audio_bitrate` reduce size by bitrate; only a CRF/quality-target video compress is missing (`crf` exists only inside `video_hls_ladder`). The catalogue must say that, not \"no tool\".",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-9-corpus-reuse-fixtures-json-inputs-and-add-an-in-file-host-state-table-rather-tha",
+      "text": "corpus: reuse `fixtures.json` inputs and add an in-file host-state table rather than a second oracle file, so one file stays the source of truth for both gates.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-14-correction-to-the-carried-note-benchmark-parity-run-residency-sh-is-a-16-line-id",
+      "text": "Correction to the carried note: `benchmark/parity/run_residency.sh` is a 16-line id-only shim (`exec bash \"../../../z — Claude Project Sync Loop/run_residency.sh\" media-editor`) and needs **no change**; the rows live only in `systems.py`.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-2-every-seven-declared-pairs-denominator-and-all-seven-declared-pairs-sentence-doc",
+      "text": "Every \"seven declared pairs\" denominator and \"all seven declared pairs\" sentence (docstring lines 26–35, README lines 2, 10, 16, 20, 22, 23, 31, 37, 58) becomes eight once Q2's catalogue pair is declared.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-12-every-edited-row-s-statement-key-is-exactly-sha256-statement-residency-check-py-",
+      "text": "Every edited row's `statement_key` is exactly `sha256(statement)` (residency_check.py 236–237) — no folding — so each statement edit is a hash recompute, and an edited row fails *before* presence is even asked. The affected rows are the 8 `2 smart routing` statements (the fence becomes a pointer), the rule rows whose text names a renamed or renumbered document, and the Header row naming the knowledge set.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-8-guards-copy-parity-skill-md-carries-no-python-fence-and-its-2-names-references-r",
+      "text": "guards: copy parity (SKILL.md carries no python fence **and** its §2 names `references/router-contract.md`; the kernel's `## 7. ROUTER CODE` equals the contract fence minus comments, as a parsed syntax tree as well as line for line), table parity (`TOOL_MAP`, `TOOL_VALUES`, `FALLBACK_MAP`, `RESOURCE_MAP`, `ALWAYS`, intent model, disambiguation checklist value-for-value), behavior parity, and coverage (every mode, token and alias in `fixtures.json` exercised);",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-6-stub-load-at-module-level-re-bind-media-tools-connected-verify-ffmpeg-per-host-s",
+      "text": "Stub `load` at module level, re-bind `media_tools_connected` / `verify_ffmpeg` per host state over the same input, and compare `mode`/`tool`/`source`/`needs_disambiguation`/`resources` against the contract for every state;",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-20-the-consent-flow-is-already-described-at-skill-md-270-kernel-custom-instructions",
+      "text": "The consent flow is already described at `SKILL.md` 270, kernel `Custom Instructions.md` 226 and `references/interactive-intelligence.md` 202; what is missing is the consent parameter's name, its `false` default and the `CONSENT_REQUIRED` error, which the catalogue owns.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-3-the-docstring-s-opening-claim-this-system-has-no-gate-that-reads-what-a-document",
+      "text": "The docstring's opening claim, \"This system has no gate that reads what a document says\" (lines 8–12), is stale for the file that is that gate; it needs the same durable-why rewrite the README already received.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-21-two-genuine-tool-gaps-stay-gaps-in-the-catalogue-audio-trim-video-trim-requires-",
+      "text": "Two genuine tool gaps stay gaps in the catalogue: audio trim (`video_trim` requires a video stream and writes `.mp4`; `audio_extract` has no time fields) and loudness normalization.",
+      "addedAtIteration": 5,
+      "sources": []
+    },
+    {
+      "id": "finding-5-5-verified-no-script-in-this-system-invokes-rule-parity-py-benchmark-parity-run-pa",
+      "text": "Verified: no script in this system invokes `rule_parity.py` (`benchmark/parity/run_parity.sh` execs `validate_parity.py`, not this gate), so the new scan is run by hand like the existing rules until something wires it.",
+      "addedAtIteration": 5,
+      "sources": []
+    }
+  ],
+  "ruledOutDirections": [],
+  "rejectedPatterns": [],
+  "rejectedPatternIndex": {
+    "maxEntries": 100,
+    "fuzzyThreshold": 0.85,
+    "entries": []
+  },
+  "rejectedPatternWarnings": [],
+  "suppressedCandidates": [],
+  "minIdeaObservations": 2,
+  "observedIdeas": [],
+  "promotedIdeas": [],
+  "suppressedIdeas": [],
+  "blockedStopHistory": [],
+  "graphConvergenceScore": 0,
+  "graphDecision": null,
+  "graphBlockers": [],
+  "divergence": {
+    "started": [],
+    "completed": [],
+    "failed": [],
+    "overrides": [],
+    "saturatedDirections": [],
+    "remainingFrontier": [],
+    "currentFocus": "",
+    "activePivotId": null,
+    "activeSourceIteration": null
+  },
+  "metrics": {
+    "iterationsCompleted": 5,
+    "openQuestions": 5,
+    "resolvedQuestions": 0,
+    "carriedForwardOpenQuestions": 20,
+    "keyFindings": 63,
+    "rejectedPatterns": 0,
+    "suppressedCandidates": 0,
+    "observedIdeas": 0,
+    "promotedIdeas": 0,
+    "suppressedIdeas": 0,
+    "convergenceScore": 0.7,
+    "coverageBySources": {},
+    "completedPivots": 0,
+    "failedPivots": 0,
+    "pivotOverrides": 0
+  },
+  "corruptionWarnings": [],
+  "inboxPath": "/Users/michelkerkmeester/MEGA/Development/AI Systems/AI Systems/Media Editor/specs/004-media-editor-tool-alignment/research/inbox.jsonl",
+  "inboxWarnings": [],
+  "status": "INITIALIZED",
+  "advisoryEvents": [],
+  "strategyWarnings": []
+}

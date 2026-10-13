@@ -1,0 +1,1444 @@
+{
+  "mergedFrom": [
+    "deepseek",
+    "luna"
+  ],
+  "lineageExecutors": {
+    "deepseek": {
+      "kind": "cli-devin",
+      "model": "deepseek-v4-1-flash-max",
+      "reasoningEffort": null
+    },
+    "luna": {
+      "kind": "cli-codex",
+      "model": "gpt-6-luna",
+      "reasoningEffort": "max"
+    }
+  },
+  "openQuestions": [],
+  "resolvedQuestions": [],
+  "keyFindings": [
+    {
+      "id": "iteration-1-finding-1--2b15bd8e2370",
+      "title": "`ALL_TOOLS` is already the canonical ordered array of tool definitions. I counted 40 entries at `mcp server/src/server/all-tools.ts:57-98`. `createServer` passes that array to `registerTools` by default at `mcp server/src/server/create-server.ts:43-56`. The CLI should consume this same array and must not create a parallel command-to-handler table.",
+      "text": "`ALL_TOOLS` is already the canonical ordered array of tool definitions. I counted 40 entries at `mcp server/src/server/all-tools.ts:57-98`. `createServer` passes that array to `registerTools` by default at `mcp server/src/server/create-server.ts:43-56`. The CLI should consume this same array and must not create a parallel command-to-handler table.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-1-finding-1",
+      "_conflict_id": "iteration-1-finding-1--2b15bd8e2370",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-1",
+          "peerId": "iteration-1-finding-1--43a1fb8015e5",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-4-finding-5",
+      "title": "`benchmark/gates/rule_parity.py:71-95` carries the route rule \"the tool check gates every operation, tools first\" as five verbatim tools-first sentences with `min_pairs` 5, and its own comment explains why the rule needs five distinct phrases. A CLI-first rewrite must place the new sentences in paired files so both sides teach them, and raise `min_pairs` in the same change so a later silent removal cannot pass.",
+      "text": "`benchmark/gates/rule_parity.py:71-95` carries the route rule \"the tool check gates every operation, tools first\" as five verbatim tools-first sentences with `min_pairs` 5, and its own comment explains why the rule needs five distinct phrases. A CLI-first rewrite must place the new sentences in paired files so both sides teach them, and raise `min_pairs` in the same change so a later silent removal cannot pass.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-4-finding-6",
+      "title": "`benchmark/grader/twin_divergence.py:89-97` still pairs `SRO-001` with `PRO-001` as \"tools connected in Claude Code and Claude Desktop\". After the split the transports differ on purpose, CLI in Claude Code and MCP in the Desktop, so the pair should assert the deliverable while the route assertion moves to the unpaired sets. `UNPAIRED_IDS` at `:101-105` already lists `SED-004` and `PED-001`.",
+      "text": "`benchmark/grader/twin_divergence.py:89-97` still pairs `SRO-001` with `PRO-001` as \"tools connected in Claude Code and Claude Desktop\". After the split the transports differ on purpose, CLI in Claude Code and MCP in the Desktop, so the pair should assert the deliverable while the route assertion moves to the unpaired sets. `UNPAIRED_IDS` at `:101-105` already lists `SED-004` and `PED-001`.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-4-finding-4",
+      "title": "`benchmark/router/differential.py:100-104` holds three host states on a two-boolean tuple, `bind_host` at `:314-317` writes the two predicates into the module dict, and `:322` unpacks two booleans. The change is a third boolean in the tuple, a `cli available` state, and a third binding. No schema change follows: `route` is not a contract field (`route_contract.py:87-90`, and `:236-238` rejects any key set that differs), so a fourth route value needs no `ROUTE_FIELDS`, `MODE_VALUES` or `TOOL_VALUES` change.",
+      "text": "`benchmark/router/differential.py:100-104` holds three host states on a two-boolean tuple, `bind_host` at `:314-317` writes the two predicates into the module dict, and `:322` unpacks two booleans. The change is a third boolean in the tuple, a `cli available` state, and a third binding. No schema change follows: `route` is not a contract field (`route_contract.py:87-90`, and `:236-238` rejects any key set that differs), so a fourth route value needs no `ROUTE_FIELDS`, `MODE_VALUES` or `TOOL_VALUES` change.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-2--8ab29ef379d7",
+      "title": "`buildPlugin` currently unpacks a platform `.mcpb` into `claude-plugin/server`, checks for `manifest.json` and `dist/index.js`, then copies and verifies the skill at `mcp server/scripts/build-plugin.ts:302-357`. The plugin build should still place the runtime under `claude-plugin/server/`, additionally require `server/dist/cli.js`, and ensure the deployed skill copy is current. Update `tests/packaging/build-plugin.vitest.ts`, which currently stages only `dist/index.js` at lines 253-289, to require the CLI entry and to assert the plugin manifest has no `mcpServers` entry.",
+      "text": "`buildPlugin` currently unpacks a platform `.mcpb` into `claude-plugin/server`, checks for `manifest.json` and `dist/index.js`, then copies and verifies the skill at `mcp server/scripts/build-plugin.ts:302-357`. The plugin build should still place the runtime under `claude-plugin/server/`, additionally require `server/dist/cli.js`, and ensure the deployed skill copy is current. Update `tests/packaging/build-plugin.vitest.ts`, which currently stages only `dist/index.js` at lines 253-289, to require the CLI entry and to assert the plugin manifest has no `mcpServers` entry.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-3-finding-2",
+      "_conflict_id": "iteration-3-finding-2--8ab29ef379d7",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-2",
+          "peerId": "iteration-3-finding-2--c741929865e3",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-4-finding-3",
+      "title": "`choose_route` is still tools-first at `sk-media-editor/references/router-contract.md:147-155`, and the kernel's copy at `systems.py:1680` carries the same body. The design that keeps the pair of copies equal is to add `media_cli_available()` as the first branch and bind it `False` in the Project host, the same way the existing two predicates are bound, so the kernel's code stays byte-identical modulo its comments.",
+      "text": "`choose_route` is still tools-first at `sk-media-editor/references/router-contract.md:147-155`, and the kernel's copy at `systems.py:1680` carries the same body. The design that keeps the pair of copies equal is to add `media_cli_available()` as the first branch and bind it `False` in the Project host, the same way the existing two predicates are bound, so the kernel's code stays byte-identical modulo its comments.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-2--ea7ca355d7b6",
+      "title": "`dispatchToolCall` contains the shared behavior needed by both transports: zod parsing of the listed schema, placement-field extraction, placement-aware context construction, handler invocation, and conversion of handler throws through `errorResult` at `mcp server/src/server/tool-registry.ts:102-127`. It is currently private and validation failure throws `McpError(InvalidParams)` at lines 107-113. `registerTools` also owns the MCP server registration and protocol request handler at lines 129-143 and 169-205. Extract or export dispatch as a transport-neutral function, leaving the server registration in an MCP adapter.",
+      "text": "`dispatchToolCall` contains the shared behavior needed by both transports: zod parsing of the listed schema, placement-field extraction, placement-aware context construction, handler invocation, and conversion of handler throws through `errorResult` at `mcp server/src/server/tool-registry.ts:102-127`. It is currently private and validation failure throws `McpError(InvalidParams)` at lines 107-113. `registerTools` also owns the MCP server registration and protocol request handler at lines 129-143 and 169-205. Extract or export dispatch as a transport-neutral function, leaving the server registration in an MCP adapter.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-1-finding-2",
+      "_conflict_id": "iteration-1-finding-2--ea7ca355d7b6",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-2",
+          "peerId": "iteration-1-finding-2--988bab63873a",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-2--3cc76083c72f",
+      "title": "`list` prints `name`, `title` and `description` for every entry of `ALL_TOOLS` (`runtime/src/cli.ts:322-330`, the map at `:60-62`), and `describe` adds `annotations` and the full JSON Schema through `z.toJSONSchema(z.object(listedInputSchema(definition)))` at `:332-340`, so no new schema dependency is needed beyond the `zod` that is already `^4.6.5` (`runtime/package.json:30`).",
+      "text": "`list` prints `name`, `title` and `description` for every entry of `ALL_TOOLS` (`runtime/src/cli.ts:322-330`, the map at `:60-62`), and `describe` adds `annotations` and the full JSON Schema through `z.toJSONSchema(z.object(listedInputSchema(definition)))` at `:332-340`, so no new schema dependency is needed beyond the `zod` that is already `^4.6.5` (`runtime/package.json:30`).",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-2-finding-2",
+      "_conflict_id": "iteration-2-finding-2--3cc76083c72f",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-2",
+          "peerId": "iteration-2-finding-2--60c11324d58d",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-5-finding-5",
+      "title": "`maxBytes` landed for jpeg, webp and avif only. `runtime/src/tools/image/convert.ts:97-118` searches quality down to 1 and, when the target is unreachable, fails with a structured message naming the smallest size (\"even quality 1 needs N bytes\"), never resizing. The tool description at `:205-212` states \"maxBytes caps the file size for jpeg, webp, and avif by lowering quality, never by resizing.\" This is operator decision OD-3 (`spec.md:213`).",
+      "text": "`maxBytes` landed for jpeg, webp and avif only. `runtime/src/tools/image/convert.ts:97-118` searches quality down to 1 and, when the target is unreachable, fails with a structured message naming the smallest size (\"even quality 1 needs N bytes\"), never resizing. The tool description at `:205-212` states \"maxBytes caps the file size for jpeg, webp, and avif by lowering quality, never by resizing.\" This is operator decision OD-3 (`spec.md:213`).",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-6--adf1087280fe",
+      "title": "`MEDIA_EDITOR_DATA_DIR` is an accepted config environment variable at `mcp server/src/core/config.ts:87-103`. The loader uses it for `config.dataDir` at lines 410-451 and falls back to a platform-specific default when unset at lines 324-340. `media_setup_ffmpeg` installs under `config.dataDir/bin` and writes install metadata in that tree at `mcp server/src/tools/media/setup-ffmpeg.ts:433-475,565-575`. `media_health` reports resolver, capability, and `dataFolder` values from its context at `mcp server/src/tools/media/health.ts:176-205`. Set the same absolute `MEDIA_EDITOR_DATA_DIR` for every CLI invocation so setup and health share the install and cache state.",
+      "text": "`MEDIA_EDITOR_DATA_DIR` is an accepted config environment variable at `mcp server/src/core/config.ts:87-103`. The loader uses it for `config.dataDir` at lines 410-451 and falls back to a platform-specific default when unset at lines 324-340. `media_setup_ffmpeg` installs under `config.dataDir/bin` and writes install metadata in that tree at `mcp server/src/tools/media/setup-ffmpeg.ts:433-475,565-575`. `media_health` reports resolver, capability, and `dataFolder` values from its context at `mcp server/src/tools/media/health.ts:176-205`. Set the same absolute `MEDIA_EDITOR_DATA_DIR` for every CLI invocation so setup and health share the install and cache state.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-2-finding-6",
+      "_conflict_id": "iteration-2-finding-6--adf1087280fe",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-6",
+          "peerId": "iteration-2-finding-6--99d19f1fd930",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-5-5-7592d978f13e",
+      "title": "A maxBytes argument is worth adding because quality alone does not express a strict byte target.",
+      "text": "A maxBytes argument is worth adding because quality alone does not express a strict byte target.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-4-f4844f4e9d13",
+      "title": "A multi-input image_convert call with aligned fileNames and explicit subfolder placement is the smallest fit for the four-image case.",
+      "text": "A multi-input image_convert call with aligned fileNames and explicit subfolder placement is the smallest fit for the four-image case.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-7--cda55770c567",
+      "title": "A per-call CLI still pays for process startup and imports the tool registry. `ALL_TOOLS` statically imports the tool modules at `mcp server/src/server/all-tools.ts:9-50`, while its 40 definitions are enumerated at lines 57-98. Persistent cache removes repeated probing, not Node startup. Measure cold process startup separately from handler time. Start with one process per invocation. A resident daemon is a possible later optimization only if measurements show startup is material.",
+      "text": "A per-call CLI still pays for process startup and imports the tool registry. `ALL_TOOLS` statically imports the tool modules at `mcp server/src/server/all-tools.ts:9-50`, while its 40 definitions are enumerated at lines 57-98. Persistent cache removes repeated probing, not Node startup. Measure cold process startup separately from handler time. Start with one process per invocation. A resident daemon is a possible later optimization only if measurements show startup is material.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-2-finding-7",
+      "_conflict_id": "iteration-2-finding-7--cda55770c567",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-7",
+          "peerId": "iteration-2-finding-7--625662e4d82f",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-4--27adeeb521a7",
+      "title": "A plugin `bin/` directory is also added to the Bash tool's `PATH` while the plugin is enabled, according to the [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference). A `bin/media-editor` wrapper would make a convenient bare command, but I do not recommend making the skill depend on it. The explicit plugin-root path is easier to tie to the skill permission rule and the exact bundled `server/dist/cli.js`. A global installed shim is suitable for standalone terminal agents, not for a self-contained plugin invocation. I also checked the [Anthropic Claude Code plugins URL](https://docs.anthropic.com/en/docs/claude-code/plugins), which redirects to the current `code.claude.com` plugins overview.",
+      "text": "A plugin `bin/` directory is also added to the Bash tool's `PATH` while the plugin is enabled, according to the [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference). A `bin/media-editor` wrapper would make a convenient bare command, but I do not recommend making the skill depend on it. The explicit plugin-root path is easier to tie to the skill permission rule and the exact bundled `server/dist/cli.js`. A global installed shim is suitable for standalone terminal agents, not for a self-contained plugin invocation. I also checked the [Anthropic Claude Code plugins URL](https://docs.anthropic.com/en/docs/claude-code/plugins), which redirects to the current `code.claude.com` plugins overview.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-3-finding-4",
+      "_conflict_id": "iteration-3-finding-4--27adeeb521a7",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-4",
+          "peerId": "iteration-3-finding-4--cb1187506ed3",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-1-finding-3--6a1506ea5250",
+      "title": "A separate CLI entry exists and `index.ts` still self-runs. `runtime/src/cli.ts` (untracked, 478 lines) is the new entry with a self-run guard at `:464-478`, so it is importable as a module. `runtime/src/index.ts:126` still executes `void main()` at module scope, so importing the MCP entry would start a stdio server, which is exactly why the separate entry was required.",
+      "text": "A separate CLI entry exists and `index.ts` still self-runs. `runtime/src/cli.ts` (untracked, 478 lines) is the new entry with a self-run guard at `:464-478`, so it is importable as a module. `runtime/src/index.ts:126` still executes `void main()` at module scope, so importing the MCP entry would start a stdio server, which is exactly why the separate entry was required.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-1-finding-3",
+      "_conflict_id": "iteration-1-finding-3--6a1506ea5250",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-3",
+          "peerId": "iteration-1-finding-3--20c02140a6a5",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-5-6-15fcfc4b3c45",
+      "title": "A server confirmation boolean is not trustworthy at the current tool argument boundary, while required batch names and placement can prevent structural omissions.",
+      "text": "A server confirmation boolean is not trustworthy at the current tool argument boundary, while required batch names and placement can prevent structural omissions.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-4-a9253c09e739",
+      "title": "A skill-only cli.md can carry invocation while paired setup remains dual-surface and byte-identical.",
+      "text": "A skill-only cli.md can carry invocation while paired setup remains dual-surface and byte-identical.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-4-finding-2",
+      "title": "All seven declared mirror pairs are byte-identical as of this reading, verified with `cmp -s` on each pair: `references/image-operations.md`, `references/video-and-audio-operations.md`, `assets/hls-video-conversion.md`, `references/tools.md`, `references/setup.md`, `references/interactive-intelligence.md` and `references/media-framework.md`. The pairs are declared at `systems.py:1252-1267`, and `references/router-contract.md` is the declared unmirrored exception at `:1271-1276` because the kernel's Router Code section is that file's Python with comments removed and `differential.py` holds the two equal.",
+      "text": "All seven declared mirror pairs are byte-identical as of this reading, verified with `cmp -s` on each pair: `references/image-operations.md`, `references/video-and-audio-operations.md`, `assets/hls-video-conversion.md`, `references/tools.md`, `references/setup.md`, `references/interactive-intelligence.md` and `references/media-framework.md`. The pairs are declared at `systems.py:1252-1267`, and `references/router-contract.md` is the declared unmirrored exception at `:1271-1276` because the kernel's Router Code section is that file's Python with comments removed and `differential.py` holds the two equal.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-2--988bab63873a",
+      "title": "Argument errors return as results on the CLI and stay protocol errors on MCP. `dispatchOutcomeErrorResult` (`runtime/src/core/dispatch.ts:170-187`) builds an `isError` result with `code: INVALID_INPUT`, a message, and `details.issues` from the zod error. The CLI prints that `structuredContent` and exits 2 (`runtime/src/cli.ts:206-214`), while the MCP request handler keeps `McpError(MethodNotFound)` for an unknown tool and `McpError(InvalidParams)` for a bad argument list (`runtime/src/server/tool-registry.ts:134-148`), preserving the host contract that exists today.",
+      "text": "Argument errors return as results on the CLI and stay protocol errors on MCP. `dispatchOutcomeErrorResult` (`runtime/src/core/dispatch.ts:170-187`) builds an `isError` result with `code: INVALID_INPUT`, a message, and `details.issues` from the zod error. The CLI prints that `structuredContent` and exits 2 (`runtime/src/cli.ts:206-214`), while the MCP request handler keeps `McpError(MethodNotFound)` for an unknown tool and `McpError(InvalidParams)` for a bad argument list (`runtime/src/server/tool-registry.ts:134-148`), preserving the host contract that exists today.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-1-finding-2",
+      "_conflict_id": "iteration-1-finding-2--988bab63873a",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-2",
+          "peerId": "iteration-1-finding-2--ea7ca355d7b6",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-5-finding-4",
+      "title": "Batch-aware placement landed as `targetFolder`, not multi-input `image_convert`. `runtime/src/core/output-folder.ts` resolves an existing numbered folder for a shared batch (`:387-397`) with three named failures, `targetFolderNamed` at `:200`, `targetFolderMissing` at `:212` and `targetFolderOutside` at `:224`, and the conflict check sits in the dispatcher at `runtime/src/core/dispatch.ts:135-144`. This is operator decision OD-2 (`001-deep-research/spec.md:212`), and it means one general primitive fixes every writing tool while `image_convert` stays single-input.",
+      "text": "Batch-aware placement landed as `targetFolder`, not multi-input `image_convert`. `runtime/src/core/output-folder.ts` resolves an existing numbered folder for a shared batch (`:387-397`) with three named failures, `targetFolderNamed` at `:200`, `targetFolderMissing` at `:212` and `targetFolderOutside` at `:224`, and the conflict check sits in the dispatcher at `runtime/src/core/dispatch.ts:135-144`. This is operator decision OD-2 (`001-deep-research/spec.md:212`), and it means one general primitive fixes every writing tool while `image_convert` stays single-input.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-5-finding-7",
+      "title": "Both batch playbook scenarios exist and replay the live bug. `project-export-delivery/batch-naming-gate.md` (PED-001) asserts one question before four `image_convert` calls with `maxBytes` 100000, each with its own confirmed `fileName`, the first with `subfolder: true` and the rest with the returned `targetFolder`, all four in one folder, and its FAIL list includes \"a second numbered folder appeared\". `skill-export-delivery/batch-naming-gate.md` (SED-004) is the skill twin over the CLI runtime. The playbook index records them at `manual-testing-playbook.md:24`, `:58`, `:78` and `:88`, and both await grading in phase 006 because AC-005 is still open (`003-naming-and-placement-hardening/tasks.md:124`).",
+      "text": "Both batch playbook scenarios exist and replay the live bug. `project-export-delivery/batch-naming-gate.md` (PED-001) asserts one question before four `image_convert` calls with `maxBytes` 100000, each with its own confirmed `fileName`, the first with `subfolder: true` and the rest with the returned `targetFolder`, all four in one folder, and its FAIL list includes \"a second numbered folder appeared\". `skill-export-delivery/batch-naming-gate.md` (SED-004) is the skill twin over the CLI runtime. The playbook index records them at `manual-testing-playbook.md:24`, `:58`, `:78` and `:88`, and both await grading in phase 006 because AC-005 is still open (`003-naming-and-placement-hardening/tasks.md:124`).",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-5--4af791e639a7",
+      "title": "Exit codes form a stable table: 0 for success and 1 for a tool failure (`runtime/src/cli.ts:388-389`), 2 for usage and dispatch errors (`:196-214`), 3 for startup failures (`:452-461`, `:468-477`), and 130 or 143 on SIGINT or SIGTERM (`:310`).",
+      "text": "Exit codes form a stable table: 0 for success and 1 for a tool failure (`runtime/src/cli.ts:388-389`), 2 for usage and dispatch errors (`:196-214`), 3 for startup failures (`:452-461`, `:468-477`), and 130 or 143 on SIGINT or SIGTERM (`:310`).",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-1-finding-5",
+      "_conflict_id": "iteration-1-finding-5--4af791e639a7",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-5",
+          "peerId": "iteration-1-finding-5--ca00acb90f33",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-2--60c11324d58d",
+      "title": "For `<tool>`, accept exactly one argument source: `--args-json <json>`, `--args-file <path>`, or stdin when no flag is present. Parse the resulting object before dispatch. These are CLI syntax recommendations. They keep JSON tool fields away from `loadConfig`, whose bare-token behavior was established in iteration 1.",
+      "text": "For `<tool>`, accept exactly one argument source: `--args-json <json>`, `--args-file <path>`, or stdin when no flag is present. Parse the resulting object before dispatch. These are CLI syntax recommendations. They keep JSON tool fields away from `loadConfig`, whose bare-token behavior was established in iteration 1.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-2-finding-2",
+      "_conflict_id": "iteration-2-finding-2--60c11324d58d",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-2",
+          "peerId": "iteration-2-finding-2--3cc76083c72f",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-5-3-74e8b157b88a",
+      "title": "image_convert handles one input and writeImageOutputs allocates one destination per call, so repeated calls cannot share a new numbered folder.",
+      "text": "image_convert handles one input and writeImageOutputs allocates one destination per call, so repeated calls cannot share a new numbered folder.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-4--6291d63080e5",
+      "title": "Keep the CLI in a new entry such as `src/cli.ts`. The current `src/index.ts` invokes `main()` at module load at line 126, and its `main` loads config, creates the MCP server, and connects stdio at lines 94-105. Importing that entry from a CLI would start the MCP transport as a side effect.",
+      "text": "Keep the CLI in a new entry such as `src/cli.ts`. The current `src/index.ts` invokes `main()` at module load at line 126, and its `main` loads config, creates the MCP server, and connects stdio at lines 94-105. Importing that entry from a CLI would start the MCP transport as a side effect.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-1-finding-4",
+      "_conflict_id": "iteration-1-finding-4--6291d63080e5",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-4",
+          "peerId": "iteration-1-finding-4--4832a949c57c",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-5-finding-6",
+      "title": "No server guard against unconfirmed names, per operator decision OD-4 (`spec.md:214`). The decision stands because the server cannot tell a confirmed name from an invented one, and the friction would land on legitimate scripted calls and the existing tests. The hardening lives in the question, the field text and the playbook instead.",
+      "text": "No server guard against unconfirmed names, per operator decision OD-4 (`spec.md:214`). The decision stands because the server cannot tell a confirmed name from an invented one, and the friction would land on legitimate scripted calls and the existing tests. The hardening lives in the question, the field text and the playbook instead.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-5--ca13609958fe",
+      "title": "Official documentation, question A: a skill inside a plugin can read `${CLAUDE_PLUGIN_ROOT}`, but only through inline substitution in Markdown. Source https://code.claude.com/docs/en/plugins-reference, Environment variables section: the variable resolves to \"Absolute path of the plugin's installed version\" and is for \"Scripts, binaries, and config files bundled with the plugin\", the resolution table has the row \"Skill, command, and agent content | Anywhere in the Markdown body | Not applicable\", and the page states that the variables \"aren't present in the environment of commands Claude runs through the Bash tool, in the main session or in a subagent\" and that Claude Code \"substitutes the path inline when it loads the content\".",
+      "text": "Official documentation, question A: a skill inside a plugin can read `${CLAUDE_PLUGIN_ROOT}`, but only through inline substitution in Markdown. Source https://code.claude.com/docs/en/plugins-reference, Environment variables section: the variable resolves to \"Absolute path of the plugin's installed version\" and is for \"Scripts, binaries, and config files bundled with the plugin\", the resolution table has the row \"Skill, command, and agent content | Anywhere in the Markdown body | Not applicable\", and the page states that the variables \"aren't present in the environment of commands Claude runs through the Bash tool, in the main session or in a subagent\" and that Claude Code \"substitutes the path inline when it loads the content\".",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-3-finding-5",
+      "_conflict_id": "iteration-3-finding-5--ca13609958fe",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-5",
+          "peerId": "iteration-3-finding-5--159fa145a385",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-6--8cdea496ea01",
+      "title": "Official documentation, question B: a plugin `bin/` folder is on the Bash tool's PATH while the plugin is enabled, with one delivery cost. Same URL, Standard layout table: \"Executables | `bin/` | Files here are on the Bash tool's `PATH` while the plugin is enabled, so Claude runs them as bare commands. claude.ai and Cowork don't install a plugin that has this directory, including one you distribute through claude.ai organization settings.\" The plugin targets Claude Code, so the bare `media-editor` command works there, and the claude.ai and Cowork exclusion is the recorded cost of the choice, not a surprise.",
+      "text": "Official documentation, question B: a plugin `bin/` folder is on the Bash tool's PATH while the plugin is enabled, with one delivery cost. Same URL, Standard layout table: \"Executables | `bin/` | Files here are on the Bash tool's `PATH` while the plugin is enabled, so Claude runs them as bare commands. claude.ai and Cowork don't install a plugin that has this directory, including one you distribute through claude.ai organization settings.\" The plugin targets Claude Code, so the bare `media-editor` command works there, and the claude.ai and Cowork exclusion is the recorded cost of the choice, not a surprise.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-3-finding-6",
+      "_conflict_id": "iteration-3-finding-6--8cdea496ea01",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-6",
+          "peerId": "iteration-3-finding-6--0afe4a864963",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-3--5f96fa980007",
+      "title": "One JSON argument source per call: `--args`, `--args-file`, or stdin when stdin is not a TTY (`runtime/src/cli.ts:248-278`), with mutual exclusion enforced at `:170-172` and a non-object payload rejected at `:274-277`. Individual tool flags are not accepted, which is a deliberate divergence from the earlier design draft that proposed per-flag parsing.",
+      "text": "One JSON argument source per call: `--args`, `--args-file`, or stdin when stdin is not a TTY (`runtime/src/cli.ts:248-278`), with mutual exclusion enforced at `:170-172` and a non-object payload rejected at `:274-277`. Individual tool flags are not accepted, which is a deliberate divergence from the earlier design draft that proposed per-flag parsing.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-2-finding-3",
+      "_conflict_id": "iteration-2-finding-3--5f96fa980007",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-3",
+          "peerId": "iteration-2-finding-3--995c87b2db84",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-8",
+      "title": "One shared data folder is preserved end to end: `MEDIA_EDITOR_DATA_DIR` is the env name (`runtime/src/core/config.ts:92`), `--data-dir` feeds it (`runtime/src/cli.ts:239-241`), `media_setup_ffmpeg` installs under `path.join(dataDir, 'bin', ...)` (`runtime/src/tools/media/setup-ffmpeg.ts:252`, `:441`), `media_health` reports `dataFolder: context.config.dataDir` (`runtime/src/tools/media/health.ts:204`), and the cache and preview sink read the same folder, so `media_setup_ffmpeg` then `media_health` work across separate CLI calls.",
+      "text": "One shared data folder is preserved end to end: `MEDIA_EDITOR_DATA_DIR` is the env name (`runtime/src/core/config.ts:92`), `--data-dir` feeds it (`runtime/src/cli.ts:239-241`), `media_setup_ffmpeg` installs under `path.join(dataDir, 'bin', ...)` (`runtime/src/tools/media/setup-ffmpeg.ts:252`, `:441`), `media_health` reports `dataFolder: context.config.dataDir` (`runtime/src/tools/media/health.ts:204`), and the cache and preview sink read the same folder, so `media_setup_ffmpeg` then `media_health` work across separate CLI calls.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-8",
+      "title": "Per-platform sharp and the pinned ffmpeg need no new work. The bundle is built per platform target so `node_modules/sharp` resolves that platform's libvips, and `runtime/scripts/test-pinned.ts:83-95` and `:122` place the pinned pair for the running platform and verify each binary against its pinned digest before placement, while the resolver reads an installed pair from `<dataDir>/bin` or the bundled path. The CLI reaches both through the same `loadConfig` call the server uses.",
+      "text": "Per-platform sharp and the pinned ffmpeg need no new work. The bundle is built per platform target so `node_modules/sharp` resolves that platform's libvips, and `runtime/scripts/test-pinned.ts:83-95` and `:122` place the pinned pair for the running platform and verify each binary against its pinned digest before placement, while the resolver reads an installed pair from `<dataDir>/bin` or the bundled path. The CLI reaches both through the same `loadConfig` call the server uses.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-6--0afe4a864963",
+      "title": "Preserve the package-root layout under `server/`. `readServerVersion` resolves `../../package.json` relative to its module at `mcp server/src/server/server-info.ts:39-49`. `bundledFontDir` resolves `../../assets/fonts/` relative to its module at `mcp server/src/core/font-path.ts:41-60`, `add-subtitles.ts` and `add-text-overlay.ts` call the bundled font helpers at lines 19 and 404, and lines 19 and 321-325 respectively. Keep `server/dist/`, `server/assets/`, and `server/package.json` together so the compiled CLI and shared handlers keep resolving package metadata and fonts.",
+      "text": "Preserve the package-root layout under `server/`. `readServerVersion` resolves `../../package.json` relative to its module at `mcp server/src/server/server-info.ts:39-49`. `bundledFontDir` resolves `../../assets/fonts/` relative to its module at `mcp server/src/core/font-path.ts:41-60`, `add-subtitles.ts` and `add-text-overlay.ts` call the bundled font helpers at lines 19 and 404, and lines 19 and 321-325 respectively. Keep `server/dist/`, `server/assets/`, and `server/package.json` together so the compiled CLI and shared handlers keep resolving package metadata and fonts.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-3-finding-6",
+      "_conflict_id": "iteration-3-finding-6--0afe4a864963",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-6",
+          "peerId": "iteration-3-finding-6--8cdea496ea01",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-4--f6e1aec8ce48",
+      "title": "Preview data is outside `structuredContent` today. `previewFrom` converts the JPEG buffer to a base64 string in an MCP image block at `mcp server/src/tools/media/preview.ts:38-45`, and `withPreviewBlock` appends that block to `content` at lines 119-123. Both `image_probe` and `media_probe` can append the preview block at `mcp server/src/tools/image/probe.ts:139-154` and `mcp server/src/tools/media/probe.ts:361-398`. The CLI adapter should decode the image block, write a JPEG to a caller-selected path or a managed `MEDIA_EDITOR_DATA_DIR` preview area, replace base64 with `previewPath` metadata, then print JSON. A managed preview area needs bounded cleanup. This recommendation is CLI-specific and leaves the MCP Project image block intact.",
+      "text": "Preview data is outside `structuredContent` today. `previewFrom` converts the JPEG buffer to a base64 string in an MCP image block at `mcp server/src/tools/media/preview.ts:38-45`, and `withPreviewBlock` appends that block to `content` at lines 119-123. Both `image_probe` and `media_probe` can append the preview block at `mcp server/src/tools/image/probe.ts:139-154` and `mcp server/src/tools/media/probe.ts:361-398`. The CLI adapter should decode the image block, write a JPEG to a caller-selected path or a managed `MEDIA_EDITOR_DATA_DIR` preview area, replace base64 with `previewPath` metadata, then print JSON. A managed preview area needs bounded cleanup. This recommendation is CLI-specific and leaves the MCP Project image block intact.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-2-finding-4",
+      "_conflict_id": "iteration-2-finding-4--f6e1aec8ce48",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-4",
+          "peerId": "iteration-2-finding-4--a27948343b56",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-3--995c87b2db84",
+      "title": "Print one JSON value from `structuredContent` to stdout and send diagnostics to stderr. The common success builder always includes `structuredContent` at `mcp server/src/core/result.ts:300-319`, and the error builder also gives structured error details at lines 321-346. The CLI can preserve tool output structure without scraping human text. Exit nonzero when the result has `isError` and reserve separate statuses for CLI syntax or termination.",
+      "text": "Print one JSON value from `structuredContent` to stdout and send diagnostics to stderr. The common success builder always includes `structuredContent` at `mcp server/src/core/result.ts:300-319`, and the error builder also gives structured error details at lines 321-346. The CLI can preserve tool output structure without scraping human text. Exit nonzero when the result has `isError` and reserve separate statuses for CLI syntax or termination.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-2-finding-3",
+      "_conflict_id": "iteration-2-finding-3--995c87b2db84",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-3",
+          "peerId": "iteration-2-finding-3--5f96fa980007",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-5--79195c9e4f7f",
+      "title": "Resolver and capability caches are process-local maps. `capabilityCache` maps binary path to an in-flight or completed promise at `mcp server/src/core/capabilities.ts:163,348-386`. The resolver maps tool name to a `CacheEntry` and in-flight lookup at `mcp server/src/core/ffmpeg-resolver.ts:446-449`. Resolver hits are revalidated against file existence, size, and modification time at lines 467-485. Tests already cover capability reuse and invalidation at `mcp server/tests/core/capabilities.vitest.ts:349-420`, plus resolver reuse and size or mtime changes at `mcp server/tests/core/ffmpeg-resolver.vitest.ts:809-861`. A one-shot CLI process loses these maps on exit. Persist only validated metadata under the data directory, using atomic writes and a versioned schema. Cache keys should include platform, architecture, config overrides, PATH identity, and data directory. Re-stat cached binaries on each process start, retain pinned install hash checks for installed binaries at `mcp server/src/core/ffmpeg-resolver.ts:552-584`, do not persist misses, and invalidate on setup or failure. These persistence details are recommendations.",
+      "text": "Resolver and capability caches are process-local maps. `capabilityCache` maps binary path to an in-flight or completed promise at `mcp server/src/core/capabilities.ts:163,348-386`. The resolver maps tool name to a `CacheEntry` and in-flight lookup at `mcp server/src/core/ffmpeg-resolver.ts:446-449`. Resolver hits are revalidated against file existence, size, and modification time at lines 467-485. Tests already cover capability reuse and invalidation at `mcp server/tests/core/capabilities.vitest.ts:349-420`, plus resolver reuse and size or mtime changes at `mcp server/tests/core/ffmpeg-resolver.vitest.ts:809-861`. A one-shot CLI process loses these maps on exit. Persist only validated metadata under the data directory, using atomic writes and a versioned schema. Cache keys should include platform, architecture, config overrides, PATH identity, and data directory. Re-stat cached binaries on each process start, retain pinned install hash checks for installed binaries at `mcp server/src/core/ffmpeg-resolver.ts:552-584`, do not persist misses, and invalidate on setup or failure. These persistence details are recommendations.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-2-finding-5",
+      "_conflict_id": "iteration-2-finding-5--79195c9e4f7f",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-5",
+          "peerId": "iteration-2-finding-5--d871de76278b",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-4-5-2d8782371490",
+      "title": "rule_parity.py needs surface-specific route assertions and a source-only CLI reference check.",
+      "text": "rule_parity.py needs surface-specific route assertions and a source-only CLI reference check.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-5--ca00acb90f33",
+      "title": "Separate CLI command parsing from configuration parsing. `loadConfig` accepts environment plus argv and documents bare folder paths as arguments at `mcp server/src/core/config.ts:400-418`. Its parser turns every non-flag token into an allowed root at lines 155-175. The existing server passes `process.argv.slice(2)` directly at `mcp server/src/index.ts:94-99`. A CLI must consume `--config <path>`, command names, and JSON argument sources in its own parser, then call a config loader with only config-specific values or an empty argv. The current `loadConfig` signature does not itself accept a config file path at lines 410-414, so JSON config loading belongs in a separate bootstrap layer.",
+      "text": "Separate CLI command parsing from configuration parsing. `loadConfig` accepts environment plus argv and documents bare folder paths as arguments at `mcp server/src/core/config.ts:400-418`. Its parser turns every non-flag token into an allowed root at lines 155-175. The existing server passes `process.argv.slice(2)` directly at `mcp server/src/index.ts:94-99`. A CLI must consume `--config <path>`, command names, and JSON argument sources in its own parser, then call a config loader with only config-specific values or an empty argv. The current `loadConfig` signature does not itself accept a config file path at lines 410-414, so JSON config loading belongs in a separate bootstrap layer.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-1-finding-5",
+      "_conflict_id": "iteration-1-finding-5--ca00acb90f33",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-5",
+          "peerId": "iteration-1-finding-5--4af791e639a7",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-1-finding-6--d3503fe012e1",
+      "title": "SIGINT and SIGTERM cleanup is real. `armSignalHandlers` (`runtime/src/cli.ts:307-320`) calls `terminateAll()` and then exits with 128 plus the signal number. `terminateAll` (`runtime/src/core/process-runner.ts:737-770`) rejects queued slot waiters, sends SIGTERM to every live child, waits a grace window, sends SIGKILL, then removes every path tracked by `registerCleanupPath` (`:705-725`). The CLI preview sink registers its temporary and target paths at `runtime/src/cli.ts:290-291`.",
+      "text": "SIGINT and SIGTERM cleanup is real. `armSignalHandlers` (`runtime/src/cli.ts:307-320`) calls `terminateAll()` and then exits with 128 plus the signal number. `terminateAll` (`runtime/src/core/process-runner.ts:737-770`) rejects queued slot waiters, sends SIGTERM to every live child, waits a grace window, sends SIGKILL, then removes every path tracked by `registerCleanupPath` (`:705-725`). The CLI preview sink registers its temporary and target paths at `runtime/src/cli.ts:290-291`.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-1-finding-6",
+      "_conflict_id": "iteration-1-finding-6--d3503fe012e1",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-6",
+          "peerId": "iteration-1-finding-6--c6e7a1b419b5",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-1-finding-6--c6e7a1b419b5",
+      "title": "Signal handling needs a CLI-specific cancellation path. The MCP entry catches SIGINT and SIGTERM and closes the server at `mcp server/src/index.ts:56-88`. The process runner starts a local child in `spawnAndWait` at `mcp server/src/core/process-runner.ts:360-374`, and only its timeout path kills that child with a grace period at lines 466-479. `withTempDir` removes its folder in `finally` at lines 687-702. Proposed CLI behavior: a shared abort controller stops active children, the CLI awaits dispatch settlement so tool `finally` cleanup runs, then it exits with documented statuses. This process registry and signal-to-cancellation path are recommendations, not existing runtime behavior.",
+      "text": "Signal handling needs a CLI-specific cancellation path. The MCP entry catches SIGINT and SIGTERM and closes the server at `mcp server/src/index.ts:56-88`. The process runner starts a local child in `spawnAndWait` at `mcp server/src/core/process-runner.ts:360-374`, and only its timeout path kills that child with a grace period at lines 466-479. `withTempDir` removes its folder in `finally` at lines 687-702. Proposed CLI behavior: a shared abort controller stops active children, the CLI awaits dispatch settlement so tool `finally` cleanup runs, then it exits with documented statuses. This process registry and signal-to-cancellation path are recommendations, not existing runtime behavior.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-1-finding-6",
+      "_conflict_id": "iteration-1-finding-6--c6e7a1b419b5",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-6",
+          "peerId": "iteration-1-finding-6--d3503fe012e1",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-4-7-dd40672616d7",
+      "title": "SRO-001 expects MCP from the Claude Code plugin, while the Desktop Project PRO-001 correctly remains an MCP scenario.",
+      "text": "SRO-001 expects MCP from the Claude Code plugin, while the Desktop Project PRO-001 correctly remains an MCP scenario.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-6--99d19f1fd930",
+      "title": "Startup cost was measured today on this machine, warm cache, one run each: `node -e \"0\"` baseline 0.02 seconds, `import('sharp')` 0.06, `import('./dist/server/all-tools.js')` 0.13, and `node dist/cli.js list` end to end 0.11 while printing 16,317 bytes. The whole tool graph costs about a tenth of a second per process, so the earlier open question between a build-time schema manifest and an eager import resolves to eager import being acceptable for now.",
+      "text": "Startup cost was measured today on this machine, warm cache, one run each: `node -e \"0\"` baseline 0.02 seconds, `import('sharp')` 0.06, `import('./dist/server/all-tools.js')` 0.13, and `node dist/cli.js list` end to end 0.11 while printing 16,317 bytes. The whole tool graph costs about a tenth of a second per process, so the earlier open question between a build-time schema manifest and an eager import resolves to eager import being acceptable for now.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-2-finding-6",
+      "_conflict_id": "iteration-2-finding-6--99d19f1fd930",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-6",
+          "peerId": "iteration-2-finding-6--adf1087280fe",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-4--a27948343b56",
+      "title": "stdout receives exactly the `structuredContent` object (`runtime/src/cli.ts:388`), diagnostics go to stderr (`:192-194`, `:206-214`), and the exit code distinguishes a tool failure (1) from a usage or dispatch error (2) and a startup failure (3) (`:389`, `:203`, `:460`), so `media-editor image_probe --args ... | jq .code` works for both outcomes.",
+      "text": "stdout receives exactly the `structuredContent` object (`runtime/src/cli.ts:388`), diagnostics go to stderr (`:192-194`, `:206-214`), and the exit code distinguishes a tool failure (1) from a usage or dispatch error (2) and a startup failure (3) (`:389`, `:203`, `:460`), so `media-editor image_probe --args ... | jq .code` works for both outcomes.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-2-finding-4",
+      "_conflict_id": "iteration-2-finding-4--a27948343b56",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-4",
+          "peerId": "iteration-2-finding-4--f6e1aec8ce48",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-4-finding-9",
+      "title": "The \"CLI runtime\" phrase collision is live in the playbook: `skill-export-delivery/export-root-no-subfolder.md:29` says \"start the CLI runtime without the plugin\", `skill-identity-handover/identity-handover.md:15` and `:41` use \"the CLI runtime\" for the Claude Code runtime, and `project-guidance-delivery/chat-guidance-delivery.md:19` contrasts \"the project packaging\" with \"the CLI runtime\". With a real `media-editor` CLI landing, the phrase must mean the command. Reword these to \"the Claude Code skill\" and keep CLI for the executable. Dated changelog entries keep their historical wording.",
+      "text": "The \"CLI runtime\" phrase collision is live in the playbook: `skill-export-delivery/export-root-no-subfolder.md:29` says \"start the CLI runtime without the plugin\", `skill-identity-handover/identity-handover.md:15` and `:41` use \"the CLI runtime\" for the Claude Code runtime, and `project-guidance-delivery/chat-guidance-delivery.md:19` contrasts \"the project packaging\" with \"the CLI runtime\". With a real `media-editor` CLI landing, the phrase must mean the command. Reword these to \"the Claude Code skill\" and keep CLI for the executable. Dated changelog entries keep their historical wording.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-5-finding-2",
+      "title": "The batch question template landed in `sk-media-editor/references/interactive-intelligence.md`: the naming and placement rule at `:51`, the two-or-more line at `:111`, and a dedicated Batch question section at `:116-138` that \"takes the place of the comprehensive question and is still one question\". The file is byte-identical to `claude project/knowledge/Media Editor - System - Interactive Intelligence.md` per the `cmp` check in iteration 4, so the template reached both surfaces.",
+      "text": "The batch question template landed in `sk-media-editor/references/interactive-intelligence.md`: the naming and placement rule at `:51`, the two-or-more line at `:111`, and a dedicated Batch question section at `:116-138` that \"takes the place of the comprehensive question and is still one question\". The file is byte-identical to `claude project/knowledge/Media Editor - System - Interactive Intelligence.md` per the `cmp` check in iteration 4, so the template reached both surfaces.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-4--cb1187506ed3",
+      "title": "The bundle staging is unchanged, which is why the CLI rides along for free. `runtime/scripts/build-bundle.ts:76` stages `dist`, `assets` and `licenses` whole, so `dist/cli.js` is packed as soon as the compiler emits it, and the bundle size limit is 150,000,000 bytes (`runtime/scripts/bundle/targets.ts:29`), against which the 16 KB CLI is noise. The one addition the earlier design asked for, a bundle check for `dist/cli.js`, now exists in the plugin build (finding 1).",
+      "text": "The bundle staging is unchanged, which is why the CLI rides along for free. `runtime/scripts/build-bundle.ts:76` stages `dist`, `assets` and `licenses` whole, so `dist/cli.js` is packed as soon as the compiler emits it, and the bundle size limit is 150,000,000 bytes (`runtime/scripts/bundle/targets.ts:29`), against which the 16 KB CLI is noise. The one addition the earlier design asked for, a bundle check for `dist/cli.js`, now exists in the plugin build (finding 1).",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-3-finding-4",
+      "_conflict_id": "iteration-3-finding-4--cb1187506ed3",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-4",
+          "peerId": "iteration-3-finding-4--27adeeb521a7",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-1--7a1d42a60dea",
+      "title": "The command surface landed as `list`, `describe <tool>`, `health` and `<tool>` (`runtime/src/cli.ts:413-451`). Running the built CLI confirmed the surface and the count: `node dist/cli.js list` printed exactly 40 tools with `media_health` first, and `describe image_convert` printed the schema keys `fileName`, `format`, `inputPath`, `maxBytes`, `outputName`, `quality`, `subfolder` and `targetFolder`, which shows the placement hardening fields are in the listed schema.",
+      "text": "The command surface landed as `list`, `describe <tool>`, `health` and `<tool>` (`runtime/src/cli.ts:413-451`). Running the built CLI confirmed the surface and the count: `node dist/cli.js list` printed exactly 40 tools with `media_health` first, and `describe image_convert` printed the schema keys `fileName`, `format`, `inputPath`, `maxBytes`, `outputName`, `quality`, `subfolder` and `targetFolder`, which shows the placement hardening fields are in the listed schema.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-2-finding-1",
+      "_conflict_id": "iteration-2-finding-1--7a1d42a60dea",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-1",
+          "peerId": "iteration-2-finding-1--c29b5815303d",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-1--07853ccfeecc",
+      "title": "The current plugin manifest registers `media-editor` as an MCP server and invokes `server/dist/index.js` with `mcpServers` at `mcp server/claude-plugin/.claude-plugin/plugin.json:10-22`. Its README says to expect that server to be connected at lines 44-54 and describes the plugin as an MCP server at lines 9-11. This conflicts with the fixed decision that the Claude Code plugin ships the skill and CLI runtime and registers no MCP server. Remove the plugin `mcpServers` entry and update its install and verification instructions. Preserve `mcp server/manifest.json` for the separate Claude Desktop extension, whose MCP entry is at lines 23-35.",
+      "text": "The current plugin manifest registers `media-editor` as an MCP server and invokes `server/dist/index.js` with `mcpServers` at `mcp server/claude-plugin/.claude-plugin/plugin.json:10-22`. Its README says to expect that server to be connected at lines 44-54 and describes the plugin as an MCP server at lines 9-11. This conflicts with the fixed decision that the Claude Code plugin ships the skill and CLI runtime and registers no MCP server. Remove the plugin `mcpServers` entry and update its install and verification instructions. Preserve `mcp server/manifest.json` for the separate Claude Desktop extension, whose MCP entry is at lines 23-35.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-3-finding-1",
+      "_conflict_id": "iteration-3-finding-1--07853ccfeecc",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-1",
+          "peerId": "iteration-3-finding-1--731f0ffbdecd",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-5--159fa145a385",
+      "title": "The Desktop build already packages platform-specific production dependencies and pinned binaries. `buildBundle` stages `dist`, `assets`, package metadata, and licenses at `mcp server/scripts/build-bundle.ts:68-76`, then performs platform-specific npm installation, checks native packages, and installs the pinned ffmpeg and ffprobe at lines 145-185. `npmInstallArgs` sets platform and architecture for `npm ci` and pins glibc on Linux at `mcp server/scripts/bundle/targets.ts:106-130`. `sharp` is a direct dependency at `mcp server/package.json:24-29`. Preserve this per-platform native dependency selection for the CLI package. `scripts/test-pinned.ts` downloads or reuses pinned binaries, checks their digest during extraction, and runs the suite with those binaries at lines 78-106 and 109-134.",
+      "text": "The Desktop build already packages platform-specific production dependencies and pinned binaries. `buildBundle` stages `dist`, `assets`, package metadata, and licenses at `mcp server/scripts/build-bundle.ts:68-76`, then performs platform-specific npm installation, checks native packages, and installs the pinned ffmpeg and ffprobe at lines 145-185. `npmInstallArgs` sets platform and architecture for `npm ci` and pins glibc on Linux at `mcp server/scripts/bundle/targets.ts:106-130`. `sharp` is a direct dependency at `mcp server/package.json:24-29`. Preserve this per-platform native dependency selection for the CLI package. `scripts/test-pinned.ts` downloads or reuses pinned binaries, checks their digest during extraction, and runs the suite with those binaries at lines 78-106 and 109-134.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-3-finding-5",
+      "_conflict_id": "iteration-3-finding-5--159fa145a385",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-5",
+          "peerId": "iteration-3-finding-5--ca13609958fe",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-1-finding-7--0edf11b05e38",
+      "title": "The dispatch packet's path instruction is stale against the live tree. The packet says \"The folder is still named `mcp server/`. Cite it by that name.\", but `AI Systems/Media Editor/` holds `runtime/` and the rename is staged in the nested repository: `git status --short` shows `RM \"mcp server/...\" -> runtime/...` rename entries and `runtime/` carries mtime 2026-10-04 15:53 local. This lineage cites `runtime/` and records the contradiction here. The same packet line also predates child packet 002, which is complete at 100 percent per its implementation summary.",
+      "text": "The dispatch packet's path instruction is stale against the live tree. The packet says \"The folder is still named `mcp server/`. Cite it by that name.\", but `AI Systems/Media Editor/` holds `runtime/` and the rename is staged in the nested repository: `git status --short` shows `RM \"mcp server/...\" -> runtime/...` rename entries and `runtime/` carries mtime 2026-10-04 15:53 local. This lineage cites `runtime/` and records the contradiction here. The same packet line also predates child packet 002, which is complete at 100 percent per its implementation summary.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-1-finding-7",
+      "_conflict_id": "iteration-1-finding-7--0edf11b05e38",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-7",
+          "peerId": "iteration-1-finding-7--6df051bf795c",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-9",
+      "title": "The dist layout constraint is exactly two relative reads. `runtime/src/server/server-info.ts:42` loads `../../package.json` through `createRequire(import.meta.url)`, and `runtime/src/core/font-path.ts:51` resolves `../../assets/fonts/` through `import.meta.url`. A CLI at `dist/cli.js` adds no directory level, so both keep resolving, and any single-file bundle would relocate `import.meta.url` and break both at once. Related pending doc work: `runtime/claude-plugin/README.md:11-15` still describes the MCP-server delivery, so the README follows the manifest flip.",
+      "text": "The dist layout constraint is exactly two relative reads. `runtime/src/server/server-info.ts:42` loads `../../package.json` through `createRequire(import.meta.url)`, and `runtime/src/core/font-path.ts:51` resolves `../../assets/fonts/` through `import.meta.url`. A CLI at `dist/cli.js` adds no directory level, so both keep resolving, and any single-file bundle would relocate `import.meta.url` and break both at once. Related pending doc work: `runtime/claude-plugin/README.md:11-15` still describes the MCP-server delivery, so the README follows the manifest flip.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-7--1367feba7175",
+      "title": "The existing package exposes only `media-editor-mcp: dist/index.js` in its `bin` field and has no standalone CLI install path at `mcp server/package.json:8-22`. The main install guide documents the extension and MCP-backed plugin, not a terminal CLI, at `INSTALL-GUIDE.md:90-118`. Add a `media-editor` package bin pointing to `dist/cli.js` and ship a standalone package artifact or local install procedure such as `npm link` from the package checkout. Document Node.js `20.9.0` or newer, the configured `MEDIA_EDITOR_DATA_DIR`, and a direct JSON CLI example for other terminal agents. The plugin skill should still use its bundled path so it does not require a separate global install.",
+      "text": "The existing package exposes only `media-editor-mcp: dist/index.js` in its `bin` field and has no standalone CLI install path at `mcp server/package.json:8-22`. The main install guide documents the extension and MCP-backed plugin, not a terminal CLI, at `INSTALL-GUIDE.md:90-118`. Add a `media-editor` package bin pointing to `dist/cli.js` and ship a standalone package artifact or local install procedure such as `npm link` from the package checkout. Document Node.js `20.9.0` or newer, the configured `MEDIA_EDITOR_DATA_DIR`, and a direct JSON CLI example for other terminal agents. The plugin skill should still use its bundled path so it does not require a separate global install.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-3-finding-7",
+      "_conflict_id": "iteration-3-finding-7--1367feba7175",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-7",
+          "peerId": "iteration-3-finding-7--a235a6f0d2b3",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-5-7-b3ad11bdfd4e",
+      "title": "The existing playbook tests single-file naming, not a multi-input batch confirmation in either packaging.",
+      "text": "The existing playbook tests single-file naming, not a multi-input batch confirmation in either packaging.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-5-finding-3",
+      "title": "The field descriptions were rewritten in `runtime/src/server/field-schemas.ts`. `fileNameField` now reads \"Propose it from the content and ask before the first writing call, never write first and rename after\" and keeps the omission fallback. `subfolderField` now says \"separate calls only share a folder through targetFolder\". A new `targetFolderField` names \"an existing numbered folder directly inside the export root, such as \\\"014 - webp-under-100kb\\\", exactly as an earlier call returned it\" and states \"It cannot be combined with subfolder false.\" The omission text no longer reads as permission.",
+      "text": "The field descriptions were rewritten in `runtime/src/server/field-schemas.ts`. `fileNameField` now reads \"Propose it from the content and ask before the first writing call, never write first and rename after\" and keeps the omission fallback. `subfolderField` now says \"separate calls only share a folder through targetFolder\". A new `targetFolderField` names \"an existing numbered folder directly inside the export root, such as \\\"014 - webp-under-100kb\\\", exactly as an earlier call returned it\" and states \"It cannot be combined with subfolder false.\" The omission text no longer reads as permission.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-5-finding-1",
+      "title": "The kernel gate landed in five places inside `claude project/Custom Instructions.md`: File Naming at `:145` now puts the proposed name \"in the one question before the first writing call\", writes only after confirmation, and demotes `media_rename` to \"renames an existing result only when the user asks for that afterwards. Never write first and rename after.\" Export Protocol at `:149` defines \"two or more inputs from one request, however many tool calls it takes\", sends them to \"the one place the user chose\", and spells out the first call `subfolder: true` with `outputName` then later calls passing the returned folder name as `targetFolder`. ALWAYS 9 at `:165` and ESCALATE 1 at `:181` carry the same gate, with `:181` now firing on \"the request is ambiguous or will write a file\" and adding \"A clear request that writes still gets this question.\" Strict Sequence steps 3 and 4 at `:194-195` split the ask from the call.",
+      "text": "The kernel gate landed in five places inside `claude project/Custom Instructions.md`: File Naming at `:145` now puts the proposed name \"in the one question before the first writing call\", writes only after confirmation, and demotes `media_rename` to \"renames an existing result only when the user asks for that afterwards. Never write first and rename after.\" Export Protocol at `:149` defines \"two or more inputs from one request, however many tool calls it takes\", sends them to \"the one place the user chose\", and spells out the first call `subfolder: true` with `outputName` then later calls passing the returned folder name as `targetFolder`. ALWAYS 9 at `:165` and ESCALATE 1 at `:181` carry the same gate, with `:181` now firing on \"the request is ambiguous or will write a file\" and adding \"A clear request that writes still gets this question.\" Strict Sequence steps 3 and 4 at `:194-195` split the ask from the call.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-5-finding-8",
+      "title": "The Media Editor `AGENTS.md` carries the same gate in its own words: strict sequence step 2 at `:39` and the processing hierarchy row at `:155`, so the skill identity document and the kernel now state one question before the first writing call in the same terms.",
+      "text": "The Media Editor `AGENTS.md` carries the same gate in its own words: strict sequence step 2 at `:39` and the processing hierarchy row at `:155`, so the skill identity document and the kernel now state one question before the first writing call in the same terms.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "state-finding-5-1-06314352659d",
+      "title": "The naming question is conditional on ambiguity today, and its folder choice is scoped to files written by one operation.",
+      "text": "The naming question is conditional on ambiguity today, and its folder choice is scoped to files written by one operation.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-2-b2dd4f668500",
+      "title": "The optional fileName fallback and optional subfolder defaults let a writing call proceed without an explicit batch decision.",
+      "text": "The optional fileName fallback and optional subfolder defaults let a writing call proceed without an explicit batch decision.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-7--625662e4d82f",
+      "title": "The persistent cache landed as one file, `<dataDir>/cache/probes.json` (`runtime/src/core/probe-cache.ts:53`, `:183-197`), storing binary resolutions and encoder and filter lists keyed by absolute path, size, mtime and version (`:21-41`), and the CLI constructs it per call from `config.dataDir` (`runtime/src/cli.ts:381`). This is the capability and resolver cache that a one-process-per-call CLI needs, and it validates with the same file identity the in-process resolver cache uses.",
+      "text": "The persistent cache landed as one file, `<dataDir>/cache/probes.json` (`runtime/src/core/probe-cache.ts:53`, `:183-197`), storing binary resolutions and encoder and filter lists keyed by absolute path, size, mtime and version (`:21-41`), and the CLI constructs it per call from `config.dataDir` (`runtime/src/cli.ts:381`). This is the capability and resolver cache that a one-process-per-call CLI needs, and it validates with the same file identity the in-process resolver cache uses.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-2-finding-7",
+      "_conflict_id": "iteration-2-finding-7--625662e4d82f",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-7",
+          "peerId": "iteration-2-finding-7--cda55770c567",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-7--a235a6f0d2b3",
+      "title": "The plugin also ships the skill, and the skill is namespaced by the plugin. `runtime/scripts/build-plugin.ts:369-382` copies `../sk-media-editor` into `claude-plugin/skills/sk-media-editor` and fails when the copied tree differs from its source. Plugin skills load from `<plugin>/skills/<skill-name>/SKILL.md` and appear as `/plugin-name:skill-name` (https://code.claude.com/docs/en/skills, the \"Where skills live\" table and the invocation table), so this plugin's skill is `/media-editor:sk-media-editor` and the invocation name comes from the frontmatter or the directory name.",
+      "text": "The plugin also ships the skill, and the skill is namespaced by the plugin. `runtime/scripts/build-plugin.ts:369-382` copies `../sk-media-editor` into `claude-plugin/skills/sk-media-editor` and fails when the copied tree differs from its source. Plugin skills load from `<plugin>/skills/<skill-name>/SKILL.md` and appear as `/plugin-name:skill-name` (https://code.claude.com/docs/en/skills, the \"Where skills live\" table and the invocation table), so this plugin's skill is `/media-editor:sk-media-editor` and the invocation name comes from the frontmatter or the directory name.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-3-finding-7",
+      "_conflict_id": "iteration-3-finding-7--a235a6f0d2b3",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-7",
+          "peerId": "iteration-3-finding-7--1367feba7175",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-1--731f0ffbdecd",
+      "title": "The plugin build now ships and checks the CLI. `runtime/scripts/build-plugin.ts:363-367` fails the build when the unpacked server has no `dist/cli.js` (\"The unpacked server has no cli file\"), and `:385-393` writes `bin/media-editor` plus `bin/media-editor.cmd` into the plugin folder. The POSIX shim resolves its own real path through a readlink loop and then runs `exec node \"$here/../server/dist/cli.js\"` (`:59-70`), so a symlinked install still finds the server folder beside the bin folder.",
+      "text": "The plugin build now ships and checks the CLI. `runtime/scripts/build-plugin.ts:363-367` fails the build when the unpacked server has no `dist/cli.js` (\"The unpacked server has no cli file\"), and `:385-393` writes `bin/media-editor` plus `bin/media-editor.cmd` into the plugin folder. The POSIX shim resolves its own real path through a readlink loop and then runs `exec node \"$here/../server/dist/cli.js\"` (`:59-70`), so a symlinked install still finds the server folder beside the bin folder.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-3-finding-1",
+      "_conflict_id": "iteration-3-finding-1--731f0ffbdecd",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-1",
+          "peerId": "iteration-3-finding-1--07853ccfeecc",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-2--c741929865e3",
+      "title": "The plugin manifest still carries the MCP route. `runtime/claude-plugin/.claude-plugin/plugin.json` is tracked and unmodified since the rename, and its `mcpServers` block still points at `${CLAUDE_PLUGIN_ROOT}/server/dist/index.js` with `MEDIA_EDITOR_DATA_DIR` set to `${CLAUDE_PLUGIN_DATA}`. Fixed decision 1 registers no MCP server in the plugin, so removing that block is an open distribution item, and it is the one manifest edit the plugin still needs.",
+      "text": "The plugin manifest still carries the MCP route. `runtime/claude-plugin/.claude-plugin/plugin.json` is tracked and unmodified since the rename, and its `mcpServers` block still points at `${CLAUDE_PLUGIN_ROOT}/server/dist/index.js` with `MEDIA_EDITOR_DATA_DIR` set to `${CLAUDE_PLUGIN_DATA}`. Fixed decision 1 registers no MCP server in the plugin, so removing that block is an open distribution item, and it is the one manifest edit the plugin still needs.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-3-finding-2",
+      "_conflict_id": "iteration-3-finding-2--c741929865e3",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-2",
+          "peerId": "iteration-3-finding-2--8ab29ef379d7",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-3-finding-3--b5b717c36097",
+      "title": "The preferred skill invocation is an explicit `node` command whose script path contains `${CLAUDE_PLUGIN_ROOT}`, for example `node \"${CLAUDE_PLUGIN_ROOT}/server/dist/cli.js\"`. Claude Code substitutes `${CLAUDE_PLUGIN_ROOT}` in plugin skill Markdown and in the skill's `allowed-tools` rules. It is not an environment variable available to commands launched by the Bash tool. Use the same substituted command pattern in both the allowed-tools rule and skill body so the bundled CLI path is exact. These behaviors are documented in the [Claude Code skills guide](https://code.claude.com/docs/en/skills) and [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference).",
+      "text": "The preferred skill invocation is an explicit `node` command whose script path contains `${CLAUDE_PLUGIN_ROOT}`, for example `node \"${CLAUDE_PLUGIN_ROOT}/server/dist/cli.js\"`. Claude Code substitutes `${CLAUDE_PLUGIN_ROOT}` in plugin skill Markdown and in the skill's `allowed-tools` rules. It is not an environment variable available to commands launched by the Bash tool. Use the same substituted command pattern in both the allowed-tools rule and skill body so the bundled CLI path is exact. These behaviors are documented in the [Claude Code skills guide](https://code.claude.com/docs/en/skills) and [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference).",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-3-finding-3",
+      "_conflict_id": "iteration-3-finding-3--b5b717c36097",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-3",
+          "peerId": "iteration-3-finding-3--29be1150b2b1",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-5--d871de76278b",
+      "title": "The preview lands as a file. `PreviewSink` is a CLI-only context dependency (`runtime/src/server/tool-context.ts:112`, `:126`), `withPreviewBlock` calls it and returns `previewPath` in `structuredContent` instead of appending the base64 image block (`runtime/src/tools/media/preview.ts:118-137`), and the CLI sink writes `<dataDir>/previews/preview-<uuid>.jpg` atomically through a temp file that is registered for shutdown cleanup (`runtime/src/cli.ts:280-305`). MCP keeps the inline image block because the sink stays unset there.",
+      "text": "The preview lands as a file. `PreviewSink` is a CLI-only context dependency (`runtime/src/server/tool-context.ts:112`, `:126`), `withPreviewBlock` calls it and returns `previewPath` in `structuredContent` instead of appending the base64 image block (`runtime/src/tools/media/preview.ts:118-137`), and the CLI sink writes `<dataDir>/previews/preview-<uuid>.jpg` atomically through a temp file that is registered for shutdown cleanup (`runtime/src/cli.ts:280-305`). MCP keeps the inline image block because the sink stays unset there.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-2-finding-5",
+      "_conflict_id": "iteration-2-finding-5--d871de76278b",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-5",
+          "peerId": "iteration-2-finding-5--79195c9e4f7f",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-1-finding-7--6df051bf795c",
+      "title": "The registry tests already cover successful result passthrough, handler exceptions, unknown tools, bad argument types, and missing fields at `mcp server/tests/server/registry.vitest.ts:158-225`. Extend that coverage around the exported dispatcher and CLI contract. No tests were run in this research iteration.",
+      "text": "The registry tests already cover successful result passthrough, handler exceptions, unknown tools, bad argument types, and missing fields at `mcp server/tests/server/registry.vitest.ts:158-225`. Extend that coverage around the exported dispatcher and CLI contract. No tests were run in this research iteration.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-1-finding-7",
+      "_conflict_id": "iteration-1-finding-7--6df051bf795c",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-7",
+          "peerId": "iteration-1-finding-7--0edf11b05e38",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-4-2-164f4a4524a7",
+      "title": "The router oracle and differential gate currently model only one generic tools, ffmpeg, advice host order.",
+      "text": "The router oracle and differential gate currently model only one generic tools, ffmpeg, advice host order.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-5-finding-9",
+      "title": "The seven known causes of the live bug are each addressed, mapped one by one: the single-name wait is replaced by a gate covering every output file and the folder (`:145`, `:165`), ESCALATE 1 no longer waits for ambiguity (`:181`), several files per call is defined as two or more inputs from one request (`:149`), `media_rename` is demoted to a repair the user asks for (`:145`), the field text no longer presents omission as normal (finding 3), folder allocation can now target an existing numbered folder (finding 4), and a Project batch scenario exists (finding 7). The one thing the text cannot guarantee is the model's compliance, which is why the scenarios are the proof and they are still ungraded.",
+      "text": "The seven known causes of the live bug are each addressed, mapped one by one: the single-name wait is replaced by a gate covering every output file and the folder (`:145`, `:165`), ESCALATE 1 no longer waits for ambiguity (`:181`), several files per call is defined as two or more inputs from one request (`:149`), `media_rename` is demoted to a repair the user asks for (`:145`), the field text no longer presents omission as normal (finding 3), folder allocation can now target an existing numbered folder (finding 4), and a Project batch scenario exists (finding 7). The one thing the text cannot guarantee is the model's compliance, which is why the scenarios are the proof and they are still ungraded.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-4-finding-1",
+      "title": "The skill is still MCP-first because phase 005 has not started. `sk-media-editor/SKILL.md:77` states the order as the Media Editor tools when connected, then locally installed ffmpeg, then advice, `:101` makes the tool check call `media_health`, and `:257` says the skill drives the tools first. `sk-media-editor/references/` holds seven files and `references/cli.md` is not one of them. The target state is written in `005-skill-cli-only/spec.md:49-52`: the tool check becomes `media-editor health`, the order becomes CLI then hand-written ffmpeg then advice, `references/cli.md` is added, and the plugin manifest loses its `mcpServers`.",
+      "text": "The skill is still MCP-first because phase 005 has not started. `sk-media-editor/SKILL.md:77` states the order as the Media Editor tools when connected, then locally installed ffmpeg, then advice, `:101` makes the tool check call `media_health`, and `:257` says the skill drives the tools first. `sk-media-editor/references/` holds seven files and `references/cli.md` is not one of them. The target state is written in `005-skill-cli-only/spec.md:49-52`: the tool check becomes `media-editor health`, the order becomes CLI then hand-written ffmpeg then advice, `references/cli.md` is added, and the plugin manifest loses its `mcpServers`.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "state-finding-4-1-9a5ef9b2e01d",
+      "title": "The skill route and Project route must diverge: CLI for skill-covered handlers then ffmpeg and advice, MCP then advice for the Project.",
+      "text": "The skill route and Project route must diverge: CLI for skill-covered handlers then ffmpeg and advice, MCP then advice for the Project.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-5-finding-10",
+      "title": "The skill-side text also carries the gate where the skill runs: `sk-media-editor/SKILL.md:194` (name proposal before the first write), `:198` (export blocking, one place for a batch, `targetFolder` flow), `:213` (ALWAYS 8) and `:300` (the tool group summary), and `sk-media-editor/references/tools.md:42-44` and `image-operations.md:46` and `:72` catalogue `targetFolder` and the one-question batch rule for the tool caller. All of these files are mirrored byte-identically per iteration 4.",
+      "text": "The skill-side text also carries the gate where the skill runs: `sk-media-editor/SKILL.md:194` (name proposal before the first write), `:198` (export blocking, one place for a batch, `targetFolder` flow), `:213` (ALWAYS 8) and `:300` (the tool group summary), and `sk-media-editor/references/tools.md:42-44` and `image-operations.md:46` and `:72` catalogue `targetFolder` and the one-question batch rule for the tool caller. All of these files are mirrored byte-identically per iteration 4.",
+      "addedAtIteration": 5,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-005.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-3--29be1150b2b1",
+      "title": "The standalone install for other terminal agents is declared, not published. `runtime/package.json:9-12` lists both `media-editor-mcp` to `dist/index.js` and `media-editor` to `dist/cli.js`, and the package is `private: true` (`:7`), so the routes are `node dist/cli.js` from the package root or a local install such as `npm install -g .`, with no npm publication in scope.",
+      "text": "The standalone install for other terminal agents is declared, not published. `runtime/package.json:9-12` lists both `media-editor-mcp` to `dist/index.js` and `media-editor` to `dist/cli.js`, and the package is `private: true` (`:7`), so the routes are `node dist/cli.js` from the package root or a local install such as `npm install -g .`, with no npm publication in scope.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-3-finding-3",
+      "_conflict_id": "iteration-3-finding-3--29be1150b2b1",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-3-finding-3",
+          "peerId": "iteration-3-finding-3--b5b717c36097",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-4-finding-8",
+      "title": "The Sync Loop declaration needs three edits. `references/cli.md` joins `unmirrored_sources` at `systems.py:1271-1276`. The header residency statement at `:1290` says \"The CLI `sk-media-editor/` package and the Claude Code plugin run the same tools from a terminal\", which is wrong twice after the split: the skill package is not a CLI, and the plugin runs the CLI rather than an MCP server. The router code statement at `:1680` carries the `choose_route` body and changes with finding 3, which moves its statement key.",
+      "text": "The Sync Loop declaration needs three edits. `references/cli.md` joins `unmirrored_sources` at `systems.py:1271-1276`. The header residency statement at `:1290` says \"The CLI `sk-media-editor/` package and the Claude Code plugin run the same tools from a terminal\", which is wrong twice after the split: the skill package is not a CLI, and the plugin runs the CLI rather than an MCP server. The router code statement at `:1680` carries the `choose_route` body and changes with finding 3, which moves its statement key.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "state-finding-4-8-197229e8baaf",
+      "title": "The Sync Loop has seven declared pairs and intentionally leaves router-contract.md unpaired because the Project kernel carries its code projection.",
+      "text": "The Sync Loop has seven declared pairs and intentionally leaves router-contract.md unpaired because the Project kernel carries its code projection.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-3-23b6eb1b352d",
+      "title": "The tools, setup, and interactive-intelligence references are currently byte-identical to their declared Project mirrors.",
+      "text": "The tools, setup, and interactive-intelligence references are currently byte-identical to their declared Project mirrors.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-4-finding-7",
+      "title": "The two new batch-naming-gate scenarios exist from phase 003: `sk-media-editor/manual-testing-playbook/skill-export-delivery/batch-naming-gate.md` and `project-export-delivery/batch-naming-gate.md`, and `twin_divergence.py` lists them as `SED-004` and `PED-001` in the unpaired sets, awaiting grading in phase 006 per the 003 implementation summary.",
+      "text": "The two new batch-naming-gate scenarios exist from phase 003: `sk-media-editor/manual-testing-playbook/skill-export-delivery/batch-naming-gate.md` and `project-export-delivery/batch-naming-gate.md`, and `twin_divergence.py` lists them as `SED-004` and `PED-001` in the unpaired sets, awaiting grading in phase 006 per the 003 implementation summary.",
+      "addedAtIteration": 4,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-004.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-4--4832a949c57c",
+      "title": "Tool argv never reaches `loadConfig`. `configTokens` (`runtime/src/cli.ts:216-246`) emits only `--allowed-dir` and `--output-dir` tokens, plus `MEDIA_EDITOR_*` environment values, and tool arguments travel separately through `--args`, `--args-file` or stdin (`:142-159`, `:248-278`). This matters because `parseArguments` still turns every bare token into an allowed-root candidate (`runtime/src/core/config.ts:155-175`), so the isolation has to live in the CLI and it does.",
+      "text": "Tool argv never reaches `loadConfig`. `configTokens` (`runtime/src/cli.ts:216-246`) emits only `--allowed-dir` and `--output-dir` tokens, plus `MEDIA_EDITOR_*` environment values, and tool arguments travel separately through `--args`, `--args-file` or stdin (`:142-159`, `:248-278`). This matters because `parseArguments` still turns every bare token into an allowed-root candidate (`runtime/src/core/config.ts:155-175`), so the isolation has to live in the CLI and it does.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-1-finding-4",
+      "_conflict_id": "iteration-1-finding-4--4832a949c57c",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-4",
+          "peerId": "iteration-1-finding-4--6291d63080e5",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-2-finding-1--c29b5815303d",
+      "title": "Tool definitions contain a Zod input shape and metadata. `listedInputSchema` adds `fileName` and `subfolder` when output placement applies, and the registry publishes title, description, schema, and annotations at `mcp server/src/server/tool-registry.ts:91-99,129-139`. Zod is already a direct dependency at `mcp server/package.json:24-29`, and the installed Zod v4 type exposes `toJSONSchema` at `mcp server/node_modules/zod/v4/classic/schemas.d.ts:7-18`. Recommended `describe <tool>` implementation: resolve the name in `ALL_TOOLS`, build `z.object(listedInputSchema(definition))`, and call `toJSONSchema()` so placement parameters appear in the caller-facing schema. `list` should emit the existing tool order with name, title, and description. This does not require a second JSON Schema dependency.",
+      "text": "Tool definitions contain a Zod input shape and metadata. `listedInputSchema` adds `fileName` and `subfolder` when output placement applies, and the registry publishes title, description, schema, and annotations at `mcp server/src/server/tool-registry.ts:91-99,129-139`. Zod is already a direct dependency at `mcp server/package.json:24-29`, and the installed Zod v4 type exposes `toJSONSchema` at `mcp server/node_modules/zod/v4/classic/schemas.d.ts:7-18`. Recommended `describe <tool>` implementation: resolve the name in `ALL_TOOLS`, build `z.object(listedInputSchema(definition))`, and call `toJSONSchema()` so placement parameters appear in the caller-facing schema. `list` should emit the existing tool order with name, title, and description. This does not require a second JSON Schema dependency.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-2-finding-1",
+      "_conflict_id": "iteration-2-finding-1--c29b5815303d",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-2-finding-1",
+          "peerId": "iteration-2-finding-1--7a1d42a60dea",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "iteration-1-finding-1--43a1fb8015e5",
+      "title": "Transport-neutral dispatch is live. `dispatchTool(definitions, context, name, args)` at `runtime/src/core/dispatch.ts:105-162` takes a name-keyed tool map, a `ToolContext` and unknown args, and returns a discriminated `DispatchOutcome` of `result`, `unknown-tool` or `invalid-arguments`. It imports no transport value, only the type `CallToolResult` at `:20`, and the MCP adapter imports it back at `runtime/src/server/tool-registry.ts:15` while the CLI calls it at `runtime/src/cli.ts:383`.",
+      "text": "Transport-neutral dispatch is live. `dispatchTool(definitions, context, name, args)` at `runtime/src/core/dispatch.ts:105-162` takes a name-keyed tool map, a `ToolContext` and unknown args, and returns a discriminated `DispatchOutcome` of `result`, `unknown-tool` or `invalid-arguments`. It imports no transport value, only the type `CallToolResult` at `:20`, and the MCP adapter imports it back at `runtime/src/server/tool-registry.ts:15` while the CLI calls it at `runtime/src/cli.ts:383`.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ],
+      "_conflictOf": "iteration-1-finding-1",
+      "_conflict_id": "iteration-1-finding-1--43a1fb8015e5",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-1",
+          "peerId": "iteration-1-finding-1--2b15bd8e2370",
+          "peerLineages": [
+            "luna"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    },
+    {
+      "id": "state-finding-4-6-3af056af9ec3",
+      "title": "twin_divergence.py documents route and output comparison but currently compares only PASS, FAIL, or SKIP verdicts.",
+      "text": "twin_divergence.py documents route and output comparison but currently compares only PASS, FAIL, or SKIP verdicts.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-9",
+      "title": "Two carried-forward observations. First, the argument parse at `runtime/src/core/dispatch.ts:116` is a plain `z.object(...)` safeParse, so a mistyped JSON key is still stripped silently with no warning, which is more likely on a CLI than on a schema-driven host. Second, CLI tests are in flight beside the implementation: `tests/cli/cli-process.vitest.ts` (19 cases), `tests/cli/dispatch.vitest.ts` (7 cases) and `tests/core/probe-cache.vitest.ts` (7 cases) are untracked in the nested repository.",
+      "text": "Two carried-forward observations. First, the argument parse at `runtime/src/core/dispatch.ts:116` is a plain `z.object(...)` safeParse, so a mistyped JSON key is still stripped silently with no warning, which is more likely on a CLI than on a schema-driven host. Second, CLI tests are in flight beside the implementation: `tests/cli/cli-process.vitest.ts` (19 cases), `tests/cli/dispatch.vitest.ts` (7 cases) and `tests/core/probe-cache.vitest.ts` (7 cases) are untracked in the nested repository.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/deepseek/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-3--20c02140a6a5",
+      "title": "Validation failures should follow the same result path as other tool failures. `errorResult` returns `isError`, a text content entry, and structured `code`, `message`, and `details` at `mcp server/src/core/result.ts:321-346`. The current error-code list has no invalid-arguments code at `mcp server/src/core/errors.ts:12-28`, so add a stable CLI argument code or a dedicated validation-result helper. The existing MCP tests expect schema failures to reject as protocol `INVALID_PARAMS` at `mcp server/tests/server/registry.vitest.ts:201-225`. The behavior change therefore needs matching test updates while retaining the existing unknown-tool protocol error at lines 192-199.",
+      "text": "Validation failures should follow the same result path as other tool failures. `errorResult` returns `isError`, a text content entry, and structured `code`, `message`, and `details` at `mcp server/src/core/result.ts:321-346`. The current error-code list has no invalid-arguments code at `mcp server/src/core/errors.ts:12-28`, so add a stable CLI argument code or a dedicated validation-result helper. The existing MCP tests expect schema failures to reject as protocol `INVALID_PARAMS` at `mcp server/tests/server/registry.vitest.ts:201-225`. The behavior change therefore needs matching test updates while retaining the existing unknown-tool protocol error at lines 192-199.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ],
+      "_conflictOf": "iteration-1-finding-3",
+      "_conflict_id": "iteration-1-finding-3--20c02140a6a5",
+      "_conflicts": [
+        {
+          "relation": "CONTRADICTS",
+          "originalId": "iteration-1-finding-3",
+          "peerId": "iteration-1-finding-3--6a1506ea5250",
+          "peerLineages": [
+            "deepseek"
+          ],
+          "basis": "same-id-different-content"
+        }
+      ]
+    }
+  ],
+  "ruledOutDirections": [],
+  "metrics": {
+    "iterationsCompleted": 10,
+    "openQuestions": 0,
+    "resolvedQuestions": 0,
+    "keyFindings": 80,
+    "sourceFindings": 80,
+    "reconstructionGaps": 0,
+    "convergenceScore": 0.825,
+    "coverageBySources": {}
+  }
+}

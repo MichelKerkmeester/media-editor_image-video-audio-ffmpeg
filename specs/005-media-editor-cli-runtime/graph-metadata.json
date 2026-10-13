@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "packet_id": "005-media-editor-cli-runtime",
+  "spec_folder": "005-media-editor-cli-runtime",
+  "parent_id": null,
+  "children_ids": [
+    "005-media-editor-cli-runtime/001-deep-research",
+    "005-media-editor-cli-runtime/002-runtime-rename",
+    "005-media-editor-cli-runtime/003-naming-and-placement-hardening",
+    "005-media-editor-cli-runtime/004-cli",
+    "005-media-editor-cli-runtime/005-skill-cli-only",
+    "005-media-editor-cli-runtime/006-verify-and-release"
+  ],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor cli runtime",
+      "media editor runtime rename",
+      "cli-only media editor skill",
+      "media editor naming and placement hardening",
+      "packet goal",
+      "durable directive",
+      "completion criteria",
+      "goal binding"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "cli",
+      "runtime",
+      "rename",
+      "cli-only",
+      "skill",
+      "naming",
+      "placement",
+      "hardening",
+      "packet",
+      "goal"
+    ],
+    "importance_tier": "important",
+    "status": "in_progress",
+    "key_files": [
+      "spec.md",
+      "goal.md",
+      "AI Systems/Media Editor/claude project/Custom Instructions.md",
+      "AI Systems/Media Editor/runtime/src/core/output-folder.ts",
+      "AI Systems/Media Editor/runtime/src/cli.ts",
+      "AI Systems/Media Editor/runtime/claude-plugin/.claude-plugin/plugin.json",
+      "001-deep-research/implementation-summary.md",
+      "001-deep-research/spec.md",
+      "001-deep-research/goal.md",
+      "002-runtime-rename/goal.md",
+      "003-naming-and-placement-hardening/goal.md",
+      "004-cli/goal.md",
+      "005-skill-cli-only/goal.md",
+      "006-verify-and-release/goal.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "output-folder.ts",
+        "kind": "code",
+        "path": "AI Systems/Media Editor/runtime/src/core/output-folder.ts",
+        "source": "derived"
+      },
+      {
+        "name": "cli.ts",
+        "kind": "code",
+        "path": "AI Systems/Media Editor/runtime/src/cli.ts",
+        "source": "derived"
+      },
+      {
+        "name": "plugin.json",
+        "kind": "config",
+        "path": "AI Systems/Media Editor/runtime/claude-plugin/.claude-plugin/plugin.json",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Packet",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Problem Statement The",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Project",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "Decisions Frozen",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Claude Code",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Claude Project",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "Sync Loop",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The `sk-media-editor` skill reaches its own tools only through MCP",
+    "created_at": "2026-10-04T11:47:28Z",
+    "last_save_at": "2026-10-13T11:41:47.538Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "goal.md"
+    ],
+    "source_fingerprint": "sha256:103fb6233cc4b08fd49ef686e5fca75449423cbb6a312582d65d724a590b46e1",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "80100d0e963d788bd3a1cf5730aed91a7ea5b7ca4377b5dd36e2faa1ef8f43f0"
+    },
+    "last_active_child_id": "005-media-editor-cli-runtime/001-deep-research",
+    "last_active_at": "2026-10-04T13:07:53.721Z"
+  }
+}

@@ -1,0 +1,8 @@
+/Users/michelkerkmeester/MEGA/Development/AI Systems/AI Systems/z — Claude Project Sync Loop/residency/counts.md: does not match what the declaration says, so the record is stale
+Barter - Copywriter: 5733 live kernel words, 7013 before any statement was cut
+Barter - Deal Templates: 4541 live kernel words, 6483 before any statement was cut
+Media Editor: 3217 live kernel words, 3107 before any statement was cut
+Product Owner: 7554 live kernel words, 7590 before any statement was cut
+Prompt Improver: 3088 live kernel words, 3967 before any statement was cut
+Sales - Direct Communication: 2769 live kernel words, 3911 before any statement was cut
+Sales - HubSpot & Automation: 4603 live kernel words, 5764 before any statement was cut

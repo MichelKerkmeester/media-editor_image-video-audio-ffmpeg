@@ -1,0 +1,5 @@
+ - the record says 318 declared statements and the declaration has 317
+ - the record says 100 statements moved and the declaration has 99
+ - the record says 184 declared pairs and the declaration has 179
+ - the record says 184 declared pairs and the declaration has 179
+FAILED 4 claim(s) in goal.md disagree with the tree

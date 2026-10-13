@@ -1,0 +1,32 @@
+{
+  "level": "2",
+  "specFolder": "004-media-editor-tool-alignment",
+  "description": "Align the Media Editor skill and Claude Project with its own MCP server, Desktop extension and Claude Code plugin, and end the kernel with Router Code",
+  "keywords": [
+    "align",
+    "media",
+    "editor",
+    "skill",
+    "claude",
+    "project",
+    "own",
+    "mcp",
+    "server",
+    "desktop",
+    "extension",
+    "code",
+    "plugin",
+    "end",
+    "kernel",
+    "router"
+  ],
+  "lastUpdated": "2026-10-03T16:47:54.456Z",
+  "specId": "004",
+  "folderSlug": "media-editor-tool-alignment",
+  "parentChain": [],
+  "memorySequence": 2,
+  "memoryNameHistory": [
+    "03-10-26_16-27__deep-research-ran-five-iterations-on-deepseek-v4.md",
+    "03-10-26_17-47__planning-complete-for-spec-085-plan-md-tasks-md.md"
+  ]
+}

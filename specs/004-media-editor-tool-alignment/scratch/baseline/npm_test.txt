@@ -1,0 +1,3179 @@
+
+ RUN  v5.0.2 /Users/michelkerkmeester/MEGA/Development/AI Systems/AI Systems/Media Editor/mcp server
+
+ ❯ tests/tools/video/convert.vitest.ts (0 test)
+ ❯ tests/tools/video/convert-properties.vitest.ts (0 test)
+ ❯ tests/tools/composition/add-image-overlay.vitest.ts (24 tests | 24 skipped) 808ms
+ ❯ tests/tools/composition/add-b-roll.vitest.ts (28 tests | 28 skipped) 804ms
+ ❯ tests/tools/composition/add-text-overlay.vitest.ts (31 tests | 31 skipped) 819ms
+ ❯ tests/tools/composition/add-subtitles.vitest.ts (23 tests | 23 skipped) 823ms
+ ❯ tests/tools/audio/set-channels.vitest.ts (16 tests | 10 failed) 77ms
+   × sets mono tone.mp3 to 2 channels within 0.15 seconds 13ms
+   × test_set_audio_channels: sets stereo.mp3 to 1 channel within 0.15 seconds 1ms
+   × keeps the wav container at 2 channels within 0.15 seconds 3ms
+   × keeps the flac container at 2 channels within 0.15 seconds 1ms
+   × keeps the m4a container at 2 channels within 0.15 seconds 1ms
+   × keeps the ogg container at 2 channels within 0.15 seconds 1ms
+   × keeps the mp3 container at 2 channels within 0.15 seconds 1ms
+   × writes talking.mp4 as stereo m4a within 0.15 seconds 1ms
+   × returns UNSUPPORTED_FORMAT for a matroska audio file 2ms
+   × returns UNSUPPORTED_FORMAT when the video has no audio 6ms
+ ❯ tests/tools/composition/add-fade.vitest.ts (19 tests | 11 failed) 929ms
+   × test_add_basic_transitions: fade in keeps the length 24ms
+   × test_add_basic_transitions: fade out keeps the length 2ms
+   × test_add_basic_transitions: a too long fade is refused 3ms
+   × fades the white clip up from black at the start 12ms
+   × fades the white clip down to black at the end 12ms
+   × takes crossfade_from_black as a fade in 4ms
+   × takes crossfade_to_black as a fade out 5ms
+   × keeps the audio track of the white clip 12ms
+   × accepts a fade as long as the whole clip 4ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 5ms
+   × returns UNSUPPORTED_FORMAT for a file without duration 13ms
+ ❯ tests/tools/composition/concat-xfade.vitest.ts (14 tests | 8 failed) 1001ms
+   × test_concatenate_videos_with_xfade: dissolve 23ms
+   × test_concatenate_videos_with_xfade: wipeleft 4ms
+   × test_concatenate_videos_with_xfade: keeps both streams 3ms
+   × blends the two clips across the transition window 3ms
+   × warns once when only one clip has sound 4ms
+   × refuses a transition as long as the first clip 1ms
+   × returns UNSUPPORTED_FORMAT for an audio-only entry 5ms
+   × starts the blend at the normalized first clip minus the duration 2ms
+ ❯ tests/tools/video/trim.vitest.ts (0 test)
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts (40 tests | 12 failed) 238ms
+   × test_change_aspect_ratio: pads a 320x180 video to 4:3 at 240x180 40ms
+   × fits wide to 4:3 by crop at 240 x 180 4ms
+   × fits box to 16:9 by pad at 320 x 180 52ms
+   × fits box to 16:9 by crop at 320 x 180 1ms
+   × fits box to 1:1 by pad at 240 x 240 3ms
+   × fits box to 1:1 by crop at 240 x 240 2ms
+   × copies a 320x240 video that is already 4:3 and keeps h264 2ms
+   × pads 320x240 to 21:9 at an even height of 136 16ms
+   × accepts a #RRGGBB padding colour 6ms
+   × pads and crops a video that has no audio 59ms
+   × re-encodes pcm audio to aac when the copy cannot 2ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 4ms
+ ❯ tests/tools/composition/concat.vitest.ts (17 tests | 8 failed) 1138ms
+   × test_concatenate_videos: joins two clips 19ms
+   × test_concatenate_videos: joins the two source fixtures 7ms
+   × normalizes every clip to the first clip size and rate 4ms
+   × joins three clips in the order they were given 4ms
+   × joins a clip whose name holds a quote 5ms
+   × warns once when some clips have sound and others do not 5ms
+   × blends two clips when a transition is given 3ms
+   × returns UNSUPPORTED_FORMAT for an audio-only entry 4ms
+ ❯ tests/tools/media/repair-strategies.vitest.ts (16 tests | 13 failed) 124ms
+   × re-encodes a cut MP4 into clean H.264 and AAC 43ms
+   × re-encodes cut audio into a single AAC stream 24ms
+   × re-encodes a silent video without adding an audio stream 4ms
+   × auto copies an unindexed recording without a re-encode 5ms
+   × auto re-encodes when the stream copy cannot enter the container 3ms
+   × auto re-encodes a cut MP4 whose copy keeps decode errors 4ms
+   × re-encodes a song with album art as audio only 4ms
+   × auto copies a song with album art into its own container 3ms
+   × auto names the re-encoded file .mp4 when the copy fails 5ms
+   × refuses the video re-encode before ffmpeg runs when libx264 is absent 4ms
+   × auto copies an unindexed recording when both encoders are absent 4ms
+   × auto stops before the re-encode when libx264 is absent 4ms
+   × auto joins both tails when the copy and the re-encode fail 4ms
+ ❯ tests/tools/audio/extract.vitest.ts (0 test)
+ ❯ tests/tools/video/copy-then-encode.vitest.ts (39 tests | 11 failed) 1738ms
+   ❯ runAttempts with real ffmpeg (8)
+     × keeps the first attempt when it succeeds 118ms
+     × falls back to attempt 2 on its own temp path 72ms
+     × falls back when a check rejects the file an attempt made 28ms
+     × keeps the request extension when an earlier attempt succeeds 26ms
+   ❯ runAttempts prepare step (2)
+     × runs once in the attempts temp folder before attempt 1 63ms
+   ❯ runAttempts other inputs (1)
+     × hands every caller input to each run 26ms
+   ❯ runAttempts capability gates (3)
+     × never checks attempt 2 names when attempt 1 succeeds 25ms
+   ❯ runAttempts without fallback (3)
+     × maps an existing target to OUTPUT_EXISTS and removes the folder 21ms
+   ❯ runAttempts MP4 refusal (2)
+     × moves past an attempt whose MP4 keeps PCM 62ms
+   ❯ runPipeline (4)
+     × keeps the last pass under the first input name 105ms
+     × maps an existing target to OUTPUT_EXISTS and removes the folder 136ms
+ ❯ tests/tools/video/set-codec.vitest.ts (11 tests | 7 failed) 106ms
+   × test_set_video_codec: encodes libx264 as h264 and keeps aac 6ms
+   × encodes libx265 as hevc in a libx265 file and keeps aac 4ms
+   × encodes vp9 as vp9 in a libvpx-vp9 file and keeps aac 28ms
+   × re-encodes pcm audio to aac when the copy cannot 3ms
+   × re-encodes a video that has no audio 10ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 12ms
+   × returns CAPABILITY_MISSING for libx265 before any ffmpeg run 3ms
+ ❯ tests/tools/audio/set-bitrate.vitest.ts (14 tests | 9 failed) 128ms
+   × test_set_audio_bitrate: re-encodes tone.mp3 within 5 percent and 0.15 seconds 6ms
+   × keeps the wav container and codec within 0.15 seconds 3ms
+   × keeps the flac container and codec within 0.15 seconds 5ms
+   × keeps the m4a container and codec within 0.15 seconds 10ms
+   × keeps the ogg container and codec within 0.15 seconds 3ms
+   × keeps the mp3 container and codec within 0.15 seconds 2ms
+   × writes talking.mp4 as audio-only m4a within 0.15 seconds 3ms
+   × returns UNSUPPORTED_FORMAT for a matroska audio file 3ms
+   × returns UNSUPPORTED_FORMAT when the video has no audio 7ms
+ ❯ tests/tools/audio/set-sample-rate.vitest.ts (14 tests | 9 failed) 133ms
+   × test_set_audio_sample_rate: sets tone.mp3 to 48000 Hz within 0.15 seconds 8ms
+   × keeps the wav container at 48000 Hz within 0.15 seconds 4ms
+   × keeps the flac container at 48000 Hz within 0.15 seconds 9ms
+   × keeps the m4a container at 48000 Hz within 0.15 seconds 6ms
+   × keeps the ogg container at 48000 Hz within 0.15 seconds 4ms
+   × keeps the mp3 container at 48000 Hz within 0.15 seconds 3ms
+   × writes talking.mp4 as 48000 Hz m4a within 0.15 seconds 3ms
+   × returns UNSUPPORTED_FORMAT for a matroska audio file 4ms
+   × returns UNSUPPORTED_FORMAT when the video has no audio 13ms
+ ❯ tests/tools/audio/convert.vitest.ts (0 test)
+ ❯ tests/tools/video/set-audio-codec.vitest.ts (12 tests | 7 failed) 106ms
+   × test_set_video_audio_track_codec: re-encodes aac audio and copies the h264 picture 15ms
+   × writes mp3 audio for libmp3lame into libmp3lame 7ms
+   × writes mp3 audio for mp3 into libmp3lame 6ms
+   × writes opus audio for libopus into libopus 4ms
+   × re-encodes an ffv1 picture when the copy cannot 24ms
+   × returns UNSUPPORTED_FORMAT for a video with no audio 1ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 16ms
+ ❯ tests/tools/composition/remove-silence.vitest.ts (25 tests | 8 failed) 195ms
+   × test_remove_silence: removes a trailing three second silence 6ms
+   × keeps the loud takes around an interior silence 7ms
+   × drops a leading silence 11ms
+   × keeps the loud parts of a video and its sound 29ms
+   × test_remove_silence: a 1000 ms minimum leaves short gaps 15ms
+   × keeps the input extension when a wav file has no silence 18ms
+   × returns INVALID_INPUT when every stretch is silent 7ms
+   × returns UNSUPPORTED_FORMAT for a video with no audio stream 16ms
+ ❯ tests/tools/video/set-bitrate.vitest.ts (11 tests | 5 failed) 96ms
+   × test_set_video_bitrate: re-encodes at 2M and keeps aac 8ms
+   × writes a video bit rate at least 3 times lower at 50k than at 2M 3ms
+   × re-encodes pcm audio to aac when the copy cannot 5ms
+   × re-encodes a video that has no audio 2ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 7ms
+ ❯ tests/tools/video/set-speed.vitest.ts (23 tests | 6 failed) 89ms
+   × test_change_video_speed: speeds a 3 second clip with audio to about 2 seconds at 1.5 7ms
+   × speeds a 4 second clip to about 1 second at 4.0 5ms
+   × slows a 1 second clip to about 4 seconds at 0.25 5ms
+   × slows a 1 second clip to about 2 seconds at 0.5 15ms
+   × speeds a silent 2 second clip to about 1 second at 2.0 11ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 8ms
+ ❯ tests/tools/media/hls-ladder.vitest.ts (21 tests | 12 failed) 55ms
+   × builds a three-rung ladder with playlists, segments and totals 4ms
+   × encodes every rung with its own profile, level and frame size 0ms
+   × lets ffprobe read the master playlist as a video 0ms
+   × writes fewer segments when the segment duration grows 4ms
+   × writes more bytes for a lower crf on the same rung 6ms
+   × orders the master by ladder order whatever order the caller gave 3ms
+   × letterboxes a portrait source into a 1280x720 segment 3ms
+   × keeps a percent sign in the description out of every path 3ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 3ms
+   × refuses without libx264 before ffmpeg runs 3ms
+   × refuses without pad before ffmpeg runs 3ms
+   × fails when ffmpeg exits zero without writing segments 2ms
+ ❯ tests/tools/composition/capability-gating.vitest.ts (15 tests | 15 failed) 196ms
+   × video_add_subtitles without subtitles is refused before ffmpeg runs 6ms
+   × video_add_text_overlay without drawtext is refused before ffmpeg runs 3ms
+   × video_add_text_overlay without libx264 is refused before ffmpeg runs 2ms
+   × video_add_image_overlay without overlay is refused before ffmpeg runs 2ms
+   × video_add_image_overlay without colorch… is refused before ffmpeg runs 2ms
+   × video_add_image_overlay without scale is refused before ffmpeg runs 2ms
+   × video_concat without xfade is refused before ffmpeg runs 2ms
+   × video_concat without acrossfade is refused before ffmpeg runs 2ms
+   × media_remove_silence without silencedet… is refused before ffmpeg runs 4ms
+   × video_add_b_roll without overlay is refused before ffmpeg runs 4ms
+   × video_add_b_roll without setpts is refused before ffmpeg runs 2ms
+   × video_add_b_roll without fade is refused before ffmpeg runs 2ms
+   × video_add_fade without fade is refused before ffmpeg runs 2ms
+   × test_concatenate_videos: joins without a transition with xfade absent 6ms
+   × test_add_image_overlay: overlays without a size or an opacity 3ms
+ ❯ tests/tools/video/set-frame-rate.vitest.ts (10 tests | 5 failed) 51ms
+   × test_set_video_frame_rate: re-encodes 25 fps input to 24 fps and keeps aac 6ms
+   × re-encodes to 12.5 fps as 25/2 2ms
+   × re-encodes pcm audio to aac when the copy cannot 1ms
+   × re-encodes a video that has no audio 4ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 5ms
+ ❯ tests/tools/video/set-resolution.vitest.ts (12 tests | 6 failed) 58ms
+   × test_set_video_resolution: scales 320x240 to 160x120 and keeps aac 7ms
+   × scales a height of 120 to 160x120 as h120 2ms
+   × returns PROCESS_FAILED for odd height 121, a known libx264 4:2:0 limit 14ms
+   × re-encodes pcm audio to aac when the copy cannot 2ms
+   × scales a video that has no audio 3ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 4ms
+ ❯ tests/tools/video/set-audio-bitrate.vitest.ts (12 tests | 5 failed) 88ms
+   × test_set_video_audio_track_bitrate: re-encodes the audio at 192k and copies the h264 picture 7ms
+   × writes a 32k audio bit rate at least 3 times lower than at 192k 18ms
+   × re-encodes an ffv1 picture when the copy cannot 6ms
+   × returns UNSUPPORTED_FORMAT for a video with no audio 2ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 7ms
+ ❯ tests/tools/video/set-audio-sample-rate.vitest.ts (12 tests | 5 failed) 77ms
+   × test_set_video_audio_track_sample_rate: sets the audio to 48000 Hz and copies the h264 picture within 0.15 seconds 8ms
+   × writes 22050 Hz from the same 44100 Hz input within 0.15 seconds 3ms
+   × re-encodes an ffv1 picture when the copy cannot 4ms
+   × returns UNSUPPORTED_FORMAT for a video with no audio 2ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 17ms
+ ❯ tests/tools/video/set-audio-channels.vitest.ts (12 tests | 5 failed) 76ms
+   × sets 2 channels on a mono input and copies the h264 picture within 0.15 seconds 10ms
+   × test_set_video_audio_track_channels: sets 1 channel on a stereo input within 0.15 seconds 7ms
+   × re-encodes an ffv1 picture when the copy cannot 5ms
+   × returns UNSUPPORTED_FORMAT for a video with no audio 2ms
+   × returns UNSUPPORTED_FORMAT for an audio-only input 14ms
+ ❯ tests/core/media-properties.vitest.ts (30 tests | 7 failed) 250ms
+   ❯ probeMedia (9)
+     × probes a video that includes audio 5ms
+     × probes a video that has no audio 1ms
+     × probes wav audio 2ms
+     × probes mp3 audio 2ms
+     × probes flac audio 1ms
+     × probes aac audio 2ms
+     × rejects a text file renamed as mp4 5ms
+ ❯ tests/tools/audio/convert-properties.vitest.ts (0 test)
+ ❯ tests/tools/media/repair-diagnose.vitest.ts (13 tests | 4 failed) 67ms
+   × repairs an unindexed Matroska by copying its streams 19ms
+   × repairs a clean MP4 and reports its duration 7ms
+   × refuses a file whose diagnosis read no stream 5ms
+   × returns PROCESS_FAILED when the copy cannot enter the container 6ms
+ ❯ tests/core/media-containers.vitest.ts (56 tests | 5 skipped) 198ms
+ ❯ tests/tools/media/probe.vitest.ts (12 tests | 8 failed) 117ms
+   × probes a video with sound and reports both streams 20ms
+   × omits the audio keys for a silent video 7ms
+   × reports an audio file without picture keys 6ms
+   × reads a still image as one video stream with its pixel format 10ms
+   × reports 30 fps for a missing rate and omits absent keys 3ms
+   × keeps the output folder and every input byte unchanged 17ms
+   × returns PROCESS_FAILED naming media_repair for an MP4 cut before its index 13ms
+   × returns PROCESS_FAILED naming media_repair for a zero byte file 5ms
+ ❯ tests/packaging/build-plugin.vitest.ts (12 tests | 1 failed) 1064ms
+   × keeps the built plugin skill equal to its source 164ms
+ ❯ tests/tools/media/hls-rungs.vitest.ts (23 tests | 7 failed) 35ms
+   × drops 1080p for a 1280x720 source and writes only the kept rungs 3ms
+   × writes every kept rung at its frame and never above the source 2ms
+   × keeps only the 360p rung for a 640x360 source 1ms
+   × compares a 720x1280 portrait source by its shorter side 0ms
+   × builds the 1080p rung alone when the source can hold it 0ms
+   × returns INVALID_INPUT when no requested rung fits the source 4ms
+   × runs no ffmpeg and creates no folder when every rung is dropped 3ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 11 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/core/media-containers.vitest.ts > probed audio containers
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeMedia src/core/media-properties.ts:376:20
+ ❯ tests/core/media-containers.vitest.ts:406:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/215]⎯
+
+ FAIL  tests/tools/audio/convert-properties.vitest.ts [ tests/tools/audio/convert-properties.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/convert-properties.vitest.ts:284:29
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/215]⎯
+
+ FAIL  tests/tools/audio/convert.vitest.ts [ tests/tools/audio/convert.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/convert.vitest.ts:270:29
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/215]⎯
+
+ FAIL  tests/tools/audio/extract.vitest.ts [ tests/tools/audio/extract.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/extract.vitest.ts:284:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/215]⎯
+
+ FAIL  tests/tools/composition/add-b-roll.vitest.ts [ tests/tools/composition/add-b-roll.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-b-roll.vitest.ts:350:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/215]⎯
+
+ FAIL  tests/tools/composition/add-image-overlay.vitest.ts [ tests/tools/composition/add-image-overlay.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-image-overlay.vitest.ts:336:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/215]⎯
+
+ FAIL  tests/tools/composition/add-subtitles.vitest.ts [ tests/tools/composition/add-subtitles.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-subtitles.vitest.ts:367:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/215]⎯
+
+ FAIL  tests/tools/composition/add-text-overlay.vitest.ts [ tests/tools/composition/add-text-overlay.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-text-overlay.vitest.ts:384:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/215]⎯
+
+ FAIL  tests/tools/video/convert-properties.vitest.ts [ tests/tools/video/convert-properties.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/convert-properties.vitest.ts:388:29
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/215]⎯
+
+ FAIL  tests/tools/video/convert.vitest.ts [ tests/tools/video/convert.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/convert.vitest.ts:280:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/215]⎯
+
+ FAIL  tests/tools/video/trim.vitest.ts [ tests/tools/video/trim.vitest.ts ]
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/trim.vitest.ts:340:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/215]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 204 ⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/packaging/build-plugin.vitest.ts > keeps the built plugin skill equal to its source
+AssertionError: expected Map{ …(41) } to deeply equal Map{ …(43) }
+
+- Expected
++ Received
+
+  Map {
+-   "README.md" => "eb4215e9babc79c03feb0d59a792596cd484b26bc20c2fac29b8469bbcf1412a",
+-   "SKILL.md" => "3886b4e6aeacbbc74e2cfc8e920f38ad7516ccf2791e88b650e1fd52b4f06f69",
+-   "assets/hls-video-conversion.md" => "9c855fb1f8642989b37369653a6d670490e6e8323022dca2b945b43c9cd8a8e1",
++   "README.md" => "df0fb53b3c74fd4cd7082be4081fe7c76b78d208cc3602577ec3ef8c58657111",
++   "SKILL.md" => "e4116626baf61a8c2c6fc8026bc3bc20f6902fa80acc290a21dede85ea58fc1c",
++   "assets/hls-video-conversion.md" => "3d64f59ed6731a7c4aca2912c856f33d08d0cf93ea27dd7c2130415a895043e3",
+    "changelog/v1.0.0.0.md" => "730b510983cf76d484937679ea50b41ef9548181d08ff683aba5562b3728023b",
+    "changelog/v1.1.0.0.md" => "4333e85a3b0641a83198fdb544c12d19e04bfabfb534cb22b9bd55935b2ca390",
+    "changelog/v1.1.1.0.md" => "4df666fe69feb3e232c80bc7588b768eed353ece00c7266874ca25e50b8ec2e9",
+    "changelog/v1.2.0.0.md" => "5aeb693b2911c99480822b3d299c818bb35d1f6c48a5c72824e981cc44b18722",
+    "changelog/v1.3.0.0.md" => "0caeb5b1cea2400f9844c50c91373e6fec3c4d88b8f33fd85674d365e2ae36e4",
+    "changelog/v1.4.1.0.md" => "10cbb0a01317bff5f2df9818fb317206c522c5d488c9d4feea07947b8b08dbc0",
+    "changelog/v1.4.2.0.md" => "f74aeb02c5d2b7948e3a66c6b37fb8b4b8dc6066fd0794fdb96098b1e68500e2",
+    "changelog/v1.4.3.0.md" => "66197391b35a349fbfe2c1d2dc84b391955c7a20d791cadd6051d5e937ad51e8",
+    "changelog/v1.5.0.0.md" => "8972689b6e2e0c30264b253b2694050660661d168c3f713b6738a94692976361",
+    "changelog/v1.6.0.0.md" => "e658a9e73d028bcc93978f5b94590d44d6ba925c2095c7ef15fc9b74c60dc885",
+-   "description.json" => "ee0f1fbb3d6bbdc1ff95d4002aa75387bb73a0a2b25fe15db99e6ae599c7afbb",
+-   "graph-metadata.json" => "1ffab1a62982e7f8b4e58836ca2fd27fcc801be32232de0be9ad1526520b59d2",
+-   "manual-testing-playbook/manual-testing-playbook.md" => "0a226e079a0682835fd098e432fdedb5f08b3e051e02879e9aff0cad5adca840",
++   "description.json" => "733e75060f53fda2a59193abffbec9d4df06bc31312ec49b9c63b2fcce7088a6",
++   "graph-metadata.json" => "5ffc8f176a40f20512f125d2090b6d764173ecd51441c7bcfe7531330f9f60af",
++   "manual-testing-playbook/manual-testing-playbook.md" => "cdb40a9b31a076c49e16bd011f0d0c027804b8129229d1a44ecfb19339ad11b5",
+    "manual-testing-playbook/project-ambiguity-intake/one-comprehensive-question.md" => "eae94964ea4a70ecfb5173c4e899080c10c3a815706e0655d18860fb654ce0f1",
+    "manual-testing-playbook/project-boundaries/generation-request-refusal.md" => "2b1406e1abd1a86342e1c0606c9137b18e678b2db28ed1f548fb92515c61a94b",
+-   "manual-testing-playbook/project-boundaries/size-limit-escalation.md" => "58255b4e4ce7008748b588359f38cd176c43d46ad0134400f6d7d81e6fb5a900",
+-   "manual-testing-playbook/project-command-routing/command-overrides-keywords.md" => "52a45468d07e14072bb1fba05bd430ea8a7ff99e9a18d7acddd17c2aa37fbac0",
+-   "manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md" => "1d0f57b48597c32cec71bdbf38bedf219fe8d1fddff915f8c38326d24c063e5e",
+-   "manual-testing-playbook/project-hls-recipe/ffmpeg-terminal-recipe.md" => "6e6c97b37ce5897b08d6c2d8ddd767502c866550207804c206094a1f0bd34334",
+-   "manual-testing-playbook/project-identity-handover/identity-handover.md" => "3b624bb5c6093cd0555596d3ac20d629b423ccaf8df0119d46e65a2059679afa",
++   "manual-testing-playbook/project-boundaries/size-limit-escalation.md" => "471cb9148e0fb96cc8a91f068a1c8faeba3d4b9268e72c50b823a4aea8ba597f",
++   "manual-testing-playbook/project-command-routing/command-overrides-keywords.md" => "cb26c491c4974fc56754fc38f8e1b63dd86be320e16b2dc86c8269ffc12fcb33",
++   "manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md" => "e7a3c118e9981e0a90c287d9dd8df6c361600071890809c5bc342b46047c9f22",
++   "manual-testing-playbook/project-hls-recipe/ffmpeg-terminal-recipe.md" => "c9dce29d181a4311a1531b20a72a6cea076a691f528990c85de7af98ed4342e1",
++   "manual-testing-playbook/project-identity-handover/identity-handover.md" => "8544d60925a60894b5da9c0fe25e481449791a5c829fb5e2a95786ff4249d508",
+    "manual-testing-playbook/project-no-execution-truth/cannot-execute-files.md" => "887927a6e31bd0db11adbe45a3646afa78086dd9608d7f61494dce726c3d1c4f",
+    "manual-testing-playbook/project-route-order/connected-tools-in-desktop.md" => "3a5b73f687eee60456c8eebd0d9f207cf15aafcbad60d2e1200fc71aef24bdde",
+    "manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md" => "c80ef96236e9fc99831543aef2cdebf04055d49b3e6c5e6baa008df7640937ba",
+    "manual-testing-playbook/skill-boundaries/generation-request-refusal.md" => "e5fa2d0a059cd72f3baf4e66dad951ab5fb0481cfb170fe80d5a6c9f0cb468d4",
+-   "manual-testing-playbook/skill-command-routing/command-overrides-keywords.md" => "f63aaa8aa119ba8b76885e8c62dcd7c6ff6dc30f9a6a3445c804c3065d5900ec",
+-   "manual-testing-playbook/skill-command-routing/image-command-routing.md" => "25891a9af49e8118767805d80f0d264120c012cedad2742b3c15b0dc8e6b56fb",
+-   "manual-testing-playbook/skill-export-delivery/export-first-path-response.md" => "2b8105356e9aab444e6eba09171094e3f3caa6846f6a0c1ca2294204ac15efe1",
+-   "manual-testing-playbook/skill-hls-streaming/ffmpeg-only-hls-conversion.md" => "fed9ae72915390ad24de5d01ae6064b2e2559cfc7ce3d34683df2a5b2532ff73",
+-   "manual-testing-playbook/skill-identity-handover/identity-handover.md" => "1d84d80d7d6fad904fcc738eb21992cd0dc4d838e90b0e65f1079b59bf4a7a95",
++   "manual-testing-playbook/skill-command-routing/command-overrides-keywords.md" => "e74c20e60d52e7a52f3d552a4c33cfc320a065b3f4dd3aed664b4b5ab7a7e836",
++   "manual-testing-playbook/skill-command-routing/image-command-routing.md" => "a82553db0c9b34fe34531641e26ef4e39343eac7de80613d39ef731fd7b79866",
++   "manual-testing-playbook/skill-export-delivery/export-first-path-response.md" => "062d4b8dcb6e53b945ca0fcf9623c86026b55330efdbf2be6755af518ee3c2e4",
++   "manual-testing-playbook/skill-hls-streaming/ffmpeg-only-hls-conversion.md" => "f8e8ddfe345b4b6acf219fa2ea92d637d5438e751f298447d84764f9ef068edb",
++   "manual-testing-playbook/skill-identity-handover/identity-handover.md" => "7cdb47f19d1c92b5f60fe96249d860451c994d23dc6392e3a8b187f3c698eefe",
+    "manual-testing-playbook/skill-route-order/connected-tools-first.md" => "637ac7eab766fb60d75d856ecf78575420ec2eadce6b915cd346c72e5e67a03c",
+-   "manual-testing-playbook/skill-route-order/fallback-to-local-ffmpeg.md" => "373cf4fcc1806828c23598b05646f74a9603ac3a1d4bfc52f3172bf6ad6cec80",
++   "manual-testing-playbook/skill-route-order/fallback-to-local-ffmpeg.md" => "7cffbdfd37b3eac55d56be9defb4aa8f2f9cc972c13527508c61bc7265de6d8f",
+    "manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md" => "efccf24f9e8e1e97f9bf22303d2b6c4b008b9666f912f279605408ea626af21b",
+    "references/human-voice-rules.md" => "a1b58e014577acc91309e7cc4b4018bf91df28bad50da873f7de7ee97fbd4e58",
+    "references/hvr-core.md" => "d8c916913aa7394fcc0d26e69bae8c0f0ba1ebe22ff63e2716cf7e3b2b4cfb21",
+-   "references/image-operations.md" => "2df6dc7f1fb572f0afb1be05ccf5eadc3c04b859494e49ce4af2f83bbe9cbd8f",
+    "references/interactive-intelligence.md" => "d4791db640b2477e7175289d3d35414c1b750226b0939b1d5d4bd6087d447a39",
++   "references/mcp-imagician.md" => "895453d94a649c68a6037f8277744f9a93931ed2421207b64cc869752ecc6437",
++   "references/mcp-video-audio.md" => "b744d17183f8c8a5f689bbdf452f7966112308e9a37569697518dd07521f8606",
+    "references/media-framework.md" => "db9b4efe81f97bd3d4ad64e51043c4273ce7f6f9aa042846cd63aed756719f6b",
+-   "references/router-contract.md" => "2752db75f942b313d7d97f6cf8ed91993ce65f1a7fb4efb42d5961ad6053cb09",
+-   "references/tools.md" => "08d0e8f8c3af00b4ec26be34f8c5fea26b002121838a0e2a3bed15473227dce6",
+-   "references/video-and-audio-operations.md" => "0028e3187b6010ac171ea346e25c14c8d1edc672f7241e7d5283ad30515e3e6c",
+  }
+
+ ❯ tests/packaging/build-plugin.vitest.ts:284:36
+    282|   'keeps the built plugin skill equal to its source',
+    283|   (): void => {
+    284|     expect(hashTree(PLUGIN_SKILL)).toEqual(hashTree(TRACKED_SKILL));
+       |                                    ^
+    285|   },
+    286| );
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/215]⎯
+
+ FAIL  tests/core/media-properties.vitest.ts > probeMedia > probes a video that includes audio
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeMedia src/core/media-properties.ts:376:20
+ ❯ tests/core/media-properties.vitest.ts:460:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/215]⎯
+
+ FAIL  tests/core/media-properties.vitest.ts > probeMedia > probes a video that has no audio
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeMedia src/core/media-properties.ts:376:20
+ ❯ tests/core/media-properties.vitest.ts:475:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/215]⎯
+
+ FAIL  tests/core/media-properties.vitest.ts > probeMedia > probes wav audio
+ FAIL  tests/core/media-properties.vitest.ts > probeMedia > probes mp3 audio
+ FAIL  tests/core/media-properties.vitest.ts > probeMedia > probes flac audio
+ FAIL  tests/core/media-properties.vitest.ts > probeMedia > probes aac audio
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeMedia src/core/media-properties.ts:376:20
+ ❯ tests/core/media-properties.vitest.ts:488:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/215]⎯
+
+ FAIL  tests/core/media-properties.vitest.ts > probeMedia > rejects a text file renamed as mp4
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/core/media-properties.vitest.ts:509:24
+    507|     const error = await thrownError(() => probeMedia(context, input));
+    508|
+    509|     expect(error.code).toBe(ERROR_CODES.PROCESS_FAILED);
+       |                        ^
+    510|   });
+    511|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/215]⎯
+
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > test_set_audio_bitrate: re-encodes tone.mp3 within 5 percent and 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-bitrate.vitest.ts:380:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/215]⎯
+
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > keeps the wav container and codec within 0.15 seconds
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > keeps the flac container and codec within 0.15 seconds
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > keeps the m4a container and codec within 0.15 seconds
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > keeps the ogg container and codec within 0.15 seconds
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > keeps the mp3 container and codec within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-bitrate.vitest.ts:409:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/215]⎯
+
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > writes talking.mp4 as audio-only m4a within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-bitrate.vitest.ts:433:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/215]⎯
+
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > returns UNSUPPORTED_FORMAT for a matroska audio file
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-bitrate.vitest.ts:460:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/215]⎯
+
+ FAIL  tests/tools/audio/set-bitrate.vitest.ts > returns UNSUPPORTED_FORMAT when the video has no audio
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/audio/set-bitrate.vitest.ts:292:29
+    290|   const outcome = await callSet(args);
+    291|   expect(outcome.isError).toBe(true);
+    292|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    293|   expect(outcome.body.details).toEqual(details);
+    294|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/audio/set-bitrate.vitest.ts:474:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/215]⎯
+
+ FAIL  tests/tools/audio/set-channels.vitest.ts > sets mono tone.mp3 to 2 channels within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-channels.vitest.ts:367:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/215]⎯
+
+ FAIL  tests/tools/audio/set-channels.vitest.ts > test_set_audio_channels: sets stereo.mp3 to 1 channel within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-channels.vitest.ts:393:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/215]⎯
+
+ FAIL  tests/tools/audio/set-channels.vitest.ts > keeps the wav container at 2 channels within 0.15 seconds
+ FAIL  tests/tools/audio/set-channels.vitest.ts > keeps the flac container at 2 channels within 0.15 seconds
+ FAIL  tests/tools/audio/set-channels.vitest.ts > keeps the m4a container at 2 channels within 0.15 seconds
+ FAIL  tests/tools/audio/set-channels.vitest.ts > keeps the ogg container at 2 channels within 0.15 seconds
+ FAIL  tests/tools/audio/set-channels.vitest.ts > keeps the mp3 container at 2 channels within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-channels.vitest.ts:414:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/215]⎯
+
+ FAIL  tests/tools/audio/set-channels.vitest.ts > writes talking.mp4 as stereo m4a within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-channels.vitest.ts:438:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/215]⎯
+
+ FAIL  tests/tools/audio/set-channels.vitest.ts > returns UNSUPPORTED_FORMAT for a matroska audio file
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-channels.vitest.ts:466:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/215]⎯
+
+ FAIL  tests/tools/audio/set-channels.vitest.ts > returns UNSUPPORTED_FORMAT when the video has no audio
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/audio/set-channels.vitest.ts:280:29
+    278|   const outcome = await callSet(args);
+    279|   expect(outcome.isError).toBe(true);
+    280|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    281|   expect(outcome.body.details).toEqual(details);
+    282|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/audio/set-channels.vitest.ts:480:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[27/215]⎯
+
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > test_set_audio_sample_rate: sets tone.mp3 to 48000 Hz within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-sample-rate.vitest.ts:364:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[28/215]⎯
+
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > keeps the wav container at 48000 Hz within 0.15 seconds
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > keeps the flac container at 48000 Hz within 0.15 seconds
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > keeps the m4a container at 48000 Hz within 0.15 seconds
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > keeps the ogg container at 48000 Hz within 0.15 seconds
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > keeps the mp3 container at 48000 Hz within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-sample-rate.vitest.ts:393:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[29/215]⎯
+
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > writes talking.mp4 as 48000 Hz m4a within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-sample-rate.vitest.ts:417:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[30/215]⎯
+
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > returns UNSUPPORTED_FORMAT for a matroska audio file
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/audio/set-sample-rate.vitest.ts:450:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[31/215]⎯
+
+ FAIL  tests/tools/audio/set-sample-rate.vitest.ts > returns UNSUPPORTED_FORMAT when the video has no audio
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/audio/set-sample-rate.vitest.ts:276:29
+    274|   const outcome = await callSet(args);
+    275|   expect(outcome.isError).toBe(true);
+    276|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    277|   expect(outcome.body.details).toEqual(details);
+    278|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/audio/set-sample-rate.vitest.ts:464:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[32/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > test_add_basic_transitions: fade in keeps the length
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-fade.vitest.ts:293:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[33/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > test_add_basic_transitions: fade out keeps the length
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-fade.vitest.ts:316:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[34/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > test_add_basic_transitions: a too long fade is refused
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-fade.vitest.ts:336:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[35/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > fades the white clip up from black at the start
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/add-fade.vitest.ts:367:27
+    365|     outputName: 'white fade in',
+    366|   });
+    367|   expect(outcome.isError).toBe(false);
+       |                           ^
+    368|   const filePath = writtenPath(outcome.body, 'white-fade-in.mp4', 'whi…
+    369|   const early = await meanLuma(filePath, 0.05);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[36/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > fades the white clip down to black at the end
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/add-fade.vitest.ts:384:27
+    382|     outputName: 'white fade out',
+    383|   });
+    384|   expect(outcome.isError).toBe(false);
+       |                           ^
+    385|   const filePath = writtenPath(outcome.body, 'white-fade-out.mp4', 'wh…
+    386|   const early = await meanLuma(filePath, 0.5);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[37/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > takes crossfade_from_black as a fade in
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/add-fade.vitest.ts:400:27
+    398|     outputName: 'alias from black',
+    399|   });
+    400|   expect(outcome.isError).toBe(false);
+       |                           ^
+    401|   const filePath = writtenPath(outcome.body, 'white-fade-in.mp4', 'ali…
+    402|   expect(await meanLuma(filePath, 0.05)).toBeLessThan(FADE_DARK_MAXIMU…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[38/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > takes crossfade_to_black as a fade out
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/add-fade.vitest.ts:412:27
+    410|     outputName: 'alias to black',
+    411|   });
+    412|   expect(outcome.isError).toBe(false);
+       |                           ^
+    413|   const filePath = writtenPath(outcome.body, 'white-fade-out.mp4', 'al…
+    414|   expect(await meanLuma(filePath, 2.95)).toBeLessThan(FADE_DARK_MAXIMU…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > keeps the audio track of the white clip
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/add-fade.vitest.ts:424:27
+    422|     outputName: 'keeps sound',
+    423|   });
+    424|   expect(outcome.isError).toBe(false);
+       |                           ^
+    425|   const filePath = writtenPath(outcome.body, 'white-fade-in.mp4', 'kee…
+    426|   const view = probeView(await probeJson(filePath));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[40/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > accepts a fade as long as the whole clip
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/add-fade.vitest.ts:434:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[41/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/composition/add-fade.vitest.ts:231:29
+    229|   const outcome = await runTool(args);
+    230|   expect(outcome.isError).toBe(true);
+    231|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    232|   expect(outcome.body.details).toEqual(details);
+    233|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/composition/add-fade.vitest.ts:458:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[42/215]⎯
+
+ FAIL  tests/tools/composition/add-fade.vitest.ts > returns UNSUPPORTED_FORMAT for a file without duration
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/composition/add-fade.vitest.ts:231:29
+    229|   const outcome = await runTool(args);
+    230|   expect(outcome.isError).toBe(true);
+    231|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    232|   expect(outcome.body.details).toEqual(details);
+    233|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/composition/add-fade.vitest.ts:471:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[43/215]⎯
+
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_subtitles without subtitles is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_text_overlay without drawtext is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_text_overlay without libx264 is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_image_overlay without overlay is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_image_overlay without colorch… is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_image_overlay without scale is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_concat without xfade is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_concat without acrossfade is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > media_remove_silence without silencedet… is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_b_roll without overlay is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_b_roll without setpts is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_b_roll without fade is refused before ffmpeg runs
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > video_add_fade without fade is refused before ffmpeg runs
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'CAPABILITY_MISSING' // Object.is equality
+
+Expected: "CAPABILITY_MISSING"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/composition/capability-gating.vitest.ts:496:26
+    494|     const before = listFolders(sandbox.outputDir);
+    495|     const failure = await refusal(entry);
+    496|     expect(failure.code).toBe(ERROR_CODES.CAPABILITY_MISSING);
+       |                          ^
+    497|     expect(failure.details).toEqual({
+    498|       binary: STUB_BINARY_PATH,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[44/215]⎯
+
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > test_concatenate_videos: joins without a transition with xfade absent
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeMedia src/core/media-properties.ts:376:20
+ ❯ inspectClips src/tools/video/concat.ts:252:24
+ ❯ runConcat src/tools/video/concat.ts:534:22
+ ❯ tests/tools/composition/capability-gating.vitest.ts:521:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[45/215]⎯
+
+ FAIL  tests/tools/composition/capability-gating.vitest.ts > test_add_image_overlay: overlays without a size or an opacity
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeMedia src/core/media-properties.ts:376:20
+ ❯ runAddImageOverlay src/tools/video/add-image-overlay.ts:235:22
+ ❯ tests/tools/composition/capability-gating.vitest.ts:547:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[46/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > test_concatenate_videos_with_xfade: dissolve
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:282:27
+    280|     outputName: 'xfade dissolve',
+    281|   });
+    282|   expect(outcome.isError).toBe(false);
+       |                           ^
+    283|   const filePath = writtenPath(outcome.body, 'short-one-joined.mp4', '…
+    284|   expect(path.dirname(filePath)).toBe(path.join(sandbox.outputDir, '00…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[47/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > test_concatenate_videos_with_xfade: wipeleft
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:304:27
+    302|     outputName: 'xfade wipe',
+    303|   });
+    304|   expect(outcome.isError).toBe(false);
+       |                           ^
+    305|   const filePath = writtenPath(outcome.body, 'short-one-joined.mp4', '…
+    306|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[48/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > test_concatenate_videos_with_xfade: keeps both streams
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:320:27
+    318|     outputName: 'xfade audio',
+    319|   });
+    320|   expect(outcome.isError).toBe(false);
+       |                           ^
+    321|   const filePath = writtenPath(outcome.body, 'sound-a-joined.mp4', 'xf…
+    322|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[49/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > blends the two clips across the transition window
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:337:27
+    335|     outputName: 'xfade blend',
+    336|   });
+    337|   expect(outcome.isError).toBe(false);
+       |                           ^
+    338|   const filePath = writtenPath(outcome.body, 'red-joined.mp4', 'xfade-…
+    339|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[50/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > warns once when only one clip has sound
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:360:27
+    358|     outputName: 'xfade mixed sound',
+    359|   });
+    360|   expect(outcome.isError).toBe(false);
+       |                           ^
+    361|   const filePath = writtenPath(
+    362|     outcome.body,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[51/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > refuses a transition as long as the first clip
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:417:27
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[52/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only entry
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/composition/concat-xfade.vitest.ts:188:29
+    186|   const outcome = await concat(args);
+    187|   expect(outcome.isError).toBe(true);
+    188|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    189|   expect(outcome.body.details).toEqual(details);
+    190|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:435:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[53/215]⎯
+
+ FAIL  tests/tools/composition/concat-xfade.vitest.ts > starts the blend at the normalized first clip minus the duration
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ Object.runBinary tests/tools/composition/concat-xfade.vitest.ts:491:22
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeMedia src/core/media-properties.ts:376:20
+ ❯ inspectClips src/tools/video/concat.ts:252:24
+ ❯ runConcat src/tools/video/concat.ts:534:22
+ ❯ tests/tools/composition/concat-xfade.vitest.ts:504:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[54/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > test_concatenate_videos: joins two clips
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat.vitest.ts:368:27
+    366|     outputName: 'joined pair',
+    367|   });
+    368|   expect(outcome.isError).toBe(false);
+       |                           ^
+    369|   const filePath = writtenPath(outcome.body, 'sound-a-joined.mp4', 'jo…
+    370|   expect(path.dirname(filePath)).toBe(path.join(sandbox.outputDir, '00…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[55/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > test_concatenate_videos: joins the two source fixtures
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat.vitest.ts:397:27
+    395|     outputName: 'fixture pair',
+    396|   });
+    397|   expect(outcome.isError).toBe(false);
+       |                           ^
+    398|   const filePath = writtenPath(outcome.body, 'short-one-joined.mp4', '…
+    399|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[56/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > normalizes every clip to the first clip size and rate
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat.vitest.ts:412:27
+    410|     outputName: 'mixed shapes',
+    411|   });
+    412|   expect(outcome.isError).toBe(false);
+       |                           ^
+    413|   const filePath = writtenPath(outcome.body, 'silent-joined.mp4', 'mix…
+    414|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[57/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > joins three clips in the order they were given
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat.vitest.ts:432:27
+    430|     outputName: 'colour order',
+    431|   });
+    432|   expect(outcome.isError).toBe(false);
+       |                           ^
+    433|   const filePath = writtenPath(outcome.body, 'red-joined.mp4', 'colour…
+    434|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[58/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > joins a clip whose name holds a quote
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat.vitest.ts:457:27
+    455|     outputName: 'quoted name',
+    456|   });
+    457|   expect(outcome.isError).toBe(false);
+       |                           ^
+    458|   const filePath = writtenPath(outcome.body, "it's-joined.mp4", 'quote…
+    459|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[59/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > warns once when some clips have sound and others do not
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat.vitest.ts:471:27
+    469|     outputName: 'mixed sound',
+    470|   });
+    471|   expect(outcome.isError).toBe(false);
+       |                           ^
+    472|   writtenPath(outcome.body, 'sound-a-joined.mp4', 'mixed-sound', 1);
+    473|   expect(asList(outcome.body.warnings)).toEqual([MIXED_AUDIO_WARNING]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[60/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > blends two clips when a transition is given
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/concat.vitest.ts:538:27
+    536|     outputName: 'transition clip',
+    537|   });
+    538|   expect(outcome.isError).toBe(false);
+       |                           ^
+    539|   const filePath = writtenPath(outcome.body, 'sound-a-joined.mp4', 'tr…
+    540|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[61/215]⎯
+
+ FAIL  tests/tools/composition/concat.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only entry
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/composition/concat.vitest.ts:237:29
+    235|   const outcome = await concat(args);
+    236|   expect(outcome.isError).toBe(true);
+    237|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    238|   expect(outcome.body.details).toEqual(details);
+    239|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/composition/concat.vitest.ts:548:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[62/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > test_remove_silence: removes a trailing three second silence
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/remove-silence.vitest.ts:376:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[63/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > keeps the loud takes around an interior silence
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/remove-silence.vitest.ts:402:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[64/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > drops a leading silence
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/remove-silence.vitest.ts:423:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[65/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > keeps the loud parts of a video and its sound
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/remove-silence.vitest.ts:447:27
+    445|     outputName: 'video keep',
+    446|   });
+    447|   expect(outcome.isError).toBe(false);
+       |                           ^
+    448|   const filePath = writtenPath(
+    449|     outcome.body,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[66/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > test_remove_silence: a 1000 ms minimum leaves short gaps
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/composition/remove-silence.vitest.ts:474:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[67/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > keeps the input extension when a wav file has no silence
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/composition/remove-silence.vitest.ts:509:27
+    507|     outputName: 'clean wav',
+    508|   });
+    509|   expect(outcome.isError).toBe(false);
+       |                           ^
+    510|   const filePath = writtenPath(
+    511|     outcome.body,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[68/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > returns INVALID_INPUT when every stretch is silent
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'INVALID_INPUT' // Object.is equality
+
+Expected: "INVALID_INPUT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/composition/remove-silence.vitest.ts:221:29
+    219|   const outcome = await removeSilence(args);
+    220|   expect(outcome.isError).toBe(true);
+    221|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    222|   expect(outcome.body.details).toEqual(details);
+    223|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/composition/remove-silence.vitest.ts:524:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[69/215]⎯
+
+ FAIL  tests/tools/composition/remove-silence.vitest.ts > returns UNSUPPORTED_FORMAT for a video with no audio stream
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/composition/remove-silence.vitest.ts:221:29
+    219|   const outcome = await removeSilence(args);
+    220|   expect(outcome.isError).toBe(true);
+    221|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    222|   expect(outcome.body.details).toEqual(details);
+    223|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/composition/remove-silence.vitest.ts:539:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[70/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts with real ffmpeg > keeps the first attempt when it succeeds
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeIntermediateCodecs src/core/media-properties.ts:430:27
+ ❯ assertPortableMp4 src/tools/video/copy-then-encode.ts:411:39
+ ❯ src/tools/video/copy-then-encode.ts:322:9
+ ❯ withTempDir src/core/process-runner.ts:706:12
+ ❯ src/tools/video/copy-then-encode.ts:459:22
+ ❯ inNumberedFolder src/tools/video/copy-then-encode.ts:286:12
+ ❯ tests/tools/video/copy-then-encode.vitest.ts:295:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[71/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts with real ffmpeg > falls back to attempt 2 on its own temp path
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeIntermediateCodecs src/core/media-properties.ts:430:27
+ ❯ assertPortableMp4 src/tools/video/copy-then-encode.ts:411:39
+ ❯ src/tools/video/copy-then-encode.ts:322:9
+ ❯ withTempDir src/core/process-runner.ts:706:12
+ ❯ src/tools/video/copy-then-encode.ts:459:22
+ ❯ inNumberedFolder src/tools/video/copy-then-encode.ts:286:12
+ ❯ tests/tools/video/copy-then-encode.vitest.ts:338:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[72/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts with real ffmpeg > falls back when a check rejects the file an attempt made
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts prepare step > runs once in the attempts temp folder before attempt 1
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts other inputs > hands every caller input to each run
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts MP4 refusal > moves past an attempt whose MP4 keeps PCM
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeIntermediateCodecs src/core/media-properties.ts:430:27
+ ❯ assertPortableMp4 src/tools/video/copy-then-encode.ts:411:39
+ ❯ src/tools/video/copy-then-encode.ts:322:9
+ ❯ withTempDir src/core/process-runner.ts:706:12
+ ❯ src/tools/video/copy-then-encode.ts:459:22
+ ❯ inNumberedFolder src/tools/video/copy-then-encode.ts:286:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[73/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts with real ffmpeg > keeps the request extension when an earlier attempt succeeds
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeIntermediateCodecs src/core/media-properties.ts:430:27
+ ❯ assertPortableMp4 src/tools/video/copy-then-encode.ts:411:39
+ ❯ src/tools/video/copy-then-encode.ts:322:9
+ ❯ withTempDir src/core/process-runner.ts:706:12
+ ❯ src/tools/video/copy-then-encode.ts:459:22
+ ❯ inNumberedFolder src/tools/video/copy-then-encode.ts:286:12
+ ❯ tests/tools/video/copy-then-encode.vitest.ts:399:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[74/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts capability gates > never checks attempt 2 names when attempt 1 succeeds
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeIntermediateCodecs src/core/media-properties.ts:430:27
+ ❯ assertPortableMp4 src/tools/video/copy-then-encode.ts:411:39
+ ❯ src/tools/video/copy-then-encode.ts:322:9
+ ❯ withTempDir src/core/process-runner.ts:706:12
+ ❯ src/tools/video/copy-then-encode.ts:459:22
+ ❯ inNumberedFolder src/tools/video/copy-then-encode.ts:286:12
+ ❯ tests/tools/video/copy-then-encode.vitest.ts:554:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[75/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runAttempts without fallback > maps an existing target to OUTPUT_EXISTS and removes the folder
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'OUTPUT_EXISTS' // Object.is equality
+
+Expected: "OUTPUT_EXISTS"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectCode tests/tools/video/copy-then-encode.vitest.ts:225:22
+    223|
+    224| function expectCode(error: MediaError, code: ErrorCode): void {
+    225|   expect(error.code).toBe(code);
+       |                      ^
+    226| }
+    227|
+ ❯ tests/tools/video/copy-then-encode.vitest.ts:625:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[76/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runPipeline > keeps the last pass under the first input name
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ probeIntermediateCodecs src/core/media-properties.ts:430:27
+ ❯ assertPortableMp4 src/tools/video/copy-then-encode.ts:411:39
+ ❯ src/tools/video/copy-then-encode.ts:505:9
+ ❯ withTempDir src/core/process-runner.ts:706:12
+ ❯ src/tools/video/copy-then-encode.ts:503:20
+ ❯ inNumberedFolder src/tools/video/copy-then-encode.ts:286:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[77/215]⎯
+
+ FAIL  tests/tools/video/copy-then-encode.vitest.ts > runPipeline > maps an existing target to OUTPUT_EXISTS and removes the folder
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'OUTPUT_EXISTS' // Object.is equality
+
+Expected: "OUTPUT_EXISTS"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectCode tests/tools/video/copy-then-encode.vitest.ts:225:22
+    223|
+    224| function expectCode(error: MediaError, code: ErrorCode): void {
+    225|   expect(error.code).toBe(code);
+       |                      ^
+    226| }
+    227|
+ ❯ tests/tools/video/copy-then-encode.vitest.ts:788:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[78/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > test_change_aspect_ratio: pads a 320x180 video to 4:3 at 240x180
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:557:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[79/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > fits wide to 4:3 by crop at 240 x 180
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > fits box to 16:9 by pad at 320 x 180
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > fits box to 16:9 by crop at 320 x 180
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > fits box to 1:1 by pad at 240 x 240
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > fits box to 1:1 by crop at 240 x 240
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:589:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[80/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > copies a 320x240 video that is already 4:3 and keeps h264
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:618:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[81/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > pads 320x240 to 21:9 at an even height of 136
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:646:27
+    644|     resizeMode: 'pad',
+    645|   });
+    646|   expect(outcome.isError).toBe(false);
+       |                           ^
+    647|   const filePath = writtenPath(outcome.body, 'box-aspect.mp4', 'ultraw…
+    648|   const size = pictureSize(probeView(await probeJson(filePath)));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[82/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > accepts a #RRGGBB padding colour
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:664:27
+    662|     paddingColor: '#FF0000',
+    663|   });
+    664|   expect(outcome.isError).toBe(false);
+       |                           ^
+    665|   const filePath = writtenPath(outcome.body, 'box-aspect.mp4', 'red-pa…
+    666|   expect(pictureSize(probeView(await probeJson(filePath)))).toEqual({
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[83/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > pads and crops a video that has no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:675:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[84/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > re-encodes pcm audio to aac when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:703:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[85/215]⎯
+
+ FAIL  tests/tools/video/set-aspect-ratio.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-aspect-ratio.vitest.ts:390:29
+    388|   const outcome = await setAspect(args);
+    389|   expect(outcome.isError).toBe(true);
+    390|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    391|   expect(outcome.body.details).toEqual(details);
+    392|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-aspect-ratio.vitest.ts:735:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[86/215]⎯
+
+ FAIL  tests/tools/video/set-audio-bitrate.vitest.ts > test_set_video_audio_track_bitrate: re-encodes the audio at 192k and copies the h264 picture
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-bitrate.vitest.ts:316:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[87/215]⎯
+
+ FAIL  tests/tools/video/set-audio-bitrate.vitest.ts > writes a 32k audio bit rate at least 3 times lower than at 192k
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/video/set-audio-bitrate.vitest.ts:359:25
+    357|       audioBitrate: '192k',
+    358|     });
+    359|     expect(low.isError).toBe(false);
+       |                         ^
+    360|     expect(high.isError).toBe(false);
+    361|     const lowPath = writtenPath(low.body, 'talk-audio-32k.mp4', '32k-a…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[88/215]⎯
+
+ FAIL  tests/tools/video/set-audio-bitrate.vitest.ts > re-encodes an ffv1 picture when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-bitrate.vitest.ts:377:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[89/215]⎯
+
+ FAIL  tests/tools/video/set-audio-bitrate.vitest.ts > returns UNSUPPORTED_FORMAT for a video with no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-bitrate.vitest.ts:403:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[90/215]⎯
+
+ FAIL  tests/tools/video/set-audio-bitrate.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-audio-bitrate.vitest.ts:242:29
+    240|   const outcome = await setAudioBitrate(args);
+    241|   expect(outcome.isError).toBe(true);
+    242|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    243|   expect(outcome.body.details).toEqual(details);
+    244|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-audio-bitrate.vitest.ts:421:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[91/215]⎯
+
+ FAIL  tests/tools/video/set-audio-channels.vitest.ts > sets 2 channels on a mono input and copies the h264 picture within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-channels.vitest.ts:325:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[92/215]⎯
+
+ FAIL  tests/tools/video/set-audio-channels.vitest.ts > test_set_video_audio_track_channels: sets 1 channel on a stereo input within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-channels.vitest.ts:360:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[93/215]⎯
+
+ FAIL  tests/tools/video/set-audio-channels.vitest.ts > re-encodes an ffv1 picture when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-channels.vitest.ts:380:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[94/215]⎯
+
+ FAIL  tests/tools/video/set-audio-channels.vitest.ts > returns UNSUPPORTED_FORMAT for a video with no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-channels.vitest.ts:405:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[95/215]⎯
+
+ FAIL  tests/tools/video/set-audio-channels.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-audio-channels.vitest.ts:245:29
+    243|   const outcome = await setAudioChannels(args);
+    244|   expect(outcome.isError).toBe(true);
+    245|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    246|   expect(outcome.body.details).toEqual(details);
+    247|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-audio-channels.vitest.ts:423:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[96/215]⎯
+
+ FAIL  tests/tools/video/set-audio-codec.vitest.ts > test_set_video_audio_track_codec: re-encodes aac audio and copies the h264 picture
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-codec.vitest.ts:292:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[97/215]⎯
+
+ FAIL  tests/tools/video/set-audio-codec.vitest.ts > writes mp3 audio for libmp3lame into libmp3lame
+ FAIL  tests/tools/video/set-audio-codec.vitest.ts > writes mp3 audio for mp3 into libmp3lame
+ FAIL  tests/tools/video/set-audio-codec.vitest.ts > writes opus audio for libopus into libopus
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-codec.vitest.ts:320:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[98/215]⎯
+
+ FAIL  tests/tools/video/set-audio-codec.vitest.ts > re-encodes an ffv1 picture when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-codec.vitest.ts:350:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[99/215]⎯
+
+ FAIL  tests/tools/video/set-audio-codec.vitest.ts > returns UNSUPPORTED_FORMAT for a video with no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-codec.vitest.ts:376:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[100/215]⎯
+
+ FAIL  tests/tools/video/set-audio-codec.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-audio-codec.vitest.ts:212:29
+    210|   const outcome = await setAudioCodec(args);
+    211|   expect(outcome.isError).toBe(true);
+    212|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    213|   expect(outcome.body.details).toEqual(details);
+    214|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-audio-codec.vitest.ts:394:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[101/215]⎯
+
+ FAIL  tests/tools/video/set-audio-sample-rate.vitest.ts > test_set_video_audio_track_sample_rate: sets the audio to 48000 Hz and copies the h264 picture within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-sample-rate.vitest.ts:322:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[102/215]⎯
+
+ FAIL  tests/tools/video/set-audio-sample-rate.vitest.ts > writes 22050 Hz from the same 44100 Hz input within 0.15 seconds
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-sample-rate.vitest.ts:354:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[103/215]⎯
+
+ FAIL  tests/tools/video/set-audio-sample-rate.vitest.ts > re-encodes an ffv1 picture when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-sample-rate.vitest.ts:374:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[104/215]⎯
+
+ FAIL  tests/tools/video/set-audio-sample-rate.vitest.ts > returns UNSUPPORTED_FORMAT for a video with no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-audio-sample-rate.vitest.ts:399:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[105/215]⎯
+
+ FAIL  tests/tools/video/set-audio-sample-rate.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-audio-sample-rate.vitest.ts:248:29
+    246|   const outcome = await setAudioSampleRate(args);
+    247|   expect(outcome.isError).toBe(true);
+    248|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    249|   expect(outcome.body.details).toEqual(details);
+    250|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-audio-sample-rate.vitest.ts:417:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[106/215]⎯
+
+ FAIL  tests/tools/video/set-bitrate.vitest.ts > test_set_video_bitrate: re-encodes at 2M and keeps aac
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-bitrate.vitest.ts:318:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[107/215]⎯
+
+ FAIL  tests/tools/video/set-bitrate.vitest.ts > writes a video bit rate at least 3 times lower at 50k than at 2M
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-bitrate.vitest.ts:344:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[108/215]⎯
+
+ FAIL  tests/tools/video/set-bitrate.vitest.ts > re-encodes pcm audio to aac when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-bitrate.vitest.ts:388:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[109/215]⎯
+
+ FAIL  tests/tools/video/set-bitrate.vitest.ts > re-encodes a video that has no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-bitrate.vitest.ts:408:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[110/215]⎯
+
+ FAIL  tests/tools/video/set-bitrate.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-bitrate.vitest.ts:230:29
+    228|   const outcome = await setBitrate(args);
+    229|   expect(outcome.isError).toBe(true);
+    230|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    231|   expect(outcome.body.details).toEqual(details);
+    232|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-bitrate.vitest.ts:424:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[111/215]⎯
+
+ FAIL  tests/tools/video/set-codec.vitest.ts > test_set_video_codec: encodes libx264 as h264 and keeps aac
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-codec.vitest.ts:288:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[112/215]⎯
+
+ FAIL  tests/tools/video/set-codec.vitest.ts > encodes libx265 as hevc in a libx265 file and keeps aac
+ FAIL  tests/tools/video/set-codec.vitest.ts > encodes vp9 as vp9 in a libvpx-vp9 file and keeps aac
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-codec.vitest.ts:316:34
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[113/215]⎯
+
+ FAIL  tests/tools/video/set-codec.vitest.ts > re-encodes pcm audio to aac when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-codec.vitest.ts:345:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[114/215]⎯
+
+ FAIL  tests/tools/video/set-codec.vitest.ts > re-encodes a video that has no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-codec.vitest.ts:370:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[115/215]⎯
+
+ FAIL  tests/tools/video/set-codec.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-codec.vitest.ts:206:29
+    204|   const outcome = await setCodec(args);
+    205|   expect(outcome.isError).toBe(true);
+    206|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    207|   expect(outcome.body.details).toEqual(details);
+    208|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-codec.vitest.ts:400:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[116/215]⎯
+
+ FAIL  tests/tools/video/set-codec.vitest.ts > returns CAPABILITY_MISSING for libx265 before any ffmpeg run
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'CAPABILITY_MISSING' // Object.is equality
+
+Expected: "CAPABILITY_MISSING"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/video/set-codec.vitest.ts:512:24
+    510|     return;
+    511|   }
+    512|   expect(failure.code).toBe(ERROR_CODES.CAPABILITY_MISSING);
+       |                        ^
+    513|   expect(failure.details.name).toBe('libx265');
+    514|   expect(failure.details.kind).toBe('encoder');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[117/215]⎯
+
+ FAIL  tests/tools/video/set-frame-rate.vitest.ts > test_set_video_frame_rate: re-encodes 25 fps input to 24 fps and keeps aac
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-frame-rate.vitest.ts:276:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[118/215]⎯
+
+ FAIL  tests/tools/video/set-frame-rate.vitest.ts > re-encodes to 12.5 fps as 25/2
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-frame-rate.vitest.ts:303:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[119/215]⎯
+
+ FAIL  tests/tools/video/set-frame-rate.vitest.ts > re-encodes pcm audio to aac when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-frame-rate.vitest.ts:334:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[120/215]⎯
+
+ FAIL  tests/tools/video/set-frame-rate.vitest.ts > re-encodes a video that has no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-frame-rate.vitest.ts:360:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[121/215]⎯
+
+ FAIL  tests/tools/video/set-frame-rate.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-frame-rate.vitest.ts:194:29
+    192|   const outcome = await setFrameRate(args);
+    193|   expect(outcome.isError).toBe(true);
+    194|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    195|   expect(outcome.body.details).toEqual(details);
+    196|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-frame-rate.vitest.ts:381:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[122/215]⎯
+
+ FAIL  tests/tools/video/set-resolution.vitest.ts > test_set_video_resolution: scales 320x240 to 160x120 and keeps aac
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-resolution.vitest.ts:279:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[123/215]⎯
+
+ FAIL  tests/tools/video/set-resolution.vitest.ts > scales a height of 120 to 160x120 as h120
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-resolution.vitest.ts:307:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[124/215]⎯
+
+ FAIL  tests/tools/video/set-resolution.vitest.ts > returns PROCESS_FAILED for odd height 121, a known libx264 4:2:0 limit
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/video/set-resolution.vitest.ts:337:31
+    335|     });
+    336|     expect(outcome.isError).toBe(true);
+    337|     expect(outcome.body.code).toBe(ERROR_CODES.PROCESS_FAILED);
+       |                               ^
+    338|     const details = asRecord(outcome.body.details);
+    339|     expect(typeof details.binary).toBe('string');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[125/215]⎯
+
+ FAIL  tests/tools/video/set-resolution.vitest.ts > re-encodes pcm audio to aac when the copy cannot
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-resolution.vitest.ts:361:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[126/215]⎯
+
+ FAIL  tests/tools/video/set-resolution.vitest.ts > scales a video that has no audio
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-resolution.vitest.ts:388:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[127/215]⎯
+
+ FAIL  tests/tools/video/set-resolution.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-resolution.vitest.ts:197:29
+    195|   const outcome = await setResolution(args);
+    196|   expect(outcome.isError).toBe(true);
+    197|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    198|   expect(outcome.body.details).toEqual(details);
+    199|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-resolution.vitest.ts:409:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[128/215]⎯
+
+ FAIL  tests/tools/video/set-speed.vitest.ts > test_change_video_speed: speeds a 3 second clip with audio to about 2 seconds at 1.5
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-speed.vitest.ts:307:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[129/215]⎯
+
+ FAIL  tests/tools/video/set-speed.vitest.ts > speeds a 4 second clip to about 1 second at 4.0
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-speed.vitest.ts:332:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[130/215]⎯
+
+ FAIL  tests/tools/video/set-speed.vitest.ts > slows a 1 second clip to about 4 seconds at 0.25
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-speed.vitest.ts:351:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[131/215]⎯
+
+ FAIL  tests/tools/video/set-speed.vitest.ts > slows a 1 second clip to about 2 seconds at 0.5
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/video/set-speed.vitest.ts:373:27
+    371|     speedFactor: 0.5,
+    372|   });
+    373|   expect(outcome.isError).toBe(false);
+       |                           ^
+    374|   const filePath = writtenPath(outcome.body, 'slow-0.5x.mp4', 'half-sp…
+    375|   const outputProbe = probeView(await probeJson(filePath));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[132/215]⎯
+
+ FAIL  tests/tools/video/set-speed.vitest.ts > speeds a silent 2 second clip to about 1 second at 2.0
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/video/set-speed.vitest.ts:383:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[133/215]⎯
+
+ FAIL  tests/tools/video/set-speed.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/video/set-speed.vitest.ts:226:29
+    224|   const outcome = await setSpeed(args);
+    225|   expect(outcome.isError).toBe(true);
+    226|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    227|   expect(outcome.body.details).toEqual(details);
+    228|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/video/set-speed.vitest.ts:414:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[134/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > builds a three-rung ladder with playlists, segments and totals
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:473:29
+    471|
+    472| it('builds a three-rung ladder with playlists, segments and totals', (…
+    473|   expect(threeRung.isError).toBe(false);
+       |                             ^
+    474|   expect(threeRung.body.tool).toBe('video_hls_ladder');
+    475|   const masterPath = masterPathOf(threeRung.body);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[135/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > encodes every rung with its own profile, level and frame size
+Error: expected a master playlist path
+ ❯ masterPathOf tests/tools/media/hls-ladder.vitest.ts:268:11
+    266|   const value = body.masterPlaylist;
+    267|   if (typeof value !== 'string') {
+    268|     throw new Error('expected a master playlist path');
+       |           ^
+    269|   }
+    270|   return value;
+ ❯ tests/tools/media/hls-ladder.vitest.ts:528:31
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[136/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > lets ffprobe read the master playlist as a video
+Error: expected a master playlist path
+ ❯ masterPathOf tests/tools/media/hls-ladder.vitest.ts:268:11
+    266|   const value = body.masterPlaylist;
+    267|   if (typeof value !== 'string') {
+    268|     throw new Error('expected a master playlist path');
+       |           ^
+    269|   }
+    270|   return value;
+ ❯ tests/tools/media/hls-ladder.vitest.ts:542:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[137/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > writes fewer segments when the segment duration grows
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:555:27
+    553|     segmentDuration: 4,
+    554|   });
+    555|   expect(outcome.isError).toBe(false);
+       |                           ^
+    556|   const short = bodyRungs(threeRung.body).find((row) => row.rung === '…
+    557|   const long = bodyRungs(outcome.body)[0];
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[138/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > writes more bytes for a lower crf on the same rung
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:583:23
+    581|     crf: 28,
+    582|   });
+    583|   expect(low.isError).toBe(false);
+       |                       ^
+    584|   expect(high.isError).toBe(false);
+    585|   const lowBytes = low.body.totalBytes;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[139/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > orders the master by ladder order whatever order the caller gave
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:600:27
+    598|     rungs: ['360p', '720p'],
+    599|   });
+    600|   expect(outcome.isError).toBe(false);
+       |                           ^
+    601|   expect(playlistUris(readFileSync(masterPathOf(outcome.body), 'utf8')…
+    602|     '720p/playlist.m3u8',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[140/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > letterboxes a portrait source into a 1280x720 segment
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:614:27
+    612|     rungs: ['720p'],
+    613|   });
+    614|   expect(outcome.isError).toBe(false);
+       |                           ^
+    615|   const folder = path.dirname(masterPathOf(outcome.body));
+    616|   const probe = await probeJson(path.join(folder, '720p', 'segment_000…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[141/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > keeps a percent sign in the description out of every path
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:628:27
+    626|     rungs: ['360p'],
+    627|   });
+    628|   expect(outcome.isError).toBe(false);
+       |                           ^
+    629|   const masterPath = masterPathOf(outcome.body);
+    630|   expect(masterPath.includes('%')).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[142/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > returns UNSUPPORTED_FORMAT for an audio-only input
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/media/hls-ladder.vitest.ts:391:29
+    389|   const outcome = await ladderCall(args);
+    390|   expect(outcome.isError).toBe(true);
+    391|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    392|   expect(outcome.body.details).toEqual(details);
+    393|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/media/hls-ladder.vitest.ts:671:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[143/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > refuses without libx264 before ffmpeg runs
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > refuses without pad before ffmpeg runs
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'CAPABILITY_MISSING' // Object.is equality
+
+Expected: "CAPABILITY_MISSING"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:744:26
+    742|       throw new Error('expected a capability failure');
+    743|     }
+    744|     expect(failure.code).toBe(ERROR_CODES.CAPABILITY_MISSING);
+       |                          ^
+    745|     expect(failure.details).toEqual({
+    746|       binary: STUB_BINARY_PATH,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[144/215]⎯
+
+ FAIL  tests/tools/media/hls-ladder.vitest.ts > fails when ffmpeg exits zero without writing segments
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/media/hls-ladder.vitest.ts:796:24
+    794|     throw new Error('expected an output-check failure');
+    795|   }
+    796|   expect(failure.code).toBe(ERROR_CODES.PROCESS_FAILED);
+       |                        ^
+    797|   expect(failure.details.exitCode).toBe(0);
+    798|   expect(failure.details.stderrTail).toBe('Failed to open file');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[145/215]⎯
+
+ FAIL  tests/tools/media/hls-rungs.vitest.ts > drops 1080p for a 1280x720 source and writes only the kept rungs
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-rungs.vitest.ts:434:31
+    432|
+    433| it('drops 1080p for a 1280x720 source and writes only the kept rungs',…
+    434|   expect(wideDefault.isError).toBe(false);
+       |                               ^
+    435|   expect(wideDefault.body.tool).toBe('video_hls_ladder');
+    436|   const masterPath = masterPathOf(wideDefault.body);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[146/215]⎯
+
+ FAIL  tests/tools/media/hls-rungs.vitest.ts > writes every kept rung at its frame and never above the source
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/media/hls-rungs.vitest.ts:474:30
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[147/215]⎯
+
+ FAIL  tests/tools/media/hls-rungs.vitest.ts > keeps only the 360p rung for a 640x360 source
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-rungs.vitest.ts:490:32
+    488|
+    489| it('keeps only the 360p rung for a 640x360 source', async (): Promise<…
+    490|   expect(smallDefault.isError).toBe(false);
+       |                                ^
+    491|   const masterPath = masterPathOf(smallDefault.body);
+    492|   const folder = path.dirname(masterPath);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[148/215]⎯
+
+ FAIL  tests/tools/media/hls-rungs.vitest.ts > compares a 720x1280 portrait source by its shorter side
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-rungs.vitest.ts:507:35
+    505|
+    506| it('compares a 720x1280 portrait source by its shorter side', async ()…
+    507|   expect(portraitDefault.isError).toBe(false);
+       |                                   ^
+    508|   const masterPath = masterPathOf(portraitDefault.body);
+    509|   const folder = path.dirname(masterPath);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[149/215]⎯
+
+ FAIL  tests/tools/media/hls-rungs.vitest.ts > builds the 1080p rung alone when the source can hold it
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/hls-rungs.vitest.ts:522:32
+    520|
+    521| it('builds the 1080p rung alone when the source can hold it', async ()…
+    522|   expect(fullHdSingle.isError).toBe(false);
+       |                                ^
+    523|   const masterPath = masterPathOf(fullHdSingle.body);
+    524|   const folder = path.dirname(masterPath);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[150/215]⎯
+
+ FAIL  tests/tools/media/hls-rungs.vitest.ts > returns INVALID_INPUT when no requested rung fits the source
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'INVALID_INPUT' // Object.is equality
+
+Expected: "INVALID_INPUT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/media/hls-rungs.vitest.ts:332:29
+    330|   const outcome = await ladderCall(args);
+    331|   expect(outcome.isError).toBe(true);
+    332|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    333|   expect(outcome.body.details).toEqual(details);
+    334|   expect(outcome.body).not.toHaveProperty('outputs');
+ ❯ tests/tools/media/hls-rungs.vitest.ts:535:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[151/215]⎯
+
+ FAIL  tests/tools/media/hls-rungs.vitest.ts > runs no ffmpeg and creates no folder when every rung is dropped
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'INVALID_INPUT' // Object.is equality
+
+Expected: "INVALID_INPUT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/media/hls-rungs.vitest.ts:573:24
+    571|     throw new Error('expected a rung failure');
+    572|   }
+    573|   expect(failure.code).toBe(ERROR_CODES.INVALID_INPUT);
+       |                        ^
+    574|   expect(failure.details).toEqual({
+    575|     parameter: 'rungs',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[152/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > probes a video with sound and reports both streams
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/probe.vitest.ts:213:27
+    211|   const before = sha256Of(clipPath);
+    212|   const outcome = await probe({ inputPath: clipPath });
+    213|   expect(outcome.isError).toBe(false);
+       |                           ^
+    214|   const body = outcome.body;
+    215|   expect(body.tool).toBe('media_probe');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[153/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > omits the audio keys for a silent video
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/probe.vitest.ts:263:27
+    261|   const before = sha256Of(silentPath);
+    262|   const outcome = await probe({ inputPath: silentPath });
+    263|   expect(outcome.isError).toBe(false);
+       |                           ^
+    264|   expect(outcome.text).toBe('Probed silent.mp4: 1 stream, 2.00 seconds…
+    265|   const summary = asRecord(outcome.body.summary);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[154/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > reports an audio file without picture keys
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/probe.vitest.ts:279:27
+    277|   const before = sha256Of(tonePath);
+    278|   const outcome = await probe({ inputPath: tonePath });
+    279|   expect(outcome.isError).toBe(false);
+       |                           ^
+    280|   expect(outcome.text).toBe('Probed tone.mp3: 1 stream, 2.00 seconds.'…
+    281|   expect(String(asRecord(outcome.body.format).formatName)).toContain('…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[155/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > reads a still image as one video stream with its pixel format
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/probe.vitest.ts:299:27
+    297|   const before = sha256Of(pngPath);
+    298|   const outcome = await probe({ inputPath: pngPath });
+    299|   expect(outcome.isError).toBe(false);
+       |                           ^
+    300|   expect(outcome.text).toBe('Probed still.png: 1 stream.');
+    301|   const summary = asRecord(outcome.body.summary);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[156/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > reports 30 fps for a missing rate and omits absent keys
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ Object.runBinary tests/tools/media/probe.vitest.ts:335:22
+ ❯ probeJsonAt src/core/media-properties.ts:329:18
+ ❯ readProbe src/tools/media/probe.ts:337:12
+ ❯ runProbe src/tools/media/probe.ts:353:21
+ ❯ tests/tools/media/probe.vitest.ts:339:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[157/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > keeps the output folder and every input byte unchanged
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/media/probe.vitest.ts:153:29
+    151|   const outcome = await probe(args);
+    152|   expect(outcome.isError).toBe(true);
+    153|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    154|   expect(outcome.body).not.toHaveProperty('outputs');
+    155|   return outcome;
+ ❯ tests/tools/media/probe.vitest.ts:366:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[158/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > returns PROCESS_FAILED naming media_repair for an MP4 cut before its index
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/media/probe.vitest.ts:153:29
+    151|   const outcome = await probe(args);
+    152|   expect(outcome.isError).toBe(true);
+    153|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    154|   expect(outcome.body).not.toHaveProperty('outputs');
+    155|   return outcome;
+ ❯ tests/tools/media/probe.vitest.ts:377:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[159/215]⎯
+
+ FAIL  tests/tools/media/probe.vitest.ts > returns PROCESS_FAILED naming media_repair for a zero byte file
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/media/probe.vitest.ts:153:29
+    151|   const outcome = await probe(args);
+    152|   expect(outcome.isError).toBe(true);
+    153|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    154|   expect(outcome.body).not.toHaveProperty('outputs');
+    155|   return outcome;
+ ❯ tests/tools/media/probe.vitest.ts:390:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[160/215]⎯
+
+ FAIL  tests/tools/media/repair-diagnose.vitest.ts > repairs an unindexed Matroska by copying its streams
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-diagnose.vitest.ts:254:27
+    252|     strategy: 'remux',
+    253|   });
+    254|   expect(outcome.isError).toBe(false);
+       |                           ^
+    255|   const body = outcome.body;
+    256|   const entry = repairedEntry(body, 'unindexed-repaired.mkv');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[161/215]⎯
+
+ FAIL  tests/tools/media/repair-diagnose.vitest.ts > repairs a clean MP4 and reports its duration
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-diagnose.vitest.ts:288:27
+    286|     strategy: 'remux',
+    287|   });
+    288|   expect(outcome.isError).toBe(false);
+       |                           ^
+    289|   repairedEntry(outcome.body, 'clean-repaired.mp4');
+    290|   const diagnosis = asRecord(outcome.body.diagnosis);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[162/215]⎯
+
+ FAIL  tests/tools/media/repair-diagnose.vitest.ts > refuses a file whose diagnosis read no stream
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'UNSUPPORTED_FORMAT' // Object.is equality
+
+Expected: "UNSUPPORTED_FORMAT"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/media/repair-diagnose.vitest.ts:127:29
+    125|   const outcome = await repair(args);
+    126|   expect(outcome.isError).toBe(true);
+    127|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    128|   expect(outcome.body).not.toHaveProperty('outputs');
+    129|   expect(listFolders(sandbox.outputDir)).toEqual(before);
+ ❯ tests/tools/media/repair-diagnose.vitest.ts:298:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[163/215]⎯
+
+ FAIL  tests/tools/media/repair-diagnose.vitest.ts > returns PROCESS_FAILED when the copy cannot enter the container
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ expectFailure tests/tools/media/repair-diagnose.vitest.ts:127:29
+    125|   const outcome = await repair(args);
+    126|   expect(outcome.isError).toBe(true);
+    127|   expect(outcome.body.code).toBe(code);
+       |                             ^
+    128|   expect(outcome.body).not.toHaveProperty('outputs');
+    129|   expect(listFolders(sandbox.outputDir)).toEqual(before);
+ ❯ tests/tools/media/repair-diagnose.vitest.ts:321:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[164/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > re-encodes a cut MP4 into clean H.264 and AAC
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:254:27
+    252|     strategy: 'reencode',
+    253|   });
+    254|   expect(outcome.isError).toBe(false);
+       |                           ^
+    255|   const entry = repairedEntry(outcome.body, 'cut-repaired.mp4', 'video…
+    256|   const expectedText = 'Repaired cut.mp4 by re-encoding. '
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[165/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > re-encodes cut audio into a single AAC stream
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:283:27
+    281|     strategy: 'reencode',
+    282|   });
+    283|   expect(outcome.isError).toBe(false);
+       |                           ^
+    284|   const entry = repairedEntry(outcome.body, 'cut-repaired.m4a', 'audio…
+    285|   expect(streamsOf(await probeJson(String(entry.path)))).toEqual([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[166/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > re-encodes a silent video without adding an audio stream
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:300:27
+    298|     strategy: 'reencode',
+    299|   });
+    300|   expect(outcome.isError).toBe(false);
+       |                           ^
+    301|   const entry = repairedEntry(outcome.body, 'silent-repaired.mp4', 'vi…
+    302|   const probe = await probeJson(String(entry.path));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[167/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto copies an unindexed recording without a re-encode
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:316:27
+    314|     strategy: 'auto',
+    315|   });
+    316|   expect(outcome.isError).toBe(false);
+       |                           ^
+    317|   const entry = repairedEntry(outcome.body, 'unindexed-repaired.mkv', …
+    318|   const expectedText = 'Repaired unindexed.mkv with a stream copy. '
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[168/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto re-encodes when the stream copy cannot enter the container
+Error: ffprobe is not available
+ ❯ probeJson tests/helpers/media.ts:417:11
+    415|   const binary = await resolveTestBinary('ffprobe');
+    416|   if (binary === undefined) {
+    417|     throw new Error('ffprobe is not available');
+       |           ^
+    418|   }
+    419|   const result = await runProcess(binary, [
+ ❯ tests/tools/media/repair-strategies.vitest.ts:331:23
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[169/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto re-encodes a cut MP4 whose copy keeps decode errors
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:356:27
+    354|     strategy: 'auto',
+    355|   });
+    356|   expect(outcome.isError).toBe(false);
+       |                           ^
+    357|   const entry = repairedEntry(outcome.body, 'cut-repaired.mp4', 'video…
+    358|   expect(asRecord(outcome.body.repair).pass).toBe('reencode');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[170/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > re-encodes a song with album art as audio only
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:372:27
+    370|     strategy: 'reencode',
+    371|   });
+    372|   expect(outcome.isError).toBe(false);
+       |                           ^
+    373|   const entry = repairedEntry(outcome.body, 'song-repaired.m4a', 'audi…
+    374|   expect(streamsOf(await probeJson(String(entry.path)))).toEqual([
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[171/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto copies a song with album art into its own container
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:389:27
+    387|     strategy: 'auto',
+    388|   });
+    389|   expect(outcome.isError).toBe(false);
+       |                           ^
+    390|   repairedEntry(outcome.body, 'song-repaired.mp3', 'audio');
+    391|   expect(asRecord(outcome.body.repair).pass).toBe('remux');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[172/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto names the re-encoded file .mp4 when the copy fails
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:402:27
+    400|     strategy: 'auto',
+    401|   });
+    402|   expect(outcome.isError).toBe(false);
+       |                           ^
+    403|   const entry = repairedEntry(outcome.body, 'webm-named-repaired.mp4',…
+    404|   expect(asRecord(outcome.body.repair).pass).toBe('reencode');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[173/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > refuses the video re-encode before ffmpeg runs when libx264 is absent
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'CAPABILITY_MISSING' // Object.is equality
+
+Expected: "CAPABILITY_MISSING"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:421:26
+    419|       strategy: 'reencode',
+    420|     });
+    421|     expect(failure.code).toBe(ERROR_CODES.CAPABILITY_MISSING);
+       |                          ^
+    422|     expect(failure.details.name).toBe('libx264');
+    423|     expect(failure.details.kind).toBe('encoder');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[174/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto copies an unindexed recording when both encoders are absent
+MediaError: ffprobe was not found. Run media_setup_ffmpeg to install a bundled build.
+ ❯ resolveBinary src/core/ffmpeg-resolver.ts:717:9
+    715|     ? ERROR_CODES.FFMPEG_NOT_FOUND
+    716|     : ERROR_CODES.FFPROBE_NOT_FOUND;
+    717|   throw new MediaError(code, result.info.message, {
+       |         ^
+    718|     lookedIn: result.info.lookedIn.slice(),
+    719|     envVar: result.info.envVar,
+ ❯ Object.runBinary src/server/tool-context.ts:358:16
+ ❯ diagnose src/tools/media/repair.ts:322:20
+ ❯ runRepair src/tools/media/repair.ts:426:21
+ ❯ tests/tools/media/repair-strategies.vitest.ts:434:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[175/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto stops before the re-encode when libx264 is absent
+AssertionError: expected +0 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:459:22
+    457|     strategy: 'auto',
+    458|   });
+    459|   expect(runs.count).toBe(1);
+       |                      ^
+    460|   expect(failure.code).toBe(ERROR_CODES.CAPABILITY_MISSING);
+    461|   expect(failure.details.name).toBe('libx264');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[176/215]⎯
+
+ FAIL  tests/tools/media/repair-strategies.vitest.ts > auto joins both tails when the copy and the re-encode fail
+AssertionError: expected 'FFPROBE_NOT_FOUND' to be 'PROCESS_FAILED' // Object.is equality
+
+Expected: "PROCESS_FAILED"
+Received: "FFPROBE_NOT_FOUND"
+
+ ❯ tests/tools/media/repair-strategies.vitest.ts:491:24
+    489|     strategy: 'auto',
+    490|   });
+    491|   expect(failure.code).toBe(ERROR_CODES.PROCESS_FAILED);
+       |                        ^
+    492|   expect(failure.details.stderrTail).toBe('pass 1 failed\npass 2 faile…
+    493|   expect(runs.count).toBe(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[177/215]⎯
+
+
+ Test Files  37 failed | 46 passed (83)
+      Tests  204 failed | 1302 passed | 134 skipped (1640)
+   Start at  19:30:11
+   Duration  15.94s (tests 55%, import 38%, transform 7%)
+

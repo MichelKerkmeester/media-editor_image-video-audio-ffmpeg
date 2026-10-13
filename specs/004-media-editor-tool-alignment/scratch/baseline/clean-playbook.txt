@@ -1,0 +1,41 @@
+contract=operator-scenario routing_gold_contract=routing-gold strict=on
+manifest=../Code_Environment/Public/.skilled/skills/sk-doc/sk-create-manual-testing-playbook/playbook-corpus-manifest.json
+warn_packages=
+FAIL package=../../../../../../../../private/tmp/claude-501/-Users-michelkerkmeester-MEGA-Development-AI-Systems/5347dbce-12b3-4d28-9826-cfbf11c6be1d/scratchpad/clean/AI Systems/Media Editor/sk-media-editor tier=FAIL_CLOSED scenarios=19 categories=16 operator=19 routing_gold_excluded=0 violations=36 warnings=0
+  PATH_OUTSIDE_REPO project-ambiguity-intake/one-comprehensive-question.md:88 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-ambiguity-intake/one-comprehensive-question.md:89 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-boundaries/generation-request-refusal.md:88 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-boundaries/size-limit-escalation.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-boundaries/size-limit-escalation.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-command-routing/command-overrides-keywords.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-guidance-delivery/chat-guidance-delivery.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-guidance-delivery/chat-guidance-delivery.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-hls-recipe/ffmpeg-terminal-recipe.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-hls-recipe/ffmpeg-terminal-recipe.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-identity-handover/identity-handover.md:108 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-identity-handover/identity-handover.md:109 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-no-execution-truth/cannot-execute-files.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-no-execution-truth/cannot-execute-files.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-route-order/connected-tools-in-desktop.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO project-route-order/connected-tools-in-desktop.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-ambiguity-intake/one-comprehensive-question.md:88 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-ambiguity-intake/one-comprehensive-question.md:89 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-boundaries/generation-request-refusal.md:89 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-boundaries/generation-request-refusal.md:90 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-command-routing/command-overrides-keywords.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-command-routing/command-overrides-keywords.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-command-routing/image-command-routing.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-command-routing/image-command-routing.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-export-delivery/export-first-path-response.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-export-delivery/export-first-path-response.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-hls-streaming/ffmpeg-only-hls-conversion.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-hls-streaming/ffmpeg-only-hls-conversion.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-identity-handover/identity-handover.md:108 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-identity-handover/identity-handover.md:109 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-route-order/connected-tools-first.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-route-order/connected-tools-first.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-route-order/fallback-to-local-ffmpeg.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-route-order/fallback-to-local-ffmpeg.md:87 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-tool-verification/missing-ffmpeg-refusal.md:86 local link resolves outside the repository
+  PATH_OUTSIDE_REPO skill-tool-verification/missing-ffmpeg-refusal.md:87 local link resolves outside the repository
+exit=1

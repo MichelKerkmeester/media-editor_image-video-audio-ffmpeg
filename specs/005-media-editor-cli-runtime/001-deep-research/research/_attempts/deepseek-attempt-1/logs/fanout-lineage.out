@@ -1,0 +1,12 @@
+Packet complete on disk in `AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research/research/lineages/deepseek`:
+
+- `iterations/iteration-001.md` … `iteration-005.md` (five focuses, 33 findings, all cited)
+- `deltas/iter-001.jsonl` … `iter-005.jsonl` (route keys per steer)
+- `deep-research-state.jsonl` (5 iteration records + terminal synthesis, `stopReason: maxIterationsReached`)
+- `deep-research-strategy.md`, `deep-research-dashboard.md`, `findings-registry.json`, `research.md`
+
+All five verify with `verify-iteration.cjs` (exit 0). Read `steer.md` and applied its records-only correction. No write landed outside the lineage directory.
+
+Headline results: the dispatch seam needs one import moved and one throw turned into a result. `cmp -s` confirmed the three mirrors byte-identical and revealed the declared pair set is seven. The official Claude Code docs show a plugin `bin/` blocks claude.ai and Cowork installs and that skill Markdown resolves `${CLAUDE_PLUGIN_ROOT}` inline but not in Bash, so the skill carries a resolved invocation line instead of a shim. Per your instruction to test rather than assume, the proposed `setup.md` split is rejected and multi-input `image_convert` is preferred over a `targetFolder` field, with `maxBytes` and the server guard both declined.
+
+FANOUT_LINEAGE_COMPLETE:deepseek

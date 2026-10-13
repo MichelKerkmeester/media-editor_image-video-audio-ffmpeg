@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "packet_id": "005-media-editor-cli-runtime/002-runtime-rename",
+  "spec_folder": "005-media-editor-cli-runtime/002-runtime-rename",
+  "parent_id": "005-media-editor-cli-runtime",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor runtime rename",
+      "mcp server to runtime",
+      "media editor folder rename",
+      "runtime rename mirror pairs",
+      "runtime rename plan",
+      "git mv mcp server",
+      "leftover mention check",
+      "mirror pair parity",
+      "runtime rename tasks",
+      "mention sweep tasks",
+      "rename verification checklist",
+      "mirror pair edit tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "runtime",
+      "rename",
+      "mcp",
+      "server",
+      "folder",
+      "mirror",
+      "pairs",
+      "plan",
+      "git",
+      "leftover"
+    ],
+    "importance_tier": "normal",
+    "status": "draft",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "sk-media-editor/SKILL.md",
+      "runtime/README.md",
+      "scratch/mentions.txt"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "runtime/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "mentions.txt",
+        "kind": "file",
+        "path": "scratch/mentions.txt",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context This",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Scope Boundary",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Sync Loop",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Mechanical",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Components",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Completion Criteria",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Checklist",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The runtime folder is named `mcp server/`, after one transport",
+    "created_at": "2026-10-04T11:47:29Z",
+    "last_save_at": "2026-10-13T12:53:41.660Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:d6f737f45765c43b4acf67727612e6243c1b38781284b7bd2eeec3c5327f9961",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "fb71a0136593eb13bcf6df5ec2d677b17e179a287a63c7bfbc34a5009b5451b4",
+      "plan.md": "33630872135d0e8f850f1f1dca04af775fd7d4dd48c0d7faf3c1c721933a9435",
+      "tasks.md": "8b8158f029194c6c9d2ff10bb6e4223b688e237cfa27411c03454992cc01a9fa",
+      "implementation-summary.md": "0f8248352ed163a1e8cd72e151f3177257a848f02f6275b30682ad175ed194a3"
+    },
+    "last_active_at": null
+  }
+}

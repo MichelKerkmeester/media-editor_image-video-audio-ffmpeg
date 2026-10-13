@@ -1,0 +1,31 @@
+{
+  "level": "2",
+  "specFolder": "005-media-editor-cli-runtime/003-naming-and-placement-hardening",
+  "description": "In a Claude Desktop Project, Sonnet 5.5 medium converted four PNGs from `media files/import` to WebP under 100 KB without asking about names or a",
+  "keywords": [
+    "claude",
+    "desktop",
+    "project",
+    "sonnet",
+    "medium",
+    "converted",
+    "four",
+    "pngs",
+    "media",
+    "files",
+    "import",
+    "webp",
+    "without",
+    "asking",
+    "about",
+    "names"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.527Z",
+  "specId": "003",
+  "folderSlug": "naming-and-placement-hardening",
+  "parentChain": [
+    "005-media-editor-cli-runtime"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}
