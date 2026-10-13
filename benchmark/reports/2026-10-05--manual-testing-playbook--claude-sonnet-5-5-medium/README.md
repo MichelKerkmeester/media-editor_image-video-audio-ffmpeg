@@ -1,6 +1,6 @@
 # Media Editor manual testing playbook run, 2026-10-05
 
-Every scenario in `sk-media-editor/manual-testing-playbook/` run on its own packaging, model `claude-sonnet-5-5`, effort `medium`, through the shared harness `run_packaging.sh`. This folder holds the final round. The rounds before it, and the fix each failure got at its cause, are recorded in `specs/088-media-editor-cli-runtime/006-verify-and-release/scratch/gates.md`.
+Every scenario in `sk-media-editor/manual-testing-playbook/` run on its own packaging, model `claude-sonnet-5-5`, effort `medium`, through the shared harness `run_packaging.sh`. This folder holds the final round. The rounds before it, and the fix each failure got at its cause, are recorded in `AI Systems/Media Editor/specs/005-media-editor-cli-runtime/006-verify-and-release/scratch/gates.md`.
 
 ## 1. What was run
 
