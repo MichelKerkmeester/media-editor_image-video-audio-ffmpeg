@@ -136,7 +136,7 @@ contextType: "general"
 - [x] CHK-FIX-004 [P0] The CLI config path is checked against bare-token, outside-root and empty-argv cases. Evidence: `loadConfig` run with empty, bare-token and flag argv, outside-root cited, `research/research.md` section 6.
 - [x] CHK-FIX-005 [P1] The batch matrix axes and row count are listed. Evidence: 4 axes, 16 rows, `research/research.md` section 10.
 - [ ] CHK-FIX-006 [P1] The shared `MEDIA_EDITOR_DATA_DIR` behavior is covered across separate CLI calls. Open: design recorded in `research/research.md` section 7. The cross-call test belongs to phase 004.
-- [x] CHK-FIX-007 [P1] Cited line numbers are pinned to the Media Editor commit recorded in `../scratch/baseline.md`. Evidence: Media Editor commit `044df9c`, stated in the `research/research.md` header.
+- [x] CHK-FIX-007 [P1] Cited line numbers are pinned to the Media Editor commit recorded in `../scratch/baseline.md`. Evidence: Media Editor commit `2749c54`, stated in the `research/research.md` header.
 <!-- /ANCHOR:fix-completeness -->
 
 ---

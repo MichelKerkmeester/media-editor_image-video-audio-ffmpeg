@@ -62,8 +62,8 @@ contextType: "general"
 ## Phase 3: Verification
 
 - [x] T008 Ask the operator for the version, then write the changelog entry (`AI Systems/Media Editor/sk-media-editor/changelog/`) [The operator chose 1.1.0. Runtime, extension, plugin and marketplace at 1.1.0, Skill 1.1.0.0, kernel v1.1.0, `changelog/v1.1.0.0.md` written and a dated `SYNC.md` note added]
-- [x] T009 Commit in both repositories after the operator's yes, then rerun the live gates (`scratch/gates.md`) [Operator's yes on 2026-10-05. Media Editor `da902c8` with 415 paths and parent `f19b2ce3` with 447 paths, staged by pathspec and matched against `scratch/stage-*.txt`. Live gates at `f19b2ce3`: fixtures 22/22, differential 132/132, rule parity 5, parity 7/7, residency, pair divergence 7, record claims 58, carrier all PASS]
-- [x] T010 Push and release after the operator's yes, and confirm `HEAD` equals `origin/main` in both (`scratch/gates.md`) [Operator's yes on 2026-10-05. Parent pushed `805794e0..f19b2ce3` with the Barter account, Media Editor pushed `044df9c..da902c8`, `HEAD` equals `origin/main` in both. Release `v1.1.0.0` published as Latest at `da902c8` with the five `.mcpb` files, each API digest equal to the local file. A follow-up the operator approved, the stale catalog phrase and the `tmp` override, pushed as Media Editor `1d54663` and parent `c2a83640`, live gates rerun with every exit 0]
+- [x] T009 Commit in both repositories after the operator's yes, then rerun the live gates (`scratch/gates.md`) [Operator's yes on 2026-10-05. Media Editor `215824e` with 415 paths and parent `71469389` with 447 paths, staged by pathspec and matched against `scratch/stage-*.txt`. Live gates at `71469389`: fixtures 22/22, differential 132/132, rule parity 5, parity 7/7, residency, pair divergence 7, record claims 58, carrier all PASS]
+- [x] T010 Push and release after the operator's yes, and confirm `HEAD` equals `origin/main` in both (`scratch/gates.md`) [Operator's yes on 2026-10-05. Parent pushed `0d9d802a..71469389` with the Barter account, Media Editor pushed `2749c54..215824e`, `HEAD` equals `origin/main` in both. Release `v1.1.0.0` published as Latest at `215824e` with the five `.mcpb` files, each API digest equal to the local file. A follow-up the operator approved, the stale catalog phrase and the `tmp` override, pushed as Media Editor `ad758ed` and parent `3ea7118d`, live gates rerun with every exit 0]
 <!-- /ANCHOR:phase-3 -->
 
 ---
@@ -126,8 +126,8 @@ contextType: "general"
 ## Testing Checklist
 
 - [x] CHK-020 [P0] All acceptance criteria met [AC-001 to AC-011 all Met in `acceptance-criteria.md`]
-- [x] CHK-021 [P0] Every sandbox gate passed before the first commit [Final-state table in `scratch/gates.md`, 27 rows, every exit 0, before `da902c8`]
-- [x] CHK-022 [P1] Live gates passed after the parent commit [Every exit 0 at `f19b2ce3` and again at `c2a83640`]
+- [x] CHK-021 [P0] Every sandbox gate passed before the first commit [Final-state table in `scratch/gates.md`, 27 rows, every exit 0, before `215824e`]
+- [x] CHK-022 [P1] Live gates passed after the parent commit [Every exit 0 at `71469389` and again at `3ea7118d`]
 - [x] CHK-023 [P1] Smoke test produced four WebP files with readable names [`scratch/graded-replies/round7-run*`, four readable WebP files per run in one folder]
 <!-- /ANCHOR:testing -->
 
@@ -142,7 +142,7 @@ contextType: "general"
 - [x] CHK-FIX-004 [P0] The push gate's deletion and rename counts are checked before the push. [3 deletions and 84 changed renames, 87 under the gate's 100, checked before the release push]
 - [x] CHK-FIX-005 [P1] The gate by run matrix is listed with its row count. [`scratch/gates.md` final-state 27 rows, live 8 rows, follow-up 12 rows]
 - [x] CHK-FIX-006 [P1] Sandbox gates run without reading a peer's working tree. [The clone took only the Media Editor and Sync Loop trees, which also carried a peer's 184 untracked `episodes/walk-state/` files from 2026-10-01. `carrier_query.py` reads that folder, so `carrier_query_evidence.py` reran in the clone with the folder moved out: exit 0, all checks PASS, no state file written]
-- [x] CHK-FIX-007 [P1] Evidence is pinned to the release commits in both repositories. [Media Editor `da902c8` and `1d54663`, parent `f19b2ce3` and `c2a83640`, release `v1.1.0.0` at `da902c8`]
+- [x] CHK-FIX-007 [P1] Evidence is pinned to the release commits in both repositories. [Media Editor `215824e` and `ad758ed`, parent `71469389` and `3ea7118d`, release `v1.1.0.0` at `215824e`]
 <!-- /ANCHOR:fix-completeness -->
 
 ---

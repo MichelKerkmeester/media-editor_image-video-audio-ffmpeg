@@ -15,7 +15,7 @@ contextType: "research"
 **Lineages**: `deepseek` (cli-pi, `opencode-go/deepseek-v4.1-flash`, thinking max, 5 iterations) and `luna` (cli-codex, `gpt-6-luna`, reasoning max, fast tier, live web search, 5 iterations)
 **Synthesis**: the depth-1 orchestrator, with every load-bearing claim spot-checked against `AI Systems/Media Editor/` (section 17)
 
-All Media Editor paths below use the folder's current name, `mcp server/`, relative to `AI Systems/Media Editor/`. After phase 002 they live under `runtime/`. Line numbers are pinned to Media Editor commit `044df9c`, the baseline in `../scratch/baseline.md`, and that repository had no uncommitted change during the run.
+All Media Editor paths below use the folder's current name, `mcp server/`, relative to `AI Systems/Media Editor/`. After phase 002 they live under `runtime/`. Line numbers are pinned to Media Editor commit `2749c54`, the baseline in `../scratch/baseline.md`, and that repository had no uncommitted change during the run.
 
 ---
 

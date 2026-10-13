@@ -138,7 +138,7 @@ contextType: "general"
 - [x] CHK-FIX-004 [P0] Host states CLI present, ffmpeg only and neither are each covered by a fixture. [`cli available`, `cli without ffmpeg`, `ffmpeg only` and `neither` in `HOST_STATES`]
 - [x] CHK-FIX-005 [P1] The surface by host state matrix is listed with its row count. [The matrix and its row count are in implementation-summary.md]
 - [x] CHK-FIX-006 [P1] Gates run in a clean sandbox clone so a peer's tree does not decide the result. [A fresh clone for each gate run, never the live tree]
-- [x] CHK-FIX-007 [P1] Evidence is pinned to explicit diff ranges in both repositories. [Media Editor `044df9c` and parent `805794e0` to the working tree]
+- [x] CHK-FIX-007 [P1] Evidence is pinned to explicit diff ranges in both repositories. [Media Editor `2749c54` and parent `0d9d802a` to the working tree]
 <!-- /ANCHOR:fix-completeness -->
 
 ---

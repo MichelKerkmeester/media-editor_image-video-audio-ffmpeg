@@ -1,6 +1,6 @@
 # Gate run, baseline against final
 
-Final state: the working tree on 2026-10-04 after phases 002 to 005, Media Editor `044df9c` and parent `805794e0` plus uncommitted changes. Nothing is committed.
+Final state: the working tree on 2026-10-04 after phases 002 to 005, Media Editor `2749c54` and parent `0d9d802a` plus uncommitted changes. Nothing is committed.
 
 ## Runtime, run in `AI Systems/Media Editor/runtime/`
 
@@ -137,7 +137,7 @@ The benchmark report of round 11 is `AI Systems/Media Editor/benchmark/reports/2
 
 ## Final state, rerun after round 11
 
-Every gate reran on 2026-10-05 from the final state, after the round 11 contract fix, the `SYNC.md` note and the changelog entries. Runtime gates ran in the live runtime folder. The rest ran in a fresh sandbox clone holding the release as one commit over `origin/main` `805794e0`. The validators ran from the repository root with `--repo-root` set, because the `.skilled` link points into another checkout and a validator left to find its own root reads every relative link as outside the repository. The first attempt of this rerun left that flag off and failed both playbook validators with 107 and 1 `PATH_OUTSIDE_REPO` findings, and called the catalog validator with a path it does not take. Both were invocation errors, fixed in the command, not in the packages.
+Every gate reran on 2026-10-05 from the final state, after the round 11 contract fix, the `SYNC.md` note and the changelog entries. Runtime gates ran in the live runtime folder. The rest ran in a fresh sandbox clone holding the release as one commit over `origin/main` `0d9d802a`. The validators ran from the repository root with `--repo-root` set, because the `.skilled` link points into another checkout and a validator left to find its own root reads every relative link as outside the repository. The first attempt of this rerun left that flag off and failed both playbook validators with 107 and 1 `PATH_OUTSIDE_REPO` findings, and called the catalog validator with a path it does not take. Both were invocation errors, fixed in the command, not in the packages.
 
 | Gate | Exit | Final |
 |------|------|-------|
@@ -173,7 +173,7 @@ The `.mcpb` bundles are not byte-reproducible. Five builds of the same source on
 
 ## Live, after the commits
 
-The operator approved the commits, the push and the release on 2026-10-05. Media Editor `da902c8` and parent `f19b2ce3` were pushed, and `HEAD` equals `origin/main` in both. Release `v1.1.0.0` is published as Latest at `da902c8` with the five `.mcpb` files, each digest in the GitHub API equal to the local file. The declaration gates then ran live in the shared tree at `f19b2ce3`.
+The operator approved the commits, the push and the release on 2026-10-05. Media Editor `215824e` and parent `71469389` were pushed, and `HEAD` equals `origin/main` in both. Release `v1.1.0.0` is published as Latest at `215824e` with the five `.mcpb` files, each digest in the GitHub API equal to the local file. The declaration gates then ran live in the shared tree at `71469389`.
 
 | Gate | Exit | Live |
 |------|------|------|
@@ -195,9 +195,9 @@ Two loose ends showed after the release, and the operator approved a follow-up c
 - The parent goal's first criterion failed: `rg "mcp server"` outside dated records found one line, a lowercase duplicate trigger phrase `"mcp server entry"` in the catalog leaf `distribution/mcp-server-entry.md`, added with the catalog after the round 2 check. The duplicate was removed and the capitalised phrase kept. `rg` now returns no line, exit 1.
 - `tmp` was overridden to `^0.2.6` in the runtime, so the bundle builder's `external-editor` resolves `tmp` 0.2.7. The lockfile also took the `media-editor` bin entry that `package.json` already declared. `npm audit --package-lock-only` went from 6 findings to 2, both `node-forge`, which has no patched release. After the push, Dependabot alerts 4 and 5 for `tmp` closed as fixed within 40 seconds and no new alert opened. Alert 6, `node-forge`, stays open.
 
-The suite, packaging tests, bundle build and plugin build reran before the commits: `test:pinned` 91 files and 1,826 passed, packaging 150 passed, both exit 0. The bundle grew 15 bytes because it packs `package.json`, so the local darwin-arm64 file no longer matches the released asset, and `operator-ped-001.md` now points at the release download with its digest `7fd0a120...`. Media Editor `1d54663` and parent `c2a83640` were pushed, and `HEAD` equals `origin/main` in both.
+The suite, packaging tests, bundle build and plugin build reran before the commits: `test:pinned` 91 files and 1,826 passed, packaging 150 passed, both exit 0. The bundle grew 15 bytes because it packs `package.json`, so the local darwin-arm64 file no longer matches the released asset, and `operator-ped-001.md` now points at the release download with its digest `7fd0a120...`. Media Editor `ad758ed` and parent `3ea7118d` were pushed, and `HEAD` equals `origin/main` in both.
 
-The live gates reran at `c2a83640`, 12 rows, every exit 0.
+The live gates reran at `3ea7118d`, 12 rows, every exit 0.
 
 | Gate | Exit | Live after the follow-up |
 |------|------|--------------------------|
@@ -219,8 +219,8 @@ Row counts: the final-state table holds 27 gates, the live table after the commi
 
 ## Release alignment, after the follow-up
 
-On the operator's request the v1.1.0.0 changelog was rewritten to lead with the skill's move from an MCP server to the `media-editor` command, retitled "The Skill Moves Off MCP and Asks Before It Writes", and pushed as Media Editor `60e510a` and parent `ed046186`. `hvr_scan.py` reports 0 hard blockers and `validate_document.py` VALID.
+On the operator's request the v1.1.0.0 changelog was rewritten to lead with the skill's move from an MCP server to the `media-editor` command, retitled "The Skill Moves Off MCP and Asks Before It Writes", and pushed as Media Editor `718eeb8` and parent `99e4022a`. `hvr_scan.py` reports 0 hard blockers and `validate_document.py` VALID.
 
-Both releases now follow the skilled release shape. Each tag is annotated with the message `vX: Heading`, the operator approved replacing the two lightweight tags in place at the same commits, `044df9c` and `da902c8`. The titles read `v1.0.0.0 — Readable Names and a Tidy Export Folder` and `v1.1.0.0 — The Skill Moves Off MCP and Asks Before It Writes`, with the em dash the operator chose to match the skilled repository. Each body is its changelog without frontmatter or title, ending in a `Full changelog:` line. `v1.1.0.0` stays Latest with its five assets, and the latest download link answers 200.
+Both releases now follow the skilled release shape. Each tag is annotated with the message `vX: Heading`, the operator approved replacing the two lightweight tags in place at the same commits, `2749c54` and `215824e`. The titles read `v1.0.0.0 — Readable Names and a Tidy Export Folder` and `v1.1.0.0 — The Skill Moves Off MCP and Asks Before It Writes`, with the em dash the operator chose to match the skilled repository. Each body is its changelog without frontmatter or title, ending in a `Full changelog:` line. `v1.1.0.0` stays Latest with its five assets, and the latest download link answers 200.
 
-The entry was then reworded on the operator's request to say the command serves any terminal agent, such as Codex, OpenCode or Pi through the standalone `npm link` install, with Claude Code one route among them. Pushed as Media Editor `bbd218c` and parent `00cee4b2`, and the `v1.1.0.0` release notes took the same text.
+The entry was then reworded on the operator's request to say the command serves any terminal agent, such as Codex, OpenCode or Pi through the standalone `npm link` install, with Claude Code one route among them. Pushed as Media Editor `a1487c7` and parent `54dc5970`, and the `v1.1.0.0` release notes took the same text.

@@ -41,7 +41,7 @@ _memory:
 | **Spec Folder** | 005-skill-cli-only |
 | **Completed** | 2026-10-04 |
 | **Level** | 2 |
-| **Evidence range** | Media Editor `044df9c` and parent `805794e0` to the working tree |
+| **Evidence range** | Media Editor `2749c54` and parent `0d9d802a` to the working tree |
 <!-- /ANCHOR:metadata -->
 
 ---

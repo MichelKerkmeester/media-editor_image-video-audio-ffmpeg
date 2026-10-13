@@ -136,7 +136,7 @@ contextType: "general"
 - [x] CHK-FIX-004 [P0] Paths with spaces, quoted commands and code blocks checked in the sweep. Evidence: DeepSeek review of the full diff, CLEAN, with a planted-defect canary caught.
 - [x] CHK-FIX-005 [P1] Matrix axes repository by file kind listed with their row count. Evidence: 2 repositories by 4 file kinds (system docs, skill and mirrors, playbook, runtime docs), 8 rows.
 - [x] CHK-FIX-006 [P1] Tests run from a fresh shell so no cached path from the old folder is read. Evidence: each npm command ran in a new shell from `runtime/`.
-- [x] CHK-FIX-007 [P1] Evidence is pinned to the diff against the Media Editor commit in `../scratch/baseline.md`. Evidence: diff against Media Editor HEAD `044df9c`.
+- [x] CHK-FIX-007 [P1] Evidence is pinned to the diff against the Media Editor commit in `../scratch/baseline.md`. Evidence: diff against Media Editor HEAD `2749c54`.
 <!-- /ANCHOR:fix-completeness -->
 
 ---

@@ -138,7 +138,7 @@ contextType: "general"
 - [x] CHK-FIX-004 [P0] Folder targeting has adversarial tests for outside-root, symlink, missing folder and no-op cases. Evidence: `output-folder.vitest.ts` covers traversal, separators, NUL, `.`, `..`, both symlink cases, a plain file, a missing folder and never-creates
 - [x] CHK-FIX-005 [P1] The 16-row matrix of surface by inputs by clarity by calls is listed before completion is claimed. Evidence: `implementation-summary.md`, Coverage matrix
 - [x] CHK-FIX-006 [P1] Tests that read the export folder use an isolated sandbox. Evidence: `createSandbox` per test, the smoke in a scratch folder
-- [x] CHK-FIX-007 [P1] Evidence is pinned to an explicit diff range in both repositories. Evidence: Media Editor `044df9c` and parent `805794e0`, each to the working tree
+- [x] CHK-FIX-007 [P1] Evidence is pinned to an explicit diff range in both repositories. Evidence: Media Editor `2749c54` and parent `0d9d802a`, each to the working tree
 <!-- /ANCHOR:fix-completeness -->
 
 ---

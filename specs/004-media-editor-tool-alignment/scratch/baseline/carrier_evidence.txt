@@ -1563,7 +1563,7 @@ Nine checks
     PASS
 
 [5] current tree
-    range: c99f82d..6db2bf4afa3266194542f4e77a9883e05e13e968
+    range: c99f82d..9356f0b7a76a66b115d189e057a992872e9a1463
     expected own-authority blocking identities:
       barter-copywriter / references/conciseness.md -> AI Systems/Barter - Copywriter/claude project/knowledge/Copywriter - Rules - Conciseness - v0.100.md
       barter-deal-templates / references/rules/conciseness.md -> AI Systems/Barter - Deal Templates/claude project/knowledge/Barter deals - Rules - Conciseness - v0.100.md
