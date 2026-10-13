@@ -97,14 +97,14 @@ SYSTEMS = {
             'assets/artifact-template.md': {
                 'why': "Deliberate: the skill saves the deliverable and reports the saved path, while "
                        "the Project packaging cannot write files and reports the export-equivalent "
-                       "path, as references/meqt-scoring.md states for that packaging. 425483e "
+                       "path, as references/meqt-scoring.md states for that packaging. da2f49d "
                        "rewrote this worked example on both sides and gave each its own packaging's "
                        "term. The line's other two sentences are carried word for word, so only that "
                        "clause differs. Two more lines differ only by packaging reference: the delivery "
                        "sentence points at SKILL.md Section 9 on the skill side and at the kernel's "
                        "artifact and export rules in the Project, and the reference list names "
                        "references/meqt-scoring.md where the mirror names its knowledge document. "
-                       "cd265e0 rewrote both lines on both sides and kept each packaging's reference.",
+                       "7c0ab82 rewrote both lines on both sides and kept each packaging's reference.",
                 'omits': (
                     'Chat reply after the artifact (not inside it): the saved path, `MEQT 21/25, ship | HVR clean`, and a brief summary naming the framework choice.'
                     ' This example runs at Standard energy, so the reply carries the verdict.'
@@ -3260,8 +3260,8 @@ SYSTEMS = {
         'forked_shared_copies': {},
         'reviewed_pairs': {
             'references/depth-framework.md': {
-                'at': 'd726aaa',
-                'why': 'The source gained one appended block after beb18dd8, the DEPTH process table '
+                'at': 'de61d23',
+                'why': 'The source gained one appended block after 5011d27b, the DEPTH process table '
                        'the kernel gave up, and the mirror carries the same table word for word. '
                        'The two rules the old note covers are unchanged, the source still cites the '
                        '25-topic registry and still reads 37-39 conditional and below 37 fail, and '

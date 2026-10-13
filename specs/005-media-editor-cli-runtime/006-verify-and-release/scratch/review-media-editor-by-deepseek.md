@@ -68,7 +68,7 @@ Validator results as run:
 
 ## Not checked
 
-- The pre-edit baseline of the playbook is not recoverable from git, because HEAD `1bdd011` predates the whole 088 restructure. I could not prove byte-for-byte that the catalog work added only catalog rows to the scenario files. What the diff and mtimes do support is stated in Verified.
+- The pre-edit baseline of the playbook is not recoverable from git, because HEAD `044df9c` predates the whole 088 restructure. I could not prove byte-for-byte that the catalog work added only catalog rows to the scenario files. What the diff and mtimes do support is stated in Verified.
 - No media tool was executed, so handler behavior is confirmed by reading source, not by a run. The live checks run were `cli.js list`, `describe` for all 40 tools, and the two validators.
 - The F11 plugin mirror failure is attributed to generated build output. I did not test a clean checkout without the mirror or rerun `npm run plugin`.
 - The twin divergence report contents were checked only at its README, and the benchmark fixture outcomes were taken from `scratch/gates.md`, not rerun.

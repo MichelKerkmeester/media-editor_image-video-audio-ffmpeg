@@ -1044,22 +1044,22 @@ the injected leak fault was caught, so this run exits non-zero
 | Exit code | 0 |
 | Expected signals | the census line `recorded reviews in the fleet: N`, the target line naming the selected pair, `step 1  baseline, gate as declared: green`, the throwaway worktree line, `step 2  record repointed at cafebabe: red` with exactly one finding naming the injected key, `step 3  live declaration unchanged, gate as declared again: green`, then the PASS line naming the selected system |
 | Verdict | PASS |
-| Reason | The run selected `sales-direct-communication references/depth-framework.md`, whose recorded key `d726aaa` still matches source `d726aaa5`. Step 1 read green, step 2 read red with exactly one finding naming `cafebabe`, step 3 read the live declaration back green, and the closing line named the selected system. The injected record was committed in a throwaway detached worktree under `/var/folders/.../T/review-expiry-worktree-ybiv9mzu/worktree`, and the live declaration was never written. |
+| Reason | The run selected `sales-direct-communication references/depth-framework.md`, whose recorded key `de61d23` still matches source `de61d232`. Step 1 read green, step 2 read red with exactly one finding naming `cafebabe`, step 3 read the live declaration back green, and the closing line named the selected system. The injected record was committed in a throwaway detached worktree under `/var/folders/.../T/review-expiry-worktree-ybiv9mzu/worktree`, and the live declaration was never written. |
 | Date | 2026-10-05 |
 
 Full output:
 
 ```text
 recorded reviews in the fleet: 1
-  sales-direct-communication references/depth-framework.md: record d726aaa, source d726aaa5, key matches, timestamps in step, gate green
+  sales-direct-communication references/depth-framework.md: record de61d23, source de61d232, key matches, timestamps in step, gate green
 
 target: sales-direct-communication references/depth-framework.md
-  recorded key d726aaa still matches the source's commit d726aaa5, and the gate is green before anything is written, so the injection is the only change that can turn it red
+  recorded key de61d23 still matches the source's commit de61d232, and the gate is green before anything is written, so the injection is the only change that can turn it red
 
 step 1  baseline, gate as declared: green
   injected record committed in the throwaway worktree at /var/folders/3c/zfqcqsts0kn19cgblj82gqhm0000gn/T/review-expiry-worktree-ybiv9mzu/worktree
 step 2  record repointed at cafebabe: red
-         - depth-framework.md: a review was recorded at cafebabe and the source's latest commit is d726aaa5, so the recorded decision no longer covers it
+         - depth-framework.md: a review was recorded at cafebabe and the source's latest commit is de61d232, so the recorded decision no longer covers it
 step 3  live declaration unchanged, gate as declared again: green
 
 PASS green, red, green: the key comparison turned sales-direct-communication red with the timestamp guard silent, and the live declaration is green again

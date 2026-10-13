@@ -134,7 +134,7 @@ Change sets A to F ran in plan order on `main` in the shared tree, with nothing 
 | Follow-up: Sync Loop, sandbox clone `600e6ef7` | `run_parity.sh` PASSED 6/6, `pair_divergence.py` PASSED, `residency_report.py` exit 0 and `record_claims.py` PASSED 58 claims after the restatement to 320 statements and 178 pairs. `run_residency.sh media-editor` PASSED, exit 0, after the padded mode-table resync |
 | Follow-up: sk-code-opencode alignment | `tsc --noEmit` exit 0. `npm run test:pinned` 86 of 86 files, 1749 passed, 4 skipped, exit 0. Every code folder README names every file in its folder |
 | Follow-up: guided setup, sandbox clone | `run_parity.sh` PASSED 7/7, `run_residency.sh` PASSED, `pair_divergence.py` PASSED 7 pairs, `rule_parity.py` PASSED, `record_claims.py` PASSED 58 claims. Playbook PASS 30 scenarios, 0 violations |
-| Fleet gates outside this change | Six other systems fail one parity check and four fail residency, all from peer commit `5424531a`, which re-padded six kernels without a version bump. Media Editor has no finding |
+| Fleet gates outside this change | Six other systems fail one parity check and four fail residency, all from peer commit `e96e6fb4`, which re-padded six kernels without a version bump. Media Editor has no finding |
 <!-- /ANCHOR:verification -->
 
 ---

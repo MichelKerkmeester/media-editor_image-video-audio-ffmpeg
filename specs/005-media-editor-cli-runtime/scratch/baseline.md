@@ -6,8 +6,8 @@ Captured 2026-10-04 from the shared tree on `main`, before any change under `AI 
 
 | Repository | Command | HEAD |
 |------------|---------|------|
-| Media Editor (nested) | `git -C "AI Systems/Media Editor" rev-parse HEAD` | `1bdd011446fee038d5cbc033ac92271e4d0447ca` |
-| Parent | `git rev-parse HEAD` | `25717845e3d7f1861a0fe3fce2dbe12cc3e7085e` |
+| Media Editor (nested) | `git -C "AI Systems/Media Editor" rev-parse HEAD` | `044df9c5d710ee1ee0fdec86405089ad6e9ea863` |
+| Parent | `git rev-parse HEAD` | `805794e05d2d7002820c2d3d143240a98b94a969` |
 
 ## Media Editor runtime, run in `AI Systems/Media Editor/mcp server`
 

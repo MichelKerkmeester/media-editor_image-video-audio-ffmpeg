@@ -82,7 +82,7 @@ The read-only wording review ran on GPT-6 Luna and found six sites the inventory
 
 `scratch/advisory-classification.md` gives each of the 98 advisory sites its verdict: updated, kept because it is true on the no-tools route or on every route, or out of scope. The Claude Code plugin was rebuilt with the new skill, and a live session on the final build connected with 39 tools.
 
-This phase's residency rows reached HEAD inside a peer session's commit `da1b4ecb`, which committed `systems.py` while it held both sessions' rows. No commit came from this phase.
+This phase's residency rows reached HEAD inside a peer session's commit `abf08e80`, which committed `systems.py` while it held both sessions' rows. No commit came from this phase.
 <!-- /ANCHOR:how-delivered -->
 
 ---

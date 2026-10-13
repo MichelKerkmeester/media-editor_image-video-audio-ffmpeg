@@ -136,7 +136,7 @@ and findings belong here.
 | 011-code-documentation | Done | A README in each of the 23 code folders, `ARCHITECTURE.md` and a root `README.md`, every claim checked against the code and by four D6 reviews. The two build scripts that still crashed outside the package root now share one guard with `test-pinned.ts` |
 | 012-media-folder-layout | Done | `media/` holds `export/`, `import/` and `tests/`, kernel and skill v0.7.0 name `media/export/`, the plugin saves there, both guides give the settings. Gates pass apart from parity findings that clear on commit. Nothing committed |
 | Final package gate | Done | `GATE: PASS`, tsc 0, 83 files, `npm test` `1729 passed, 6 skipped (1735)`, `npm run test:pinned` `1731 passed, 4 skipped (1735)`, alignment 0 findings over 176 files |
-| Commit | Done | 2026-09-30 on the operator's go-ahead: `1459ff66` adds the server, `43b8899a` the integration and both guides, `6281eb51` deletes `mcp servers/`, all pushed to `origin/main`. Phase 12 is not committed |
+| Commit | Done | 2026-09-30 on the operator's go-ahead: `22586a10` adds the server, `43d0136c` the integration and both guides, `b39052e7` deletes `mcp servers/`, all pushed to `origin/main`. Phase 12 is not committed |
 | Operator steps | Open | Commit and push phase 12, clean-machine smoke test (007), Project re-upload, Desktop and web scenarios, kernel review note (009) |
 
 ### Deviations and findings
@@ -146,6 +146,6 @@ and findings belong here.
 | Contract amended in phase 6 | On 2026-09-29 the operator approved three amendments to contract 3.4 (phase 6 ADR-003): album art is not video, `auto` decodes its copy, the ladder keeps the shared frame-rate rule |
 | ffmpeg-static arm64 build is non-free | Its `ffmpeg -L` says it is not legally redistributable; the operator chose the martin-riedl.de 9.0.2 GPL build for the darwin-arm64 bundle, which D1's `ffmpeg-static` covers on the other four targets |
 | ffmpeg 9 on Apple Silicon | Phase 8's live session found the shipped 9.0.2 prints two flag characters per filter row, which hid every filter. Fixed with a test. The suite still runs on the development ffmpeg 6.0, and on 9.0.2 45 tests fail on ffmpeg 6 premises, 17 of them stream copies into MP4 that ffmpeg 9 accepts. Keeping those copies or forcing AAC is an operator decision. The operator chose "Re-encode like others" on 2026-09-29, and phase 10 made both suites pass on 9.0.2 |
-| Peer commit | A peer session's commit `da1b4ecb` carried phase 9's residency rows into HEAD before the Media Editor edits were committed |
+| Peer commit | A peer session's commit `abf08e80` carried phase 9's residency rows into HEAD before the Media Editor edits were committed |
 | Executors set by the operator | D6 added 2026-09-29, replacing DevPass DeepSeek for code and MiMo for reviews. That day each pi route in the block replied `OK` to a one-word probe, the Cline V4.1 id for the first time. `codex --version` (0.158.0) printed nothing within 20 s, so Luna runs through pi until Codex answers |
 <!-- /ANCHOR:log -->
