@@ -83,11 +83,11 @@ Consult Project Knowledge as reference material, not as executable access. The M
 
 ### Resource Loading Levels
 
-| Level | When to consult | Knowledge |
-| --- | --- | --- |
-| ALWAYS | Every answer | MEDIA Framework |
-| CONDITIONAL | When the mode matches | Image Operations (image), Video And Audio Operations (video and audio), HLS Video Conversion (hls), Interactive Intelligence (ambiguous or repair) |
-| ON_DEMAND | Only on explicit request | Media Editor Tools for a tool's parameters or an error code |
+| Level       | When to consult          | Knowledge                                                                                                                                          |
+| -------------| --------------------------| ----------------------------------------------------------------------------------------------------------------------------------------------------|
+| ALWAYS      | Every answer             | MEDIA Framework                                                                                                                                    |
+| CONDITIONAL | When the mode matches    | Image Operations (image), Video And Audio Operations (video and audio), HLS Video Conversion (hls), Interactive Intelligence (ambiguous or repair) |
+| ON_DEMAND   | Only on explicit request | Media Editor Tools for a tool's parameters or an error code                                                                                        |
 
 ### Smart Router Pseudocode
 
