@@ -1,0 +1,623 @@
+{
+  "mergedFrom": [
+    "deepseek",
+    "luna"
+  ],
+  "lineageExecutors": {
+    "deepseek": {
+      "kind": "cli-pi",
+      "model": "opencode-go/deepseek-v4.1-flash",
+      "reasoningEffort": "max"
+    },
+    "luna": {
+      "kind": "cli-codex",
+      "model": "gpt-6-luna",
+      "reasoningEffort": "max"
+    }
+  },
+  "openQuestions": [],
+  "resolvedQuestions": [],
+  "keyFindings": [
+    {
+      "id": "iteration-1-finding-1",
+      "title": "`ALL_TOOLS` is already the canonical ordered array of tool definitions. I counted 40 entries at `mcp server/src/server/all-tools.ts:57-98`. `createServer` passes that array to `registerTools` by default at `mcp server/src/server/create-server.ts:43-56`. The CLI should consume this same array and must not create a parallel command-to-handler table.",
+      "text": "`ALL_TOOLS` is already the canonical ordered array of tool definitions. I counted 40 entries at `mcp server/src/server/all-tools.ts:57-98`. `createServer` passes that array to `registerTools` by default at `mcp server/src/server/create-server.ts:43-56`. The CLI should consume this same array and must not create a parallel command-to-handler table.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-2",
+      "title": "`buildPlugin` currently unpacks a platform `.mcpb` into `claude-plugin/server`, checks for `manifest.json` and `dist/index.js`, then copies and verifies the skill at `mcp server/scripts/build-plugin.ts:302-357`. The plugin build should still place the runtime under `claude-plugin/server/`, additionally require `server/dist/cli.js`, and ensure the deployed skill copy is current. Update `tests/packaging/build-plugin.vitest.ts`, which currently stages only `dist/index.js` at lines 253-289, to require the CLI entry and to assert the plugin manifest has no `mcpServers` entry.",
+      "text": "`buildPlugin` currently unpacks a platform `.mcpb` into `claude-plugin/server`, checks for `manifest.json` and `dist/index.js`, then copies and verifies the skill at `mcp server/scripts/build-plugin.ts:302-357`. The plugin build should still place the runtime under `claude-plugin/server/`, additionally require `server/dist/cli.js`, and ensure the deployed skill copy is current. Update `tests/packaging/build-plugin.vitest.ts`, which currently stages only `dist/index.js` at lines 253-289, to require the CLI entry and to assert the plugin manifest has no `mcpServers` entry.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-2",
+      "title": "`dispatchToolCall` contains the shared behavior needed by both transports: zod parsing of the listed schema, placement-field extraction, placement-aware context construction, handler invocation, and conversion of handler throws through `errorResult` at `mcp server/src/server/tool-registry.ts:102-127`. It is currently private and validation failure throws `McpError(InvalidParams)` at lines 107-113. `registerTools` also owns the MCP server registration and protocol request handler at lines 129-143 and 169-205. Extract or export dispatch as a transport-neutral function, leaving the server registration in an MCP adapter.",
+      "text": "`dispatchToolCall` contains the shared behavior needed by both transports: zod parsing of the listed schema, placement-field extraction, placement-aware context construction, handler invocation, and conversion of handler throws through `errorResult` at `mcp server/src/server/tool-registry.ts:102-127`. It is currently private and validation failure throws `McpError(InvalidParams)` at lines 107-113. `registerTools` also owns the MCP server registration and protocol request handler at lines 129-143 and 169-205. Extract or export dispatch as a transport-neutral function, leaving the server registration in an MCP adapter.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-6",
+      "title": "`MEDIA_EDITOR_DATA_DIR` is an accepted config environment variable at `mcp server/src/core/config.ts:87-103`. The loader uses it for `config.dataDir` at lines 410-451 and falls back to a platform-specific default when unset at lines 324-340. `media_setup_ffmpeg` installs under `config.dataDir/bin` and writes install metadata in that tree at `mcp server/src/tools/media/setup-ffmpeg.ts:433-475,565-575`. `media_health` reports resolver, capability, and `dataFolder` values from its context at `mcp server/src/tools/media/health.ts:176-205`. Set the same absolute `MEDIA_EDITOR_DATA_DIR` for every CLI invocation so setup and health share the install and cache state.",
+      "text": "`MEDIA_EDITOR_DATA_DIR` is an accepted config environment variable at `mcp server/src/core/config.ts:87-103`. The loader uses it for `config.dataDir` at lines 410-451 and falls back to a platform-specific default when unset at lines 324-340. `media_setup_ffmpeg` installs under `config.dataDir/bin` and writes install metadata in that tree at `mcp server/src/tools/media/setup-ffmpeg.ts:433-475,565-575`. `media_health` reports resolver, capability, and `dataFolder` values from its context at `mcp server/src/tools/media/health.ts:176-205`. Set the same absolute `MEDIA_EDITOR_DATA_DIR` for every CLI invocation so setup and health share the install and cache state.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-5-7592d978f13e",
+      "title": "A maxBytes argument is worth adding because quality alone does not express a strict byte target.",
+      "text": "A maxBytes argument is worth adding because quality alone does not express a strict byte target.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-4-f4844f4e9d13",
+      "title": "A multi-input image_convert call with aligned fileNames and explicit subfolder placement is the smallest fit for the four-image case.",
+      "text": "A multi-input image_convert call with aligned fileNames and explicit subfolder placement is the smallest fit for the four-image case.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-7",
+      "title": "A per-call CLI still pays for process startup and imports the tool registry. `ALL_TOOLS` statically imports the tool modules at `mcp server/src/server/all-tools.ts:9-50`, while its 40 definitions are enumerated at lines 57-98. Persistent cache removes repeated probing, not Node startup. Measure cold process startup separately from handler time. Start with one process per invocation. A resident daemon is a possible later optimization only if measurements show startup is material.",
+      "text": "A per-call CLI still pays for process startup and imports the tool registry. `ALL_TOOLS` statically imports the tool modules at `mcp server/src/server/all-tools.ts:9-50`, while its 40 definitions are enumerated at lines 57-98. Persistent cache removes repeated probing, not Node startup. Measure cold process startup separately from handler time. Start with one process per invocation. A resident daemon is a possible later optimization only if measurements show startup is material.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-4",
+      "title": "A plugin `bin/` directory is also added to the Bash tool's `PATH` while the plugin is enabled, according to the [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference). A `bin/media-editor` wrapper would make a convenient bare command, but I do not recommend making the skill depend on it. The explicit plugin-root path is easier to tie to the skill permission rule and the exact bundled `server/dist/cli.js`. A global installed shim is suitable for standalone terminal agents, not for a self-contained plugin invocation. I also checked the [Anthropic Claude Code plugins URL](https://docs.anthropic.com/en/docs/claude-code/plugins), which redirects to the current `code.claude.com` plugins overview.",
+      "text": "A plugin `bin/` directory is also added to the Bash tool's `PATH` while the plugin is enabled, according to the [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference). A `bin/media-editor` wrapper would make a convenient bare command, but I do not recommend making the skill depend on it. The explicit plugin-root path is easier to tie to the skill permission rule and the exact bundled `server/dist/cli.js`. A global installed shim is suitable for standalone terminal agents, not for a self-contained plugin invocation. I also checked the [Anthropic Claude Code plugins URL](https://docs.anthropic.com/en/docs/claude-code/plugins), which redirects to the current `code.claude.com` plugins overview.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-6-15fcfc4b3c45",
+      "title": "A server confirmation boolean is not trustworthy at the current tool argument boundary, while required batch names and placement can prevent structural omissions.",
+      "text": "A server confirmation boolean is not trustworthy at the current tool argument boundary, while required batch names and placement can prevent structural omissions.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-4-a9253c09e739",
+      "title": "A skill-only cli.md can carry invocation while paired setup remains dual-surface and byte-identical.",
+      "text": "A skill-only cli.md can carry invocation while paired setup remains dual-surface and byte-identical.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-2",
+      "title": "For `<tool>`, accept exactly one argument source: `--args-json <json>`, `--args-file <path>`, or stdin when no flag is present. Parse the resulting object before dispatch. These are CLI syntax recommendations. They keep JSON tool fields away from `loadConfig`, whose bare-token behavior was established in iteration 1.",
+      "text": "For `<tool>`, accept exactly one argument source: `--args-json <json>`, `--args-file <path>`, or stdin when no flag is present. Parse the resulting object before dispatch. These are CLI syntax recommendations. They keep JSON tool fields away from `loadConfig`, whose bare-token behavior was established in iteration 1.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-3-74e8b157b88a",
+      "title": "image_convert handles one input and writeImageOutputs allocates one destination per call, so repeated calls cannot share a new numbered folder.",
+      "text": "image_convert handles one input and writeImageOutputs allocates one destination per call, so repeated calls cannot share a new numbered folder.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-4",
+      "title": "Keep the CLI in a new entry such as `src/cli.ts`. The current `src/index.ts` invokes `main()` at module load at line 126, and its `main` loads config, creates the MCP server, and connects stdio at lines 94-105. Importing that entry from a CLI would start the MCP transport as a side effect.",
+      "text": "Keep the CLI in a new entry such as `src/cli.ts`. The current `src/index.ts` invokes `main()` at module load at line 126, and its `main` loads config, creates the MCP server, and connects stdio at lines 94-105. Importing that entry from a CLI would start the MCP transport as a side effect.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-6",
+      "title": "Preserve the package-root layout under `server/`. `readServerVersion` resolves `../../package.json` relative to its module at `mcp server/src/server/server-info.ts:39-49`. `bundledFontDir` resolves `../../assets/fonts/` relative to its module at `mcp server/src/core/font-path.ts:41-60`, `add-subtitles.ts` and `add-text-overlay.ts` call the bundled font helpers at lines 19 and 404, and lines 19 and 321-325 respectively. Keep `server/dist/`, `server/assets/`, and `server/package.json` together so the compiled CLI and shared handlers keep resolving package metadata and fonts.",
+      "text": "Preserve the package-root layout under `server/`. `readServerVersion` resolves `../../package.json` relative to its module at `mcp server/src/server/server-info.ts:39-49`. `bundledFontDir` resolves `../../assets/fonts/` relative to its module at `mcp server/src/core/font-path.ts:41-60`, `add-subtitles.ts` and `add-text-overlay.ts` call the bundled font helpers at lines 19 and 404, and lines 19 and 321-325 respectively. Keep `server/dist/`, `server/assets/`, and `server/package.json` together so the compiled CLI and shared handlers keep resolving package metadata and fonts.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-4",
+      "title": "Preview data is outside `structuredContent` today. `previewFrom` converts the JPEG buffer to a base64 string in an MCP image block at `mcp server/src/tools/media/preview.ts:38-45`, and `withPreviewBlock` appends that block to `content` at lines 119-123. Both `image_probe` and `media_probe` can append the preview block at `mcp server/src/tools/image/probe.ts:139-154` and `mcp server/src/tools/media/probe.ts:361-398`. The CLI adapter should decode the image block, write a JPEG to a caller-selected path or a managed `MEDIA_EDITOR_DATA_DIR` preview area, replace base64 with `previewPath` metadata, then print JSON. A managed preview area needs bounded cleanup. This recommendation is CLI-specific and leaves the MCP Project image block intact.",
+      "text": "Preview data is outside `structuredContent` today. `previewFrom` converts the JPEG buffer to a base64 string in an MCP image block at `mcp server/src/tools/media/preview.ts:38-45`, and `withPreviewBlock` appends that block to `content` at lines 119-123. Both `image_probe` and `media_probe` can append the preview block at `mcp server/src/tools/image/probe.ts:139-154` and `mcp server/src/tools/media/probe.ts:361-398`. The CLI adapter should decode the image block, write a JPEG to a caller-selected path or a managed `MEDIA_EDITOR_DATA_DIR` preview area, replace base64 with `previewPath` metadata, then print JSON. A managed preview area needs bounded cleanup. This recommendation is CLI-specific and leaves the MCP Project image block intact.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-3",
+      "title": "Print one JSON value from `structuredContent` to stdout and send diagnostics to stderr. The common success builder always includes `structuredContent` at `mcp server/src/core/result.ts:300-319`, and the error builder also gives structured error details at lines 321-346. The CLI can preserve tool output structure without scraping human text. Exit nonzero when the result has `isError` and reserve separate statuses for CLI syntax or termination.",
+      "text": "Print one JSON value from `structuredContent` to stdout and send diagnostics to stderr. The common success builder always includes `structuredContent` at `mcp server/src/core/result.ts:300-319`, and the error builder also gives structured error details at lines 321-346. The CLI can preserve tool output structure without scraping human text. Exit nonzero when the result has `isError` and reserve separate statuses for CLI syntax or termination.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-5",
+      "title": "Resolver and capability caches are process-local maps. `capabilityCache` maps binary path to an in-flight or completed promise at `mcp server/src/core/capabilities.ts:163,348-386`. The resolver maps tool name to a `CacheEntry` and in-flight lookup at `mcp server/src/core/ffmpeg-resolver.ts:446-449`. Resolver hits are revalidated against file existence, size, and modification time at lines 467-485. Tests already cover capability reuse and invalidation at `mcp server/tests/core/capabilities.vitest.ts:349-420`, plus resolver reuse and size or mtime changes at `mcp server/tests/core/ffmpeg-resolver.vitest.ts:809-861`. A one-shot CLI process loses these maps on exit. Persist only validated metadata under the data directory, using atomic writes and a versioned schema. Cache keys should include platform, architecture, config overrides, PATH identity, and data directory. Re-stat cached binaries on each process start, retain pinned install hash checks for installed binaries at `mcp server/src/core/ffmpeg-resolver.ts:552-584`, do not persist misses, and invalidate on setup or failure. These persistence details are recommendations.",
+      "text": "Resolver and capability caches are process-local maps. `capabilityCache` maps binary path to an in-flight or completed promise at `mcp server/src/core/capabilities.ts:163,348-386`. The resolver maps tool name to a `CacheEntry` and in-flight lookup at `mcp server/src/core/ffmpeg-resolver.ts:446-449`. Resolver hits are revalidated against file existence, size, and modification time at lines 467-485. Tests already cover capability reuse and invalidation at `mcp server/tests/core/capabilities.vitest.ts:349-420`, plus resolver reuse and size or mtime changes at `mcp server/tests/core/ffmpeg-resolver.vitest.ts:809-861`. A one-shot CLI process loses these maps on exit. Persist only validated metadata under the data directory, using atomic writes and a versioned schema. Cache keys should include platform, architecture, config overrides, PATH identity, and data directory. Re-stat cached binaries on each process start, retain pinned install hash checks for installed binaries at `mcp server/src/core/ffmpeg-resolver.ts:552-584`, do not persist misses, and invalidate on setup or failure. These persistence details are recommendations.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-5-2d8782371490",
+      "title": "rule_parity.py needs surface-specific route assertions and a source-only CLI reference check.",
+      "text": "rule_parity.py needs surface-specific route assertions and a source-only CLI reference check.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-5",
+      "title": "Separate CLI command parsing from configuration parsing. `loadConfig` accepts environment plus argv and documents bare folder paths as arguments at `mcp server/src/core/config.ts:400-418`. Its parser turns every non-flag token into an allowed root at lines 155-175. The existing server passes `process.argv.slice(2)` directly at `mcp server/src/index.ts:94-99`. A CLI must consume `--config <path>`, command names, and JSON argument sources in its own parser, then call a config loader with only config-specific values or an empty argv. The current `loadConfig` signature does not itself accept a config file path at lines 410-414, so JSON config loading belongs in a separate bootstrap layer.",
+      "text": "Separate CLI command parsing from configuration parsing. `loadConfig` accepts environment plus argv and documents bare folder paths as arguments at `mcp server/src/core/config.ts:400-418`. Its parser turns every non-flag token into an allowed root at lines 155-175. The existing server passes `process.argv.slice(2)` directly at `mcp server/src/index.ts:94-99`. A CLI must consume `--config <path>`, command names, and JSON argument sources in its own parser, then call a config loader with only config-specific values or an empty argv. The current `loadConfig` signature does not itself accept a config file path at lines 410-414, so JSON config loading belongs in a separate bootstrap layer.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-6",
+      "title": "Signal handling needs a CLI-specific cancellation path. The MCP entry catches SIGINT and SIGTERM and closes the server at `mcp server/src/index.ts:56-88`. The process runner starts a local child in `spawnAndWait` at `mcp server/src/core/process-runner.ts:360-374`, and only its timeout path kills that child with a grace period at lines 466-479. `withTempDir` removes its folder in `finally` at lines 687-702. Proposed CLI behavior: a shared abort controller stops active children, the CLI awaits dispatch settlement so tool `finally` cleanup runs, then it exits with documented statuses. This process registry and signal-to-cancellation path are recommendations, not existing runtime behavior.",
+      "text": "Signal handling needs a CLI-specific cancellation path. The MCP entry catches SIGINT and SIGTERM and closes the server at `mcp server/src/index.ts:56-88`. The process runner starts a local child in `spawnAndWait` at `mcp server/src/core/process-runner.ts:360-374`, and only its timeout path kills that child with a grace period at lines 466-479. `withTempDir` removes its folder in `finally` at lines 687-702. Proposed CLI behavior: a shared abort controller stops active children, the CLI awaits dispatch settlement so tool `finally` cleanup runs, then it exits with documented statuses. This process registry and signal-to-cancellation path are recommendations, not existing runtime behavior.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-7-dd40672616d7",
+      "title": "SRO-001 expects MCP from the Claude Code plugin, while the Desktop Project PRO-001 correctly remains an MCP scenario.",
+      "text": "SRO-001 expects MCP from the Claude Code plugin, while the Desktop Project PRO-001 correctly remains an MCP scenario.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-1",
+      "title": "The current plugin manifest registers `media-editor` as an MCP server and invokes `server/dist/index.js` with `mcpServers` at `mcp server/claude-plugin/.claude-plugin/plugin.json:10-22`. Its README says to expect that server to be connected at lines 44-54 and describes the plugin as an MCP server at lines 9-11. This conflicts with the fixed decision that the Claude Code plugin ships the skill and CLI runtime and registers no MCP server. Remove the plugin `mcpServers` entry and update its install and verification instructions. Preserve `mcp server/manifest.json` for the separate Claude Desktop extension, whose MCP entry is at lines 23-35.",
+      "text": "The current plugin manifest registers `media-editor` as an MCP server and invokes `server/dist/index.js` with `mcpServers` at `mcp server/claude-plugin/.claude-plugin/plugin.json:10-22`. Its README says to expect that server to be connected at lines 44-54 and describes the plugin as an MCP server at lines 9-11. This conflicts with the fixed decision that the Claude Code plugin ships the skill and CLI runtime and registers no MCP server. Remove the plugin `mcpServers` entry and update its install and verification instructions. Preserve `mcp server/manifest.json` for the separate Claude Desktop extension, whose MCP entry is at lines 23-35.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-5",
+      "title": "The Desktop build already packages platform-specific production dependencies and pinned binaries. `buildBundle` stages `dist`, `assets`, package metadata, and licenses at `mcp server/scripts/build-bundle.ts:68-76`, then performs platform-specific npm installation, checks native packages, and installs the pinned ffmpeg and ffprobe at lines 145-185. `npmInstallArgs` sets platform and architecture for `npm ci` and pins glibc on Linux at `mcp server/scripts/bundle/targets.ts:106-130`. `sharp` is a direct dependency at `mcp server/package.json:24-29`. Preserve this per-platform native dependency selection for the CLI package. `scripts/test-pinned.ts` downloads or reuses pinned binaries, checks their digest during extraction, and runs the suite with those binaries at lines 78-106 and 109-134.",
+      "text": "The Desktop build already packages platform-specific production dependencies and pinned binaries. `buildBundle` stages `dist`, `assets`, package metadata, and licenses at `mcp server/scripts/build-bundle.ts:68-76`, then performs platform-specific npm installation, checks native packages, and installs the pinned ffmpeg and ffprobe at lines 145-185. `npmInstallArgs` sets platform and architecture for `npm ci` and pins glibc on Linux at `mcp server/scripts/bundle/targets.ts:106-130`. `sharp` is a direct dependency at `mcp server/package.json:24-29`. Preserve this per-platform native dependency selection for the CLI package. `scripts/test-pinned.ts` downloads or reuses pinned binaries, checks their digest during extraction, and runs the suite with those binaries at lines 78-106 and 109-134.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-7",
+      "title": "The existing package exposes only `media-editor-mcp: dist/index.js` in its `bin` field and has no standalone CLI install path at `mcp server/package.json:8-22`. The main install guide documents the extension and MCP-backed plugin, not a terminal CLI, at `INSTALL-GUIDE.md:90-118`. Add a `media-editor` package bin pointing to `dist/cli.js` and ship a standalone package artifact or local install procedure such as `npm link` from the package checkout. Document Node.js `20.9.0` or newer, the configured `MEDIA_EDITOR_DATA_DIR`, and a direct JSON CLI example for other terminal agents. The plugin skill should still use its bundled path so it does not require a separate global install.",
+      "text": "The existing package exposes only `media-editor-mcp: dist/index.js` in its `bin` field and has no standalone CLI install path at `mcp server/package.json:8-22`. The main install guide documents the extension and MCP-backed plugin, not a terminal CLI, at `INSTALL-GUIDE.md:90-118`. Add a `media-editor` package bin pointing to `dist/cli.js` and ship a standalone package artifact or local install procedure such as `npm link` from the package checkout. Document Node.js `20.9.0` or newer, the configured `MEDIA_EDITOR_DATA_DIR`, and a direct JSON CLI example for other terminal agents. The plugin skill should still use its bundled path so it does not require a separate global install.",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-7-b3ad11bdfd4e",
+      "title": "The existing playbook tests single-file naming, not a multi-input batch confirmation in either packaging.",
+      "text": "The existing playbook tests single-file naming, not a multi-input batch confirmation in either packaging.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-1-06314352659d",
+      "title": "The naming question is conditional on ambiguity today, and its folder choice is scoped to files written by one operation.",
+      "text": "The naming question is conditional on ambiguity today, and its folder choice is scoped to files written by one operation.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-5-2-b2dd4f668500",
+      "title": "The optional fileName fallback and optional subfolder defaults let a writing call proceed without an explicit batch decision.",
+      "text": "The optional fileName fallback and optional subfolder defaults let a writing call proceed without an explicit batch decision.",
+      "addedAtIteration": 5,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-3-finding-3",
+      "title": "The preferred skill invocation is an explicit `node` command whose script path contains `${CLAUDE_PLUGIN_ROOT}`, for example `node \"${CLAUDE_PLUGIN_ROOT}/server/dist/cli.js\"`. Claude Code substitutes `${CLAUDE_PLUGIN_ROOT}` in plugin skill Markdown and in the skill's `allowed-tools` rules. It is not an environment variable available to commands launched by the Bash tool. Use the same substituted command pattern in both the allowed-tools rule and skill body so the bundled CLI path is exact. These behaviors are documented in the [Claude Code skills guide](https://code.claude.com/docs/en/skills) and [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference).",
+      "text": "The preferred skill invocation is an explicit `node` command whose script path contains `${CLAUDE_PLUGIN_ROOT}`, for example `node \"${CLAUDE_PLUGIN_ROOT}/server/dist/cli.js\"`. Claude Code substitutes `${CLAUDE_PLUGIN_ROOT}` in plugin skill Markdown and in the skill's `allowed-tools` rules. It is not an environment variable available to commands launched by the Bash tool. Use the same substituted command pattern in both the allowed-tools rule and skill body so the bundled CLI path is exact. These behaviors are documented in the [Claude Code skills guide](https://code.claude.com/docs/en/skills) and [Claude Code plugin manifest reference](https://code.claude.com/docs/en/plugins-reference).",
+      "addedAtIteration": 3,
+      "_iteration_source": "lineages/luna/iterations/iteration-003.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-7",
+      "title": "The registry tests already cover successful result passthrough, handler exceptions, unknown tools, bad argument types, and missing fields at `mcp server/tests/server/registry.vitest.ts:158-225`. Extend that coverage around the exported dispatcher and CLI contract. No tests were run in this research iteration.",
+      "text": "The registry tests already cover successful result passthrough, handler exceptions, unknown tools, bad argument types, and missing fields at `mcp server/tests/server/registry.vitest.ts:158-225`. Extend that coverage around the exported dispatcher and CLI contract. No tests were run in this research iteration.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-2-164f4a4524a7",
+      "title": "The router oracle and differential gate currently model only one generic tools, ffmpeg, advice host order.",
+      "text": "The router oracle and differential gate currently model only one generic tools, ffmpeg, advice host order.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-1-9a5ef9b2e01d",
+      "title": "The skill route and Project route must diverge: CLI for skill-covered handlers then ffmpeg and advice, MCP then advice for the Project.",
+      "text": "The skill route and Project route must diverge: CLI for skill-covered handlers then ffmpeg and advice, MCP then advice for the Project.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-8-197229e8baaf",
+      "title": "The Sync Loop has seven declared pairs and intentionally leaves router-contract.md unpaired because the Project kernel carries its code projection.",
+      "text": "The Sync Loop has seven declared pairs and intentionally leaves router-contract.md unpaired because the Project kernel carries its code projection.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-3-23b6eb1b352d",
+      "title": "The tools, setup, and interactive-intelligence references are currently byte-identical to their declared Project mirrors.",
+      "text": "The tools, setup, and interactive-intelligence references are currently byte-identical to their declared Project mirrors.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-2-finding-1",
+      "title": "Tool definitions contain a Zod input shape and metadata. `listedInputSchema` adds `fileName` and `subfolder` when output placement applies, and the registry publishes title, description, schema, and annotations at `mcp server/src/server/tool-registry.ts:91-99,129-139`. Zod is already a direct dependency at `mcp server/package.json:24-29`, and the installed Zod v4 type exposes `toJSONSchema` at `mcp server/node_modules/zod/v4/classic/schemas.d.ts:7-18`. Recommended `describe <tool>` implementation: resolve the name in `ALL_TOOLS`, build `z.object(listedInputSchema(definition))`, and call `toJSONSchema()` so placement parameters appear in the caller-facing schema. `list` should emit the existing tool order with name, title, and description. This does not require a second JSON Schema dependency.",
+      "text": "Tool definitions contain a Zod input shape and metadata. `listedInputSchema` adds `fileName` and `subfolder` when output placement applies, and the registry publishes title, description, schema, and annotations at `mcp server/src/server/tool-registry.ts:91-99,129-139`. Zod is already a direct dependency at `mcp server/package.json:24-29`, and the installed Zod v4 type exposes `toJSONSchema` at `mcp server/node_modules/zod/v4/classic/schemas.d.ts:7-18`. Recommended `describe <tool>` implementation: resolve the name in `ALL_TOOLS`, build `z.object(listedInputSchema(definition))`, and call `toJSONSchema()` so placement parameters appear in the caller-facing schema. `list` should emit the existing tool order with name, title, and description. This does not require a second JSON Schema dependency.",
+      "addedAtIteration": 2,
+      "_iteration_source": "lineages/luna/iterations/iteration-002.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "state-finding-4-6-3af056af9ec3",
+      "title": "twin_divergence.py documents route and output comparison but currently compares only PASS, FAIL, or SKIP verdicts.",
+      "text": "twin_divergence.py documents route and output comparison but currently compares only PASS, FAIL, or SKIP verdicts.",
+      "addedAtIteration": 4,
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "iteration-1-finding-3",
+      "title": "Validation failures should follow the same result path as other tool failures. `errorResult` returns `isError`, a text content entry, and structured `code`, `message`, and `details` at `mcp server/src/core/result.ts:321-346`. The current error-code list has no invalid-arguments code at `mcp server/src/core/errors.ts:12-28`, so add a stable CLI argument code or a dedicated validation-result helper. The existing MCP tests expect schema failures to reject as protocol `INVALID_PARAMS` at `mcp server/tests/server/registry.vitest.ts:201-225`. The behavior change therefore needs matching test updates while retaining the existing unknown-tool protocol error at lines 192-199.",
+      "text": "Validation failures should follow the same result path as other tool failures. `errorResult` returns `isError`, a text content entry, and structured `code`, `message`, and `details` at `mcp server/src/core/result.ts:321-346`. The current error-code list has no invalid-arguments code at `mcp server/src/core/errors.ts:12-28`, so add a stable CLI argument code or a dedicated validation-result helper. The existing MCP tests expect schema failures to reject as protocol `INVALID_PARAMS` at `mcp server/tests/server/registry.vitest.ts:201-225`. The behavior change therefore needs matching test updates while retaining the existing unknown-tool protocol error at lines 192-199.",
+      "addedAtIteration": 1,
+      "_iteration_source": "lineages/luna/iterations/iteration-001.md",
+      "_reconstructed_from_state": true,
+      "_lineages": [
+        "luna"
+      ]
+    },
+    {
+      "id": "F-15",
+      "focus": "skill-split",
+      "statement": "A skill-only reference must not enter RESOURCE_MAP or ALWAYS, because the differential compares the resource list.",
+      "evidence": "benchmark/router/differential.py:333-339",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-16",
+      "focus": "skill-split",
+      "statement": "choose_route can gain a cli branch without any route_contract.py schema change, because route is not a ROUTE_FIELDS member.",
+      "evidence": "benchmark/router/route_contract.py:87-89, benchmark/router/differential.py:100-104, :331-332",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-18",
+      "focus": "naming",
+      "statement": "The kernel already stated that several files from one call go into one numbered folder, and the run still split the batch, so a text-only fix repeats a rule that already failed.",
+      "evidence": "claude project/Custom Instructions.md:149",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-19",
+      "focus": "naming",
+      "statement": "The only hard wait covers one name and no folder, and it is reachable only through the ambiguity escalation.",
+      "evidence": "claude project/Custom Instructions.md:194, :181",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-11",
+      "focus": "distribution",
+      "statement": "A plugin root variable resolves inline in skill Markdown body but is absent from the Bash tool environment.",
+      "evidence": "https://code.claude.com/docs/en/plugins-reference",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-12",
+      "focus": "distribution",
+      "statement": "A plugin bin/ folder is on the Bash tool PATH, and a plugin with a top-level bin/ is not installed on other surfaces.",
+      "evidence": "https://code.claude.com/docs/en/plugins-reference",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-21",
+      "focus": "naming",
+      "statement": "No server guard can distinguish a confirmed name from an invented one, so a guard is not worth its friction.",
+      "evidence": "inference from the argument boundary at mcp server/src/server/tool-registry.ts:102-123",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-10",
+      "focus": "distribution",
+      "statement": "dist is staged whole into the bundle, so dist/cli.js ships with no new staging rule.",
+      "evidence": "mcp server/scripts/build-bundle.ts:76",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-04",
+      "focus": "cli-core",
+      "statement": "loadConfig turns every bare argv token into an allowed root candidate, so tool arguments must never reach it.",
+      "evidence": "mcp server/src/core/config.ts:167-175, :410-414",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-17",
+      "focus": "naming",
+      "statement": "allocateOutputFolder always creates a new numbered folder and cannot target an existing one.",
+      "evidence": "mcp server/src/core/output-folder.ts:301-341, :322-334",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-05",
+      "focus": "cli-core",
+      "statement": "No registry reaps running ffmpeg children. process-runner kills only on its own timeout.",
+      "evidence": "mcp server/src/core/process-runner.ts:471-477, mcp server/src/index.ts:56-88",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-03",
+      "focus": "cli-core",
+      "statement": "index.ts:126 runs main() at module scope, so a separate CLI entry is required.",
+      "evidence": "mcp server/src/index.ts:126",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-01",
+      "focus": "cli-core",
+      "statement": "The 40 tool handlers are listed in all-tools.ts:57-98 and the count is confirmed by reading the file.",
+      "evidence": "mcp server/src/server/all-tools.ts:57-98",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-20",
+      "focus": "naming",
+      "statement": "Field descriptions present an omitted fileName and subfolder as normal outcomes.",
+      "evidence": "mcp server/src/server/field-schemas.ts:62-80",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-13",
+      "focus": "distribution",
+      "statement": "Two relative-path reads constrain the dist layout: the package.json lookup and the bundled font path.",
+      "evidence": "mcp server/src/server/server-info.ts:39-49, mcp server/src/core/font-path.ts:51",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-02",
+      "focus": "cli-core",
+      "statement": "dispatchToolCall is private, returns the MCP SDK CallToolResult type, and throws McpError for a bad argument list from outside its try block.",
+      "evidence": "mcp server/src/server/tool-registry.ts:102-127, :107-113",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-08",
+      "focus": "cli-surface",
+      "statement": "Unknown argument keys are stripped silently by the dispatch parse, verified by running z.object().safeParse.",
+      "evidence": "mcp server/src/server/tool-registry.ts:107",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-09",
+      "focus": "cli-surface",
+      "statement": "The preview is returned as base64 inside an image content block, which is wrong for a terminal.",
+      "evidence": "mcp server/src/tools/media/preview.ts:119-124, :38-44",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-22",
+      "focus": "naming",
+      "statement": "42 files mention the literal folder name mcp server, and the changelogs and dated SYNC.md lines must not be rewritten.",
+      "evidence": "measured by grep across AI Systems/Media Editor",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-07",
+      "focus": "cli-surface",
+      "statement": "zod resolves to 4.6.5 and z.toJSONSchema exists, so describe needs no new dependency.",
+      "evidence": "measured by running node in mcp server/",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-06",
+      "focus": "cli-surface",
+      "statement": "Measured startup: 0.21 s to import the whole tool graph against a 0.02 s node baseline, with sharp at 0.19 s.",
+      "evidence": "measured with /usr/bin/time -p in mcp server/",
+      "_lineages": [
+        "deepseek"
+      ]
+    },
+    {
+      "id": "F-14",
+      "focus": "skill-split",
+      "statement": "All seven declared mirror pairs are byte-identical today, verified with cmp -s.",
+      "evidence": "systems.py:1252-1267, measured with cmp -s",
+      "_lineages": [
+        "deepseek"
+      ]
+    }
+  ],
+  "ruledOutDirections": [],
+  "metrics": {
+    "iterationsCompleted": 6,
+    "openQuestions": 0,
+    "resolvedQuestions": 0,
+    "keyFindings": 58,
+    "sourceFindings": 65,
+    "reconstructionGaps": 24,
+    "convergenceScore": 0.475,
+    "coverageBySources": {}
+  },
+  "schema_mismatch": [
+    {
+      "type": "schema_mismatch",
+      "severity": "warn",
+      "lineage": "deepseek",
+      "message": "Registry uses non-canonical key \"findings\" instead of \"keyFindings\"; coerced 22 entries.",
+      "aliasKey": "findings",
+      "canonicalKey": "keyFindings",
+      "coercedCount": 22
+    }
+  ]
+}

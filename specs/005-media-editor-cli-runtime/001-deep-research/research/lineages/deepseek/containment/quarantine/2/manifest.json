@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-04T15:54:43.496Z",
+  "entries": [
+    {
+      "path": "AI Systems/Media Editor/runtime/tests/README.md",
+      "hash": "b99df6230848b6e08a0cbb248df521d8f90b4046",
+      "content_stored": true,
+      "content_path": "content/AI Systems/Media Editor/runtime/tests/README.md",
+      "baseline_patch_path": "patch-baseline/AI Systems/Media Editor/runtime/tests/README.md.patch"
+    },
+    {
+      "path": "AI Systems/Media Editor/runtime/tests/cli/README.md",
+      "hash": "b7c4612c24456141cb431b32140f01fbd56fc375",
+      "content_stored": true,
+      "content_path": "content/AI Systems/Media Editor/runtime/tests/cli/README.md"
+    },
+    {
+      "path": "AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts",
+      "hash": "90c49fc0f2f34b55abb369d497b2111107f8c60e",
+      "content_stored": true,
+      "content_path": "content/AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts",
+      "baseline_patch_path": "patch-baseline/AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts.patch"
+    }
+  ]
+}

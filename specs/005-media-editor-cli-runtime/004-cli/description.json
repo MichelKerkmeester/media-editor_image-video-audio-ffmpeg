@@ -1,0 +1,20 @@
+{
+  "level": "2",
+  "specFolder": "005-media-editor-cli-runtime/004-cli",
+  "description": "The 40 tool handlers are reachable only through MCP",
+  "keywords": [
+    "tool",
+    "handlers",
+    "reachable",
+    "only",
+    "mcp"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.531Z",
+  "specId": "004",
+  "folderSlug": "cli",
+  "parentChain": [
+    "005-media-editor-cli-runtime"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

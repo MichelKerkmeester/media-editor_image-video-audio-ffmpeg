@@ -1,0 +1,17 @@
+{
+  "specFolder": "003-media-editor-extension/001-tool-contract",
+  "description": "Phase 1: tool-contract",
+  "keywords": [
+    "phase",
+    "tool-contract"
+  ],
+  "lastUpdated": "2026-09-28T16:12:02.035Z",
+  "specId": "001",
+  "folderSlug": "tool-contract",
+  "parentChain": [
+    "003-media-editor-extension"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "3"
+}

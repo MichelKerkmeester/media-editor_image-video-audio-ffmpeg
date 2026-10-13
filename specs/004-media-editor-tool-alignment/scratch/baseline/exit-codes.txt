@@ -1,0 +1,12 @@
+fixtures               0
+rule_parity            0
+parity                 0
+residency              1
+pair_divergence        0
+residency_report       1
+carrier_evidence       0
+record_claims          1
+check_criteria         1
+playbook               0
+retired_names          0
+npm_test               1

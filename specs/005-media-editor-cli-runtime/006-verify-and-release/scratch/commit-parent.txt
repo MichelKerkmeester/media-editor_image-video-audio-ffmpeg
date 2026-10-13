@@ -1,0 +1,39 @@
+feat(media-editor): ask first and run the skill through media-editor
+
+Context: a clear batch request went straight to work, leaving four
+results under imported names, sometimes in four numbered folders. In
+Claude Code the skill depended on an MCP server the plugin had to start,
+and a model asked for a conversion often skipped the skill and ran cwebp
+or ffmpeg itself. The plugin no longer registers an MCP server: Claude
+Code users get the media-editor command in the Bash tool instead, and
+the Desktop extension keeps MCP unchanged.
+
+Changes:
+- Media Editor: rename the runtime folder to runtime/, ask one question
+  with names and a folder before the first write, add targetFolder and
+  maxBytes, add the media-editor command and ship it in the plugin in
+  place of the MCP server
+- Media Editor: route the skill through the command first, sharpen its
+  description and when_to_use, and keep the seven Knowledge mirrors
+  byte-identical to their transport-neutral sources
+- Media Editor: ship Skill 1.1.0.0, kernel 1.1.0 and the runtime,
+  extension, plugin and marketplace entry at 1.1.0
+- Sync Loop: declare references/cli.md as an unmirrored source and
+  resync the kernel statements the naming gate and the cli route moved
+- Media Editor: return nextStep from media_health and fix every rule
+  the full playbook run found, with the round 11 report at 32 of 32
+- Media Editor: write the feature catalog and point the playbook at it
+- Sync Loop: add --deny to run_packaging.sh, rebuild the feature catalog
+  against the current code and fix the five playbook findings
+- ARCHITECTURE.md: describe runtime/ as the MCP server and the
+  media-editor command instead of the retired servers
+
+Verification:
+- `run_parity.sh` 7 of 7, `run_residency.sh`, `rule_parity.py` -> pass
+- `pair_divergence.py` 7 pairs, `record_claims.py` 58 claims,
+  `carrier_query_evidence.py` -> pass
+- Media Editor tests -> 1,826 passed, packaging 150 passed
+- playbook and catalog validators, both systems -> 0 violations
+- Sync Loop alignment drift -> 0 findings
+
+Spec: 005-media-editor-cli-runtime

@@ -1,0 +1,14 @@
+{
+  "topic": "media-editor CLI over the same 40 MCP tool handlers, skill CLI-only, Claude Project on MCP, naming and placement gate hardening",
+  "specFolder": "AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research",
+  "artifact_dir": "/Users/michelkerkmeester/MEGA/Development/AI Systems/AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research/research/lineages/deepseek",
+  "sessionId": "fanout-deepseek-1791117729260-kpn1og",
+  "generation": 1,
+  "executor": "cli-pi model=opencode-go/deepseek-v4.1-flash",
+  "loop_type": "research",
+  "maxIterations": 5,
+  "convergenceThreshold": 0.05,
+  "stopPolicy": "max-iterations",
+  "status": "initialized",
+  "createdAt": "2026-10-04T12:44:00Z"
+}

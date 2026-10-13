@@ -1,0 +1,9 @@
+./AGENTS.md
+./media files/export/001 - webp-under-100kb/boarding-passes-sunset-window.webp
+./media files/export/001 - webp-under-100kb/dj-booth-pink-backdrop.webp
+./media files/export/001 - webp-under-100kb/man-drinking-pink-drink.webp
+./media files/export/001 - webp-under-100kb/powerbank-unboxing-box.webp
+./media files/import/CleanShot 2026-10-03 at 16.46.54.png
+./media files/import/CleanShot 2026-10-03 at 16.50.26.png
+./media files/import/CleanShot 2026-10-03 at 16.50.29.png
+./media files/import/CleanShot 2026-10-03 at 16.51.35.png

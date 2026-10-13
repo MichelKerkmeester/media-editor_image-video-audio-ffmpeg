@@ -1,0 +1,31 @@
+{
+  "level": "2",
+  "specFolder": "005-media-editor-cli-runtime/006-verify-and-release",
+  "description": "Phases 002 to 005 touch two repositories, a runtime with 86 test files, mirror pairs the Sync Loop checks, five Python gates and a plugin",
+  "keywords": [
+    "phases",
+    "touch",
+    "two",
+    "repositories",
+    "runtime",
+    "test",
+    "files",
+    "mirror",
+    "pairs",
+    "sync",
+    "loop",
+    "checks",
+    "five",
+    "python",
+    "gates",
+    "plugin"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.546Z",
+  "specId": "006",
+  "folderSlug": "verify-and-release",
+  "parentChain": [
+    "005-media-editor-cli-runtime"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

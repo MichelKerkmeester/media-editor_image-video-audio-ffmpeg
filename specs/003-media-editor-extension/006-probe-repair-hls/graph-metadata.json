@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "packet_id": "003-media-editor-extension/006-probe-repair-hls",
+  "spec_folder": "003-media-editor-extension/006-probe-repair-hls",
+  "parent_id": "003-media-editor-extension",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media_probe media_repair",
+      "video_hls_ladder tool",
+      "ffprobe diagnose repair",
+      "hls ladder mcp tool",
+      "probe repair hls plan",
+      "repair strategies",
+      "hls ladder settings",
+      "broken media generator",
+      "task breakdown",
+      "implementation tasks",
+      "verification checklist",
+      "probe repair hls tasks"
+    ],
+    "key_topics": [
+      "tool",
+      "ffprobe",
+      "diagnose",
+      "repair",
+      "hls",
+      "ladder",
+      "mcp",
+      "probe",
+      "plan",
+      "strategies",
+      "settings",
+      "broken"
+    ],
+    "importance_tier": "normal",
+    "status": "in_progress",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md",
+      "AI Systems/Media Editor/sk-media-editor/assets/hls-video-conversion.md",
+      ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+      ".claude/agents/code.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "decision-record.md",
+        "kind": "doc",
+        "path": "decision-record.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "hls-video-conversion.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/sk-media-editor/assets/hls-video-conversion.md",
+        "source": "derived"
+      },
+      {
+        "name": "child-dispatch-preamble.md",
+        "kind": "doc",
+        "path": ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+        "source": "derived"
+      },
+      {
+        "name": "code.md",
+        "kind": "doc",
+        "path": ".claude/agents/code.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern One",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Components",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Data Flow Probe",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Current Role",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The Media Editor sends inspection and repair work to ffprobe and then ffmpeg (`AI Systems/Media Editor/sk-media-editor/SKILL.md:86`, `:154-160`) and has an HLS mode (`:278`), but neither source server has a tool for any of them",
+    "created_at": "2026-09-28T16:12:06Z",
+    "last_save_at": "2026-10-13T11:10:10.766Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "decision-record.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:c0a70726ab4072bff6b8623865e3c3ec13373d4c0ada795ad0536c37a3c05b74",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "da17113743e20c3d75bd4801c130b1aea5443511d7a9afeefc581c3fd15607f4",
+      "plan.md": "6175d12779c208dfe5ff2589862403e0bea7235d2efdf23aa02c440a8c643f2a",
+      "tasks.md": "c721a3d35939d93e69284d84bfab12a61ac75cce9269dfafdeb7de096dec2a69",
+      "decision-record.md": "dc729c3b7831dc0b05f371fc77b964cbd4491409ef45b9198de1e7b3cdaa5c9c",
+      "implementation-summary.md": "df3f6f39a7e4af4aaaea108497e6076e461c684d11b4e91fa9c303945a3abe9a"
+    },
+    "last_active_at": null
+  }
+}

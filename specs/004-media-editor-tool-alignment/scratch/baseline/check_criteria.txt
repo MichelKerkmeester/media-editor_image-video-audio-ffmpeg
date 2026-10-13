@@ -1,0 +1,11 @@
+  2 selftest green clean, red on every injection, gates 0    FAILED clean=0 not-red=0 gates-failing=1
+  3 carrier query suite green, injected disagreement stops it FAILED suite=1 disagreement=1
+  4 the replay covers every recorded site                    ok
+  5 residency owned and placed, its record matching          FAILED check=2 report=2
+  the expiry proof runs green, red, green                    FAILED exit 2
+  no declared pair states one rule two ways                  FAILED exit 2
+  8 seven packages, fourteen handovers, every validator green ok
+  9 eight records both rounds, two families each, none open  ok
+  10 every counted claim in the record agrees with the tree  FAILED exit 1
+
+6 criterion check(s) failed

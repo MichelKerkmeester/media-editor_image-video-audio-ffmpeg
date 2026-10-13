@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "packet_id": "003-media-editor-extension/012-media-folder-layout",
+  "spec_folder": "003-media-editor-extension/012-media-folder-layout",
+  "parent_id": "003-media-editor-extension",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media folder layout",
+      "media files/export",
+      "media files/import",
+      "media files/tests",
+      "media folder plan",
+      "export path move",
+      "residency resync",
+      "plugin output folder",
+      "media folder tasks",
+      "export path tasks",
+      "verification checklist",
+      "plugin output tasks"
+    ],
+    "key_topics": [
+      "media",
+      "folder",
+      "layout",
+      "files",
+      "export",
+      "import",
+      "tests",
+      "plan",
+      "path",
+      "move",
+      "residency",
+      "resync"
+    ],
+    "importance_tier": "normal",
+    "status": "complete",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "claude project/Custom Instructions.md",
+      "claude project/README.md",
+      "sk-media-editor/changelog/v0.7.0.0.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "claude project/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "v0.7.0.0.md",
+        "kind": "doc",
+        "path": "sk-media-editor/changelog/v0.7.0.0.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context This",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Project",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Code",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Format",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Task Notation",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Completion Criteria",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Checklist",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Verification Protocol",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "`export/` held results and the files a user wanted edited side by side, because the system named no place for source files",
+    "created_at": "2026-09-30T10:02:34Z",
+    "last_save_at": "2026-10-13T12:53:41.806Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:f334b7da2c473394f0e42358917aa768134510d32185e4c717b18d29a647725f",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "027b869e215a1df4a1c561f11051dbb6fea93ed5339e98a6f65812523e63b989",
+      "plan.md": "4ef40b9f098941748251d00209b1dbac61879571d3f9a93fb99208edf3feddf8",
+      "tasks.md": "5dd644b62e8942561510446290d13934806cfeaa105ac873ace96fc0c64ddaff",
+      "implementation-summary.md": "c73e78a4d4a49698c22cf2c8aaf9db7701d550e807690117a635f494934f4852"
+    },
+    "last_active_at": null
+  }
+}

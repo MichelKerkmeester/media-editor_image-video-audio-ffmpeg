@@ -1,0 +1,31 @@
+{
+  "level": "2",
+  "specFolder": "005-media-editor-cli-runtime/001-deep-research",
+  "description": "Phases 002 to 005 change a runtime of 40 tool handlers, a skill with byte-identical mirror pairs and a set of Python gates that encode the current",
+  "keywords": [
+    "phases",
+    "change",
+    "runtime",
+    "tool",
+    "handlers",
+    "skill",
+    "byte-identical",
+    "mirror",
+    "pairs",
+    "set",
+    "python",
+    "gates",
+    "encode",
+    "current"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.518Z",
+  "specId": "001",
+  "folderSlug": "deep-research",
+  "parentChain": [
+    "005-media-editor-cli-runtime"
+  ],
+  "memorySequence": 1,
+  "memoryNameHistory": [
+    "04-10-26_14-07__deep-research-for-the-media-editor-cli-runtime.md"
+  ]
+}

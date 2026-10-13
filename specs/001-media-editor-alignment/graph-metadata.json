@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "packet_id": "001-media-editor-alignment",
+  "spec_folder": "001-media-editor-alignment",
+  "parent_id": null,
+  "children_ids": [
+    "001-media-editor-alignment/003-skill-md-alignment"
+  ],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [],
+    "key_topics": [
+      "barter",
+      "media",
+      "editor",
+      "predates",
+      "packaging",
+      "standards",
+      "proven",
+      "product",
+      "owner",
+      "underscored",
+      "filenames",
+      "generic"
+    ],
+    "importance_tier": "normal",
+    "status": "planned",
+    "key_files": [
+      "spec.md",
+      "tasks.md",
+      "sk-media-editor/README.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "sk-media-editor/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor Alignment",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Product Owner",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Blueprint The",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Required Parity",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Drift Checks",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "references",
+        "kind": "key_phrase",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "a",
+        "kind": "key_phrase",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "byte-verified",
+        "kind": "key_phrase",
+        "path": "tasks.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "AI_Systems/Barter/Media Editor/ predates the packaging standards proven on Product Owner: underscored filenames, a generic skill/ folder, an accreted SKILL.md without the create...",
+    "created_at": "2026-10-13T12:53:42.066Z",
+    "last_save_at": "2026-10-13T12:53:42.066Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "tasks.md"
+    ],
+    "source_fingerprint": "sha256:a0547f8c443e8caf5e9253960bc6e36f22aa3ee929de4127589b32b36550f379",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "b2f3e5e337e3db4503edd936239e83ee2e99c4dc40051dacfcdf3171ea3b6978",
+      "tasks.md": "996c7a7fd1556a83ec704b968a1996ce5f507710d04739e86374ec4e76ff3d44"
+    },
+    "last_active_child_id": null,
+    "last_active_at": null
+  }
+}

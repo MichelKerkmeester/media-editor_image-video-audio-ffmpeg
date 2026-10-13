@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "packet_id": "005-media-editor-cli-runtime/001-deep-research",
+  "spec_folder": "005-media-editor-cli-runtime/001-deep-research",
+  "parent_id": "005-media-editor-cli-runtime",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor cli deep research",
+      "media editor research lineages",
+      "deepseek luna research fan-out",
+      "media editor cli design",
+      "deep research plan",
+      "two lineage fan-out",
+      "media editor research focuses",
+      "research spot-check",
+      "deep research tasks",
+      "research fan-out tasks",
+      "research verification checklist",
+      "research spot-check tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "cli",
+      "deep",
+      "research",
+      "lineages",
+      "deepseek",
+      "luna",
+      "fan-out",
+      "design",
+      "plan",
+      "two"
+    ],
+    "importance_tier": "normal",
+    "status": "draft",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "research/research.md",
+      "research/dispatch-prompt.md",
+      "research/deep-research-config.json",
+      "research/findings-registry.json",
+      "research/resource-map.md",
+      "scratch/closeout-fix.md",
+      ".skilled/commands/deep/research.md",
+      ".skilled/commands/deep/assets/deep-research-auto.yaml",
+      "benchmark/gates/rule_parity.py",
+      "benchmark/router/differential.py",
+      "benchmark/router/README.md",
+      "sk-media-editor/references/router-contract.md",
+      "sk-media-editor/SKILL.md",
+      "sk-media-editor/README.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "research.md",
+        "kind": "doc",
+        "path": "research/research.md",
+        "source": "derived"
+      },
+      {
+        "name": "dispatch-prompt.md",
+        "kind": "doc",
+        "path": "research/dispatch-prompt.md",
+        "source": "derived"
+      },
+      {
+        "name": "deep-research-config.json",
+        "kind": "config",
+        "path": "research/deep-research-config.json",
+        "source": "derived"
+      },
+      {
+        "name": "findings-registry.json",
+        "kind": "config",
+        "path": "research/findings-registry.json",
+        "source": "derived"
+      },
+      {
+        "name": "closeout-fix.md",
+        "kind": "doc",
+        "path": "scratch/closeout-fix.md",
+        "source": "derived"
+      },
+      {
+        "name": "deep-research-auto.yaml",
+        "kind": "config",
+        "path": ".skilled/commands/deep/assets/deep-research-auto.yaml",
+        "source": "derived"
+      },
+      {
+        "name": "rule_parity.py",
+        "kind": "file",
+        "path": "benchmark/gates/rule_parity.py",
+        "source": "derived"
+      },
+      {
+        "name": "differential.py",
+        "kind": "file",
+        "path": "benchmark/router/differential.py",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "benchmark/router/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "router-contract.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/router-contract.md",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "research/research.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context This",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Scope Boundary",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "Phases 002 to 005 change a runtime of 40 tool handlers, a skill with byte-identical mirror pairs and a set of Python gates that encode the current MCP-first route order",
+    "created_at": "2026-10-04T11:47:28Z",
+    "last_save_at": "2026-10-13T12:53:41.675Z",
+    "save_lineage": "same_pass",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "research/research.md"
+    ],
+    "source_fingerprint": "sha256:6b60bbead676c386e2c8074fd6108d37565517664e3c3d58fb97f3a1160b4a32",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "32ab0f960ced5020b4ced734a08496e2e5a36eb4549db1400f270e5b7bbc3102",
+      "plan.md": "f0e2d9a64d7c2ceb89c70408a12a821902d271b0c2c634315e8ae5ece35d570d",
+      "tasks.md": "53b4fb34b744207b66080ea67cf99dbeded47daf7d8d362dfd0f1993c25fc2ca",
+      "implementation-summary.md": "014fd4de0fd06d3dfdee472c02d2c158c8966e1f2d16f43aefe7287a274421ac",
+      "research/research.md": "1e7087b33d2115e68a4873ccb28e70ddfc8475afbf768f65e297346d4a96ed7a"
+    },
+    "last_active_at": null
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "packet_id": "005-media-editor-cli-runtime/006-verify-and-release",
+  "spec_folder": "005-media-editor-cli-runtime/006-verify-and-release",
+  "parent_id": "005-media-editor-cli-runtime",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor verify and release",
+      "088 release gates",
+      "media editor cli smoke test",
+      "breaking release approval",
+      "verify and release plan",
+      "sandbox clone gates",
+      "release approval sequence",
+      "baseline delta report",
+      "verify and release tasks",
+      "release gate tasks",
+      "release verification checklist",
+      "commit and push tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "verify",
+      "release",
+      "gates",
+      "cli",
+      "smoke",
+      "test",
+      "breaking",
+      "approval",
+      "plan",
+      "sandbox"
+    ],
+    "importance_tier": "normal",
+    "status": "draft",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "scratch/gates.md",
+      "scratch/operator-ped-001.md",
+      "scratch/sync-loop-playbook-run.md",
+      "scratch/review-syncloop-by-luna.md",
+      "runtime/manifest.json",
+      "runtime/claude-plugin/.claude-plugin/plugin.json",
+      "sk-media-editor/changelog/v1.1.0.0.md",
+      "scratch/graded-replies/live-plain-turn1.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "gates.md",
+        "kind": "doc",
+        "path": "scratch/gates.md",
+        "source": "derived"
+      },
+      {
+        "name": "operator-ped-001.md",
+        "kind": "doc",
+        "path": "scratch/operator-ped-001.md",
+        "source": "derived"
+      },
+      {
+        "name": "sync-loop-playbook-run.md",
+        "kind": "doc",
+        "path": "scratch/sync-loop-playbook-run.md",
+        "source": "derived"
+      },
+      {
+        "name": "review-syncloop-by-luna.md",
+        "kind": "doc",
+        "path": "scratch/review-syncloop-by-luna.md",
+        "source": "derived"
+      },
+      {
+        "name": "manifest.json",
+        "kind": "config",
+        "path": "runtime/manifest.json",
+        "source": "derived"
+      },
+      {
+        "name": "plugin.json",
+        "kind": "config",
+        "path": "runtime/claude-plugin/.claude-plugin/plugin.json",
+        "source": "derived"
+      },
+      {
+        "name": "v1.1.0.0.md",
+        "kind": "doc",
+        "path": "sk-media-editor/changelog/v1.1.0.0.md",
+        "source": "derived"
+      },
+      {
+        "name": "live-plain-turn1.md",
+        "kind": "doc",
+        "path": "scratch/graded-replies/live-plain-turn1.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Sync Loop",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context This",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Implementation Plan",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Technical Context",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Overview The",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "Pattern Gate",
+        "kind": "proper_noun",
+        "path": "plan.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "Phases 002 to 005 touch two repositories, a runtime with 86 test files, mirror pairs the Sync Loop checks, five Python gates and a plugin",
+    "created_at": "2026-10-04T11:47:33Z",
+    "last_save_at": "2026-10-13T12:53:41.743Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:1c4d7b842b33f06ada3c3d6b4efb1adb9d7789ae360f179bc06a687ffa49462e",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "cef660db7f310b052db62853d957b23c550b3078ce9a2f9b929ccb295a6d73fb",
+      "plan.md": "d785d7454e0f428dd090cd37ebb7ff3a4ec1cf9f1f8350636b7a50c63686f15b",
+      "tasks.md": "9c67fdeb6eab96d86e42141141719df80bd2a325349f023914378a8a62a28b33",
+      "implementation-summary.md": "986573e3105e7f2581891123c94a91ca2949f992efc4775c5d562112f92e178f"
+    },
+    "last_active_at": null
+  }
+}

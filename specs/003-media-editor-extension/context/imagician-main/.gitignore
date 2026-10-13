@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.env
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.avif
+*.gif
+test-output/
+test-images/
+.mcp.json

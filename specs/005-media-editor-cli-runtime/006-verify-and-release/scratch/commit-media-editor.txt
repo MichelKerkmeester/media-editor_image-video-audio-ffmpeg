@@ -1,0 +1,56 @@
+feat(media-editor): ask first and run the skill through media-editor
+
+Context: a clear batch request went straight to work, leaving four
+results under imported names, sometimes in four numbered folders. In
+Claude Code the skill depended on an MCP server the plugin had to start,
+and a model asked for a conversion often skipped the skill and ran cwebp
+or ffmpeg itself. The plugin no longer registers an MCP server: Claude
+Code users get the media-editor command in the Bash tool instead, and
+the Desktop extension keeps MCP unchanged.
+
+Changes:
+- Rename the runtime folder from its MCP server name to runtime/
+- Ask one question before the first write on every surface, with a
+  proposed name for every output and, for several inputs, the choice of
+  the export root or one numbered folder
+- Add targetFolder so the calls of one batch share one folder, and
+  maxBytes on image_convert as a size cap that never resizes
+- Add the media-editor command: list, describe, health and every tool,
+  arguments from --args, --args-file or stdin, exit codes 0 to 3
+- Ship the command in the Claude Code plugin as bin/media-editor and
+  refuse a plugin manifest that declares mcpServers
+- Route the skill through the command first, then hand-written ffmpeg,
+  then advice, with references/cli.md and a cli route in the router
+  contract and the kernel's Router Code
+- Lead the skill description with when to use it, add when_to_use, and
+  rule out cwebp, sips and ImageMagick in ALWAYS 1
+- Make the seven mirrored references transport-neutral and copy each
+  over its Knowledge mirror
+- Check six host states in the router differential and add the batch
+  naming and command-first playbook scenarios
+- Return nextStep from media_health, so the command's JSON names the
+  setup tool when ffmpeg is missing
+- Fix every rule the full playbook run found: a confirmation accepts
+  the stated recommendations, nothing is left to ask once names and
+  place are settled, unknown media gets a working name, an oversized
+  request leads with its cost, a noticed command mistake gets the whole
+  corrected command, Repair advice answers with commands at once, and
+  the ffmpeg route previews in the temp folder and writes with -n
+- Write the feature catalog, 69 leaves in 11 categories, and point the
+  playbook scenarios at it
+- Record the round 11 playbook report at Sonnet 5.5 medium, 32 of 32
+  passed for both graders
+- Ship Skill 1.1.0.0, kernel 1.1.0 and the runtime, extension, plugin
+  and marketplace entry at 1.1.0
+
+Verification:
+- `npm run test:pinned` -> 91 files, 1,826 passed, 4 skipped
+- `vitest run tests/packaging` -> 150 passed, 2 skipped
+- `claude plugin validate` manifest and marketplace -> passed
+- router fixtures 22 of 22, differential 132 of 132
+- `run_parity.sh` 7 of 7, `run_residency.sh`, `rule_parity.py` -> pass
+- playbook and catalog validators -> 0 violations, 32 scenarios
+- playbook run -> 32 of 32 PASS, `check_report.sh` and
+  `twin_divergence.py` clean on the report
+
+Spec: 005-media-editor-cli-runtime

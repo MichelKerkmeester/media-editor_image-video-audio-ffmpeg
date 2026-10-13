@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "recordedBy": "upgrade-legacy",
+  "recordedAt": "2026-10-13T12:53:47.473Z",
+  "findings": [
+    {
+      "rule": "ANCHORS_VALID",
+      "detail": "spec.md: no anchors found"
+    },
+    {
+      "rule": "ANCHORS_VALID",
+      "detail": "tasks.md: no anchors found"
+    },
+    {
+      "rule": "FILE_EXISTS",
+      "detail": "implementation-summary.md"
+    },
+    {
+      "rule": "FILE_EXISTS",
+      "detail": "plan.md"
+    },
+    {
+      "rule": "FRONTMATTER_VALID",
+      "detail": "spec.md: Empty required frontmatter field: trigger_phrases"
+    },
+    {
+      "rule": "FRONTMATTER_VALID",
+      "detail": "tasks.md: Empty required frontmatter field: trigger_phrases"
+    },
+    {
+      "rule": "LEVEL_MATCH",
+      "detail": "Required file missing for Level 1: implementation-summary.md"
+    },
+    {
+      "rule": "LEVEL_MATCH",
+      "detail": "Required file missing for Level 1: plan.md"
+    },
+    {
+      "rule": "LEVEL_MATCH",
+      "detail": "spec.md does not declare a level (expected Level 1)"
+    },
+    {
+      "rule": "TEMPLATE_SOURCE",
+      "detail": "spec.md"
+    },
+    {
+      "rule": "TEMPLATE_SOURCE",
+      "detail": "tasks.md"
+    }
+  ],
+  "refusals": [
+    {
+      "mode": "anchor-wrap",
+      "document": "spec.md",
+      "reason": "no ANCHOR marker anywhere, so the anchored template is not proven; left unchanged"
+    },
+    {
+      "mode": "anchor-wrap",
+      "document": "tasks.md",
+      "reason": "no ANCHOR marker anywhere, so the anchored template is not proven; left unchanged"
+    },
+    {
+      "mode": "header-add",
+      "document": "spec.md",
+      "reason": "spec.md: no level is recorded in spec.md, so no rendered template can be proven"
+    },
+    {
+      "mode": "header-add",
+      "document": "tasks.md",
+      "reason": "tasks.md: no level is recorded in spec.md, so no rendered template can be proven"
+    }
+  ]
+}

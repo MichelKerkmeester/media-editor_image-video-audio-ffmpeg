@@ -1,0 +1,37 @@
+diff --git a/AI Systems/Media Editor/runtime/tests/README.md b/AI Systems/Media Editor/runtime/tests/README.md
+index a4cfbab2..b99df623 100644
+--- a/AI Systems/Media Editor/runtime/tests/README.md	
++++ b/AI Systems/Media Editor/runtime/tests/README.md	
+@@ -19,7 +19,8 @@ Current state:
+ 
+ - The media tests need a working ffmpeg and ffprobe, found the way the server finds them. A missing binary fails those tests rather than skipping them.
+ - Temporary files go under `tests/.tmp/`, which git ignores, and each test removes its own folder.
+-- Some tests skip on purpose: cases that need another platform or file system, bundle checks when `dist-bundles/` is empty and resolver checks that apply only to the pinned run.
++- Some tests skip on purpose: cases that need another platform or file system, bundle checks when `dist-bundles/` is empty, spawned CLI cases that need the pinned binary pair and resolver checks that apply only to the pinned run.
++- Two tests fail on purpose through `it.fails`, each marking a known bug: `describe` builds its schema with a different Zod mode than `listTools` uses, and concurrent probe-cache setters can lose entries.
+ 
+ ---
+ 
+@@ -30,6 +31,7 @@ tests/
+ ├── smoke.vitest.ts   # Proves the runner itself starts
+ ├── core/             # One suite per src/core module, source-notice.ts aside
+ ├── server/           # Registry, tool context, media fields and a stdio run of the built server
++├── cli/              # Shared dispatch checks and spawned runs of the built command
+ ├── tools/            # Tool suites in audio/, composition/, image/, media/ and video/
+ ├── packaging/        # Bundle, plugin, pinned-test and manifest checks
+ ├── helpers/          # Media generators, the in-memory tool client and pinned-run shims
+@@ -61,12 +63,12 @@ Run from `AI Systems/Media Editor/runtime/`.
+ | `npx vitest run tests/tools/video/trim.vitest.ts` | One file |
+ | `npm run test:pinned -- tests/tools/video` | One folder on the pinned ffmpeg |
+ 
+-Expected result for `npm test`: `Test Files  86 passed (86)` and a `Tests` line with only passed and skipped counts.
++Expected result for `npm run test:pinned`: `Test Files  90 passed (90)` and a `Tests` line with only passed, expected-fail and skipped counts. A plain `npm test` also skips `cli/pinned-smoke.vitest.ts` and the spawned CLI cases that need the pinned pair.
+ 
+ ---
+ 
+ ## 5. RELATED
+ 
+-- [`core/README.md`](./core/README.md), [`server/README.md`](./server/README.md), [`tools/README.md`](./tools/README.md), [`packaging/README.md`](./packaging/README.md), [`helpers/README.md`](./helpers/README.md), [`fixtures/README.md`](./fixtures/README.md)
++- [`core/README.md`](./core/README.md), [`server/README.md`](./server/README.md), [`cli/README.md`](./cli/README.md), [`tools/README.md`](./tools/README.md), [`packaging/README.md`](./packaging/README.md), [`helpers/README.md`](./helpers/README.md), [`fixtures/README.md`](./fixtures/README.md)
+ - [`../README.md`](../README.md): Package commands
+ - [`../scripts/README.md`](../scripts/README.md): How the pinned run works

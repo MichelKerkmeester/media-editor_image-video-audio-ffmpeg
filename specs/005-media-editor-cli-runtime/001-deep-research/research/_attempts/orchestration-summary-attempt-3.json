@@ -1,0 +1,25 @@
+{
+  "run_id": "1791128374504-4fgni5",
+  "loop_type": "research",
+  "spec_folder": "AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research",
+  "base_artifact_dir": "AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research/research",
+  "total_cli_lineages": 1,
+  "orphaned_lineages": [],
+  "total": 1,
+  "succeeded": 0,
+  "failed": 1,
+  "all_failed": true,
+  "completed_with_containment_advisory": 0,
+  "gauges": {
+    "lag": 0,
+    "pending": 0,
+    "failed": 1
+  },
+  "failure_classes": {
+    "timeout": 0,
+    "exit": 0,
+    "salvage_miss": 1,
+    "artifact_miss": 0,
+    "projection_refusal": 0
+  }
+}

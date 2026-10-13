@@ -1,0 +1,447 @@
+M	AI Systems/Media Editor/AGENTS.md
+M	AI Systems/Media Editor/INSTALL-GUIDE.md
+M	AI Systems/Media Editor/README.md
+M	AI Systems/Media Editor/SYNC.md
+M	AI Systems/Media Editor/USER-GUIDE.md
+M	AI Systems/Media Editor/benchmark/gates/rule_parity.py
+M	AI Systems/Media Editor/benchmark/grader/README.md
+M	AI Systems/Media Editor/benchmark/grader/twin_divergence.py
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/README.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PAI-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PED-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PGD-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PHL-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PID-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PNE-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRM-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRO-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRO-002.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRP-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PRP-002.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PSB-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/PSB-002.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SAI-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-002.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-003.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-004.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SCR-005.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-002.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-003.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SED-004.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SHL-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SID-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SRM-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SRO-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SRO-002.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/SSB-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/STV-001.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/STV-002.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/replies/STV-003.md
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/results.csv
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/verdicts/deepseek.jsonl
+A	AI Systems/Media Editor/benchmark/reports/2026-10-05--manual-testing-playbook--claude-sonnet-5-5-medium/verdicts/luna.jsonl
+M	AI Systems/Media Editor/benchmark/router/README.md
+M	AI Systems/Media Editor/benchmark/router/differential.py
+M	AI Systems/Media Editor/benchmark/router/route_contract.py
+M	AI Systems/Media Editor/claude project/Custom Instructions.md
+M	AI Systems/Media Editor/claude project/README.md
+M	AI Systems/Media Editor/claude project/knowledge/Media Editor - Integrations - Image Operations.md
+M	AI Systems/Media Editor/claude project/knowledge/Media Editor - Integrations - Video And Audio Operations.md
+M	AI Systems/Media Editor/claude project/knowledge/Media Editor - Reference - HLS Video Conversion.md
+M	AI Systems/Media Editor/claude project/knowledge/Media Editor - Reference - Media Editor Tools.md
+M	AI Systems/Media Editor/claude project/knowledge/Media Editor - Reference - Setup.md
+M	AI Systems/Media Editor/claude project/knowledge/Media Editor - System - Interactive Intelligence.md
+M	AI Systems/Media Editor/claude project/knowledge/Media Editor - Thinking - MEDIA Framework.md
+D	AI Systems/Media Editor/mcp server/claude-plugin/.claude-plugin/plugin.json
+D	AI Systems/Media Editor/mcp server/claude-plugin/README.md
+R086	AI Systems/Media Editor/mcp server/.gitignore	AI Systems/Media Editor/runtime/.gitignore
+R090	AI Systems/Media Editor/mcp server/ARCHITECTURE.md	AI Systems/Media Editor/runtime/ARCHITECTURE.md
+R100	AI Systems/Media Editor/mcp server/LICENSE	AI Systems/Media Editor/runtime/LICENSE
+R059	AI Systems/Media Editor/mcp server/README.md	AI Systems/Media Editor/runtime/README.md
+R100	AI Systems/Media Editor/mcp server/THIRD_PARTY_NOTICES	AI Systems/Media Editor/runtime/THIRD_PARTY_NOTICES
+R100	AI Systems/Media Editor/mcp server/assets/fonts/SourceSans3-Regular.ttf	AI Systems/Media Editor/runtime/assets/fonts/SourceSans3-Regular.ttf
+R100	AI Systems/Media Editor/mcp server/assets/licenses/SourceSans3-OFL.md	AI Systems/Media Editor/runtime/assets/licenses/SourceSans3-OFL.md
+R069	AI Systems/Media Editor/mcp server/claude-plugin/.claude-plugin/marketplace.json	AI Systems/Media Editor/runtime/claude-plugin/.claude-plugin/marketplace.json
+A	AI Systems/Media Editor/runtime/claude-plugin/.claude-plugin/plugin.json
+A	AI Systems/Media Editor/runtime/claude-plugin/README.md
+R100	AI Systems/Media Editor/mcp server/icon.png	AI Systems/Media Editor/runtime/icon.png
+R100	AI Systems/Media Editor/mcp server/licenses/ffmpeg-builds/darwin-arm64-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/ffmpeg-builds/darwin-arm64-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/ffmpeg-builds/darwin-x64-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/ffmpeg-builds/darwin-x64-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/ffmpeg-builds/linux-arm64-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/ffmpeg-builds/linux-arm64-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/ffmpeg-builds/linux-x64-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/ffmpeg-builds/linux-x64-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/ffmpeg-builds/win32-x64-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/ffmpeg-builds/win32-x64-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/ffmpeg-static-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/ffmpeg-static-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/ffprobe-static-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/ffprobe-static-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/libvips-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/libvips-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/mcp-sdk-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/mcp-sdk-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/sharp-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/sharp-LICENSE.txt
+R100	AI Systems/Media Editor/mcp server/licenses/zod-LICENSE.txt	AI Systems/Media Editor/runtime/licenses/zod-LICENSE.txt
+R099	AI Systems/Media Editor/mcp server/manifest.json	AI Systems/Media Editor/runtime/manifest.json
+R099	AI Systems/Media Editor/mcp server/package-lock.json	AI Systems/Media Editor/runtime/package-lock.json
+R091	AI Systems/Media Editor/mcp server/package.json	AI Systems/Media Editor/runtime/package.json
+R098	AI Systems/Media Editor/mcp server/scripts/README.md	AI Systems/Media Editor/runtime/scripts/README.md
+R100	AI Systems/Media Editor/mcp server/scripts/build-bundle.ts	AI Systems/Media Editor/runtime/scripts/build-bundle.ts
+R079	AI Systems/Media Editor/mcp server/scripts/build-plugin.ts	AI Systems/Media Editor/runtime/scripts/build-plugin.ts
+R097	AI Systems/Media Editor/mcp server/scripts/bundle/README.md	AI Systems/Media Editor/runtime/scripts/bundle/README.md
+R100	AI Systems/Media Editor/mcp server/scripts/bundle/artifacts.ts	AI Systems/Media Editor/runtime/scripts/bundle/artifacts.ts
+R100	AI Systems/Media Editor/mcp server/scripts/bundle/notices.ts	AI Systems/Media Editor/runtime/scripts/bundle/notices.ts
+R100	AI Systems/Media Editor/mcp server/scripts/bundle/targets.ts	AI Systems/Media Editor/runtime/scripts/bundle/targets.ts
+R100	AI Systems/Media Editor/mcp server/scripts/package-root.ts	AI Systems/Media Editor/runtime/scripts/package-root.ts
+R100	AI Systems/Media Editor/mcp server/scripts/test-pinned.ts	AI Systems/Media Editor/runtime/scripts/test-pinned.ts
+R083	AI Systems/Media Editor/mcp server/src/README.md	AI Systems/Media Editor/runtime/src/README.md
+A	AI Systems/Media Editor/runtime/src/cli.ts
+R084	AI Systems/Media Editor/mcp server/src/core/README.md	AI Systems/Media Editor/runtime/src/core/README.md
+R100	AI Systems/Media Editor/mcp server/src/core/artifact-download.ts	AI Systems/Media Editor/runtime/src/core/artifact-download.ts
+R089	AI Systems/Media Editor/mcp server/src/core/capabilities.ts	AI Systems/Media Editor/runtime/src/core/capabilities.ts
+R100	AI Systems/Media Editor/mcp server/src/core/concat-list.ts	AI Systems/Media Editor/runtime/src/core/concat-list.ts
+R100	AI Systems/Media Editor/mcp server/src/core/config.ts	AI Systems/Media Editor/runtime/src/core/config.ts
+R100	AI Systems/Media Editor/mcp server/src/core/errors.ts	AI Systems/Media Editor/runtime/src/core/errors.ts
+R086	AI Systems/Media Editor/mcp server/src/core/ffmpeg-resolver.ts	AI Systems/Media Editor/runtime/src/core/ffmpeg-resolver.ts
+R100	AI Systems/Media Editor/mcp server/src/core/filter-escape.ts	AI Systems/Media Editor/runtime/src/core/filter-escape.ts
+R100	AI Systems/Media Editor/mcp server/src/core/font-path.ts	AI Systems/Media Editor/runtime/src/core/font-path.ts
+R100	AI Systems/Media Editor/mcp server/src/core/hls-folders.ts	AI Systems/Media Editor/runtime/src/core/hls-folders.ts
+R100	AI Systems/Media Editor/mcp server/src/core/logger.ts	AI Systems/Media Editor/runtime/src/core/logger.ts
+R100	AI Systems/Media Editor/mcp server/src/core/media-containers.ts	AI Systems/Media Editor/runtime/src/core/media-containers.ts
+R100	AI Systems/Media Editor/mcp server/src/core/media-properties.ts	AI Systems/Media Editor/runtime/src/core/media-properties.ts
+R083	AI Systems/Media Editor/mcp server/src/core/output-folder.ts	AI Systems/Media Editor/runtime/src/core/output-folder.ts
+R100	AI Systems/Media Editor/mcp server/src/core/overlay-position.ts	AI Systems/Media Editor/runtime/src/core/overlay-position.ts
+R100	AI Systems/Media Editor/mcp server/src/core/path-guard.ts	AI Systems/Media Editor/runtime/src/core/path-guard.ts
+R100	AI Systems/Media Editor/mcp server/src/core/pinned-builds.ts	AI Systems/Media Editor/runtime/src/core/pinned-builds.ts
+A	AI Systems/Media Editor/runtime/src/core/probe-cache.ts
+R085	AI Systems/Media Editor/mcp server/src/core/process-runner.ts	AI Systems/Media Editor/runtime/src/core/process-runner.ts
+R100	AI Systems/Media Editor/mcp server/src/core/result.ts	AI Systems/Media Editor/runtime/src/core/result.ts
+R100	AI Systems/Media Editor/mcp server/src/core/source-notice.ts	AI Systems/Media Editor/runtime/src/core/source-notice.ts
+R100	AI Systems/Media Editor/mcp server/src/core/time-parse.ts	AI Systems/Media Editor/runtime/src/core/time-parse.ts
+R100	AI Systems/Media Editor/mcp server/src/core/zip-entry.ts	AI Systems/Media Editor/runtime/src/core/zip-entry.ts
+R100	AI Systems/Media Editor/mcp server/src/index.ts	AI Systems/Media Editor/runtime/src/index.ts
+R082	AI Systems/Media Editor/mcp server/src/server/README.md	AI Systems/Media Editor/runtime/src/server/README.md
+R100	AI Systems/Media Editor/mcp server/src/server/all-tools.ts	AI Systems/Media Editor/runtime/src/server/all-tools.ts
+R100	AI Systems/Media Editor/mcp server/src/server/create-server.ts	AI Systems/Media Editor/runtime/src/server/create-server.ts
+A	AI Systems/Media Editor/runtime/src/server/dispatch.ts
+R073	AI Systems/Media Editor/mcp server/src/server/field-schemas.ts	AI Systems/Media Editor/runtime/src/server/field-schemas.ts
+R100	AI Systems/Media Editor/mcp server/src/server/media-fields.ts	AI Systems/Media Editor/runtime/src/server/media-fields.ts
+R100	AI Systems/Media Editor/mcp server/src/server/server-info.ts	AI Systems/Media Editor/runtime/src/server/server-info.ts
+R077	AI Systems/Media Editor/mcp server/src/server/tool-context.ts	AI Systems/Media Editor/runtime/src/server/tool-context.ts
+R069	AI Systems/Media Editor/mcp server/src/server/tool-registry.ts	AI Systems/Media Editor/runtime/src/server/tool-registry.ts
+R090	AI Systems/Media Editor/mcp server/src/tools/README.md	AI Systems/Media Editor/runtime/src/tools/README.md
+R098	AI Systems/Media Editor/mcp server/src/tools/audio/README.md	AI Systems/Media Editor/runtime/src/tools/audio/README.md
+R098	AI Systems/Media Editor/mcp server/src/tools/audio/convert-properties.ts	AI Systems/Media Editor/runtime/src/tools/audio/convert-properties.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/audio/convert.ts	AI Systems/Media Editor/runtime/src/tools/audio/convert.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/audio/extract.ts	AI Systems/Media Editor/runtime/src/tools/audio/extract.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/audio/set-bitrate.ts	AI Systems/Media Editor/runtime/src/tools/audio/set-bitrate.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/audio/set-channels.ts	AI Systems/Media Editor/runtime/src/tools/audio/set-channels.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/audio/set-sample-rate.ts	AI Systems/Media Editor/runtime/src/tools/audio/set-sample-rate.ts
+R094	AI Systems/Media Editor/mcp server/src/tools/image/README.md	AI Systems/Media Editor/runtime/src/tools/image/README.md
+R097	AI Systems/Media Editor/mcp server/src/tools/image/batch-resize.ts	AI Systems/Media Editor/runtime/src/tools/image/batch-resize.ts
+R095	AI Systems/Media Editor/mcp server/src/tools/image/compress.ts	AI Systems/Media Editor/runtime/src/tools/image/compress.ts
+R068	AI Systems/Media Editor/mcp server/src/tools/image/convert.ts	AI Systems/Media Editor/runtime/src/tools/image/convert.ts
+R095	AI Systems/Media Editor/mcp server/src/tools/image/crop.ts	AI Systems/Media Editor/runtime/src/tools/image/crop.ts
+R094	AI Systems/Media Editor/mcp server/src/tools/image/flip.ts	AI Systems/Media Editor/runtime/src/tools/image/flip.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/image/probe.ts	AI Systems/Media Editor/runtime/src/tools/image/probe.ts
+R095	AI Systems/Media Editor/mcp server/src/tools/image/resize.ts	AI Systems/Media Editor/runtime/src/tools/image/resize.ts
+R094	AI Systems/Media Editor/mcp server/src/tools/image/rotate.ts	AI Systems/Media Editor/runtime/src/tools/image/rotate.ts
+R100	AI Systems/Media Editor/mcp server/src/tools/image/sharp-output.ts	AI Systems/Media Editor/runtime/src/tools/image/sharp-output.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/media/README.md	AI Systems/Media Editor/runtime/src/tools/media/README.md
+R098	AI Systems/Media Editor/mcp server/src/tools/media/health.ts	AI Systems/Media Editor/runtime/src/tools/media/health.ts
+R092	AI Systems/Media Editor/mcp server/src/tools/media/preview.ts	AI Systems/Media Editor/runtime/src/tools/media/preview.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/media/probe.ts	AI Systems/Media Editor/runtime/src/tools/media/probe.ts
+R097	AI Systems/Media Editor/mcp server/src/tools/media/remove-silence.ts	AI Systems/Media Editor/runtime/src/tools/media/remove-silence.ts
+R100	AI Systems/Media Editor/mcp server/src/tools/media/rename.ts	AI Systems/Media Editor/runtime/src/tools/media/rename.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/media/repair.ts	AI Systems/Media Editor/runtime/src/tools/media/repair.ts
+R100	AI Systems/Media Editor/mcp server/src/tools/media/setup-ffmpeg.ts	AI Systems/Media Editor/runtime/src/tools/media/setup-ffmpeg.ts
+R094	AI Systems/Media Editor/mcp server/src/tools/video/README.md	AI Systems/Media Editor/runtime/src/tools/video/README.md
+R098	AI Systems/Media Editor/mcp server/src/tools/video/add-b-roll.ts	AI Systems/Media Editor/runtime/src/tools/video/add-b-roll.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/video/add-fade.ts	AI Systems/Media Editor/runtime/src/tools/video/add-fade.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/video/add-image-overlay.ts	AI Systems/Media Editor/runtime/src/tools/video/add-image-overlay.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/video/add-subtitles.ts	AI Systems/Media Editor/runtime/src/tools/video/add-subtitles.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/video/add-text-overlay.ts	AI Systems/Media Editor/runtime/src/tools/video/add-text-overlay.ts
+R099	AI Systems/Media Editor/mcp server/src/tools/video/concat.ts	AI Systems/Media Editor/runtime/src/tools/video/concat.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/video/convert-properties.ts	AI Systems/Media Editor/runtime/src/tools/video/convert-properties.ts
+R097	AI Systems/Media Editor/mcp server/src/tools/video/convert.ts	AI Systems/Media Editor/runtime/src/tools/video/convert.ts
+R100	AI Systems/Media Editor/mcp server/src/tools/video/copy-then-encode.ts	AI Systems/Media Editor/runtime/src/tools/video/copy-then-encode.ts
+R100	AI Systems/Media Editor/mcp server/src/tools/video/hls-ladder.ts	AI Systems/Media Editor/runtime/src/tools/video/hls-ladder.ts
+R098	AI Systems/Media Editor/mcp server/src/tools/video/set-aspect-ratio.ts	AI Systems/Media Editor/runtime/src/tools/video/set-aspect-ratio.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/video/set-audio-bitrate.ts	AI Systems/Media Editor/runtime/src/tools/video/set-audio-bitrate.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/video/set-audio-channels.ts	AI Systems/Media Editor/runtime/src/tools/video/set-audio-channels.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/video/set-audio-codec.ts	AI Systems/Media Editor/runtime/src/tools/video/set-audio-codec.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/video/set-audio-sample-rate.ts	AI Systems/Media Editor/runtime/src/tools/video/set-audio-sample-rate.ts
+R097	AI Systems/Media Editor/mcp server/src/tools/video/set-bitrate.ts	AI Systems/Media Editor/runtime/src/tools/video/set-bitrate.ts
+R096	AI Systems/Media Editor/mcp server/src/tools/video/set-codec.ts	AI Systems/Media Editor/runtime/src/tools/video/set-codec.ts
+R097	AI Systems/Media Editor/mcp server/src/tools/video/set-frame-rate.ts	AI Systems/Media Editor/runtime/src/tools/video/set-frame-rate.ts
+R097	AI Systems/Media Editor/mcp server/src/tools/video/set-resolution.ts	AI Systems/Media Editor/runtime/src/tools/video/set-resolution.ts
+R097	AI Systems/Media Editor/mcp server/src/tools/video/set-speed.ts	AI Systems/Media Editor/runtime/src/tools/video/set-speed.ts
+R097	AI Systems/Media Editor/mcp server/src/tools/video/trim.ts	AI Systems/Media Editor/runtime/src/tools/video/trim.ts
+R095	AI Systems/Media Editor/mcp server/src/types/README.md	AI Systems/Media Editor/runtime/src/types/README.md
+R100	AI Systems/Media Editor/mcp server/src/types/ffprobe-static.d.ts	AI Systems/Media Editor/runtime/src/types/ffprobe-static.d.ts
+R077	AI Systems/Media Editor/mcp server/tests/README.md	AI Systems/Media Editor/runtime/tests/README.md
+A	AI Systems/Media Editor/runtime/tests/cli/README.md
+A	AI Systems/Media Editor/runtime/tests/cli/cli-process.vitest.ts
+A	AI Systems/Media Editor/runtime/tests/cli/dispatch.vitest.ts
+A	AI Systems/Media Editor/runtime/tests/cli/in-flight-outputs.vitest.ts
+A	AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts
+R096	AI Systems/Media Editor/mcp server/tests/core/README.md	AI Systems/Media Editor/runtime/tests/core/README.md
+R100	AI Systems/Media Editor/mcp server/tests/core/artifact-download.vitest.ts	AI Systems/Media Editor/runtime/tests/core/artifact-download.vitest.ts
+R093	AI Systems/Media Editor/mcp server/tests/core/capabilities.vitest.ts	AI Systems/Media Editor/runtime/tests/core/capabilities.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/concat-list.vitest.ts	AI Systems/Media Editor/runtime/tests/core/concat-list.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/config.vitest.ts	AI Systems/Media Editor/runtime/tests/core/config.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/errors.vitest.ts	AI Systems/Media Editor/runtime/tests/core/errors.vitest.ts
+R093	AI Systems/Media Editor/mcp server/tests/core/ffmpeg-resolver.vitest.ts	AI Systems/Media Editor/runtime/tests/core/ffmpeg-resolver.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/filter-escape.vitest.ts	AI Systems/Media Editor/runtime/tests/core/filter-escape.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/font-path.vitest.ts	AI Systems/Media Editor/runtime/tests/core/font-path.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/hls-folders.vitest.ts	AI Systems/Media Editor/runtime/tests/core/hls-folders.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/logger.vitest.ts	AI Systems/Media Editor/runtime/tests/core/logger.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/media-containers.vitest.ts	AI Systems/Media Editor/runtime/tests/core/media-containers.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/media-properties.vitest.ts	AI Systems/Media Editor/runtime/tests/core/media-properties.vitest.ts
+R068	AI Systems/Media Editor/mcp server/tests/core/output-folder.vitest.ts	AI Systems/Media Editor/runtime/tests/core/output-folder.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/overlay-position.vitest.ts	AI Systems/Media Editor/runtime/tests/core/overlay-position.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/path-guard.vitest.ts	AI Systems/Media Editor/runtime/tests/core/path-guard.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/pinned-builds.vitest.ts	AI Systems/Media Editor/runtime/tests/core/pinned-builds.vitest.ts
+A	AI Systems/Media Editor/runtime/tests/core/probe-cache.vitest.ts
+R089	AI Systems/Media Editor/mcp server/tests/core/process-runner.vitest.ts	AI Systems/Media Editor/runtime/tests/core/process-runner.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/result.vitest.ts	AI Systems/Media Editor/runtime/tests/core/result.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/time-parse.vitest.ts	AI Systems/Media Editor/runtime/tests/core/time-parse.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/core/zip-entry.vitest.ts	AI Systems/Media Editor/runtime/tests/core/zip-entry.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/fixtures/README.md	AI Systems/Media Editor/runtime/tests/fixtures/README.md
+R098	AI Systems/Media Editor/mcp server/tests/helpers/README.md	AI Systems/Media Editor/runtime/tests/helpers/README.md
+R100	AI Systems/Media Editor/mcp server/tests/helpers/broken-media.ts	AI Systems/Media Editor/runtime/tests/helpers/broken-media.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/broken-media.vitest.ts	AI Systems/Media Editor/runtime/tests/helpers/broken-media.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/composition-media.ts	AI Systems/Media Editor/runtime/tests/helpers/composition-media.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/composition-media.vitest.ts	AI Systems/Media Editor/runtime/tests/helpers/composition-media.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/media.ts	AI Systems/Media Editor/runtime/tests/helpers/media.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/media.vitest.ts	AI Systems/Media Editor/runtime/tests/helpers/media.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/pinned-ffmpeg-static.ts	AI Systems/Media Editor/runtime/tests/helpers/pinned-ffmpeg-static.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/pinned-ffprobe-static.ts	AI Systems/Media Editor/runtime/tests/helpers/pinned-ffprobe-static.ts
+R100	AI Systems/Media Editor/mcp server/tests/helpers/tool-client.ts	AI Systems/Media Editor/runtime/tests/helpers/tool-client.ts
+R098	AI Systems/Media Editor/mcp server/tests/packaging/README.md	AI Systems/Media Editor/runtime/tests/packaging/README.md
+R100	AI Systems/Media Editor/mcp server/tests/packaging/artifacts.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/artifacts.vitest.ts
+R064	AI Systems/Media Editor/mcp server/tests/packaging/build-plugin.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/build-plugin.vitest.ts
+R098	AI Systems/Media Editor/mcp server/tests/packaging/bundle-contents.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/bundle-contents.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/packaging/manifest.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/manifest.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/packaging/notices.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/notices.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/packaging/package-root.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/package-root.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/packaging/targets.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/targets.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/packaging/test-pinned.vitest.ts	AI Systems/Media Editor/runtime/tests/packaging/test-pinned.vitest.ts
+R097	AI Systems/Media Editor/mcp server/tests/server/README.md	AI Systems/Media Editor/runtime/tests/server/README.md
+R100	AI Systems/Media Editor/mcp server/tests/server/media-fields.vitest.ts	AI Systems/Media Editor/runtime/tests/server/media-fields.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/server/registry.vitest.ts	AI Systems/Media Editor/runtime/tests/server/registry.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/server/stdio.vitest.ts	AI Systems/Media Editor/runtime/tests/server/stdio.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/server/tool-context.vitest.ts	AI Systems/Media Editor/runtime/tests/server/tool-context.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/smoke.vitest.ts	AI Systems/Media Editor/runtime/tests/smoke.vitest.ts
+R097	AI Systems/Media Editor/mcp server/tests/tools/README.md	AI Systems/Media Editor/runtime/tests/tools/README.md
+R095	AI Systems/Media Editor/mcp server/tests/tools/audio/README.md	AI Systems/Media Editor/runtime/tests/tools/audio/README.md
+R100	AI Systems/Media Editor/mcp server/tests/tools/audio/convert-properties.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/audio/convert-properties.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/audio/convert.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/audio/convert.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/audio/extract.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/audio/extract.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/audio/set-bitrate.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/audio/set-bitrate.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/audio/set-channels.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/audio/set-channels.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/audio/set-sample-rate.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/audio/set-sample-rate.vitest.ts
+R097	AI Systems/Media Editor/mcp server/tests/tools/composition/README.md	AI Systems/Media Editor/runtime/tests/tools/composition/README.md
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/add-b-roll.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/add-b-roll.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/add-fade.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/add-fade.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/add-image-overlay.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/add-image-overlay.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/add-subtitles.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/add-subtitles.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/add-text-overlay.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/add-text-overlay.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/capability-gating.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/capability-gating.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/concat-xfade.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/concat-xfade.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/concat.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/concat.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/composition/remove-silence.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/composition/remove-silence.vitest.ts
+R097	AI Systems/Media Editor/mcp server/tests/tools/image/README.md	AI Systems/Media Editor/runtime/tests/tools/image/README.md
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/batch-resize.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/batch-resize.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/compress.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/compress.vitest.ts
+R078	AI Systems/Media Editor/mcp server/tests/tools/image/convert.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/convert.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/crop.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/crop.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/flip.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/flip.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/output-name.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/output-name.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/probe.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/probe.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/resize.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/resize.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/rotate.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/rotate.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/sharp-output.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/sharp-output.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/image/write-failure.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/image/write-failure.vitest.ts
+R089	AI Systems/Media Editor/mcp server/tests/tools/media/README.md	AI Systems/Media Editor/runtime/tests/tools/media/README.md
+R098	AI Systems/Media Editor/mcp server/tests/tools/media/health.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/health.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/hls-ladder.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/hls-ladder.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/hls-rungs.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/hls-rungs.vitest.ts
+R053	AI Systems/Media Editor/mcp server/tests/tools/media/placement.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/placement.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/preview.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/preview.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/probe.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/probe.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/rename.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/rename.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/repair-diagnose.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/repair-diagnose.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/repair-strategies.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/repair-strategies.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/media/setup-ffmpeg.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/media/setup-ffmpeg.vitest.ts
+R097	AI Systems/Media Editor/mcp server/tests/tools/video/README.md	AI Systems/Media Editor/runtime/tests/tools/video/README.md
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/convert-properties.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/convert-properties.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/convert.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/convert.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/copy-then-encode.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/copy-then-encode.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-aspect-ratio.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-aspect-ratio.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-audio-bitrate.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-audio-bitrate.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-audio-channels.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-audio-channels.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-audio-codec.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-audio-codec.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-audio-sample-rate.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-audio-sample-rate.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-bitrate.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-bitrate.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-codec.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-codec.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-frame-rate.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-frame-rate.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-resolution.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-resolution.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/set-speed.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/set-speed.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tests/tools/video/trim.vitest.ts	AI Systems/Media Editor/runtime/tests/tools/video/trim.vitest.ts
+R100	AI Systems/Media Editor/mcp server/tsconfig.build.json	AI Systems/Media Editor/runtime/tsconfig.build.json
+R100	AI Systems/Media Editor/mcp server/tsconfig.json	AI Systems/Media Editor/runtime/tsconfig.json
+R100	AI Systems/Media Editor/mcp server/tsconfig.scripts.json	AI Systems/Media Editor/runtime/tsconfig.scripts.json
+R100	AI Systems/Media Editor/mcp server/vitest.config.ts	AI Systems/Media Editor/runtime/vitest.config.ts
+M	AI Systems/Media Editor/sk-media-editor/README.md
+M	AI Systems/Media Editor/sk-media-editor/SKILL.md
+M	AI Systems/Media Editor/sk-media-editor/assets/hls-video-conversion.md
+A	AI Systems/Media Editor/sk-media-editor/changelog/v1.1.0.0.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/audio-tools/audio-convert-properties.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/audio-tools/audio-convert.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/audio-tools/audio-extract.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/audio-tools/audio-set-bitrate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/audio-tools/audio-set-channels.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/audio-tools/audio-set-sample-rate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/command-line/argument-input.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/command-line/media-editor-command.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/command-line/runtime-options.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/command-line/stdout-contract-exit-codes-and-signal-cleanup.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/distribution/bundle-and-plugin-build-scripts.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/distribution/claude-code-plugin.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/distribution/claude-desktop-extension-bundle.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/distribution/mcp-server-entry.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/feature-catalog.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-batch-resize.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-compress.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-convert.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-crop.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-flip.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-probe.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-resize.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/image-tools/image-rotate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/media-utility-tools/media-health.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/media-utility-tools/media-probe.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/media-utility-tools/media-remove-silence.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/media-utility-tools/media-rename.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/media-utility-tools/media-repair.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/media-utility-tools/media-setup-ffmpeg.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/project-behavior/desktop-extension-route.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/project-behavior/project-kernel-and-knowledge-files.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/project-behavior/project-naming-and-placement-gate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/project-behavior/project-no-execution-truth.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/quality-gates/parity-wrappers.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/quality-gates/router-contract-fixtures-and-differential.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/quality-gates/rule-parity-script.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/quality-gates/runtime-test-suites-and-pinned-run.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/quality-gates/twin-divergence-grader-and-report-check.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/shared-tool-behavior/error-codes-and-result-shape.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/shared-tool-behavior/ffmpeg-resolution-and-pinned-builds.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/shared-tool-behavior/output-naming.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/shared-tool-behavior/output-placement.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/shared-tool-behavior/path-guard-and-allowed-folders.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/shared-tool-behavior/persistent-probe-cache.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/shared-tool-behavior/preview-image.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/skill-behavior/command-routing-and-aliases.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/skill-behavior/skill-export-delivery.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/skill-behavior/skill-naming-and-placement-gate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/skill-behavior/skill-route-order.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/skill-behavior/tool-check-behavior.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-add-b-roll.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-add-fade.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-add-image-overlay.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-add-subtitles.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-add-text-overlay.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-concat.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-hls-ladder.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-set-speed.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-editing-tools/video-trim.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-convert-properties.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-convert.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-aspect-ratio.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-audio-bitrate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-audio-channels.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-audio-codec.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-audio-sample-rate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-bitrate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-codec.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-frame-rate.md
+A	AI Systems/Media Editor/sk-media-editor/feature-catalog/video-format-tools/video-set-resolution.md
+M	AI Systems/Media Editor/sk-media-editor/graph-metadata.json
+M	AI Systems/Media Editor/sk-media-editor/leaf-aliases.json
+M	AI Systems/Media Editor/sk-media-editor/leaf-manifest.json
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/manual-testing-playbook.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-ambiguity-intake/one-comprehensive-question.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-boundaries/generation-request-refusal.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-boundaries/size-limit-escalation.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-command-routing/command-overrides-keywords.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-command-routing/first-command-wins.md
+A	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-export-delivery/batch-naming-gate.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-guidance-delivery/chat-guidance-delivery.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-hls-recipe/ffmpeg-terminal-recipe.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-identity-handover/identity-handover.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-no-execution-truth/cannot-execute-files.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-repair-mode/repair-guidance.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-route-order/connected-tools-in-desktop.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/project-route-order/setup-offer-without-tools.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-ambiguity-intake/one-comprehensive-question.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-boundaries/generation-request-refusal.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-command-routing/command-overrides-keywords.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-command-routing/first-command-wins.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-command-routing/image-command-routing.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-command-routing/interactive-command.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-command-routing/video-alias-routing.md
+A	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-export-delivery/batch-naming-gate.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-export-delivery/export-first-path-response.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-export-delivery/export-root-no-subfolder.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-export-delivery/readable-name-proposal.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-hls-streaming/ffmpeg-only-hls-conversion.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-identity-handover/identity-handover.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-repair-mode/broken-file-repair.md
+A	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-route-order/command-first.md
+D	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-route-order/connected-tools-first.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-route-order/fallback-to-local-ffmpeg.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-tool-verification/consent-before-ffmpeg-download.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-tool-verification/error-code-handoff.md
+M	AI Systems/Media Editor/sk-media-editor/manual-testing-playbook/skill-tool-verification/missing-ffmpeg-refusal.md
+A	AI Systems/Media Editor/sk-media-editor/references/cli.md
+M	AI Systems/Media Editor/sk-media-editor/references/image-operations.md
+M	AI Systems/Media Editor/sk-media-editor/references/interactive-intelligence.md
+M	AI Systems/Media Editor/sk-media-editor/references/media-framework.md
+M	AI Systems/Media Editor/sk-media-editor/references/router-contract.md
+M	AI Systems/Media Editor/sk-media-editor/references/setup.md
+M	AI Systems/Media Editor/sk-media-editor/references/tools.md
+M	AI Systems/Media Editor/sk-media-editor/references/video-and-audio-operations.md
+M	AI Systems/z — Claude Project Sync Loop/README.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/carrier-query/carrier-query-evidence.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/carrier-query/carrier-query.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/control-plane/declared-intent-differ.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/control-plane/filesystem-fingerprint.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/control-plane/four-verbs.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/control-plane/orphan-sweep.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/control-plane/root-and-content-keys.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/feature-catalog.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/output-format-gate/fixture-runner.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/output-format-gate/output-format-validator.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/output-format-gate/reference-parity.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/packaging-harness/criteria-check.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/packaging-harness/packaging-runner.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/parity-gate/kernel-review.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/parity-gate/pair-divergence.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/parity-gate/seven-parity-checks.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/parity-gate/upload-receipt.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/proofs/episode-selftest.md
+M	AI Systems/z — Claude Project Sync Loop/feature-catalog/proofs/review-expiry-proof.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/records-and-reading/reading-brief.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/records-and-reading/reading-episode.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/records-and-reading/record-claims.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/records-and-reading/reference-repointing.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/records-and-reading/verification-backlog.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/residency/residency-check.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/residency/residency-record.md
+A	AI Systems/z — Claude Project Sync Loop/feature-catalog/residency/statement-resync.md
+M	AI Systems/z — Claude Project Sync Loop/manual-testing-playbook/expiry-proof/review-expiry-proof.md
+M	AI Systems/z — Claude Project Sync Loop/manual-testing-playbook/four-verbs/throwaway-episode.md
+M	AI Systems/z — Claude Project Sync Loop/manual-testing-playbook/manual-testing-playbook.md
+M	AI Systems/z — Claude Project Sync Loop/manual-testing-playbook/parity-checks/seven-parity-checks.md
+M	AI Systems/z — Claude Project Sync Loop/manual-testing-playbook/receipt-check/dated-upload-receipt.md
+M	AI Systems/z — Claude Project Sync Loop/manual-testing-playbook/selftest/episode-selftest.md
+M	AI Systems/z — Claude Project Sync Loop/run_packaging.sh
+M	AI Systems/z — Claude Project Sync Loop/systems.py
+M	ARCHITECTURE.md

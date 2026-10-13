@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "packet_id": "005-media-editor-cli-runtime/005-skill-cli-only",
+  "spec_folder": "005-media-editor-cli-runtime/005-skill-cli-only",
+  "parent_id": "005-media-editor-cli-runtime",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "cli-only media editor skill",
+      "skill route order cli first",
+      "plugin without mcp server",
+      "skill and project split",
+      "skill cli-only plan",
+      "route order rewrite",
+      "sync loop declaration update",
+      "plugin mcpServers removal",
+      "skill cli-only tasks",
+      "route gate tasks",
+      "skill cli verification checklist",
+      "plugin manifest tasks"
+    ],
+    "key_topics": [
+      "cli-only",
+      "media",
+      "editor",
+      "skill",
+      "route",
+      "order",
+      "cli",
+      "first",
+      "plugin",
+      "without",
+      "mcp",
+      "server"
+    ],
+    "importance_tier": "normal",
+    "status": "complete",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "sk-media-editor/SKILL.md",
+      "sk-media-editor/references/cli.md",
+      "sk-media-editor/references/router-contract.md",
+      "sk-media-editor/references/tools.md",
+      "claude project/Custom Instructions.md",
+      "sk-media-editor/graph-metadata.json",
+      "benchmark/router/differential.py",
+      "benchmark/gates/rule_parity.py",
+      "benchmark/grader/twin_divergence.py",
+      "runtime/claude-plugin/.claude-plugin/plugin.json",
+      "runtime/scripts/build-plugin.ts",
+      "runtime/tests/packaging/build-plugin.vitest.ts",
+      "runtime/README.md",
+      "runtime/ARCHITECTURE.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "cli.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/cli.md",
+        "source": "derived"
+      },
+      {
+        "name": "router-contract.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/router-contract.md",
+        "source": "derived"
+      },
+      {
+        "name": "tools.md",
+        "kind": "doc",
+        "path": "sk-media-editor/references/tools.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "graph-metadata.json",
+        "kind": "config",
+        "path": "sk-media-editor/graph-metadata.json",
+        "source": "derived"
+      },
+      {
+        "name": "differential.py",
+        "kind": "file",
+        "path": "benchmark/router/differential.py",
+        "source": "derived"
+      },
+      {
+        "name": "rule_parity.py",
+        "kind": "file",
+        "path": "benchmark/gates/rule_parity.py",
+        "source": "derived"
+      },
+      {
+        "name": "twin_divergence.py",
+        "kind": "file",
+        "path": "benchmark/grader/twin_divergence.py",
+        "source": "derived"
+      },
+      {
+        "name": "plugin.json",
+        "kind": "config",
+        "path": "runtime/claude-plugin/.claude-plugin/plugin.json",
+        "source": "derived"
+      },
+      {
+        "name": "build-plugin.ts",
+        "kind": "code",
+        "path": "runtime/scripts/build-plugin.ts",
+        "source": "derived"
+      },
+      {
+        "name": "build-plugin.vitest.ts",
+        "kind": "test",
+        "path": "runtime/tests/packaging/build-plugin.vitest.ts",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "runtime/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "ARCHITECTURE.md",
+        "kind": "doc",
+        "path": "runtime/ARCHITECTURE.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Code",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Project",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The skill's first route is the Media Editor tools through MCP, checked with `mediahealth`, and the Claude Code plugin registers an MCP server that runs `server/dist/index.js` (`runtime/claude-plugin/.claude-plugin/plugin.json`)",
+    "created_at": "2026-10-04T11:47:32Z",
+    "last_save_at": "2026-10-13T12:53:41.844Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:d63b7de4b5bf3606fbb271dc45e9fdc2eab6a65100b98b6fa359217f4034aac8",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "af59e039b81f2f934391961b63250c20613d2a725f6dd35ac736c9a20f4f75a0",
+      "plan.md": "f356e49a84e6b8e7510d20977b56fd2dabebfaa14ca0cc6f0a83cf6ad4edbe8d",
+      "tasks.md": "278510f54a9290311a0dba41ffa57b603420481f23d01b8b8b91090c37336190",
+      "implementation-summary.md": "321646e614a9a1686da6719692dd360d59e788db57727ed3ef8c97363398a0e8"
+    },
+    "last_active_at": null
+  }
+}
