@@ -114,9 +114,9 @@ DeepSeek ran through Pi's Cline provider at `xhigh` from round 10 on, the operat
 | Playbook round 11 | 32 of 32 PASS for both graders, `check_report.sh` 1 clean, `twin_divergence.py` 7 agreed |
 | Live plain-project runs | 3 of 3 PASS |
 | Packet | `validate.sh AI Systems/Media Editor/specs/005-media-editor-cli-runtime --recursive --strict`: RESULT: PASSED on the parent and all six children, 0 errors and 0 warnings |
-| Commits | Media Editor `42634c3` and `3aa56d7`, parent `84992ac8` and `277db966`, each with a body and a `Spec:` trailer |
-| Push and release | Both repositories equal `origin/main` at Media Editor `968c856` and parent `6fa201b9`. `v1.1.0.0` is Latest with five bundles, and both releases carry annotated tags and skilled-style titles |
-| Live gates after the commits | All exit 0 at `84992ac8`, and again at `277db966` after the follow-up |
+| Commits | Media Editor `da902c8` and `1d54663`, parent `f19b2ce3` and `c2a83640`, each with a body and a `Spec:` trailer |
+| Push and release | Both repositories equal `origin/main` at Media Editor `bbd218c` and parent `00cee4b2`. `v1.1.0.0` is Latest with five bundles, and both releases carry annotated tags and skilled-style titles |
+| Live gates after the commits | All exit 0 at `f19b2ce3`, and again at `c2a83640` after the follow-up |
 | Live Project reply | Waiting for the operator's upload and PED-001 run |
 <!-- /ANCHOR:verification -->
 

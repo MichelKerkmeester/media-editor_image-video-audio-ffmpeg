@@ -136,7 +136,7 @@ contextType: "general"
 - [x] CHK-FIX-004 [P0] Config isolation has tests for a bare token, an outside folder, empty argv and a `--` flag. [`rejects a bare token`, `opens an outside folder through --allowed-dir`, `treats no command as a usage error` and `treats a bare double dash as a usage error`]
 - [x] CHK-FIX-005 [P1] The args source by outcome by signal matrix is listed with its row count. [The 27-cell matrix and its 11 tested rows are listed in implementation-summary.md]
 - [x] CHK-FIX-006 [P1] Tests set `MEDIA_EDITOR_DATA_DIR` to a sandbox so no real data folder is read. [`childEnv` and the pinned smoke set `HOME` and `MEDIA_EDITOR_DATA_DIR` to the sandbox]
-- [x] CHK-FIX-007 [P1] Evidence is pinned to an explicit diff range in the nested repository. [Media Editor `1bdd011` and parent `25717845` to the working tree]
+- [x] CHK-FIX-007 [P1] Evidence is pinned to an explicit diff range in the nested repository. [Media Editor `044df9c` and parent `805794e0` to the working tree]
 <!-- /ANCHOR:fix-completeness -->
 
 ---

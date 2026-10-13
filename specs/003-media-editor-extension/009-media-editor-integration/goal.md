@@ -95,7 +95,7 @@ and findings belong here.
 | Executors | Under the parent goal's D6 routes, the line check ran on DeepSeek v4.1 Flash and the wording review on GPT-6 Luna, not MiMo as the plan named |
 | Missed sites | The wording review found six advisory sites the inventory missed, all fixed, and a widened grep found no more |
 | Edge cases at close | The folder rule (`CONFIG_MISSING`, `PATH_NOT_ALLOWED`) and the capability rule (`CAPABILITY_MISSING`) were missing from both the skill and the kernel, and were added |
-| Peer commit | A peer session's commit `da1b4ecb` carried this phase's residency rows into HEAD, so HEAD pins kernel lines its own kernel does not yet hold |
+| Peer commit | A peer session's commit `abf08e80` carried this phase's residency rows into HEAD, so HEAD pins kernel lines its own kernel does not yet hold |
 | Shared card | A peer session's Human Voice Core change reached the Media Editor mirror at 22:14. It is not part of this phase |
 | Router fixtures | The benchmark router fixtures consume an older contract, left unchanged as a follow-up |
 <!-- /ANCHOR:log -->

@@ -132,7 +132,7 @@ Review outcome. Code, tests batch: 4 findings, 1 rejected because `successResult
 <!-- ANCHOR:verification -->
 ## Verification
 
-Evidence range: the Media Editor repository from `1bdd011` to the working tree, and the parent repository from `25717845` to the working tree. Nothing is committed.
+Evidence range: the Media Editor repository from `044df9c` to the working tree, and the parent repository from `805794e0` to the working tree. Nothing is committed.
 
 | Check | Result |
 |-------|--------|

@@ -33,7 +33,7 @@ contextType: "general"
 ## Phase 1: Setup
 
 - [x] T001 Operator chose B) the current branch (`main`, shared tree, no worktree)
-- [x] T002 The pending `media files` rename and phase 012 edits landed as commit `d8cfca2e` before this change started
+- [x] T002 The pending `media files` rename and phase 012 edits landed as commit `6db2bf4a` before this change started
 - [x] T003 Baseline: run every gate in `plan.md` section 5 and the retired-name inventory, save outputs and exit codes to `AI Systems/Media Editor/specs/004-media-editor-tool-alignment/scratch/baseline/` Done before the first edit, with one known gap: the playbook validator cannot run outside the repo, so its baseline came from a clean extraction
 - [x] T004 Archive every file in the `plan.md` affected-surfaces table to `AI Systems/Media Editor/specs/004-media-editor-tool-alignment/scratch/pre-change.tar` Taken with `git archive HEAD` after the first edits started, which still holds the pre-change bytes because those files were clean at HEAD
 <!-- /ANCHOR:phase-1 -->
@@ -71,7 +71,7 @@ contextType: "general"
 - [x] T042 Tree 14-20, `| Project Knowledge files | 8 |`, the line-53 paragraph, version lines (`claude project/README.md`)
 
 ### E. Declaration and gates
-- [x] T050 Pairs 7 to 8 with the renamed keys and values, the contract under `unmirrored_sources` with Product Owner's reason, residency rows for sections 7 and 8, the whole-router row moved to `8 router code`, edited rows re-keyed with `resync_statement.py` under a fresh `PYTHONPYCACHEPREFIX` until it reports 0, scope-checked per pair (`AI Systems/z — Claude Project Sync Loop/systems.py`) Applied with `scratchpad/me/declare.py`, which rewrites only the media-editor block and re-keys from exact kernel spans, instead of `resync_statement.py`. A peer commit, `5023b914`, swept this block into HEAD before the operator committed the rest
+- [x] T050 Pairs 7 to 8 with the renamed keys and values, the contract under `unmirrored_sources` with Product Owner's reason, residency rows for sections 7 and 8, the whole-router row moved to `8 router code`, edited rows re-keyed with `resync_statement.py` under a fresh `PYTHONPYCACHEPREFIX` until it reports 0, scope-checked per pair (`AI Systems/z — Claude Project Sync Loop/systems.py`) Applied with `scratchpad/me/declare.py`, which rewrites only the media-editor block and re-keys from exact kernel spans, instead of `resync_statement.py`. A peer commit, `cbd32968`, swept this block into HEAD before the operator committed the rest
 - [x] T051 A carried reason for every new or changed unmoved row (`AI Systems/z — Claude Project Sync Loop/residency/backlog.md`)
 - [x] T052 `RETIRED_NAMES` zero-tolerance scan over the pairs, `SKILL.md`, `AGENTS.md`, the kernel and both metadata files, with its own spelling list so `video-and-audio-operations` does not match; seven to eight; docstring; re-measure the tool-check `min_pairs` floor and record why it moved (`benchmark/gates/rule_parity.py`)
 - [x] T053 [P] Rows 39, 40, 43, 76 to the new names, eight pairs, the scan (`benchmark/gates/README.md`)
@@ -117,11 +117,11 @@ contextType: "general"
 <!-- ANCHOR:phase-3 -->
 ## Phase 3: Verification
 
-- [x] T070 Rerun every baseline gate from the final state, read output and exit status, and report the delta against `scratch/baseline/` Sandbox at HEAD `5424531a` plus this change as `28390ba4`. Router, rule parity, Media Editor parity, residency, pair divergence, `residency_report.py`, `record_claims.py`, carrier evidence and the playbook validator all exit 0. `npm test` went from 204 failures to 203, none new. Six other systems fail one parity check and four fail residency, all from peer commit `5424531a`
+- [x] T070 Rerun every baseline gate from the final state, read output and exit status, and report the delta against `scratch/baseline/` Sandbox at HEAD `e96e6fb4` plus this change as `28390ba4`. Router, rule parity, Media Editor parity, residency, pair divergence, `residency_report.py`, `record_claims.py`, carrier evidence and the playbook validator all exit 0. `npm test` went from 204 failures to 203, none new. Six other systems fail one parity check and four fail residency, all from peer commit `e96e6fb4`
 - [x] T071 Retired-name grep over `AI Systems/Media Editor/` and the Sync Loop, excluding `changelog/*`, dated `SYNC.md` entries, `benchmark/reports/2026-09-17--*` and both `THIRD_PARTY_NOTICES`: zero hits Zero live hits. Kept by design: the scan definition in `rule_parity.py` and its README, the upstream licence attribution in `mcp server/tests/fixtures/README.md`, and dated Sync Loop records (episode logs, verdicts, `runtime-register.md` seeded 2026-09-14, the ignored walk state)
 - [x] T072 Negative proofs: a planted retired name, an edited kernel router line and a dropped residency row each make their gate exit 1 naming the cause, then are reverted Planted retired name: `rule_parity.py` exit 1. Edited kernel router line: `differential.py` exit 1 on copy parity. Dropped Media Editor section 8 row: `residency_check.py` exit 1 naming the unowned section. Each was reverted and reran at exit 0
 - [x] T073 Voice check of every changed Markdown file: no em dash outside folder names, no semicolon, the HVR hard blockers 36 changed Markdown files: no em dash or semicolon in any added prose line. One pre-existing hard blocker, "seamless" in the HLS asset, reworded and recopied to its mirror
-- [x] T074 Scoped diff review: only files in the affected-surfaces table changed; peer edits named, not absorbed 48 changed paths are this packet's, plus the six parity README copies the operator approved and `Media Editor/.gitignore`. Not absorbed: `Media Editor/LICENSE` and the peer kernel padding, since committed as `5424531a`
+- [x] T074 Scoped diff review: only files in the affected-surfaces table changed; peer edits named, not absorbed 48 changed paths are this packet's, plus the six parity README copies the operator approved and `Media Editor/.gitignore`. Not absorbed: `Media Editor/LICENSE` and the peer kernel padding, since committed as `e96e6fb4`
 - [x] T075 Mark `acceptance-criteria.md` rows with evidence and run `validate.sh AI Systems/Media Editor/specs/004-media-editor-tool-alignment --strict` to `RESULT: PASSED` All eleven criteria Met. `validate.sh --strict` result recorded below the closure statement
 <!-- /ANCHOR:phase-3 -->
 
@@ -166,7 +166,7 @@ contextType: "general"
 
 - [x] CHK-001 [P0] Requirements documented in spec.md (REQ-004 to REQ-011)
 - [x] CHK-002 [P0] Technical approach defined in plan.md
-- [x] CHK-003 [P1] Dependencies available: T001 and T002 answered by the operator (current branch; commit `d8cfca2e`)
+- [x] CHK-003 [P1] Dependencies available: T001 and T002 answered by the operator (current branch; commit `6db2bf4a`)
 <!-- /ANCHOR:pre-impl -->
 
 ---
@@ -202,7 +202,7 @@ contextType: "general"
 - [x] CHK-FIX-004 [P0] Not applicable: no security, path, parser or redaction code changes. Evidence: Not applicable, confirmed: no security, path, parser or redaction code changed
 - [x] CHK-FIX-005 [P1] Differential matrix stated: modes x fixture inputs x 3 host states, with its row count. Evidence: 6 modes covered by 22 fixture inputs x 3 host states = 66 differential rows, all PASS
 - [x] CHK-FIX-006 [P1] Gates run with a fresh `PYTHONPYCACHEPREFIX` so stale global bytecode cannot answer. Evidence: Every gate reran green under a fresh `PYTHONPYCACHEPREFIX` (`scratchpad/pyc.4uPW`)
-- [x] CHK-FIX-007 [P1] Evidence pinned to a commit or an explicit diff range once the operator commits. Evidence: Pinned to the sandbox commit `28390ba4` over HEAD `5424531a`, holding exactly this change. To be re-pinned to the operator's commit once made
+- [x] CHK-FIX-007 [P1] Evidence pinned to a commit or an explicit diff range once the operator commits. Evidence: Pinned to the sandbox commit `28390ba4` over HEAD `e96e6fb4`, holding exactly this change. To be re-pinned to the operator's commit once made
 <!-- /ANCHOR:fix-completeness -->
 
 ---

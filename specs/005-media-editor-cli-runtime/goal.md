@@ -110,7 +110,7 @@ and findings belong here.
 | Criterion 3, no MCP in the plugin or the skill | Met, 2026-10-05 | `plugin.json` holds no `mcpServers`, and `SKILL.md`, `references/cli.md`, `references/router-contract.md`, the skill README and `AGENTS.md` carry no MCP mention |
 | Criterion 4, graded real replies | Skill side met, Project side open | Three live plain-project skill runs pass (`006/scratch/graded-replies/round7-run*`). The real Project reply waits for the operator to upload the kernel and Knowledge files and run PED-001 in Claude Desktop |
 | Criterion 5, `validate.sh --recursive --strict` | Met, 2026-10-05 | `RESULT: PASSED` on the parent and all six children |
-| Criterion 6, `HEAD` equals `origin/main` | Met, 2026-10-05 | Media Editor `968c856` and parent `6fa201b9`, both pushed. Release `v1.1.0.0` published at `42634c3` with an annotated tag |
+| Criterion 6, `HEAD` equals `origin/main` | Met, 2026-10-05 | Media Editor `bbd218c` and parent `00cee4b2`, both pushed. Release `v1.1.0.0` published at `da902c8` with an annotated tag |
 | Criterion 7, playbook and catalogs | Met, 2026-10-05 | Round 11 report, 32 of 32 PASS for DeepSeek and Luna. Both catalogs and both playbooks 0 violations |
 
 ### Deviations and findings

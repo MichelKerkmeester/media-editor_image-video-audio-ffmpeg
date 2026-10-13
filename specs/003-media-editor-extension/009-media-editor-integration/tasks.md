@@ -70,9 +70,9 @@ One task is one file or one site group. Paths are relative to `AI Systems/Media 
 <!-- ANCHOR:phase-3 -->
 ## Phase 3: Verification
 
-- [x] T021 `bash benchmark/parity/run_parity.sh` in `AI Systems/Media Editor/` [EVIDENCE: after the operator's commit on 2026-09-30, `43b8899a`, it prints `PASSED 7/7 declared pairs, seven checks`, exit 0]
+- [x] T021 `bash benchmark/parity/run_parity.sh` in `AI Systems/Media Editor/` [EVIDENCE: after the operator's commit on 2026-09-30, `43d0136c`, it prints `PASSED 7/7 declared pairs, seven checks`, exit 0]
 - [x] T022 `python3 benchmark/gates/rule_parity.py` in `AI Systems/Media Editor/` [EVIDENCE: `PASSED 6 rules hold on both sides of every pair that teaches them` on the final state]
-- [x] T023 `bash benchmark/parity/run_residency.sh` in `AI Systems/Media Editor/` [EVIDENCE: `PASSED 1 system(s), every declared statement owned and placed`, run through a harness that lifts only the script's refusal of a `systems.py` that differs from HEAD. This phase's rows reached HEAD inside a peer session's commit `da1b4ecb`, and the script then passed without the harness. On the final state a peer's four uncommitted lines, none of them Media Editor rows, need the harness again]
+- [x] T023 `bash benchmark/parity/run_residency.sh` in `AI Systems/Media Editor/` [EVIDENCE: `PASSED 1 system(s), every declared statement owned and placed`, run through a harness that lifts only the script's refusal of a `systems.py` that differs from HEAD. This phase's rows reached HEAD inside a peer session's commit `abf08e80`, and the script then passed without the harness. On the final state a peer's four uncommitted lines, none of them Media Editor rows, need the harness again]
 - [ ] T024 The operator runs one connected-tools scenario in Claude Desktop with the extension, result in the `goal.md` log
 - [ ] T025 `SYNC.md` review note written after the operator confirms the kernel review (`SYNC.md:13`, `:19-21`)
 - [x] T026 `validate.sh AI Systems/Media Editor/specs/003-media-editor-extension/009-media-editor-integration --strict` [EVIDENCE: `RESULT: PASSED` on 2026-09-29 with the final evidence written]
@@ -141,7 +141,7 @@ One task is one file or one site group. Paths are relative to `AI Systems/Media 
 ## Testing Checklist
 
 - [ ] CHK-020 [P0] All acceptance criteria met
-- [x] CHK-021 [P0] `run_parity.sh`, `rule_parity.py` and `run_residency.sh` green on the final state [EVIDENCE: on 2026-09-30 after commit `43b8899a`: `PASSED 7/7 declared pairs`, `PASSED 6 rules`, `PASSED 1 system(s)`]
+- [x] CHK-021 [P0] `run_parity.sh`, `rule_parity.py` and `run_residency.sh` green on the final state [EVIDENCE: on 2026-09-30 after commit `43d0136c`: `PASSED 7/7 declared pairs`, `PASSED 6 rules`, `PASSED 1 system(s)`]
 - [x] CHK-022 [P1] Each edge case in spec.md section 8 has a playbook scenario or kernel rule [EVIDENCE: no folder set and a missing capability: the kernel's and the skill's tool check paragraphs added at close; tools plus local ffmpeg: the route sentence and SRO-001; a failing gate and a moved inventory line: the plan's halt rules and `scratch/line-check.md`]
 - [ ] CHK-023 [P1] Connected-tools scenario run once in Claude Desktop
 <!-- /ANCHOR:testing -->

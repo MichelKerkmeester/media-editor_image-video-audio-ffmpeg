@@ -93,7 +93,7 @@ and findings belong here.
 | Code review finding 1 (P2): a copy of this `package.json` passes the guard | Fixed. `claude-plugin/server/` holds such a copy, so `test-pinned` started there would have written its downloads into the plugin folder. The guard now also wants `src/index.ts`, which no staged copy carries, and a new row fails when that check is reverted |
 | `ARCHITECTURE.md` failed the sk-doc kebab-case name check | Fixed on the operator's go-ahead of 2026-09-30. `ARCHITECTURE.md` joins `TOOL_MANDATED_NAMES` in `check_no_new_snake_case.py`, in the shared `.skilled` tree, with a test row. That change is live there and uncommitted |
 | User guide, asked for on 2026-09-30 | Added. `USER-GUIDE.md` sits beside `INSTALL-GUIDE.md` and shares its upper-case name, which the kebab check fails in both. The Desktop steps come from the Claude help center. Whether an extension's tools reach a Project chat is not stated there, so the guide's own check runs inside a Project chat |
-| Commit | Done on 2026-09-30: `1459ff66`, `43b8899a` and `6281eb51`, the last deleting `mcp servers/` as the operator asked |
+| Commit | Done on 2026-09-30: `22586a10`, `43d0136c` and `b39052e7`, the last deleting `mcp servers/` as the operator asked |
 | Claims the reviews left unchecked | Checked by hand. Three were imprecise and are fixed: `-nostdin` and `-n` go to ffmpeg only, `media_setup_ffmpeg` gates the download on `consent: true` rather than on the call count, and it installs only the missing binaries |
 | Oxford commas in 11 doc lines | Fixed. The HVR scan flagged 74 candidates, and 11 lines held a list comma. The README log-level row, reworded at the same time, also named the wrong default: `error` where `config.ts:305` returns `info` |
 <!-- /ANCHOR:log -->
