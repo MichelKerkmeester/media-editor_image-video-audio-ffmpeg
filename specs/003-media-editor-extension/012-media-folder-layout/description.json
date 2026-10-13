@@ -1,0 +1,28 @@
+{
+  "level": "2",
+  "specFolder": "003-media-editor-extension/012-media-folder-layout",
+  "description": "`export/` held results and the files a user wanted edited side by side, because the system named no place for source files",
+  "keywords": [
+    "export",
+    "held",
+    "results",
+    "files",
+    "user",
+    "wanted",
+    "edited",
+    "side",
+    "because",
+    "system",
+    "named",
+    "place",
+    "source"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.514Z",
+  "specId": "012",
+  "folderSlug": "media-folder-layout",
+  "parentChain": [
+    "003-media-editor-extension"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

@@ -1,0 +1,21 @@
+{
+  "specFolder": "005-media-editor-cli-runtime",
+  "description": "Media Editor runtime rename, CLI-only skill and naming hardening",
+  "keywords": [
+    "media",
+    "editor",
+    "runtime",
+    "rename",
+    "cli-only",
+    "skill",
+    "naming",
+    "hardening"
+  ],
+  "lastUpdated": "2026-10-04T11:47:28.569Z",
+  "specId": "005",
+  "folderSlug": "media-editor-cli-runtime",
+  "parentChain": [],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "2"
+}

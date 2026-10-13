@@ -1,0 +1,28 @@
+{
+  "specFolder": "001-media-editor-alignment",
+  "description": "AI_Systems/Barter/Media Editor/ predates the packaging standards proven on Product Owner: underscored filenames, a generic skill/ folder, an accreted",
+  "keywords": [
+    "barter",
+    "media",
+    "editor",
+    "predates",
+    "packaging",
+    "standards",
+    "proven",
+    "product",
+    "owner",
+    "underscored",
+    "filenames",
+    "generic",
+    "skill",
+    "folder",
+    "accreted"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.484Z",
+  "specId": "001",
+  "folderSlug": "media-editor-alignment",
+  "parentChain": [],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "3"
+}

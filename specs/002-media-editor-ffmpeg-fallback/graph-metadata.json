@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "packet_id": "002-media-editor-ffmpeg-fallback",
+  "spec_folder": "002-media-editor-ffmpeg-fallback",
+  "parent_id": null,
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [],
+    "key_topics": [
+      "media",
+      "editor",
+      "skill",
+      "tool",
+      "verification",
+      "gate",
+      "unconditionally",
+      "blocking",
+      "image",
+      "video",
+      "audio",
+      "operations"
+    ],
+    "importance_tier": "normal",
+    "status": "planned",
+    "key_files": [
+      "spec.md",
+      "tasks.md",
+      "sk-media-editor/SKILL.md",
+      "claude project/Custom Instructions.md",
+      "claude project/README.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "claude project/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Tool Verification Gate",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Problem The Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Integration Points",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Operating Modes",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "Smoke Matrix",
+        "kind": "proper_noun",
+        "path": "tasks.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The Media Editor skill''s Tool Verification Gate is unconditionally blocking for image and video/audio operations: \"When a required tool is unavailable, stop, report the connecti...",
+    "created_at": "2026-10-13T12:53:42.093Z",
+    "last_save_at": "2026-10-13T12:53:42.093Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "tasks.md"
+    ],
+    "source_fingerprint": "sha256:1c6f7f1e7703e50bc8c388f8b0dc754c18e9a8949f5f127478245bcc4b7be71d",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "e78755e942a73aa7f13e4f06592c98aa16580fe2b11e1c708fc6e21e1e89423a",
+      "tasks.md": "90fcc7321563ce19512df1b0d13641d4f4e1ea074f0326c7d8bfe62a93b34627"
+    },
+    "last_active_child_id": null,
+    "last_active_at": null
+  }
+}

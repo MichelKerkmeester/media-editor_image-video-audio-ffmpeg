@@ -1,0 +1,22 @@
+{
+  "level": "2",
+  "specFolder": "005-media-editor-cli-runtime/002-runtime-rename",
+  "description": "The runtime folder is named `mcp server/`, after one transport",
+  "keywords": [
+    "runtime",
+    "folder",
+    "named",
+    "mcp",
+    "server",
+    "one",
+    "transport"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.523Z",
+  "specId": "002",
+  "folderSlug": "runtime-rename",
+  "parentChain": [
+    "005-media-editor-cli-runtime"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

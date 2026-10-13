@@ -1,0 +1,29 @@
+{
+  "level": "2",
+  "specFolder": "005-media-editor-cli-runtime/005-skill-cli-only",
+  "description": "The skill's first route is the Media Editor tools through MCP, checked with `mediahealth`, and the Claude Code plugin registers an MCP server that",
+  "keywords": [
+    "skill",
+    "first",
+    "route",
+    "media",
+    "editor",
+    "tools",
+    "mcp",
+    "checked",
+    "mediahealth",
+    "claude",
+    "code",
+    "plugin",
+    "registers",
+    "server"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.539Z",
+  "specId": "005",
+  "folderSlug": "skill-cli-only",
+  "parentChain": [
+    "005-media-editor-cli-runtime"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": []
+}

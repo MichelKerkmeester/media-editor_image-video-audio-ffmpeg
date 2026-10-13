@@ -1,0 +1,59 @@
+Folder-name mentions for the runtime rename, 2026-10-04
+
+Before: 40 live files carried 75 path mentions (list in rename-files below). Dated records left alone: sk-media-editor/changelog/ (3 files), SYNC.md history, Sync Loop episodes/ (8 files), the git-ignored runtime/claude-plugin/skills/ build copy.
+
+Live files edited:
+  AGENTS.md
+  claude project/knowledge/Media Editor - Reference - Media Editor Tools.md
+  claude project/knowledge/Media Editor - Reference - Setup.md
+  INSTALL-GUIDE.md
+  README.md
+  runtime/ARCHITECTURE.md
+  runtime/claude-plugin/README.md
+  runtime/README.md
+  runtime/scripts/bundle/README.md
+  runtime/scripts/README.md
+  runtime/src/core/README.md
+  runtime/src/README.md
+  runtime/src/server/README.md
+  runtime/src/tools/audio/README.md
+  runtime/src/tools/image/README.md
+  runtime/src/tools/media/README.md
+  runtime/src/tools/README.md
+  runtime/src/tools/video/README.md
+  runtime/src/types/README.md
+  runtime/tests/core/README.md
+  runtime/tests/helpers/README.md
+  runtime/tests/packaging/README.md
+  runtime/tests/README.md
+  runtime/tests/server/README.md
+  runtime/tests/tools/audio/README.md
+  runtime/tests/tools/composition/README.md
+  runtime/tests/tools/image/README.md
+  runtime/tests/tools/media/README.md
+  runtime/tests/tools/README.md
+  runtime/tests/tools/video/README.md
+  sk-media-editor/manual-testing-playbook/skill-export-delivery/readable-name-proposal.md
+  sk-media-editor/manual-testing-playbook/skill-route-order/connected-tools-first.md
+  sk-media-editor/manual-testing-playbook/skill-tool-verification/consent-before-ffmpeg-download.md
+  sk-media-editor/manual-testing-playbook/skill-tool-verification/error-code-handoff.md
+  sk-media-editor/README.md
+  sk-media-editor/references/setup.md
+  sk-media-editor/references/tools.md
+  sk-media-editor/SKILL.md
+  USER-GUIDE.md
+  SYNC.md (one new dated entry)
+
+After: rg -n "mcp server|mcp%20server" over AI Systems/Media Editor and the Sync Loop, excluding node_modules, changelog, episodes and reports:
+  AI Systems/Media Editor/SYNC.md:27
+  AI Systems/Media Editor/SYNC.md:39
+  AI Systems/Media Editor/runtime/src/server/README.md:7
+  AI Systems/Media Editor/runtime/README.md:5
+
+Classification of the four leftovers:
+  SYNC.md:27 dated 2026-09-17 entry naming the retired mcp servers/ folder and MCP server installs as a concept
+  SYNC.md:39 the new dated entry recording this rename
+  runtime/README.md:5 trigger phrase "media editor mcp server", concept
+  runtime/src/server/README.md:7 trigger phrase "media editor mcp server layer", concept
+
+reference_sites.py "mcp server": 9 live sites reported. 6 are changelogs (3 sources, 3 in the git-ignored plugin build copy), dated. SYNC.md and the two trigger phrases are classified above. reference_sites.py "mcp%20server": nothing in the tree.

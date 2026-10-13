@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "packet_id": "003-media-editor-extension/009-media-editor-integration",
+  "spec_folder": "003-media-editor-extension/009-media-editor-integration",
+  "parent_id": "003-media-editor-extension",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor integration",
+      "media editor routing mcp tools",
+      "media editor kernel update",
+      "sync loop pins media editor",
+      "media editor integration plan",
+      "routing order mcp ffmpeg advisory",
+      "kernel version bump",
+      "rule parity residency repin",
+      "task breakdown",
+      "implementation tasks",
+      "verification checklist",
+      "media editor integration tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "integration",
+      "routing",
+      "mcp",
+      "tools",
+      "kernel",
+      "sync",
+      "loop",
+      "pins",
+      "plan",
+      "order"
+    ],
+    "importance_tier": "normal",
+    "status": "in_progress",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "scratch/advisory-classification.md",
+      "scratch/media-editor-package-inventory.md",
+      "AI Systems/z — Claude Project Sync Loop/systems.py",
+      "AI Systems/Media Editor/sk-media-editor/SKILL.md",
+      "AI Systems/Media Editor/AGENTS.md",
+      "AI Systems/Media Editor/claude project/Custom Instructions.md",
+      "AI Systems/Media Editor/INSTALL-GUIDE.md",
+      "AI Systems/Media Editor/benchmark/gates/rule_parity.py",
+      "AI Systems/Media Editor/sk-media-editor/changelog/v0.6.0.0.md",
+      ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+      "scratch/line-check.md",
+      "scratch/kernel-size.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "advisory-classification.md",
+        "kind": "doc",
+        "path": "scratch/advisory-classification.md",
+        "source": "derived"
+      },
+      {
+        "name": "media-editor-package-inventory.md",
+        "kind": "doc",
+        "path": "scratch/media-editor-package-inventory.md",
+        "source": "derived"
+      },
+      {
+        "name": "systems.py",
+        "kind": "file",
+        "path": "AI Systems/z — Claude Project Sync Loop/systems.py",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "AGENTS.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/AGENTS.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "INSTALL-GUIDE.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/INSTALL-GUIDE.md",
+        "source": "derived"
+      },
+      {
+        "name": "rule_parity.py",
+        "kind": "file",
+        "path": "AI Systems/Media Editor/benchmark/gates/rule_parity.py",
+        "source": "derived"
+      },
+      {
+        "name": "v0.6.0.0.md",
+        "kind": "doc",
+        "path": "AI Systems/Media Editor/sk-media-editor/changelog/v0.6.0.0.md",
+        "source": "derived"
+      },
+      {
+        "name": "child-dispatch-preamble.md",
+        "kind": "doc",
+        "path": ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+        "source": "derived"
+      },
+      {
+        "name": "line-check.md",
+        "kind": "doc",
+        "path": "scratch/line-check.md",
+        "source": "derived"
+      },
+      {
+        "name": "kernel-size.md",
+        "kind": "doc",
+        "path": "scratch/kernel-size.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "Every Media Editor surface assumes one of two runtimes",
+    "created_at": "2026-09-28T16:12:09Z",
+    "last_save_at": "2026-10-13T11:10:10.984Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:1d6135b02309f98dc0e425f8f621300bcb6521ee141371375bc67280fe3dac0b",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "e680f98b17079ba527442a1e464d3bd6662c7bb802a3b398955dc2396d39e91b",
+      "plan.md": "6746cb5ee3971e5bd17e65d2139dd3a965ac68f812381c71300cad5f1801996b",
+      "tasks.md": "a6f07fd2da80eaa37ecaa3ca0698b01e41412942bf355ae643b7a71d86d79c13",
+      "implementation-summary.md": "1ecfbe9b5ad0ec9cd7b03417e98be4ee7d05095aeaedf106fd82a97c44ebd4f8"
+    },
+    "last_active_at": null
+  }
+}

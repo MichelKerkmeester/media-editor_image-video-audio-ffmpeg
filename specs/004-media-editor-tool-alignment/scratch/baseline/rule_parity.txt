@@ -1,0 +1,8 @@
+  pairs: 7 of 7 declared pairs compared
+  the tool check gates every operation, tools first: taught by 5 pair(s), 5 declared
+  no format or filter promised before a build check: taught by 2 pair(s), 2 declared
+  no horizontal dividers in a reply: taught by 1 pair(s), 1 declared
+  one comprehensive question, then wait: taught by 1 pair(s), 1 declared
+  the export destination convention: taught by 2 pair(s), 2 declared
+  core punctuation hard blockers (em dash, semicolon): taught by 2 pair(s), 2 declared
+PASSED 6 rules hold on both sides of every pair that teaches them

@@ -1,0 +1,17 @@
+{
+  "specFolder": "003-media-editor-extension/007-desktop-extension",
+  "description": "Phase 7: desktop-extension",
+  "keywords": [
+    "phase",
+    "desktop-extension"
+  ],
+  "lastUpdated": "2026-09-28T16:12:08.433Z",
+  "specId": "007",
+  "folderSlug": "desktop-extension",
+  "parentChain": [
+    "003-media-editor-extension"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "3"
+}

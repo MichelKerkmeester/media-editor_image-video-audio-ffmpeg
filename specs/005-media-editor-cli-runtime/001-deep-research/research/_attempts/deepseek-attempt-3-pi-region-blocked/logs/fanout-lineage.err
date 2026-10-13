@@ -1,0 +1,3 @@
+Warning: No models match pattern "openai-codex/gpt-6-luna"
+{"timestamp":"2026-10-04T15:40:16.909Z","runtime":"pi","status":"ok","freshness":"live","durationMs":98,"cacheHit":true,"skillLabel":"cli-external-orchestration","emittedBytes":306,"directivesSuppressed":false}
+400: {"type":"server_error","message":"Upstream request failed: This Go model requires Global regions. Select Global in your workspace's Privacy settings to use it."}

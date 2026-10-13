@@ -1,0 +1,44 @@
+{
+  "topic": "How should the Media Editor gain a media-editor CLI over the same 40 tool handlers its MCP server runs, how should the skill rely on that CLI alone while the Claude Project stays on MCP, and how should the naming and placement gate be hardened so a batch gets confirmed names and one place. Ranked, evidenced design for four implementation phases.",
+  "specFolder": "AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research",
+  "artifact_dir": "/Users/michelkerkmeester/MEGA/Development/AI Systems/AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research/research/lineages/deepseek",
+  "sessionId": "fanout-deepseek-1791128623066-z5dct5",
+  "generation": 1,
+  "executor": "cli-devin model=deepseek-v4-1-flash-max",
+  "loop_type": "research",
+  "maxIterations": 5,
+  "convergenceThreshold": 0.05,
+  "stopPolicy": "max-iterations",
+  "status": "initialized",
+  "createdAt": "2026-10-04T15:47:43Z",
+  "lineage": {
+    "sessionId": "fanout-deepseek-1791128623066-z5dct5",
+    "parentSessionId": null,
+    "lineageMode": "new",
+    "generation": 1,
+    "continuedFromRun": null
+  },
+  "reducer": {
+    "enabled": true,
+    "version": "manual-lineage-inline",
+    "machineOwnedSections": [
+      "key-questions",
+      "answered-questions",
+      "what-worked",
+      "what-failed",
+      "exhausted-approaches",
+      "ruled-out-directions",
+      "next-focus"
+    ]
+  },
+  "fileProtection": {
+    "deep-research-config.json": "write-once",
+    "deep-research-state.jsonl": "append-only",
+    "deep-research-strategy.md": "mutable",
+    "findings-registry.json": "lineage-summary",
+    "deep-research-dashboard.md": "lineage-summary",
+    "iteration-*.md": "write-once",
+    "deltas/iter-*.jsonl": "write-once",
+    "research.md": "workflow-synthesis"
+  }
+}

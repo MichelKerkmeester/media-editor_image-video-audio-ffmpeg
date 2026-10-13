@@ -1,0 +1,30 @@
+{
+  "sessionId": "fanout-deepseek-1791117729260-kpn1og",
+  "lineage": "deepseek",
+  "mode": "research",
+  "findings": [
+    {"id": "F-01", "focus": "cli-core", "statement": "The 40 tool handlers are listed in all-tools.ts:57-98 and the count is confirmed by reading the file.", "evidence": "mcp server/src/server/all-tools.ts:57-98"},
+    {"id": "F-02", "focus": "cli-core", "statement": "dispatchToolCall is private, returns the MCP SDK CallToolResult type, and throws McpError for a bad argument list from outside its try block.", "evidence": "mcp server/src/server/tool-registry.ts:102-127, :107-113"},
+    {"id": "F-03", "focus": "cli-core", "statement": "index.ts:126 runs main() at module scope, so a separate CLI entry is required.", "evidence": "mcp server/src/index.ts:126"},
+    {"id": "F-04", "focus": "cli-core", "statement": "loadConfig turns every bare argv token into an allowed root candidate, so tool arguments must never reach it.", "evidence": "mcp server/src/core/config.ts:167-175, :410-414"},
+    {"id": "F-05", "focus": "cli-core", "statement": "No registry reaps running ffmpeg children. process-runner kills only on its own timeout.", "evidence": "mcp server/src/core/process-runner.ts:471-477, mcp server/src/index.ts:56-88"},
+    {"id": "F-06", "focus": "cli-surface", "statement": "Measured startup: 0.21 s to import the whole tool graph against a 0.02 s node baseline, with sharp at 0.19 s.", "evidence": "measured with /usr/bin/time -p in mcp server/"},
+    {"id": "F-07", "focus": "cli-surface", "statement": "zod resolves to 4.6.5 and z.toJSONSchema exists, so describe needs no new dependency.", "evidence": "measured by running node in mcp server/"},
+    {"id": "F-08", "focus": "cli-surface", "statement": "Unknown argument keys are stripped silently by the dispatch parse, verified by running z.object().safeParse.", "evidence": "mcp server/src/server/tool-registry.ts:107"},
+    {"id": "F-09", "focus": "cli-surface", "statement": "The preview is returned as base64 inside an image content block, which is wrong for a terminal.", "evidence": "mcp server/src/tools/media/preview.ts:119-124, :38-44"},
+    {"id": "F-10", "focus": "distribution", "statement": "dist is staged whole into the bundle, so dist/cli.js ships with no new staging rule.", "evidence": "mcp server/scripts/build-bundle.ts:76"},
+    {"id": "F-11", "focus": "distribution", "statement": "A plugin root variable resolves inline in skill Markdown body but is absent from the Bash tool environment.", "evidence": "https://code.claude.com/docs/en/plugins-reference"},
+    {"id": "F-12", "focus": "distribution", "statement": "A plugin bin/ folder is on the Bash tool PATH, and a plugin with a top-level bin/ is not installed on other surfaces.", "evidence": "https://code.claude.com/docs/en/plugins-reference"},
+    {"id": "F-13", "focus": "distribution", "statement": "Two relative-path reads constrain the dist layout: the package.json lookup and the bundled font path.", "evidence": "mcp server/src/server/server-info.ts:39-49, mcp server/src/core/font-path.ts:51"},
+    {"id": "F-14", "focus": "skill-split", "statement": "All seven declared mirror pairs are byte-identical today, verified with cmp -s.", "evidence": "systems.py:1252-1267, measured with cmp -s"},
+    {"id": "F-15", "focus": "skill-split", "statement": "A skill-only reference must not enter RESOURCE_MAP or ALWAYS, because the differential compares the resource list.", "evidence": "benchmark/router/differential.py:333-339"},
+    {"id": "F-16", "focus": "skill-split", "statement": "choose_route can gain a cli branch without any route_contract.py schema change, because route is not a ROUTE_FIELDS member.", "evidence": "benchmark/router/route_contract.py:87-89, benchmark/router/differential.py:100-104, :331-332"},
+    {"id": "F-17", "focus": "naming", "statement": "allocateOutputFolder always creates a new numbered folder and cannot target an existing one.", "evidence": "mcp server/src/core/output-folder.ts:301-341, :322-334"},
+    {"id": "F-18", "focus": "naming", "statement": "The kernel already stated that several files from one call go into one numbered folder, and the run still split the batch, so a text-only fix repeats a rule that already failed.", "evidence": "claude project/Custom Instructions.md:149"},
+    {"id": "F-19", "focus": "naming", "statement": "The only hard wait covers one name and no folder, and it is reachable only through the ambiguity escalation.", "evidence": "claude project/Custom Instructions.md:194, :181"},
+    {"id": "F-20", "focus": "naming", "statement": "Field descriptions present an omitted fileName and subfolder as normal outcomes.", "evidence": "mcp server/src/server/field-schemas.ts:62-80"},
+    {"id": "F-21", "focus": "naming", "statement": "No server guard can distinguish a confirmed name from an invented one, so a guard is not worth its friction.", "evidence": "inference from the argument boundary at mcp server/src/server/tool-registry.ts:102-123"},
+    {"id": "F-22", "focus": "naming", "statement": "42 files mention the literal folder name mcp server, and the changelogs and dated SYNC.md lines must not be rewritten.", "evidence": "measured by grep across AI Systems/Media Editor"}
+  ],
+  "notes": "Every finding marked as an inference in an iteration file is recorded as an inference there and is not repeated as a finding here."
+}

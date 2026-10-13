@@ -1,0 +1,16 @@
+diff --git a/AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts b/AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts
+index 51576177..90c49fc0 100644
+--- a/AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts	
++++ b/AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts	
+@@ -151,7 +151,10 @@ it.skipIf(pinnedDir === '' || hostKey === undefined)(
+       const report = asRecord(body[name]);
+       expect(report['found']).toBe(true);
+       expect(report['source']).toBe('env-override');
+-      expect(report['version']).toBe(`${name} version ${expected}`);
++      // The resolver keeps the whole first -version line, copyright tail and all.
++      expect(report['version']).toMatch(
++        new RegExp(`^${name} version ${expected}\\b`),
++      );
+     }
+   },
+   RUN_TIMEOUT_MS,

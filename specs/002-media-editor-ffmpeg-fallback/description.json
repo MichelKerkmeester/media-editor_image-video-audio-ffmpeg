@@ -1,0 +1,26 @@
+{
+  "specFolder": "002-media-editor-ffmpeg-fallback",
+  "description": "The Media Editor skill''s Tool Verification Gate is unconditionally blocking for image and video/audio operations: \"When a required tool is",
+  "keywords": [
+    "media",
+    "editor",
+    "skill",
+    "tool",
+    "verification",
+    "gate",
+    "unconditionally",
+    "blocking",
+    "image",
+    "video",
+    "audio",
+    "operations",
+    "required"
+  ],
+  "lastUpdated": "2026-10-13T12:53:38.485Z",
+  "specId": "002",
+  "folderSlug": "media-editor-ffmpeg-fallback",
+  "parentChain": [],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "3"
+}

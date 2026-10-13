@@ -1,0 +1,17 @@
+{
+  "specFolder": "003-media-editor-extension/004-video-audio-core",
+  "description": "Phase 4: video-audio-core",
+  "keywords": [
+    "phase",
+    "video-audio-core"
+  ],
+  "lastUpdated": "2026-09-28T16:12:05.130Z",
+  "specId": "004",
+  "folderSlug": "video-audio-core",
+  "parentChain": [
+    "003-media-editor-extension"
+  ],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "3"
+}

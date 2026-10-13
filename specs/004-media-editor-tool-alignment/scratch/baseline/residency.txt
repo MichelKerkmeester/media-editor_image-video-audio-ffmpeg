@@ -1,0 +1,2 @@
+media-editor: statement '| Mode | Trigger | Advisory output | Runtime tool | | --- | --- | --- | ...' declares the kernel as its home and is absent from /Users/michelkerkmeester/MEGA/Development/AI Systems/AI Systems/Media Editor/claude project/Custom Instructions.md, so the rule is lost
+FAILED 1 residency finding(s)

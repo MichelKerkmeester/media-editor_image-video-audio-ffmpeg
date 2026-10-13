@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "packet_id": "003-media-editor-extension",
+  "spec_folder": "003-media-editor-extension",
+  "parent_id": null,
+  "children_ids": [
+    "003-media-editor-extension/001-tool-contract",
+    "003-media-editor-extension/002-server-foundation",
+    "003-media-editor-extension/003-image-tools",
+    "003-media-editor-extension/004-video-audio-core",
+    "003-media-editor-extension/005-video-composition",
+    "003-media-editor-extension/006-probe-repair-hls",
+    "003-media-editor-extension/007-desktop-extension",
+    "003-media-editor-extension/008-claude-code-plugin",
+    "003-media-editor-extension/009-media-editor-integration",
+    "003-media-editor-extension/010-pinned-build-parity",
+    "003-media-editor-extension/011-code-documentation",
+    "003-media-editor-extension/012-media-folder-layout"
+  ],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor mcp server",
+      "media editor claude extension",
+      "media editor mcpb bundle",
+      "media editor claude code plugin",
+      "packet goal",
+      "durable directive",
+      "completion criteria",
+      "goal binding"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "mcp",
+      "server",
+      "claude",
+      "extension",
+      "mcpb",
+      "bundle",
+      "code",
+      "plugin",
+      "packet",
+      "goal"
+    ],
+    "importance_tier": "important",
+    "status": "in_progress",
+    "key_files": [
+      "spec.md",
+      "goal.md",
+      "context/source-inventory.md",
+      "AI Systems/z — Claude Project Sync Loop/systems.py",
+      "001-tool-contract/contract.md",
+      "009-media-editor-integration/scratch/media-editor-package-inventory.md",
+      "001-tool-contract/goal.md",
+      "002-server-foundation/goal.md",
+      "003-image-tools/goal.md",
+      "004-video-audio-core/goal.md",
+      "005-video-composition/goal.md",
+      "006-probe-repair-hls/goal.md",
+      "007-desktop-extension/goal.md",
+      "008-claude-code-plugin/goal.md",
+      "009-media-editor-integration/goal.md",
+      "010-pinned-build-parity/goal.md",
+      "011-code-documentation/goal.md",
+      "012-media-folder-layout/goal.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "source-inventory.md",
+        "kind": "doc",
+        "path": "context/source-inventory.md",
+        "source": "derived"
+      },
+      {
+        "name": "systems.py",
+        "kind": "file",
+        "path": "AI Systems/z — Claude Project Sync Loop/systems.py",
+        "source": "derived"
+      },
+      {
+        "name": "contract.md",
+        "kind": "doc",
+        "path": "001-tool-contract/contract.md",
+        "source": "derived"
+      },
+      {
+        "name": "media-editor-package-inventory.md",
+        "kind": "doc",
+        "path": "009-media-editor-integration/scratch/media-editor-package-inventory.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "One Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Desktop",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Claude Code",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Decisions Frozen",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "Apple Silicon",
+        "kind": "proper_noun",
+        "path": "goal.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The Media Editor's claude.ai Project can only advise",
+    "created_at": "2026-09-28T16:12:00Z",
+    "last_save_at": "2026-10-13T11:12:33.025Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "goal.md"
+    ],
+    "source_fingerprint": "sha256:ed15002506bb101c069f2efa67f0282ca4cb5bae673a362e3e08e1309870aa02",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "5b7db8c88416b242aff8e2dc6e8cdb0e23c7154034ba26f3cbe377cd515df9c7"
+    },
+    "last_active_at": null
+  }
+}

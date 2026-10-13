@@ -8,3 +8,6 @@ media files/export/*
 !media files/export/.gitkeep
 media files/tests/*
 !media files/tests/.gitkeep
+
+# Spec folders are tracked; this overrides the global /specs ignore
+!/specs/

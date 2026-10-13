@@ -1,0 +1,14 @@
+src/
+test-images/
+test-output/
+*.ts
+*.js
+!dist/**/*.js
+tsconfig.json
+.gitignore
+test/
+.git/
+node_modules/
+*.log
+.DS_Store
+.mcp.json

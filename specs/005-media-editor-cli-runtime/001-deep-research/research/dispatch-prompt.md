@@ -1,0 +1,78 @@
+GATE 3 IS PRE-RESOLVED. DO NOT ASK THE DOCUMENTATION-SCOPE QUESTION.
+
+You are a non-interactive dispatched worker. `AI_SESSION_CHILD=1` and `SYSTEM_SPEC_GATE_ENFORCE=0` are set in your environment, which this repository's AGENTS.md defines as the autonomous child-dispatch exemption: the spec-folder question is pre-resolved and MUST NOT be asked. No answer can reach you, because nobody is at a prompt.
+
+Your write authority is already bound. The spec folder is:
+  AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research
+Write only inside your own lineage directory under its research/lineages/ folder. Proceed directly to the work. Do not print A/B/C/D options. Do not stop to confirm anything. A failed edit match means a stale anchor: re-read the file and retry, and halt only after three failures on the same file. Your task is complete only when the iteration files exist on disk.
+
+# PERSONA
+
+You are the deep-research agent of this repository: a careful reader who answers a question from the files in front of you, cites every claim to a file and line, counts things with real commands and ranks what you find. You do not implement. You change nothing under `AI Systems/`.
+
+# QUESTION
+
+How should the Media Editor gain a `media-editor` CLI over the same 40 tool handlers its MCP server runs, how should the skill rely on that CLI alone while the Claude Project stays on MCP, and how should the naming and placement gate be hardened so a batch gets confirmed names and one place? Produce a ranked, evidenced design for four implementation phases: rename `mcp server/` to `runtime/`, harden naming and placement, build the CLI, move the skill to the CLI.
+
+The folder is still named `mcp server/`. Cite it by that name.
+
+# FIXED DECISIONS. DO NOT REOPEN THEM.
+
+1. The Claude Code plugin ships the skill and the CLI runtime and registers no MCP server.
+2. The Claude Project stays on the Desktop extension and MCP, and gets the naming hardening.
+3. The skill's route order is the CLI first for everything it covers, then hand-written ffmpeg, then advice.
+4. No new tools for audio trim, loudness normalization or CRF compression. They stay on hand-written ffmpeg.
+
+# THE LIVE BUG BEHIND FOCUS 5
+
+In a Claude Desktop Project, Sonnet 5.5 medium converted four PNGs from `media files/import` to WebP under 100 KB without asking about names or a folder. It passed `subfolder: true` on the first `image_convert` call only, so one file landed in `001 - webp-under-100kb/` and three in the export root as `CleanShot ...-converted.webp`. Known causes: the kernel's only hard wait covers one name and no folder (`claude project/Custom Instructions.md:194`), ESCALATE 1 is tied to ambiguity (`:181`), several files are defined per call (`:149`), `:145` says `media_rename` renames a result already written, the field descriptions present an omitted fileName as normal (`mcp server/src/server/field-schemas.ts:62-80`), `allocateOutputFolder` always makes a new folder (`mcp server/src/core/output-folder.ts:301-341`), and no playbook scenario covers a batch in a Project.
+
+# FIVE FOCUSES, ONE PER ITERATION, IN THIS ORDER
+
+Iteration 1, CLI core:
+- a transport-neutral dispatch, by exporting and decoupling `dispatchToolCall` (`mcp server/src/server/tool-registry.ts:102-127`) from `McpServer` and `McpError`
+- argument errors returned as results, not protocol errors
+- a separate entry, because `mcp server/src/index.ts:126` self-runs
+- a config path that never feeds tool argv to `loadConfig`, whose bare tokens become allowed folders (`mcp server/src/core/config.ts:168-175`)
+- exit codes, and SIGINT and SIGTERM cleanup of ffmpeg children and temp folders
+
+Iteration 2, CLI surface and output:
+- commands `list`, `describe <tool>` (JSON Schema from zod) and `<tool>` with JSON args by flag, file or stdin
+- stdout JSON from `structuredContent`
+- the preview written to a file instead of base64 (`mcp server/src/tools/media/preview.ts:119`)
+- per-call startup cost, and a persistent capability and resolver cache in the data folder
+- the shared `MEDIA_EDITOR_DATA_DIR`, so `media_setup_ffmpeg` and `media_health` work across calls
+
+Iteration 3, distribution:
+- the plugin ships `server/dist/cli.js` (`mcp server/claude-plugin/`, `mcp server/scripts/build-plugin.ts`). How does the skill find it in Claude Code: `${CLAUDE_PLUGIN_ROOT}`, a plugin `bin/` folder or an installed shim?
+- per-platform sharp and the pinned ffmpeg (`mcp server/scripts/bundle/`, `mcp server/scripts/test-pinned.ts`)
+- a standalone install for other terminal agents
+- keep the dist layout, because `mcp server/src/server/server-info.ts:42` and the font path in `mcp server/src/tools/video/add-subtitles.ts` and `add-text-overlay.ts` read relative paths
+- Claude Code plugin mechanics: whether a skill inside a plugin can read `${CLAUDE_PLUGIN_ROOT}` and whether a plugin `bin/` folder is put on PATH. A lineage that has a web search tool MUST check the official Claude Code documentation (code.claude.com and docs.anthropic.com) and cite each URL it relies on. A lineage without web search states that these two questions are unverified and answers only from local files.
+
+Iteration 4, skill and Project split:
+- make the skill CLI-only while the Project stays on MCP, without breaking the byte-identical mirror pairs (`sk-media-editor/references/tools.md`, `setup.md` and `interactive-intelligence.md` against their twins in `claude project/knowledge/`). Proposed shape: `references/tools.md` stays transport-neutral and mirrored, a new skill-only `references/cli.md` carries invocation, and `setup.md` splits by surface. Test the proposal, do not assume it
+- the Sync Loop declaration for media-editor in the Sync Loop's `systems.py`, lines 1245-1697 (locate it with `find "AI Systems" -maxdepth 2 -name systems.py`)
+- rewrites of `sk-media-editor/references/router-contract.md` `choose_route` (`:147`), `benchmark/router/route_contract.py`, `benchmark/router/differential.py` `HOST_STATES` (`:100`), `benchmark/gates/rule_parity.py`, `benchmark/grader/twin_divergence.py` and the route-order playbook scenarios in `sk-media-editor/manual-testing-playbook/`
+
+Iteration 5, naming and placement hardening, plus the ranked change list:
+- the kernel gate wording: one question before the first writing call, with the proposed names and, for two or more inputs from one request, the choice between the export root and one numbered folder, even when the request is clear
+- a batch question template in `sk-media-editor/references/interactive-intelligence.md`
+- tool and field description text (`mcp server/src/server/field-schemas.ts:62-80`, `mcp server/src/tools/image/convert.ts:136-141`)
+- batch-aware placement: a way to target an existing numbered folder, or multi-input `image_convert`
+- whether a `maxBytes` target on `image_convert` is worth adding, since the request said "max 100kb" and had no field for it
+- whether a server guard against unconfirmed names is worth its friction
+- new playbook scenarios for a Project batch and a skill batch
+- end with a ranked change list for the four implementation phases, naming every file
+
+# INPUTS
+
+Read anywhere under `AI Systems/Media Editor/`: `mcp server/src/`, `mcp server/tests/`, `mcp server/scripts/`, `mcp server/claude-plugin/`, `mcp server/package.json`, `sk-media-editor/`, `claude project/`, `AGENTS.md`, `README.md`, `INSTALL-GUIDE.md`, `USER-GUIDE.md` and `benchmark/`, plus the media-editor entry in the Sync Loop's `systems.py`.
+
+# RULES FOR EVERY ITERATION
+
+- Cite every load-bearing claim to `path:line`. A claim without a citation is marked as inference.
+- Name each option you reject and why, so the synthesis can record ruled-out directions.
+- Keep each iteration under fifteen tool calls and write the iteration file before moving on.
+- Do not fetch anything from the network except the official Claude Code documentation in iteration 3, and only if your runtime has a web search tool.
+- Never use an em dash or a semicolon in any file you write.

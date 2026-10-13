@@ -1,0 +1,83 @@
+{"event":"started","label":"deepseek","index":0,"attempt":1,"at":"2026-10-04T12:10:41.526Z","gauges":{"lag":2,"pending":1,"failed":0,"oldest_pending_lag_ms":1}}
+{"event":"started","label":"luna","index":1,"attempt":1,"at":"2026-10-04T12:10:41.533Z","gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:11:42.692Z","duration_ms":60001,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:11:42.940Z","duration_ms":60010,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:12:42.694Z","duration_ms":120003,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:12:42.941Z","duration_ms":120011,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:13:42.694Z","duration_ms":180003,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:13:42.953Z","duration_ms":180023,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:14:42.696Z","duration_ms":240005,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:14:42.954Z","duration_ms":240024,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:15:42.696Z","duration_ms":300005,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:15:42.955Z","duration_ms":300025,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:16:42.698Z","duration_ms":360007,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:16:42.957Z","duration_ms":360027,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:17:42.699Z","duration_ms":420008,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:17:42.958Z","duration_ms":420028,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:18:42.700Z","duration_ms":480009,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:18:42.959Z","duration_ms":480029,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:19:42.701Z","duration_ms":540010,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:19:42.961Z","duration_ms":540031,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:20:42.702Z","duration_ms":600011,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:20:42.962Z","duration_ms":600032,"gauges":{"lag":2,"pending":0,"failed":0}}
+{"event":"timestamp_anomaly","status":"warning","severity":"warning","label":"deepseek","at":"2026-10-04T12:20:53.589Z","state_log":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research/research/lineages/deepseek/deep-research-state.jsonl","window":{"start_at_iso":"2026-10-04T12:10:41.528Z","end_at_iso":"2026-10-04T12:20:53.589Z","tolerance_ms":120000},"counts":{"anomalous":5,"untimestamped":6,"unparseable":0,"total":12},"sample":[{"index":3,"reason":"after_window","timestamp":"2026-10-04T12:30:00.000Z","deltaMs":426411},{"index":5,"reason":"after_window","timestamp":"2026-10-04T12:40:00.000Z","deltaMs":1026411},{"index":7,"reason":"after_window","timestamp":"2026-10-04T12:50:00.000Z","deltaMs":1626411},{"index":9,"reason":"after_window","timestamp":"2026-10-04T13:00:00.000Z","deltaMs":2226411},{"index":11,"reason":"after_window","timestamp":"2026-10-04T13:05:00.000Z","deltaMs":2526411}]}
+{"event":"completed","label":"deepseek","index":0,"attempt":1,"at":"2026-10-04T12:20:53.590Z","duration_ms":612063,"terminal":true,"gauges":{"lag":1,"pending":0,"failed":0},"skippedCount":9,"slotDurationMs":612058.398625}
+{"event":"progress","label":"luna","at":"2026-10-04T12:21:42.963Z","duration_ms":660033,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:22:42.965Z","duration_ms":720035,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:23:42.966Z","duration_ms":780036,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:24:42.968Z","duration_ms":840038,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:25:42.969Z","duration_ms":900039,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:26:42.971Z","duration_ms":960041,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:27:42.972Z","duration_ms":1020042,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"stall_detected","label":"luna","at":"2026-10-04T12:28:12.476Z","severity":"warning","metric":"time_since_last_lineage_event","stall_watchdog_ms":300000,"quiet_ms":300003,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:28:42.972Z","duration_ms":1080042,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:29:42.973Z","duration_ms":1140043,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:30:42.976Z","duration_ms":1200046,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:31:42.977Z","duration_ms":1260047,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:32:42.979Z","duration_ms":1320049,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:33:42.980Z","duration_ms":1380050,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:34:42.981Z","duration_ms":1440051,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:35:42.983Z","duration_ms":1500053,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:36:42.983Z","duration_ms":1560053,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:37:42.985Z","duration_ms":1620055,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:38:42.986Z","duration_ms":1680056,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:39:42.988Z","duration_ms":1740058,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"luna","at":"2026-10-04T12:40:42.989Z","duration_ms":1800059,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"completed","label":"luna","index":1,"attempt":1,"at":"2026-10-04T12:41:26.740Z","duration_ms":1845207,"terminal":true,"gauges":{"lag":0,"pending":0,"failed":0},"skippedCount":29,"slotDurationMs":1845195.330791}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T12:41:26.741Z","generator":"generate-description.js"}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T12:41:26.872Z","generator":"backfill-graph-metadata.js"}
+{"event":"started","label":"deepseek","index":0,"attempt":1,"at":"2026-10-04T12:42:09.264Z","gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:43:09.608Z","duration_ms":60002,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:44:09.609Z","duration_ms":120003,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:45:09.610Z","duration_ms":180004,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:46:09.612Z","duration_ms":240006,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:47:09.613Z","duration_ms":300007,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:48:09.614Z","duration_ms":360008,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:49:09.616Z","duration_ms":420010,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:50:09.617Z","duration_ms":480011,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T12:51:09.618Z","duration_ms":540012,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"completed","label":"deepseek","index":0,"attempt":1,"at":"2026-10-04T12:52:04.688Z","duration_ms":595423,"terminal":true,"gauges":{"lag":0,"pending":0,"failed":0},"skippedCount":8,"slotDurationMs":595418.166542}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T12:52:04.689Z","generator":"generate-description.js"}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T12:52:04.760Z","generator":"backfill-graph-metadata.js"}
+{"event":"started","label":"deepseek","index":0,"attempt":1,"at":"2026-10-04T15:39:34.507Z","gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"failed","label":"deepseek","index":0,"attempt":1,"at":"2026-10-04T15:40:07.081Z","duration_ms":32573,"terminal":false,"error":{"name":"Error","message":"lineage deepseek exited 0 but did not produce expected artifact: AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research/research/lineages/deepseek/research.md","failure_class":"salvage_miss","retry_verdict":"transient","retryable":true,"exit_code":1,"timed_out":false,"salvage":{"salvaged":0,"failed":1}},"gauges":{"lag":1,"pending":0,"failed":0},"skippedCount":0,"slotDurationMs":32569.544625}
+{"event":"retry_scheduled","label":"deepseek","index":0,"at":"2026-10-04T15:40:07.082Z","retry_count":1,"next_attempt":2,"max_retries":1,"failure_class":"salvage_miss","retry_verdict":"transient","gauges":{"lag":1,"pending":1,"failed":0,"oldest_pending_lag_ms":32575}}
+{"event":"started","label":"deepseek","index":0,"attempt":2,"at":"2026-10-04T15:40:07.082Z","gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"failed","label":"deepseek","index":0,"attempt":2,"at":"2026-10-04T15:40:37.416Z","duration_ms":30334,"terminal":true,"error":{"name":"Error","message":"lineage deepseek exited 0 but did not produce expected artifact: AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research/research/lineages/deepseek/research.md","failure_class":"salvage_miss","retry_verdict":"transient","retryable":true,"exit_code":1,"timed_out":false,"salvage":{"salvaged":0,"failed":1}},"gauges":{"lag":0,"pending":0,"failed":1},"skippedCount":0,"slotDurationMs":30333.012708}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T15:40:37.418Z","generator":"generate-description.js"}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T15:40:37.517Z","generator":"backfill-graph-metadata.js"}
+{"event":"started","label":"deepseek","index":0,"attempt":2,"at":"2026-10-04T15:43:43.070Z","gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:44:53.610Z","duration_ms":60001,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:45:53.611Z","duration_ms":120002,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:46:53.613Z","duration_ms":180004,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:47:53.615Z","duration_ms":240006,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:48:53.615Z","duration_ms":300006,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:49:53.616Z","duration_ms":360007,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:50:53.617Z","duration_ms":420008,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:51:53.618Z","duration_ms":480009,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:52:53.619Z","duration_ms":540010,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"event":"progress","label":"deepseek","at":"2026-10-04T15:53:53.621Z","duration_ms":600012,"gauges":{"lag":1,"pending":0,"failed":0}}
+{"type":"event","event":"containment_advisory","severity":"warning","at":"2026-10-04T15:54:43.550Z","label":"deepseek","run_id":"1791128623066-z5dct5","loop_type":"research","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","iteration":2,"gauges":{"lag":1,"pending":0,"failed":0},"violations":[{"path":"AI Systems/Media Editor/runtime/tests/README.md","kind":"untracked","status":"??"},{"path":"AI Systems/Media Editor/runtime/tests/cli/README.md","kind":"untracked","status":"??"},{"path":"AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts","kind":"untracked","status":"??"}],"detected":[{"path":"AI Systems/Media Editor/runtime/tests/README.md","action":"preserved_untracked","ok":true},{"path":"AI Systems/Media Editor/runtime/tests/cli/README.md","action":"preserved_untracked","ok":true},{"path":"AI Systems/Media Editor/runtime/tests/cli/pinned-smoke.vitest.ts","action":"preserved_untracked","ok":true}]}
+{"event":"completed","label":"deepseek","index":0,"attempt":2,"at":"2026-10-04T15:54:43.553Z","duration_ms":660482,"terminal":true,"gauges":{"lag":0,"pending":0,"failed":0},"skippedCount":10,"slotDurationMs":660475.775917}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T15:54:43.554Z","generator":"generate-description.js"}
+{"event":"metadata_refresh_ok","status":"ok","spec_folder":"AI Systems/Media Editor/specs/005-media-editor-cli-runtime/001-deep-research","at":"2026-10-04T15:54:43.683Z","generator":"backfill-graph-metadata.js"}

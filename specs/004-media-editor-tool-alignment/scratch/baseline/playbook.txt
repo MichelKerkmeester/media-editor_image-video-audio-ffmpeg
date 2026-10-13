@@ -1,0 +1,5 @@
+contract=operator-scenario routing_gold_contract=routing-gold strict=on
+manifest=../Code_Environment/Public/.skilled/skills/sk-doc/sk-create-manual-testing-playbook/playbook-corpus-manifest.json
+warn_packages=
+PASS package=../../../../AI Systems/AI Systems/Media Editor/sk-media-editor tier=FAIL_CLOSED scenarios=19 categories=16 operator=19 routing_gold_excluded=0 violations=0 warnings=0
+exit=0
