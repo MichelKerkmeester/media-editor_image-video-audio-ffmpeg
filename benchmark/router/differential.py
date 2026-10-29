@@ -18,8 +18,10 @@ Four guards fire, each on its own:
 
 1. Copy parity. The kernel's closing Router Code section is held equal to the
    reference block minus its comments, line for line and as a parsed syntax
-   tree, while SKILL.md grows no python fence of its own and no Router
-   Contract Knowledge document returns as a second routing copy.
+   tree, while SKILL.md and the sibling ROUTER.md it links grow no python
+   fence of their own and no Router Contract Knowledge document returns as a
+   second routing copy. The two files are read as one skill surface, so the
+   pointer to the contract may sit in either.
 2. Table parity. Commands, keyword weights in table order (order is the score
    tie-break), resource lanes, tool groups, fallbacks, the token pattern and
    the disambiguation checklist must match value for value, so a drifted table
@@ -68,6 +70,9 @@ import route_contract as rc  # noqa: E402  (needs HERE on the path first)
 
 SYSTEM_ROOT = HERE.parent.parent
 SKILL_MD = SYSTEM_ROOT / "sk-media-editor" / "SKILL.md"
+# The sibling router SKILL.md links. It carries the routing tables and the
+# pseudocode pointer once they leave SKILL.md, so it is read with SKILL.md.
+ROUTER_MD = SYSTEM_ROOT / "sk-media-editor" / "ROUTER.md"
 ROUTER_CONTRACT_MD = SYSTEM_ROOT / "sk-media-editor" / "references" / "router-contract.md"
 PROJECT_MD = SYSTEM_ROOT / "claude project" / "Custom Instructions.md"
 KNOWLEDGE_ROOT = SYSTEM_ROOT / "claude project" / "knowledge"
@@ -407,6 +412,8 @@ def main() -> int:
     contract_text = read_text(ROUTER_CONTRACT_MD)
     kernel_text = read_text(PROJECT_MD)
     skill_text = read_text(SKILL_MD)
+    if ROUTER_MD.is_file():
+        skill_text += "\n\n" + read_text(ROUTER_MD)
     corpus = load_corpus()
 
     failures = check_copy_parity(contract_text, kernel_text, skill_text)
