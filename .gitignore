@@ -16,3 +16,11 @@ media files/tests/*
 /specs/personal/*
 !/specs/personal/.gitkeep
 !/specs/personal/README.md
+
+# Deep-loop write-containment snapshots copy files from the whole working tree, private Barter
+# files included, so they never enter this public repo
+specs/**/containment/
+
+# Third-party projects kept on disk as research reference: never shipped, installed or redistributed here
+/specs/system/003-media-editor-extension/context/imagician-main/
+/specs/system/003-media-editor-extension/context/video-audio-mcp-main/
