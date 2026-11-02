@@ -25,6 +25,8 @@ Keeping them apart means your work never mixes with the system's own history, an
 
 Create one numbered folder per piece of work, the same way `system/` does, for example `specs/personal/001-my-first-change/`. Put the plan, notes and results for that work inside it.
 
+When you finish or drop a piece of work, move its folder into `z_archive/`, so this track lists only live work. See [`z_archive/README.md`](./z_archive/README.md).
+
 ---
 
 ## 3. WHAT STAYS PRIVATE
@@ -35,6 +37,7 @@ Everything you add here stays on your machine. The system's `.gitignore` keeps t
 | --- | --- |
 | `specs/personal/README.md` | ✅ Yes |
 | `specs/personal/.gitkeep` | ✅ Yes |
+| `specs/personal/z_archive/README.md` and `.gitkeep` | ✅ Yes |
 | Any other file or folder in `specs/personal/` | ❌ No |
 
 To confirm, create a folder with a file in it and run `git status` from the system folder. The new folder does not appear in the output.

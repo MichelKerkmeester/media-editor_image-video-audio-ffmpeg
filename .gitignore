@@ -16,6 +16,10 @@ media files/tests/*
 /specs/personal/*
 !/specs/personal/.gitkeep
 !/specs/personal/README.md
+!/specs/personal/z_archive/
+/specs/personal/z_archive/*
+!/specs/personal/z_archive/.gitkeep
+!/specs/personal/z_archive/README.md
 
 # Deep-loop write-containment snapshots copy files from the whole working tree, private Barter
 # files included, so they never enter this public repo
