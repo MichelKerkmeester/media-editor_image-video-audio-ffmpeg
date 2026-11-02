@@ -77,7 +77,7 @@ These rules summarize the router in `references/router-contract.md`: exact `$tok
 
 Every operation takes the first route that is available: the `media-editor` command, then locally installed ffmpeg, then advice with the exact command when neither can run.
 
-Read [`ROUTER.md`](./ROUTER.md) before selecting skill-local resources; open only the matched files.
+Read [`ROUTER.md`](./ROUTER.md) before selecting skill-local resources, and open only the matched files.
 
 ---
 
