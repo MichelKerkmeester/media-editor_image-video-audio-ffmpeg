@@ -1,0 +1,16 @@
+{
+  "specFolder": "system",
+  "description": "Track folder for the Media Editor system's own spec packets: the changes that build and maintain the system itself.",
+  "keywords": [
+    "track",
+    "system",
+    "media editor"
+  ],
+  "lastUpdated": "2026-11-02T14:46:08.000Z",
+  "specId": "system",
+  "folderSlug": "system",
+  "parentChain": [],
+  "memorySequence": 0,
+  "memoryNameHistory": [],
+  "level": "track"
+}

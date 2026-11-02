@@ -11,3 +11,8 @@ media files/tests/*
 
 # Spec folders are tracked; this overrides the global /specs ignore
 !/specs/
+
+# specs/personal/: your own spec folders stay on this machine. The track, .gitkeep and README.md are tracked
+/specs/personal/*
+!/specs/personal/.gitkeep
+!/specs/personal/README.md

@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "packet_id": "system/003-media-editor-extension/009-media-editor-integration",
+  "spec_folder": "system/003-media-editor-extension/009-media-editor-integration",
+  "parent_id": "system/003-media-editor-extension",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor integration",
+      "media editor routing mcp tools",
+      "media editor kernel update",
+      "sync loop pins media editor",
+      "media editor integration plan",
+      "routing order mcp ffmpeg advisory",
+      "kernel version bump",
+      "rule parity residency repin",
+      "task breakdown",
+      "implementation tasks",
+      "verification checklist",
+      "media editor integration tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "integration",
+      "routing",
+      "mcp",
+      "tools",
+      "kernel",
+      "sync",
+      "loop",
+      "pins",
+      "plan",
+      "order"
+    ],
+    "importance_tier": "normal",
+    "status": "in_progress",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "sk-media-editor/SKILL.md",
+      "claude project/Custom Instructions.md",
+      "claude project/README.md",
+      "sk-media-editor/README.md",
+      "benchmark/gates/rule_parity.py",
+      "benchmark/grader/twin_divergence.py",
+      "sk-media-editor/changelog/v0.6.0.0.md",
+      "scratch/advisory-classification.md",
+      "scratch/media-editor-package-inventory.md",
+      "benchmark/grader/fixtures/sample-report/replies/PID-001.txt",
+      "benchmark/parity/run_parity.sh",
+      "benchmark/parity/run_residency.sh",
+      ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+      "scratch/line-check.md"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "SKILL.md",
+        "kind": "doc",
+        "path": "sk-media-editor/SKILL.md",
+        "source": "derived"
+      },
+      {
+        "name": "Custom Instructions.md",
+        "kind": "doc",
+        "path": "claude project/Custom Instructions.md",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "claude project/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "rule_parity.py",
+        "kind": "file",
+        "path": "benchmark/gates/rule_parity.py",
+        "source": "derived"
+      },
+      {
+        "name": "twin_divergence.py",
+        "kind": "file",
+        "path": "benchmark/grader/twin_divergence.py",
+        "source": "derived"
+      },
+      {
+        "name": "v0.6.0.0.md",
+        "kind": "doc",
+        "path": "sk-media-editor/changelog/v0.6.0.0.md",
+        "source": "derived"
+      },
+      {
+        "name": "advisory-classification.md",
+        "kind": "doc",
+        "path": "scratch/advisory-classification.md",
+        "source": "derived"
+      },
+      {
+        "name": "media-editor-package-inventory.md",
+        "kind": "doc",
+        "path": "scratch/media-editor-package-inventory.md",
+        "source": "derived"
+      },
+      {
+        "name": "PID-001.txt",
+        "kind": "file",
+        "path": "benchmark/grader/fixtures/sample-report/replies/PID-001.txt",
+        "source": "derived"
+      },
+      {
+        "name": "run_parity.sh",
+        "kind": "script",
+        "path": "benchmark/parity/run_parity.sh",
+        "source": "derived"
+      },
+      {
+        "name": "run_residency.sh",
+        "kind": "script",
+        "path": "benchmark/parity/run_residency.sh",
+        "source": "derived"
+      },
+      {
+        "name": "child-dispatch-preamble.md",
+        "kind": "doc",
+        "path": ".skilled/skills/cli-external-orchestration/shared/references/child-dispatch-preamble.md",
+        "source": "derived"
+      },
+      {
+        "name": "line-check.md",
+        "kind": "doc",
+        "path": "scratch/line-check.md",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "The Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Key Decisions",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Critical Dependencies",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "Every Media Editor surface assumes one of two runtimes",
+    "created_at": "2026-09-28T16:12:09Z",
+    "last_save_at": "2026-11-02T15:31:22.261Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:6616af21f67ae13a40bf52b2496182b948f7f7de76dbf4d8db991ade66facd97",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "e680f98b17079ba527442a1e464d3bd6662c7bb802a3b398955dc2396d39e91b",
+      "plan.md": "6746cb5ee3971e5bd17e65d2139dd3a965ac68f812381c71300cad5f1801996b",
+      "tasks.md": "10f275cf104e6008893ca906b428de43aa997bf6bb7878f3ddaec66c792bd073",
+      "implementation-summary.md": "db2702833db98206a40e734b70b3c944c67213c10e97d61b5c8834f670db3582"
+    },
+    "last_active_at": null
+  }
+}

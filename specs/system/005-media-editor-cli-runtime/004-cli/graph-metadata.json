@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "packet_id": "system/005-media-editor-cli-runtime/004-cli",
+  "spec_folder": "system/005-media-editor-cli-runtime/004-cli",
+  "parent_id": "system/005-media-editor-cli-runtime",
+  "children_ids": [],
+  "manual": {
+    "depends_on": [],
+    "supersedes": [],
+    "related_to": []
+  },
+  "derived": {
+    "trigger_phrases": [
+      "media editor cli",
+      "media-editor command",
+      "transport-neutral dispatch",
+      "cli over tool handlers",
+      "cli implementation plan",
+      "dispatch extraction",
+      "cli exit codes",
+      "cli process tests",
+      "cli tasks",
+      "dispatch extraction tasks",
+      "cli verification checklist",
+      "cli process test tasks"
+    ],
+    "key_topics": [
+      "media",
+      "editor",
+      "cli",
+      "media-editor",
+      "command",
+      "transport-neutral",
+      "dispatch",
+      "tool",
+      "handlers",
+      "implementation",
+      "plan",
+      "extraction"
+    ],
+    "importance_tier": "normal",
+    "status": "complete",
+    "key_files": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md",
+      "runtime/src/server/dispatch.ts",
+      "runtime/src/server/tool-registry.ts",
+      "runtime/src/cli.ts",
+      "runtime/src/core/probe-cache.ts",
+      "runtime/src/core/process-runner.ts",
+      "runtime/src/server/tool-context.ts",
+      "runtime/src/core/ffmpeg-resolver.ts",
+      "runtime/src/tools/media/preview.ts",
+      "runtime/package.json",
+      "runtime/README.md",
+      "runtime/src/index.ts",
+      "runtime/src/core/config.ts",
+      "runtime/dist/cli.js"
+    ],
+    "entities": [
+      {
+        "name": "spec.md",
+        "kind": "doc",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "plan.md",
+        "kind": "doc",
+        "path": "plan.md",
+        "source": "derived"
+      },
+      {
+        "name": "tasks.md",
+        "kind": "doc",
+        "path": "tasks.md",
+        "source": "derived"
+      },
+      {
+        "name": "acceptance-criteria.md",
+        "kind": "doc",
+        "path": "acceptance-criteria.md",
+        "source": "derived"
+      },
+      {
+        "name": "goal.md",
+        "kind": "doc",
+        "path": "goal.md",
+        "source": "derived"
+      },
+      {
+        "name": "implementation-summary.md",
+        "kind": "doc",
+        "path": "implementation-summary.md",
+        "source": "derived"
+      },
+      {
+        "name": "dispatch.ts",
+        "kind": "code",
+        "path": "runtime/src/server/dispatch.ts",
+        "source": "derived"
+      },
+      {
+        "name": "tool-registry.ts",
+        "kind": "code",
+        "path": "runtime/src/server/tool-registry.ts",
+        "source": "derived"
+      },
+      {
+        "name": "cli.ts",
+        "kind": "code",
+        "path": "runtime/src/cli.ts",
+        "source": "derived"
+      },
+      {
+        "name": "probe-cache.ts",
+        "kind": "code",
+        "path": "runtime/src/core/probe-cache.ts",
+        "source": "derived"
+      },
+      {
+        "name": "process-runner.ts",
+        "kind": "code",
+        "path": "runtime/src/core/process-runner.ts",
+        "source": "derived"
+      },
+      {
+        "name": "tool-context.ts",
+        "kind": "code",
+        "path": "runtime/src/server/tool-context.ts",
+        "source": "derived"
+      },
+      {
+        "name": "ffmpeg-resolver.ts",
+        "kind": "code",
+        "path": "runtime/src/core/ffmpeg-resolver.ts",
+        "source": "derived"
+      },
+      {
+        "name": "preview.ts",
+        "kind": "code",
+        "path": "runtime/src/tools/media/preview.ts",
+        "source": "derived"
+      },
+      {
+        "name": "package.json",
+        "kind": "config",
+        "path": "runtime/package.json",
+        "source": "derived"
+      },
+      {
+        "name": "README.md",
+        "kind": "doc",
+        "path": "runtime/README.md",
+        "source": "derived"
+      },
+      {
+        "name": "index.ts",
+        "kind": "code",
+        "path": "runtime/src/index.ts",
+        "source": "derived"
+      },
+      {
+        "name": "config.ts",
+        "kind": "code",
+        "path": "runtime/src/core/config.ts",
+        "source": "derived"
+      },
+      {
+        "name": "cli.js",
+        "kind": "code",
+        "path": "runtime/dist/cli.js",
+        "source": "derived"
+      },
+      {
+        "name": "Feature Specification",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Parent Spec",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Handoff Criteria",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Phase Context This",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      },
+      {
+        "name": "Media Editor",
+        "kind": "proper_noun",
+        "path": "spec.md",
+        "source": "derived"
+      }
+    ],
+    "causal_summary": "The 40 tool handlers are reachable only through MCP",
+    "created_at": "2026-10-04T11:47:31Z",
+    "last_save_at": "2026-11-02T15:31:22.243Z",
+    "save_lineage": "graph_only",
+    "last_accessed_at": null,
+    "source_docs": [
+      "spec.md",
+      "plan.md",
+      "tasks.md",
+      "acceptance-criteria.md",
+      "goal.md",
+      "implementation-summary.md"
+    ],
+    "source_fingerprint": "sha256:e7c74a283ab98279b25c9bc7f9c6c8f81cf7fdd6d13a1d8f72ed61e3bfef8f72",
+    "source_fingerprint_docset": 3,
+    "source_doc_hashes": {
+      "spec.md": "6ae70c376b1418cd5c84ca7370557a1207ffa9848499709af8e76eaa7b7e16df",
+      "plan.md": "c9b04cc108583e18a155689b9f9a8ba8fd46d64db27bac498fd357bb74f8e7b7",
+      "tasks.md": "c25fc43b46cf8406a7ebae9076fa4cb1d95f46001c179a224c04949c4ca1c79c",
+      "implementation-summary.md": "0fc99340adc829f1c27c47338c22c591ccdf054c21577aee8639707d7d6d7fb9"
+    },
+    "last_active_at": null
+  }
+}
