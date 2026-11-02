@@ -15,22 +15,62 @@ trigger_phrases:
 
 ## 1. OVERVIEW
 
-`z_archive/` holds spec folders from `specs/personal/` that are finished, dropped or superseded. The `z_` prefix sorts it last, so the folders you are still working on stay at the top of the track. It mirrors the `z_archive/` in `specs/system/`, which does the same for the system's own spec folders.
+`z_archive/` holds spec folders from `specs/personal/` that you finished or dropped. The `z_` prefix sorts it last, so the folders you still work on stay at the top of the track.
+
+It works like the archive in the system track, which does the same for the system's own spec folders.
+
+| Archive | Holds | Tracked by git |
+| --- | --- | --- |
+| `specs/personal/z_archive/` | Your finished or dropped spec folders | ❌ No, only this README and `.gitkeep` |
+| `specs/system/z_archive/` | The system's own finished spec folders | ✅ Yes |
 
 ---
 
 ## 2. USAGE
 
-Move a whole spec folder in when you no longer work on it, for example `specs/personal/003-old-idea/` to `specs/personal/z_archive/003-old-idea/`. Keep its number so the history of your track still reads in order. Move it back out if you pick the work up again.
+Move a whole spec folder in when you stop working on it. Keep its number so your track still reads in order. Run this from the system folder:
+
+```bash
+mv specs/personal/003-old-idea specs/personal/z_archive/
+```
+
+Move it back out the same way if you pick the work up again.
 
 ---
 
-## 3. WHAT STAYS PRIVATE
+## 3. STRUCTURE
 
-Archived folders stay on your machine, like everything else in `specs/personal/`. The system's `.gitignore` keeps them out of git.
+```text
+z_archive/
+├── README.md        this file
+├── .gitkeep         keeps the empty folder in the repository
+└── 003-old-idea/    an archived spec folder
+```
 
-| Path | Tracked by git |
+| Path | Tracked by git | Purpose |
+| --- | --- | --- |
+| `README.md` | ✅ Yes | Explains the archive |
+| `.gitkeep` | ✅ Yes | Keeps the empty folder in the repository |
+| Any other file or folder | ❌ No | Your archived spec folders, kept on your machine |
+
+---
+
+## 4. VERIFICATION
+
+After you archive a folder, run this from the system folder:
+
+```bash
+git status --short specs/personal/
+```
+
+Expected output: nothing. A folder listed there would be committed, so check the system's `.gitignore` before you commit.
+
+---
+
+## 5. RELATED RESOURCES
+
+| Resource | What it is |
 | --- | --- |
-| `specs/personal/z_archive/README.md` | ✅ Yes |
-| `specs/personal/z_archive/.gitkeep` | ✅ Yes |
-| Any other file or folder in `specs/personal/z_archive/` | ❌ No |
+| [`../README.md`](../README.md) | The personal track this archive belongs to |
+| [`../../system/z_archive/`](../../system/z_archive/) | The system track's archive |
+| [Skilled](https://github.com/MichelKerkmeester/skilled-agent-harness_spec-driven-loops) | The spec-driven agent framework behind both tracks: spec folders, memory, skills and agents |
